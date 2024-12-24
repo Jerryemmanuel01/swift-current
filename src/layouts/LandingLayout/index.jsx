@@ -1,11 +1,14 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import Headroom from "react-headroom";
 import { Outlet } from "react-router-dom";
 
 const LandingLayout = () => {
   return (
     <>
-      <Header />
+      <Headroom>
+        <Header />
+      </Headroom>
       <Outlet />
       <Footer />
     </>
