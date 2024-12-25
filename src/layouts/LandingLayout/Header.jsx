@@ -11,7 +11,7 @@ const Header = () => {
         <div className="w-full items-center justify-center flex">
           <div className="md:flex w-full justify-between items-center">
             <div className="flex justify-between items-center md:w-1/3">
-              <p className="md:text-3xl font-bold">LOGO</p>
+              <h2 className="md:text-3xl font-bold text-white">LOGO</h2>
               <button
                 className="md:hidden outline-none text-white"
                 onClick={() => setToggleNav((prev) => !prev)}
