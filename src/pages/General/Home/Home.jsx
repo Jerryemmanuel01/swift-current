@@ -1,6 +1,10 @@
+import Hero from "../../../components/General/Hero"
+
 const Home = () => {
   return (
-    <div className="h-[1029px] w-full bg-">Home</div>
+    <div className="">
+      <Hero />
+    </div>
   )
 }
 

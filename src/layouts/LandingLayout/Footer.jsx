@@ -20,7 +20,7 @@ const Footer = () => {
             customers achieve their ambitions in the right way.
           </p>
         </div>
-        <div className="mt-8 md:mt-0 md:flex flex-col items-center">
+        <div className="mt-8 md:mt-0 lg:flex flex-col items-center">
           <div className="">
             <h2 className="text-bold  font-merriweather text-sm md:text-base lg:text-lg text-white ">
               Extra Links
@@ -44,7 +44,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="mt-8 md:mt-0 flex flex-col items-center">
+        <div className="mt-8 md:mt-0 lg:flex flex-col items-center">
           <div className="border-b border-primary pb-4">
             <h2 className="text-bold  font-merriweather text-sm md:text-base lg:text-lg text-white ">
               Global Head Office
@@ -65,7 +65,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="mt-8 md:mt-0 md:flex flex-col items-center">
+        <div className="mt-8 md:mt-0 lg:flex flex-col items-center">
           <div className="">
             <h2 className="text-bold  font-merriweather text-sm md:text-base lg:text-lg text-white ">
               Contact Info
@@ -76,13 +76,29 @@ const Footer = () => {
                 <Mail className="w-5 " />
                 <span className="tracking-wide">support@swiftcurrent.com</span>
               </div>
-              <div className="border-b py-3 border-primary flex items-center gap-2">
+              <div className="py-3 flex items-center gap-2">
                 <FaWhatsapp className="text-xl " />
                 <span className="tracking-wide">+44 1234 1234</span>
               </div>
             </div>
+            <div className="border-b border-primary py-3">
+              <p className="text-yellow font-semibold text-sm md:text-base lg:text-lg">
+                Opening Hours
+              </p>
+              <span className="text-xs md:text-sm lg:text-base">Monday : Thursday 9am - 5pm</span>
+            </div>
+            <div className="border-b border-primary py-3">
+              <span className="text-xs md:text-sm lg:text-base">Friday : 9am - 2pm</span>
+            </div>
+            <p className="text-xs md:text-sm lg:text-base pt-3">Weekends : Closed</p>
           </div>
         </div>
+      </div>
+      <div className="bg-darker w-full py-4 flex flex-col items-center">
+        <p className="text-light text-xs md:text-sm lg:text-base">
+          &copy; All Rights Reservered by{" "}
+          <span className="text-lighter">Swift Current Corporation</span>
+        </p>
       </div>
     </section>
   );
