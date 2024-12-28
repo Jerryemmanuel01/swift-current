@@ -1,9 +1,7 @@
 import Slider from "react-slick";
-import HeroBg1 from "../../assets/Images/hero-bg1.jpg";
-import HeroBg2 from "../../assets/Images/hero-bg2.jpg";
-import HeroBg3 from "../../assets/Images/hero-bg3.jpg";
 import { Play } from "lucide-react";
 import { Link } from "react-router-dom";
+import { sliderOption } from "../../lib/utils";
 
 const Hero = () => {
   const settings = {
@@ -20,37 +18,11 @@ const Hero = () => {
     cssEase: "linear",
   };
 
-  const sliderOption = [
-    {
-      title: "You can open your bank account with us now",
-      bnt1Text: "About us",
-      bnt1Link: "/about",
-      bnt2Text: "Our Services",
-      bnt2Link: "/services",
-      bgImg: HeroBg1,
-    },
-    {
-      title: "Get a banking loan from us without stress",
-      bnt1Text: "About us",
-      bnt1Link: "/about",
-      bnt2Text: "Open Account",
-      bnt2Link: "/auth/sign-up",
-      bgImg: HeroBg2,
-    },
-    {
-      title: "We are the end to your financial problems",
-      bnt1Text: "About us",
-      bnt1Link: "/about",
-      bnt2Text: "Login",
-      bnt2Link: "/auth/login",
-      bgImg: HeroBg3,
-    },
-  ];
   return (
     <div className="slider-container overflow-x-hidden">
       <Slider {...settings}>
         {sliderOption.map((val, i) => (
-          <div className="">
+          <div className="" key={i}>
             <div
               className=" bg-center bg-no-repeat bg-cover"
               style={{ backgroundImage: `url(${val.bgImg})` }}
