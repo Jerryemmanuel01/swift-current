@@ -1,5 +1,4 @@
 import { Star } from "lucide-react";
-import TestimonyImg from "../../assets/Images/testimonyImg1.jpg";
 import Slider from "react-slick";
 import { homeTestimonies } from "../../lib/utils";
 
@@ -22,11 +21,10 @@ const HomeTestimony = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 650,
         settings: {
           centerMode: false,
           slidesToShow: 1,
@@ -37,8 +35,8 @@ const HomeTestimony = () => {
     ],
   };
   return (
-    <section className="">
-      <div className="py-10 md:py-16 lg:py-24 px-6 w-full lg:max-w-[960px] xl:max-w-[1200px] mx-auto">
+    <section className="bg-[#f5f5f5] ">
+      <div className="p-10 md:py-16 lg:py-24 px-6 w-full lg:max-w-[960px] xl:max-w-[1200px] mx-auto">
         <div className="flex flex-col justify-center items-center w-full">
           <h2 className="text-primary text-3xl md:text-3xl lg:text-4xl font-poppins font-bold text-center">
             What Our Clients Say About Us
@@ -52,10 +50,11 @@ const HomeTestimony = () => {
         <div className="testimoy-slider">
           <Slider {...settings} className="mt-8 overflow-hidden">
             {homeTestimonies.map((val, i) => (
-              <div key={i} className="p-7 border max-h-[400px] border-[#E7E7E7] rounded-md shadow-md">
-                <p className="text-[#696969] text-sm w-[85%]">
-                  {val.desc}
-                </p>
+              <div
+                key={i}
+                className="p-7 border max-h-[400px] bg-white border-[#E7E7E7] rounded-md shadow-md"
+              >
+                <p className="text-[#696969] text-sm w-[85%]">{val.desc}</p>
                 <div className="flex gap-1 items-center mt-3">
                   <Star color="none" fill="#fcc20f" className="w-4 h-4" />
                   <Star color="none" fill="#fcc20f" className="w-4 h-4" />
@@ -73,9 +72,7 @@ const HomeTestimony = () => {
                   </div>
                   <div className="">
                     <h2 className="font-medium text-sm">{val.name}</h2>
-                    <p className="text-[#696969] text-sm mt-0.5">
-                      {val.title}
-                    </p>
+                    <p className="text-[#696969] text-sm mt-0.5">{val.title}</p>
                   </div>
                 </div>
               </div>
