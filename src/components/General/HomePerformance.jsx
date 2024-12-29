@@ -2,7 +2,7 @@ import AboutChart from "../../assets/Images/about-chart.jpg"
 const HomePerformance = () => {
   return (
     <section className="bg-[#f5f5f5] ">
-      <div className="h-screen py-10 md:py-16 lg:py-24 px-6 w-full lg:max-w-[960px] xl:max-w-[1200px] mx-auto">
+      <div className="py-10 md:py-16 lg:py-24 px-6 w-full lg:max-w-[960px] xl:max-w-[1200px] mx-auto">
         <div className="lg:w-[85%] ">
           <h2 className="text-primary text-2xl md:text-3xl lg:text-4xl lg:leading-[48pxk] font-poppins font-bold">
             We deliver high performance with the clients’ projected satisfaction

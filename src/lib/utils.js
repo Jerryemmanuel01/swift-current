@@ -7,6 +7,10 @@ import service3 from "../assets/Images/service3.jpg";
 import service4 from "../assets/Images/service4.jpg";
 import service5 from "../assets/Images/service5.jpg";
 import service6 from "../assets/Images/service6.jpg";
+import testimony1 from "../assets/Images/testimonyImg1.jpg";
+import testimony2 from "../assets/Images/testimonyImg2.jpg";
+import testimony3 from "../assets/Images/testimonyImg3.jpg";
+import testimony4 from "../assets/Images/testimonyImg4.jpg";
 import { Calculator, ChartCandlestick, CreditCard, Gem, Scale, Wallet } from "lucide-react";
 
 export const navLinks = [
@@ -107,5 +111,32 @@ export const homeAbouts = [
     title: "Business Campaign",
     decs: "A regular business campaign is key to business prosperity.",
     icon: Gem,
+  },
+];
+
+export const homeTestimonies = [
+  {
+    desc: "Thanks to swiftcredence! my small business received the funding it needed to expand. The platform process was smooth, and the team was incredibly supportive throughout.",
+    name: "Aamir Graves",
+    title: "Businessman",
+    img: testimony1,
+  },
+  {
+    desc: "The team at swiftcredence took the time to understand our specific needs. They offered competitive rates and a flexible repayment plan that helped us expand our manufacturing operations.",
+    name: "James Davies",
+    title: "Entrepreneur",
+    img: testimony2,
+  },
+  {
+    desc: "I can't thank swiftcredence enough for helping me secure the financing I needed to open my dream retail store. Their team is responsive, professional, and truly cares about their clients' success.",
+    name: "Henry Thomas",
+    title: "Sales Executive",
+    img: testimony3,
+  },
+  {
+    desc: "I'm grateful to have found swiftcredence for my startup. They offered flexible loan options and guided me every step of the way. My business is thriving, and it's all thanks to them.",
+    name: "Oliver Harris",
+    title: "Sales Executive",
+    img: testimony4,
   },
 ];

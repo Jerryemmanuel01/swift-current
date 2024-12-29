@@ -11,8 +11,8 @@ const HomeAbout = () => {
         className="bg-center bg-no-repeat bg-cover bg-fixed"
         style={{ backgroundImage: `url(${HomeAboutBg})` }}
       >
-        <div className="h-36 bg-primary/90 flex justify-center items-center text-white">
-          <p className="text-2xl md:text-3xl lg:text-4xl font-poppins font-bold">
+        <div className="h-36 bg-primary/90 flex justify-center items-center text-white px-6">
+          <p className="text-2xl md:text-3xl lg:text-4xl font-poppins font-bold text-center">
             Find out more about <span className="text-yellow">what we do</span>
           </p>
         </div>

@@ -5,3 +5,10 @@
 body {
     font-family: "Lato", sans-serif;
 }
+.testimoy-slider .slick-slide {
+    margin: 0 5px; 
+}
+.testimoy-slider .slick-list {
+    margin: 0 -5px;
+    height: 320px;
+  }
