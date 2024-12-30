@@ -47,7 +47,7 @@ const Savings = () => {
             </div>
           </div>
           <div className="lg:w-[40%] lg:mt-20 xl:mt-0">
-            <img src={SavingsImg} alt="" className="w-full object-cover shadow-custom" />
+            <img src={SavingsImg} alt="" className="w-full h-full rounded-md object-cover shadow-custom" />
           </div>
         </div>
       </div>

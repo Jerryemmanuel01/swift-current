@@ -1,9 +1,9 @@
-import SavingsImg from "../../assets/Images/services-s2-grid-bg.jpg";
+import servicesImg3 from "../../assets/Images/servicesImg2.jpg";
 
 const CreditCard = () => {
   return (
     <section>
-      <div className="my-10 px-6 w-full md:max-w-[700px] lg:max-w-[960px] xl:max-w-[1200px] mx-auto">
+      <div className="mt-10 px-6 w-full md:max-w-[700px] lg:max-w-[960px] xl:max-w-[1200px] mx-auto">
         <div className="flex flex-col justify-center w-full">
           <h2 className="text-primary text-2xl md:text-3xl lg:text-4xl font-poppins font-bold">
             Credit Cards
@@ -48,9 +48,9 @@ const CreditCard = () => {
           </div>
           <div className="lg:w-[40%]">
             <img
-              src={SavingsImg}
+              src={servicesImg3}
               alt=""
-              className="w-full object-cover shadow-custom"
+              className="w-full h-full object-cover shadow-custom rounded-md"
             />
           </div>
         </div>
