@@ -7,14 +7,14 @@ import Sponsors from "../../../components/General/Sponsors"
 
 const Home = () => {
   return (
-    <div className="">
+    <>
       <Hero />
       <HomeService />
       <HomeAbout />
       <HomeTestimony />
       <HomePerformance />
       <Sponsors />
-    </div>
+    </>
   )
 }
 

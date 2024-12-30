@@ -21,6 +21,9 @@ export default {
         darker: "#00152a",
         yellow: "#fcd315",
       },
+      boxShadow: {
+        custom: "0 0 10px #b3b3b3",
+      },
     },
   },
   plugins: [],

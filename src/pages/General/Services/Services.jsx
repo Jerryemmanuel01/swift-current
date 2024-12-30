@@ -1,7 +1,14 @@
+import PagesHero from "../../../components/General/PagesHero";
+import Savings from "../../../components/General/Savings";
+
 const Services = () => {
   return (
-    <div>Services</div>
-  )
-}
+    <>
+      <PagesHero page="Services" />
+      <Savings />
+      <CreditCard />
+    </>
+  );
+};
 
-export default Services
+export default Services;
