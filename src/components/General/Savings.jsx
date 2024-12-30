@@ -2,7 +2,7 @@ import SavingsImg from "../../assets/Images/services-s2-grid-bg.jpg";
 const Savings = () => {
   return (
     <section>
-      <div className="py-10 md:py-16 lg:py-24 px-6 w-full md:max-w-[700px] lg:max-w-[960px] xl:max-w-[1200px] mx-auto">
+      <div className="pt-10 md:pt-16 lg:pt-24 px-6 w-full md:max-w-[700px] lg:max-w-[960px] xl:max-w-[1200px] mx-auto">
         <div className="lg:flex gap-6 md:gap-10">
           <div className="lg:w-[60%]">
             <div className="flex flex-col justify-center w-full">
@@ -46,7 +46,7 @@ const Savings = () => {
               </p>
             </div>
           </div>
-          <div className="lg:w-[40%] lg:mt-20">
+          <div className="lg:w-[40%] lg:mt-20 xl:mt-0">
             <img src={SavingsImg} alt="" className="w-full object-cover shadow-custom" />
           </div>
         </div>

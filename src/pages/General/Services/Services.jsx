@@ -1,12 +1,16 @@
+import CreditCard from "../../../components/General/CreditCard";
 import PagesHero from "../../../components/General/PagesHero";
 import Savings from "../../../components/General/Savings";
+import Sponsors from "../../../components/General/Sponsors";
 
 const Services = () => {
   return (
     <>
       <PagesHero page="Services" />
       <Savings />
-      <CreditCard />
+      <CreditCard  />
+      <Loans />
+      <Sponsors />
     </>
   );
 };
