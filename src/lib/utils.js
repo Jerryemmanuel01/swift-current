@@ -11,7 +11,19 @@ import testimony1 from "../assets/Images/testimonyImg1.jpg";
 import testimony2 from "../assets/Images/testimonyImg2.jpg";
 import testimony3 from "../assets/Images/testimonyImg3.jpg";
 import testimony4 from "../assets/Images/testimonyImg4.jpg";
-import { Calculator, ChartCandlestick, CreditCard, Gem, Scale, Wallet } from "lucide-react";
+import {
+  Calculator,
+  ChartCandlestick,
+  CreditCard,
+  Gem,
+  Scale,
+  Wallet,
+} from "lucide-react";
+import { VscWorkspaceTrusted } from "react-icons/vsc";
+import { BsCashCoin } from "react-icons/bs";
+import { PiBank, PiHandCoins } from "react-icons/pi";
+import { HiOutlineBanknotes } from "react-icons/hi2";
+import { RiVisaFill } from "react-icons/ri";
 
 export const navLinks = [
   { name: "Home", link: "/home" },
@@ -138,5 +150,38 @@ export const homeTestimonies = [
     name: "Oliver Harris",
     title: "Sales Executive",
     img: testimony4,
+  },
+];
+
+export const serviceFeatures = [
+  {
+    icon: BsCashCoin,
+    title: "STABLE BANKING",
+    desc: "We provide service void of errors and irregularities while maintaining consistency in quality of service.",
+  },
+  {
+    icon: VscWorkspaceTrusted,
+    title: "RELIABLE SYSTEM",
+    desc: "Our system has been made reliable by making our services available and accessible anytime from anywhere.",
+  },
+  {
+    icon: PiBank,
+    title: "FULLY SECURED",
+    desc: "We use updated and sophisticated fintech technologies to secure and ensure safe transaction for all users.",
+  },
+  {
+    icon: RiVisaFill,
+    title: "LOAN",
+    desc: "We offer different kinds of loans Student Loan, Business banking and more.",
+  },
+  {
+    icon: HiOutlineBanknotes,
+    title: "RELIABLE CUSTOMER SERVICE",
+    desc: "Get help in seconds Contact Customer Support We're available to help you 24 hours a day, 7 days a week.",
+  },
+  {
+    icon: PiHandCoins,
+    title: "PERSONAL SAVINGS",
+    desc: "Savings account offered by banks that gives you a safe place to store your money and often earns compounding interest.",
   },
 ];

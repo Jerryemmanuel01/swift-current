@@ -18,7 +18,7 @@ const HomeAbout = () => {
         </div>
       </div>
       <div className="py-10 md:py-16 lg:py-24 px-6 w-full lg:max-w-[960px] xl:max-w-[1200px] mx-auto lg:flex items-center gap-6">
-        <div className="hidden lg:block lg:w-1/4 h- relative">
+        <div className="hidden lg:block lg:w-1/4 relative">
           <div className="max-w-[250px] relative">
             <div
               className="bg-center bg-no-repeat bg-cover w-[96%] h-[96%] absolute top-2.5 left-1.5 rounded-[25px] before:bg-primary/80 before:w-full before:h-full before:absolute before:top-0 before:left-0 before:rounded-[25px] "
@@ -31,7 +31,7 @@ const HomeAbout = () => {
                 <span className="text-yellow">Confusion?</span>
               </h2>
               <Link to="/contact">
-                <button className="w-full bg-yellow hover:bg-yellow/80 duration-300 text-primary mt-2 rounded-md py-2 font-bold">
+                <button className="w-full bg-yellow hover:bg-yellow/80 duration-300 text-primary mt-3.5 rounded-md py-2 font-bold animate-bounce">
                   Request a call back
                 </button>
               </Link>
