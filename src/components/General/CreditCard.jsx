@@ -20,30 +20,30 @@ const CreditCard = () => {
                 Be sure to sign in when you check for offers to see what’s
                 already waiting for you.
               </p>
-              <p className="text-[#4b4b4b] text-sm leading-6 my-6 ">
+              <div className="text-[#4b4b4b] text-sm leading-6 my-6 ">
                 <h2 className="font-bold">Selecting a credit card</h2>
                 Choosing a credit card can be overwhelming. We’ve compiled some
                 important considerations to help you pick the best credit card
                 for you.
-              </p>
-              <p className="text-[#4b4b4b] text-sm leading-6 my-6 ">
+              </div>
+              <div className="text-[#4b4b4b] text-sm leading-6 my-6 ">
                 <h2 className="font-bold">Managing your credit card</h2>
                 Get the most out of your credit card. Find out how you can take
                 advantage of all the opportunities that may be available to you
                 as a cardholder.
-              </p>
-              <p className="text-[#4b4b4b] text-sm leading-6 my-6 ">
+              </div>
+              <div className="text-[#4b4b4b] text-sm leading-6 my-6 ">
                 <h2 className="font-bold">Paying down your debt</h2>
                 By following a few simple steps, you can help ensure you’re
                 headed in the right direction when it comes to managing your
                 credit card debt.
-              </p>
-              <p className="text-[#4b4b4b] text-sm leading-6 my-6 ">
+              </div>
+              <div className="text-[#4b4b4b] text-sm leading-6 my-6 ">
                 <h2 className="font-bold">Improving your credit</h2>
                 Better credit habits can lead to a better credit score. If
                 you’re looking to improve your credit, check out some of our
                 helpful tips.
-              </p>
+              </div>
             </div>
           </div>
           <div className="lg:w-[40%]">

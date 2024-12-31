@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { navLinks } from "../../lib/utils";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AlignJustify, X } from "lucide-react";
 const Header = () => {
   const [toggleNav, setToggleNav] = useState(false);
+  const location = useLocation();
 
   return (
     <section className=" bg-primary ">
@@ -35,7 +36,9 @@ const Header = () => {
                     <Link
                       to={link.link}
                       onClick={() => setToggleNav(false)}
-                      className={`font-medium duration-300 hover:text-yellow`}
+                      className={`${
+                        location.pathname === link.link ? "text-yellow" : ""
+                      } font-medium duration-300 hover:text-yellow`}
                     >
                       {link.name}
                     </Link>

@@ -1,5 +1,12 @@
-import AboutChart from "../../assets/Images/about-chart.jpg"
+import { useState, useRef } from "react";
+import AboutChart from "../../assets/Images/about-chart.jpg";
+import CountUp from "react-countup";
+import ScrollTrigger from "react-scroll-trigger";
+
 const HomePerformance = () => {
+  const [counterOn, setCounterOn] = useState(false);
+  const sectionRef = useRef(null);
+
   return (
     <section className=" ">
       <div className="py-10 md:py-16 lg:py-24 px-6 w-full lg:max-w-[960px] xl:max-w-[1200px] mx-auto">
@@ -31,7 +38,7 @@ const HomePerformance = () => {
                   </span>
                 </div>
               </div>
-              
+
               <div className="flex flex-col">
                 <h3 className="text-primary xl:text-lg font-bold -mb-3">
                   Business
@@ -43,7 +50,7 @@ const HomePerformance = () => {
                   </span>
                 </div>
               </div>
-              
+
               <div className="flex flex-col">
                 <h3 className="text-primary xl:text-lg font-bold -mb-3">
                   Investment
@@ -55,13 +62,76 @@ const HomePerformance = () => {
                   </span>
                 </div>
               </div>
-              
             </div>
           </div>
 
-          <div className="hidden lg:block lg:w-[40%]">
+          <ScrollTrigger
+            onEnter={() => setCounterOn(true)}
+            onExit={() => setCounterOn(false)}
+            triggerRef
+            className="lg:w-[40%] flex flex-col md:justify-around justify-between gap-10 md:gap-20 lg:gap-0 lg:mt-0 md:mt-10 mt-8"
+          >
+            <div className="flex items-center lg:justify-between justify-around">
+              <div className="flex flex-col gap-2 items-center">
+                <div className=" font-poppins font-bold flex items-center gap-1">
+                  <span className="text-4xl md:text-5xl lg:text-6xl text-primary">
+                    {counterOn && (
+                      <CountUp start={2} end={15} duration={5} delay={0} />
+                    )}
+                    K
+                  </span>
+                  <span className="text-yellow text-2xl">+</span>
+                </div>
+                <p className="text-sm lg:text-base text-light">Happy Clients</p>
+              </div>
+              <div className="flex flex-col gap-2 items-center">
+                <div className=" font-poppins font-bold flex items-center gap-1">
+                  <span className="text-4xl md:text-5xl lg:text-6xl text-primary">
+                    {counterOn && (
+                      <CountUp start={2} end={20} duration={5} delay={0} />
+                    )}
+                  </span>
+                  <span className="text-yellow text-2xl">+</span>
+                </div>
+                <p className="text-sm lg:text-base text-light">
+                  Years of Experiences
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center lg:justify-between justify-around">
+              <div className="flex flex-col gap-2 items-center">
+                <div className=" font-poppins font-bold flex items-center gap-1">
+                  <span className="text-4xl md:text-5xl lg:text-6xl text-primary">
+                    {counterOn && (
+                      <CountUp start={2} end={98} duration={5} delay={0} />
+                    )}
+                  </span>
+                  <span className="text-yellow text-2xl">%</span>
+                </div>
+                <p className="text-sm lg:text-base text-light">
+                  Satisfied Clients
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 items-center">
+                <div className=" font-poppins font-bold flex items-center gap-1">
+                  <span className="text-4xl md:text-5xl lg:text-6xl text-primary">
+                    {counterOn && (
+                      <CountUp start={2} end={1500} duration={3} delay={0} />
+                    )}
+                  </span>
+                  <span className="text-yellow text-2xl">+</span>
+                </div>
+                <p className="text-sm lg:text-base text-light">
+                  Businesses Affiliated
+                </p>
+              </div>
+            </div>
+          </ScrollTrigger>
+
+          {/* <div className="hidden lg:block ">
             <img src={AboutChart} alt="" className="object-cover w-full shadow-lg" />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
