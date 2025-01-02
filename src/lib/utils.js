@@ -185,3 +185,56 @@ export const serviceFeatures = [
     desc: "Savings account offered by banks that gives you a safe place to store your money and often earns compounding interest.",
   },
 ];
+
+export const FAQS = [
+  {
+    id: 1,
+    question:
+      "How long does my deposit take before it can reflect on my swiftcredence account dashboard?",
+    answer:
+      "Your deposit will be reflected immediately once it is confirmed on the blockchain network.",
+  },
+  {
+    id: 2,
+    question: "What Are The Requirements For Business Loan?",
+    answer:
+      "If you received a Paycheck Protection Program (PPP) loan, loan forgiveness isn't automatic. You need to apply if you want your loan forgiven. You may need to include bank account statements on your PPP forgiveness application. Lenders want proof of your business's incoming money. As a result, you may have to show your bank statements to the lender when you apply for a business loan. The lender reviews the statements to determine if you are a good fit for a loan.",
+  },
+  {
+    id: 3,
+    question:
+      "How long does it take to process a withdrawal to an international bank?",
+    answer:
+      "Once we receive your withdrawal request we process immediately and send to your Bank Account.",
+  },
+  {
+    id: 4,
+    question: "Can I have more than two accounts?",
+    answer:
+      "We do not allow multiple accounts except only for business purposes.",
+  },
+  {
+    id: 5,
+    question: "How do I make a deposit?",
+    answer:
+      "To deposit funds in your trading account is quick and simple For your convenience you may choose one of the several available deposit methods To make a successful deposit please follow the steps below Login to your account Click on the DEPOSITS button in the DASHBOARD section Choose the deposit option And follow the steps to complete your transaction.",
+  },
+  {
+    id: 6,
+    question: "How do I create my account?",
+    answer:
+      "Registration process is very easy and will take a few moments to complete Simply click CREATE ACCOUNT button and fill in all the required fields.",
+  },
+  {
+    id: 7,
+    question: "What ia an harware token in swift current",
+    answer:
+      "Hardware tokens need to integrate seamlessly with the systems and services they are meant to protect. This involves coordination between the token and the authentication infrastructure to ensure a smooth and secure user experience.",
+  },
+  {
+    id: 8,
+    question: "How can i contact customer’s support?",
+    answer:
+      "You can contact customer support through the in-app help section, where you’ll find FAQs, chat support, and a ticket system for any issues or inquiries.",
+  },
+];

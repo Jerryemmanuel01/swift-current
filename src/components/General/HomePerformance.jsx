@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import AboutChart from "../../assets/Images/about-chart.jpg";
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
 
