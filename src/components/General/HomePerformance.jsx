@@ -1,10 +1,9 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
 
 const HomePerformance = () => {
   const [counterOn, setCounterOn] = useState(false);
-  const sectionRef = useRef(null);
 
   return (
     <section className=" ">

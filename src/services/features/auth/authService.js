@@ -24,11 +24,11 @@ const verify_email = async () => {
 const login = async () => {
   const response = await axiosClient.post(`/auth/login`, userData);
 
-  if (response.data.success === true) {
-    localStorage.setItem("_access_token", response.data.data.accessToken);
+  // if (response.data.success === true) {
+  //   localStorage.setItem("_access_token", response.data.data.accessToken);
 
-    localStorage.setItem("_refresh_token", response.data.data.refreshToken);
-  }
+  //   localStorage.setItem("_refresh_token", response.data.data.refreshToken);
+  // }
 
   return response.data;
 };
