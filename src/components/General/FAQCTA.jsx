@@ -17,7 +17,7 @@ const FAQCTA = () => {
               financial security and independence, that's why we're committed to
               providing you with the information and resources you need.
             </p>
-            <Link to="/auth/sign-up" className="flex items-center w-fit gap-2 bg-primary text-white hover:text-yellow text-sm md:text-base py-2.5 px-6 rounded-lg font-semibold hover:scale-[1.03] duration-300">
+            <Link to="/auth/sign-up" className="flex items-center w-fit gap-2 bg-primary text-white hover:text-yellow text-sm md:text-base py-2.5 md:py-3.5 px-6 md:px-8 rounded-lg font-semibold hover:scale-[1.03] duration-300">
               Apply Now <MoveRight />
             </Link>
           </div>

@@ -3,12 +3,23 @@
 @tailwind utilities;
 
 body {
-    font-family: "Lato", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 .testimoy-slider .slick-slide {
-    margin: 0 5px; 
+  margin: 0 5px;
 }
 .testimoy-slider .slick-list {
-    margin: 0 -5px;
-    height: 275px;
+  margin: 0 -5px;
+  height: 275px;
+}
+
+.contact-info:hover {
+  .info-icon {
+    background-color: #002f5b30;
   }
+}
+.service-div:hover {
+  .service-icon {
+    background-color: #002f5b30;
+  }
+}

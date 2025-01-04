@@ -88,7 +88,7 @@ const Footer = () => {
               <span className="text-xs md:text-sm lg:text-base">Monday : Thursday 9am - 5pm</span>
             </div>
             <div className="border-b border-primary py-3">
-              <span className="text-xs md:text-sm lg:text-base">Friday : 9am - 2pm</span>
+              <span className="text-xs md:text-sm lg:text-base">Friday : 9am - 5pm</span>
             </div>
             <p className="text-xs md:text-sm lg:text-base pt-3">Weekends : Closed</p>
           </div>

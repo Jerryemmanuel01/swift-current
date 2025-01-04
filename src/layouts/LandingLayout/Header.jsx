@@ -46,12 +46,12 @@ const Header = () => {
                 ))}
               </ul>
               <div className="flex gap-4 flex-col md:flex-row items-center text-sm md:text-base">
-                <button className="outline-none w-full md:w-auto border-[1.5px] border-primary md:border-white px-6 py-2 rounded-lg text-primary md:text-white font-semibold hover:scale-[1.03] duration-300">
+                <Link  to="/auth/login" className="outline-none text-center w-full md:w-auto border-[1.5px] border-primary md:border-white px-6 py-2 rounded-lg text-primary md:text-white font-semibold hover:scale-[1.03] duration-300">
                   Login
-                </button>
-                <button className="bg-primary md:bg-white w-full md:w-auto text-white md:text-primary py-2.5 px-6 rounded-lg font-semibold hover:scale-[1.03] duration-300">
+                </Link>
+                <Link className="bg-primary text-center md:bg-white w-full md:w-auto text-white md:text-primary py-2.5 px-6 rounded-lg font-semibold hover:scale-[1.03] duration-300">
                   Get Started
-                </button>
+                </Link>
               </div>
             </div>
           </div>

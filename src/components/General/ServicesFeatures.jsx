@@ -9,8 +9,8 @@ const ServicesFeatures = () => {
           {serviceFeatures.map((val, i) => {
             const Icon = val.icon
             return (
-              <div key={i} className="p-6 bg-white hover:bg-primary/5 duration-300 hover:scale-[1.02] rounded-md">
-                <div className="bg-yellow w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-sm">
+              <div key={i} className="p-6 service-div bg-white hover:bg-primary/5 duration-300 hover:scale-[1.02] rounded-md">
+                <div className="bg-yellow service-icon w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-sm">
                   <Icon className="text-3xl lg:text-4xl text-primary" />
                 </div>
                 <h2 className="mt-3.5 text-lg md:text-2xl font-semibold text-primary">

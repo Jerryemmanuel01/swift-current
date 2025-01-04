@@ -3,13 +3,13 @@ import useContactForm from "../../hooks/formHooks/useContactForm";
 const ContactForm = () => {
   const { formik, isLoading } = useContactForm();
   return (
-    <div className="bg-white w-full md:w-[600px] lg:w-[650px] rounded-xl p-6 flex flex-col items-center lg:items-start">
+    <div className="w-full   lg:w-[50%] rounded-xl p-6 flex flex-col items-center lg:items-start border border-[#D0D5DD]">
       <form className="w-full " onSubmit={formik.handleSubmit}>
         {/* Name field */}
         <div className="mt-6">
           <label
             htmlFor="fullname"
-            className="text-sm font-medium tracking-wide lg:text-base"
+            className="text-sm font-medium tracking-wide lg:text-base text-light"
           >
             Full Name<span className="text-red-600">*</span>
           </label>
@@ -23,7 +23,7 @@ const ContactForm = () => {
               formik.touched.fullname && formik.errors.fullname
                 ? "border-[#EB4335]"
                 : "border-[#D0D5DD]"
-            } py-2 border-b w-full text-xs h-8 lg:h-[58px] lg:text-sm font-medium outline-none tracking-wide`}
+            } py-2 border-b w-full text-sm h-8 lg:h-[58px] lg:text-base font-medium outline-none tracking-wide`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.fullname}
@@ -39,7 +39,7 @@ const ContactForm = () => {
         <div className="mt-6">
           <label
             htmlFor="email"
-            className="text-sm font-medium tracking-wide md:text-base"
+            className="text-sm font-medium tracking-wide lg:text-base text-light"
           >
             Email Address<span className="text-red-600">*</span>
           </label>
@@ -48,12 +48,12 @@ const ContactForm = () => {
             type="email"
             name="email"
             id="email"
-            placeholder="handyman@example.com"
+            placeholder="swiftcurrent@example.com"
             className={`${
               formik.touched.email && formik.errors.email
                 ? "border-[#EB4335]"
                 : "border-[#D0D5DD]"
-            } py-2 border-b w-full text-xs h-8 lg:h-[58px] lg:text-sm font-medium outline-none tracking-wide`}
+            } py-2 border-b w-full text-sm h-8 lg:h-[58px] lg:text-base font-medium outline-none tracking-wide`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
@@ -69,7 +69,7 @@ const ContactForm = () => {
         <div className="mt-6">
           <label
             htmlFor="title"
-            className="text-sm font-medium tracking-wide md:text-base"
+            className="text-sm font-medium tracking-wide lg:text-base text-light"
           >
             Message Title<span className="text-red-600">*</span>
           </label>
@@ -83,7 +83,7 @@ const ContactForm = () => {
               formik.touched.title && formik.errors.title
                 ? "border-[#EB4335]"
                 : "border-[#D0D5DD]"
-            } py-2 border-b w-full text-xs h-8 lg:h-[58px] lg:text-sm font-medium outline-none tracking-wide`}
+            } py-2 border-b w-full text-sm h-8 lg:h-[58px] lg:text-base font-medium outline-none tracking-wide`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.title}
@@ -99,7 +99,7 @@ const ContactForm = () => {
         <div className="mt-6">
           <label
             htmlFor="message"
-            className="text-sm font-medium tracking-wide md:text-base"
+            className="text-sm font-medium tracking-wide lg:text-base text-light"
           >
             Write Message<span className="text-red-600">*</span>
           </label>
@@ -112,7 +112,7 @@ const ContactForm = () => {
               formik.touched.message && formik.errors.message
                 ? "border-[#EB4335]"
                 : "border-[#D0D5DD]"
-            } resize-none py-2 border-b w-full text-xs h-[72px] md:h-[100px] lg:h-[128px] lg:text-base font-medium outline-none tracking-wide`}
+            } resize-none py-2 border-b w-full text-sm h-[72px] md:h-[100px] lg:h-[128px] lg:text-base font-medium outline-none tracking-wide`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.message}
@@ -128,8 +128,10 @@ const ContactForm = () => {
             disabled={isLoading}
             type="submit"
             className={`${
-              isLoading || !formik.dirty ? "bg-[#0dd5d5]" : "bg-[#008080]"
-            }  w-[130px] md:w-1/2 lg:w-full text-white font-semibold text-xs md:text-[15px] lg:text-lg py-4 px-6 rounded-lg outline-none`}
+              isLoading || !formik.isValid || !formik.dirty
+                ? "bg-light/50"
+                : "bg-primary hover:bg-secondary hover:scale-[1.02]"
+            }  w-[200px] md:w-1/2 lg:w-full text-white font-semibold text-sm md:text-[15px] lg:text-lg py-4 px-6 rounded-lg outline-none duration-300`}
           >
             {isLoading ? "Please wait..." : "Send Message"}
           </button>
