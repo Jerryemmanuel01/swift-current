@@ -12,7 +12,7 @@ const initialState = {
   token: token ? token : null,
 };
 
-export const customerSignUp = createAsyncThunkWithHandler(
+export const signUp = createAsyncThunkWithHandler(
   "auth/signUp",
   async (data, _) => {
     return await authService.sign_up(data);
@@ -61,16 +61,16 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
 
-      .addCase(customerSignUp.pending, (state) => {
+      .addCase(signUp.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(customerSignUp.fulfilled, (state, action) => {
+      .addCase(signUp.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
         state.message = action.payload.message;
       })
-      .addCase(customerSignUp.rejected, (state, action) => {
+      .addCase(signUp.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

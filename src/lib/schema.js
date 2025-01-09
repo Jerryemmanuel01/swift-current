@@ -33,3 +33,66 @@ export const loginSchema = Yup.object().shape({
       "Password must contain at least one special character (e.g., $, &, @, etc.)"
     ),
 });
+
+export const signUpSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .required("First Name is required")
+    .min(2, "First Name must be at least 2 characters")
+    .max(50, "First Name cannot exceed 50 characters"),
+  lastName: Yup.string()
+    .required("Last Name is required")
+    .min(2, "Last Name must be at least 2 characters")
+    .max(50, "Last Name cannot exceed 50 characters"),
+  username: Yup.string()
+    .required("Username is required")
+    .min(2, "Username must be at least 2 characters")
+    .max(50, "Username cannot exceed 50 characters"),
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+  phone: Yup.string().matches(/^\d+$/, "Only numbers are allowed"),
+  country: Yup.string(),
+  account: Yup.string().required("Account Type is required"),
+  password: Yup.string()
+    .required("Password is required")
+    .min(8, "Password must be at least 8 characters long")
+    .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .matches(/[0-9]/, "Password must contain at least one number")
+    .matches(
+      /[\W_]/,
+      "Password must contain at least one special character (e.g., $, &, @, etc.)"
+    ),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password")], "Passwords must match")
+    .required("Please confirm your password"),
+  currency: Yup.string().required("Currency is required"),
+  photo: Yup.mixed()
+    .required("A photo is required")
+    // .test(
+    //   "fileSize",
+    //   "File size is too large (max 5MB)",
+    //   (value) => !value || (value && value.size >= 5 * 1024 * 1024) // 5MB
+    // )
+    .test("fileSize", "File size is too large (max 5MB)", (value) => {
+      return value ? value.size <= 5 * 1024 * 1024 : true;
+    })
+    // .test(
+    //   "fileType",
+    //   "Unsupported file format (only .jpeg, .png allowed)",
+    //   (value) =>
+    //     !value ||
+    //     (value && ["image/jpeg", "image/jpg", "image/png"].includes(value.type))
+    // ),
+    .test(
+      "fileType",
+      "Unsupported file type (only JPEG, PNG, GIF allowed)",
+      (value) => {
+        return value
+          ? ["image/jpeg", "image/jpg", "image/png"].includes(value.type)
+          : true;
+      }
+    ),
+  terms: Yup.boolean()
+    .oneOf([true], "You must accept the terms and conditions")
+    .required("You must accept the terms and conditions"),
+});

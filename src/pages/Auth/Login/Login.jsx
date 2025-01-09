@@ -28,7 +28,6 @@ const Login = () => {
                 </p>
               </div>
             </div>
-            {/* <div className="bg-slate-400 p-4 md:p-5 lg:p-6 flex flex-col items-center justify-center"></div> */}
             <Loginform />
           </div>
         </div>

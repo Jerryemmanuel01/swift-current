@@ -238,3 +238,22 @@ export const FAQS = [
       "You can contact customer support through the in-app help section, where you’ll find FAQs, chat support, and a ticket system for any issues or inquiries.",
   },
 ];
+
+export const accountTypies = [
+  { account: "Checking", value: "checking" },
+  { account: "Savings", value: "savings" },
+  { account: "fixed Deposit", value: "fixed" },
+];
+
+export const currenciesTypies = [
+  { currency: "Dollar ($)", value: "dollar" },
+  { currency: "Euro (€)", value: "euro" },
+  { currency: "Indian Rupees (Rs)", value: "rupee" },
+  { currency: "Pakistan Rupees (Rs)", value: "rupee" },
+  { currency: "Pound Sterling (£)", value: "rupee" },
+  { currency: "Ruble (Rub)", value: "ruble" },
+  { currency: "Rial (IR)", value: "rial" },
+  { currency: "Rupiah (Rp)", value: "rupiah" },
+  { currency: "Yen (¥)", value: "yen" },
+  { currency: "Yuan (¥)", value: "yuan" },
+];

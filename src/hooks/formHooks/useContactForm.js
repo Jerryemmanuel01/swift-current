@@ -1,6 +1,7 @@
 import { contactMessageSchema } from "../../lib/schema";
 import { useFormik } from "formik";
 import { useEffect } from "react";
+import { toast } from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import {
   reset,
@@ -15,8 +16,8 @@ const useContactForm = () => {
   );
 
   useEffect(() => {
-    if (isError) alert(message);
-    if (isSuccess) alert("Submitted Successfully");
+    if (isError) toast.error(message);
+    if (isSuccess) toast.success("Submitted Successfully");
     dispatch(reset());
     return;
   }, [isSuccess, isError]);

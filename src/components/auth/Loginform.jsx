@@ -1,4 +1,4 @@
-import { Eye, EyeOff, LockKeyhole, Mail, UserRound } from "lucide-react";
+import { Eye, EyeOff, LockKeyhole, UserRound } from "lucide-react";
 import useLoginForm from "../../hooks/formHooks/useLoginForm";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const Loginform = () => {
       <div className="">
         <label
           htmlFor="accountId"
-          className="text-sm font-medium tracking-wide lg:text-base"
+          className="text-xs font-medium tracking-wide lg:text-sm"
         >
           Account ID
         </label>
@@ -21,7 +21,7 @@ const Loginform = () => {
             name="accountId"
             id="accountId"
             placeholder="Enter your account Id"
-            className={`w-full text-xs h-8 lg:h-[58px] lg:text-sm font-medium outline-none tracking-wide`}
+            className={`w-full text-xs h-8 lg:h-10 lg:text-sm font-medium outline-none tracking-wide`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.accountId}
@@ -37,7 +37,7 @@ const Loginform = () => {
       <div className="mt-6">
         <label
           htmlFor="password"
-          className="text-sm font-medium tracking-wide lg:text-base"
+          className="text-xs font-medium tracking-wide lg:text-sm"
         >
           Password
         </label>
@@ -48,7 +48,7 @@ const Loginform = () => {
             name="password"
             id="password"
             placeholder="Choose a password"
-            className={`w-full text-sm h-10 lg:h-[58px] lg:text-sm font-medium outline-none tracking-wide`}
+            className={`w-full text-xs h-8 lg:h-10 lg:text-sm font-medium outline-none tracking-wide`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
@@ -59,9 +59,9 @@ const Loginform = () => {
             type="button"
           >
             {togglePassword ? (
-              <Eye color="#98A2B3" className="w-[18px]" />
+              <Eye color="#98A2B3" className="w-[16px]" />
             ) : (
-              <EyeOff color="#98A2B3" className="w-[18px]" />
+              <EyeOff color="#98A2B3" className="w-[16px]" />
             )}
           </button>
         </div>
@@ -99,6 +99,11 @@ const Loginform = () => {
           {message}
         </p>
       )}
+
+      <div className="text-sm flex items-center mt-3 gap-1 w-full justify-center">
+        <span className="">Don't have an account?</span>
+        <Link to="/auth/sign-up" className="text-lighter">Sign Up</Link>
+      </div>
     </form>
   );
 };
