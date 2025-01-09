@@ -85,12 +85,18 @@ const Footer = () => {
               <p className="text-yellow font-semibold text-sm md:text-base lg:text-lg">
                 Opening Hours
               </p>
-              <span className="text-xs md:text-sm lg:text-base">Monday : Thursday 9am - 5pm</span>
+              <span className="text-xs md:text-sm lg:text-base">
+                Monday : Thursday 9am - 5pm
+              </span>
             </div>
             <div className="border-b border-primary py-3">
-              <span className="text-xs md:text-sm lg:text-base">Friday : 9am - 5pm</span>
+              <span className="text-xs md:text-sm lg:text-base">
+                Friday : 9am - 5pm
+              </span>
             </div>
-            <p className="text-xs md:text-sm lg:text-base pt-3">Weekends : Closed</p>
+            <p className="text-xs md:text-sm lg:text-base pt-3">
+              Weekends : Closed
+            </p>
           </div>
         </div>
       </div>
@@ -100,6 +106,15 @@ const Footer = () => {
           <span className="text-lighter">Swift Current Corporation</span>
         </p>
       </div>
+
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://wa.me/+2349064471553?text=Greetings, I need assistance."
+        className="w-12 h-12 rounded-full fixed z-10 bottom-6 left-6 bg-[#4cc641] flex items-center justify-center text-white text-3xl"
+      >
+        <FaWhatsapp />
+      </a>
     </section>
   );
 };
