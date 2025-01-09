@@ -7,7 +7,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   return (
     <section className="w-full">
-      <div className="w-full min-h-screen p-6 lg:py-14 flex flex-col items-center justify-center">
+      <div className="w-full min-h-screen px-6 py-10 lg:py-14 flex flex-col items-center justify-center">
         <div className="w-full sm:w-[500px] mx-auto">
           <button
             onClick={() => navigate(-1)}

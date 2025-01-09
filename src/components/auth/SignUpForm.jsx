@@ -291,7 +291,7 @@ const SignUpForm = () => {
           htmlFor="photo"
           className="text-xs font-medium tracking-wide lg:text-sm"
         >
-          Profile Photo
+          Profile Photo *
         </label>
         <div className="border-[#D0D5DD] text-gray border w-full mt-1 rounded-md">
           <input
@@ -303,7 +303,6 @@ const SignUpForm = () => {
             onChange={(e) => {
               formik.setFieldValue("photo", e.target.files[0]);
             }}
-            onBlur={formik.handleBlur}
           />
         </div>
         {formik.touched.photo && formik.errors.photo ? (
@@ -335,7 +334,7 @@ const SignUpForm = () => {
       <div className="flex items-center justify-center">
         <button
           type="submit"
-            disabled={isLoading}
+          disabled={isLoading}
           className={`${
             !formik.dirty || !formik.isValid || isLoading
               ? "bg-[#D0D5DD]"
@@ -344,6 +343,13 @@ const SignUpForm = () => {
         >
           {isLoading ? "Please wait..." : "Sign Up"}
         </button>
+      </div>
+
+      <div className="text-sm flex items-center mt-3 gap-1 w-full justify-center">
+        <span className="">Already have an account?</span>
+        <Link to="/auth/login" className="text-lighter">
+          Login
+        </Link>
       </div>
     </form>
   );
