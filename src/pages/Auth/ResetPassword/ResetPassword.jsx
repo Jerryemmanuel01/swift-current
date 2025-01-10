@@ -2,8 +2,9 @@ import { ChevronLeft } from "lucide-react";
 import HomeAboutBg from "../../../assets/Images/service5.jpg";
 import { useNavigate } from "react-router-dom";
 import ForgetPasswordForm from "../../../components/auth/ForgetPasswordForm";
+import ResetPasswordForm from "../../../components/auth/ResetPasswordForm";
 
-const ForgetPassword = () => {
+const ResetPassword = () => {
   const navigate = useNavigate();
 
   return (
@@ -24,14 +25,14 @@ const ForgetPassword = () => {
             >
               <div className="bg-primary/95 flex flex-col justify-center items-center text-white p-6 rounded-t-xl">
                 <h2 className="font-poppins text-2xl font-bold mt-2">
-                  Forgot your Password?
+                  Reset your Password
                 </h2>
                 <p className="text-sm tracking-wide mt-2">
-                  Reset Your login credentials
+                  Create a new password for your account.
                 </p>
               </div>
             </div>
-            <ForgetPasswordForm />
+            <ResetPasswordForm />
           </div>
         </div>
       </div>
@@ -39,4 +40,4 @@ const ForgetPassword = () => {
   );
 };
 
-export default ForgetPassword;
+export default ResetPassword;

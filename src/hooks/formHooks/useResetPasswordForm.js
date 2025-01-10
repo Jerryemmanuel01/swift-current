@@ -2,11 +2,11 @@ import { useFormik } from "formik";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import { forgetPassword, reset } from "../../services/features/auth/authSlice";
+import { resetPassword, reset } from "../../services/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { forgetPasswordSchema } from "../../lib/schema";
+import { resetPasswordSchema } from "../../lib/schema";
 
-const useForgetPasswordForm = () => {
+const useResetPasswordForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -27,14 +27,15 @@ const useForgetPasswordForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: "",
+      password: "",
+      confirmPassword: "",
     },
-    validationSchema: forgetPasswordSchema,
+    validationSchema: resetPasswordSchema,
     onSubmit: (values) => {
-      //    dispatch(forgetPassword(values));
+      //    dispatch(resetPassword(values));
     },
   });
   return { formik, isLoading, message };
 };
 
-export default useForgetPasswordForm;
+export default useResetPasswordForm;

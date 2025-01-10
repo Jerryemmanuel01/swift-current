@@ -6,7 +6,7 @@ import {
 import { useSelector } from "react-redux";
 import LandingLayout from "./layouts/LandingLayout";
 import AuthLayout from "./layouts/AuthLayout/Index";
-import { Home, About, Services, Contact, FAQ, SignUp, SignUpSuccess, Login, ForgetPassword } from "./routes";
+import { Home, About, Services, Contact, FAQ, SignUp, SignUpSuccess, Login, ForgetPassword, ResetPassword } from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -67,6 +67,10 @@ function App() {
             {
               path: "forget-password",
               element: <ForgetPassword />,
+            },
+            {
+              path: "reset-password",
+              element: <ResetPassword />,
             },
           ],
         },

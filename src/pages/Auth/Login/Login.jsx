@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   return (
-    <section classname="w-full">
+    <section className="w-full">
       <div className="w-full min-h-screen p-6 flex flex-col items-center justify-center">
         <div className="w-full sm:w-[500px] mx-auto">
           <button

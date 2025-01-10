@@ -345,6 +345,12 @@ const SignUpForm = () => {
         </button>
       </div>
 
+      {message && (
+        <p className="text-sm text-[#B3261E] tracking-wide text-center mt-6">
+          {message}
+        </p>
+      )}
+
       <div className="text-sm flex items-center mt-3 gap-1 w-full justify-center">
         <span className="">Already have an account?</span>
         <Link to="/auth/login" className="text-lighter">
