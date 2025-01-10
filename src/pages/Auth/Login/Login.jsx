@@ -18,7 +18,7 @@ const Login = () => {
           </button>
           <div className="w-full border border-[#D0D5DD] shadow-custom rounded-xl mt-5">
             <div
-              className="bg-center bg-no-repeat bg-cover bg-fixed rounded-t-xl"
+              className="bg-center bg-no-repeat bg-cover rounded-t-xl"
               style={{ backgroundImage: `url(${HomeAboutBg})` }}
             >
               <div className="bg-primary/95 flex flex-col justify-center items-center text-white p-6 rounded-t-xl">

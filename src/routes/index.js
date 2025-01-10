@@ -8,4 +8,5 @@ export const Contact = lazy(()=>import("../pages/General/Contact/Contact"))
 
 
 export const SignUp = lazy(()=>import("../pages/Auth/SignUp/SignUp"))
+export const SignUpSuccess = lazy(()=>import("../pages/Auth/SignUp/SignupSuccess"))
 export const Login = lazy(()=>import("../pages/Auth/Login/Login"))
