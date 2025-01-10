@@ -9,27 +9,27 @@ const Loginform = () => {
     <form className="py-6 md:py-7 lg:py-8 p-6" onSubmit={formik.handleSubmit}>
       <div className="">
         <label
-          htmlFor="accountId"
+          htmlFor="email"
           className="text-xs font-medium tracking-wide lg:text-sm"
         >
-          Account ID
+          Email
         </label>
         <div className="border-[#D0D5DD] border w-full px-2 lg:px-4 flex items-center gap-2 rounded-md">
           <UserRound color="#98A2B3" className="w-[18px]" />
           <input
             type="text"
-            name="accountId"
-            id="accountId"
-            placeholder="Enter your account Id"
+            name="email"
+            id="email"
+            placeholder="Enter your account email"
             className={`w-full text-xs h-8 lg:h-10 lg:text-sm font-medium outline-none tracking-wide`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.accountId}
+            value={formik.values.email}
           />
         </div>
-        {formik.touched.accountId && formik.errors.accountId ? (
+        {formik.touched.email && formik.errors.email ? (
           <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
-            {formik.errors.accountId}
+            {formik.errors.email}
           </div>
         ) : null}
       </div>
@@ -100,7 +100,7 @@ const Loginform = () => {
         </p>
       )}
 
-      <div className="text-sm flex items-center mt-3 gap-1 w-full justify-center">
+      <div className="text-xs lg:text-sm flex items-center mt-3 gap-1 w-full justify-center">
         <span className="">Don't have an account?</span>
         <Link to="/auth/sign-up" className="text-lighter">Sign Up</Link>
       </div>

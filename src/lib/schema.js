@@ -1,4 +1,4 @@
-import * as Yup from "yup"
+import * as Yup from "yup";
 
 export const contactMessageSchema = Yup.object().shape({
   fullname: Yup.string()
@@ -19,10 +19,9 @@ export const contactMessageSchema = Yup.object().shape({
 });
 
 export const loginSchema = Yup.object().shape({
-  accountId: Yup.string()
-    .required("Account ID is required")
-    .min(2, "Account ID must be at least 2 characters")
-    .max(50, "Account ID cannot exceed 50 characters"),
+  email: Yup.string()
+    .required("Email is required")
+    .email("Invalid email format"),
   password: Yup.string()
     .required("Password is required")
     .min(8, "Password must be at least 8 characters long")
@@ -68,21 +67,9 @@ export const signUpSchema = Yup.object().shape({
   currency: Yup.string().required("Currency is required"),
   photo: Yup.mixed()
     .required("A photo is required")
-    // .test(
-    //   "fileSize",
-    //   "File size is too large (max 5MB)",
-    //   (value) => !value || (value && value.size >= 5 * 1024 * 1024) // 5MB
-    // )
     .test("fileSize", "File size is too large (max 5MB)", (value) => {
       return value ? value.size <= 5 * 1024 * 1024 : true;
     })
-    // .test(
-    //   "fileType",
-    //   "Unsupported file format (only .jpeg, .png allowed)",
-    //   (value) =>
-    //     !value ||
-    //     (value && ["image/jpeg", "image/jpg", "image/png"].includes(value.type))
-    // ),
     .test(
       "fileType",
       "Unsupported file type (only JPEG, PNG, GIF allowed)",
@@ -95,4 +82,10 @@ export const signUpSchema = Yup.object().shape({
   terms: Yup.boolean()
     .oneOf([true], "You must accept the terms and conditions")
     .required("You must accept the terms and conditions"),
+});
+
+export const forgetPasswordSchema = Yup.object().shape({
+  email: Yup.string()
+    .required("Email is required")
+    .email("Invalid email format"),
 });

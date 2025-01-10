@@ -1,17 +1,15 @@
 import axiosClient from "../../api/axiosClient";
 // import axios from "axios";
 
-const sign_up = async (data) => {
-  console.log("Checking: ",data);
-  
-  const response = await axiosClient.post(``, data);
+const sign_up = async (userData) => {  
+  const response = await axiosClient.post(``, userData);
 
   localStorage.setItem("userId", response.data.data._id);
 
   return response.data;
 };
 
-const verify_email = async (data) => {
+const verify_email = async (userData) => {
   const userId = localStorage.getItem("userId");
   if (userId !== null) {
     const response = await axiosClient.post(`/auth/verify/${userId}`, userData);
@@ -23,7 +21,7 @@ const verify_email = async (data) => {
   return;
 };
 
-const login = async (data) => {
+const login = async (userData) => {
   const response = await axiosClient.post(`/auth/login`, userData);
 
   // if (response.data.success === true) {
@@ -35,15 +33,15 @@ const login = async (data) => {
   return response.data;
 };
 
-const forget_password = async (data) => {
-  const response = await axiosClient.post(`/auth/forgot-password`, userData);
+const forget_password = async (userData) => {
+  const response = await axiosClient.post(``, userData);
 
-  if (response.data.success === true)
-    localStorage.setItem("token", response.data.data);
+  // if (response.data.success === true)
+  //   localStorage.setItem("token", response.data.data);
   return response.data;
 };
 
-const reset_password = async (data) => {
+const reset_password = async (userData) => {
   const response = await axiosClient.post(`/auth/reset-password`, userData);
 
   if (response.data.success === true) localStorage.removeItem("token");
