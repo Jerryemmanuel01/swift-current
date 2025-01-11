@@ -5,14 +5,14 @@ import Footer from "./Footer";
 
 const DashbordLayout = () => {
   return (
-    <div className="flex">
-      <Sidebar />
-      <div className="w-full px-6">
-        <Header />
+    <>
+      <Header />
+      <div className="w-full flex">
+        <Sidebar />
         <Outlet />
-        <Footer />
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
