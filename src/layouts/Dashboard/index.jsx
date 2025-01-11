@@ -5,13 +5,13 @@ import Footer from "./Footer";
 
 const DashbordLayout = () => {
   return (
-    <div>
-      <Header />
-      <section className="flex gap-10">
-        <Sidebar />
+    <div className="flex">
+      <Sidebar />
+      <div className="w-full px-6">
+        <Header />
         <Outlet />
-      </section>
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };
