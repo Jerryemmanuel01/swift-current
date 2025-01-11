@@ -6,9 +6,10 @@ import {
 import { useSelector } from "react-redux";
 import LandingLayout from "./layouts/LandingLayout";
 import AuthLayout from "./layouts/AuthLayout/Index";
-import { Home, About, Services, Contact, FAQ, SignUp, SignUpSuccess, Login, ForgetPassword, ResetPassword } from "./routes";
+import { Home, About, Services, Contact, FAQ, SignUp, SignUpSuccess, Login, ForgetPassword, ResetPassword, Dashboard } from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import DashbordLayout from "./layouts/Dashboard";
 
 function App() {
   const { token } = useSelector((state) => state.auth);
@@ -73,6 +74,17 @@ function App() {
               element: <ResetPassword />,
             },
           ],
+        },
+        //Dashboard routes
+        {
+          path: "dashboard",
+          element: <DashbordLayout/>,
+          children:[
+            {
+              path: "",
+              element: <Dashboard />
+            }
+          ]
         },
 
         {
