@@ -27,7 +27,7 @@ const Hero = () => {
               className=" bg-center bg-no-repeat bg-cover"
               style={{ backgroundImage: `url(${val.bgImg})` }}
             >
-              <div className="bg-black/50 w-full h-screen">
+              <div className="bg-black/50 w-full h-[93vh] md:h-">
                 <div className="max-w-[1200px] mx-auto h-full flex flex-col justify-center px-6">
                   <div className="md:pl-10 xl:pl-0">
                     <h2 className="text-white font-poppins font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:w-[740px] md:leading-[54px] lg:leading-[68px]">

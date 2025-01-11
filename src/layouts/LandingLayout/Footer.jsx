@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa6";
 import { ChevronRight, Mail } from "lucide-react";
+import WhatsappContact from "../../components/General/WhatsappContact";
 
 const Footer = () => {
   const companyLinks = [
@@ -106,15 +107,7 @@ const Footer = () => {
           <span className="text-lighter">Swift Current Corporation</span>
         </p>
       </div>
-
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://wa.me/+2349064471553?text=Greetings, I need assistance."
-        className="md:w-12 md:h-12 w-10 h-10 rounded-full fixed z-10 bottom-6 left-6 bg-[#4cc641] flex items-center justify-center text-white text-3xl"
-      >
-        <FaWhatsapp />
-      </a>
+      <WhatsappContact />
     </section>
   );
 };

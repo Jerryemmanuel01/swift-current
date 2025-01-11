@@ -1,8 +1,13 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 const DashbordLayout = () => {
   return (
-    <div>DashbordLayout</div>
+    <div>
+      <Header />
+      <Outlet />
+      <Footer />
+    </div>
   )
 }
 
