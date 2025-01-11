@@ -2,6 +2,7 @@ import { ChevronLeft } from "lucide-react";
 import Loginform from "../../../components/auth/Loginform";
 import HomeAboutBg from "../../../assets/Images/service5.jpg";
 import { useNavigate } from "react-router-dom";
+import Copyright from "../../../components/auth/Copyright";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const Login = () => {
             <Loginform />
           </div>
         </div>
+        <Copyright />
       </div>
     </section>
   );

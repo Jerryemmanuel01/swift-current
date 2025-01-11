@@ -3,6 +3,7 @@ import HomeAboutBg from "../../../assets/Images/service5.jpg";
 import { useNavigate } from "react-router-dom";
 import ForgetPasswordForm from "../../../components/auth/ForgetPasswordForm";
 import ResetPasswordForm from "../../../components/auth/ResetPasswordForm";
+import Copyright from "../../../components/auth/Copyright";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ const ResetPassword = () => {
             <ResetPasswordForm />
           </div>
         </div>
+        <Copyright />
       </div>
     </section>
   );

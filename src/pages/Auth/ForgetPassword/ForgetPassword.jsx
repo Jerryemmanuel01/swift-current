@@ -2,6 +2,7 @@ import { ChevronLeft } from "lucide-react";
 import HomeAboutBg from "../../../assets/Images/service5.jpg";
 import { useNavigate } from "react-router-dom";
 import ForgetPasswordForm from "../../../components/auth/ForgetPasswordForm";
+import Copyright from "../../../components/auth/Copyright";
 
 const ForgetPassword = () => {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const ForgetPassword = () => {
             <ForgetPasswordForm />
           </div>
         </div>
+        <Copyright />
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import { ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import HomeAboutBg from "../../../assets/Images/service5.jpg";
 import SignUpForm from "../../../components/auth/SignUpForm";
+import Copyright from "../../../components/auth/Copyright";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -22,7 +23,9 @@ const SignUp = () => {
               style={{ backgroundImage: `url(${HomeAboutBg})` }}
             >
               <div className="bg-primary/95 flex flex-col justify-center items-center text-white p-6 rounded-t-xl">
-                <h2 className="font-poppins text-2xl font-bold mt-2">Sign Up</h2>
+                <h2 className="font-poppins text-2xl font-bold mt-2">
+                  Sign Up
+                </h2>
                 <p className="text-sm tracking-wide mt-2">
                   Create your bank account
                 </p>
@@ -31,6 +34,7 @@ const SignUp = () => {
             <SignUpForm />
           </div>
         </div>
+        <Copyright />
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import HomeAboutBg from "../../../assets/Images/service5.jpg";
+import Copyright from "../../../components/auth/Copyright";
 const SignupSuccess = () => {
   return (
     <section className="w-full">
@@ -62,6 +63,7 @@ const SignupSuccess = () => {
             </div>
           </div>
         </div>
+        <Copyright />
       </div>
     </section>
   );
