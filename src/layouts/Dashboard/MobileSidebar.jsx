@@ -47,7 +47,7 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
                       {val.name}
                       {hasSubMenu && (
                         <ChevronDown
-                          className={`ml-auto ${isClicked && "rotate-180"} `}
+                          className={`ml-auto w-4 ${isClicked && "rotate-180"} `}
                         />
                       )}
                     </span>
@@ -59,11 +59,10 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
                         className="pl-14 bg-[#e8e7e7] text-xs md:text-sm"
                       >
                         {val.subMenu?.map(({ name, link }) => (
-                          <li className="list-disc">
+                          <li className="list-disc" key={name}>
                             <Link
                               onClick={toggleDrawer}
                               to={link}
-                              key={name}
                               className={`${
                                 location.pathname === val.link
                                   ? "font-bold text-primary"

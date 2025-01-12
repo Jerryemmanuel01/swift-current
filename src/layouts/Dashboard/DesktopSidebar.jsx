@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { sidebarLinks } from "../../lib/links";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 const DesktopSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
+      const location = useLocation();
+
   const subMenuDrawer = {
     enter: {
       height: "auto",
@@ -15,12 +17,13 @@ const DesktopSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
     },
   };
 
+
   return (
-    <section className="w-[250px] h-screen bg-ligfht border-r border-gray hidden md:block">
+    <section className="">
       <motion.div
-        className="fixed w-[250px] md:relative left-0 right-0 top-20 md:top-0 overflow-y-auto h-full bg-[#18181A] backdrop-blur text-white pb-20"
+        className={`w-[250px] overflow-y-auto h-[90vh] backdrop-blur-3xl border-r border-[#e7e5e5] pr-2`}
         initial={{ x: "-100%" }}
-        animate={{ x: isOpen ? "0%" : "-100%" }}
+        animate={{ x: "0%" }}
       >
         <ul className="">
           {sidebarLinks.map((val, i) => {
@@ -32,14 +35,18 @@ const DesktopSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
                 {hasSubMenu ? (
                   <li>
                     <span
-                      className="flex justify-between gap-2 items-center text-sm md:text-base py-3 px-5 hover:bg-primary/50 rounded-e-full"
+                      className={`${
+                        location.pathname === val.link
+                          ? "bg-primary/20 font-bold text-primary"
+                          : ""
+                      } flex gap-3 items-center text-sm md:text-base py-3 px-5 duration-300 hover:bg-primary/20 rounded-e-full cursor-pointer`}
                       onClick={() => setClicked(isClicked ? null : i)}
                     >
                       <Icon className="md:w-4 w-3.5" />
                       {val.name}
                       {hasSubMenu && (
                         <ChevronDown
-                          className={`ml-auto ${isClicked && "rotate-180"} `}
+                          className={`ml-auto w-4 ${isClicked && "rotate-180"} `}
                         />
                       )}
                     </span>
@@ -48,25 +55,34 @@ const DesktopSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
                         initial="exit"
                         animate={isClicked ? "enter" : "exit"}
                         variants={subMenuDrawer}
-                        className="pl-5 bg-gray"
+                        className="pl-14 bg-[#f4f4ffsd4] rounded-e-xl  text-xs md:text-sm"
                       >
                         {val.subMenu?.map(({ name, link }) => (
-                          <Link
-                            to={link}
-                            key={name}
-                            className="p-2 block hover:bg-white/5 rounded-e-full list-disc cursor-pointer"
-                          >
-                            {name}
-                          </Link>
+                          <li key={name} className="list-disc">
+                            <Link
+                              to={link}
+                              className={`${
+                                location.pathname === val.link
+                                  ? "font-bold text-primary"
+                                  : ""
+                              } py-2 block rounded-e-full list-disc cursor-pointer hover:font-bold duration-300`}
+                            >
+                              {name}
+                            </Link>
+                          </li>
                         ))}
                       </motion.ul>
                     )}
                   </li>
                 ) : (
-                  <li>
+                  <li className="pb-0.5">
                     <Link
                       to={val.link}
-                      className="flex justify- gap-2 items-center text-sm md:text-base py-3 px-5 hover:bg-primary/50 rounded-e-full"
+                      className={`${
+                        location.pathname === val.link
+                          ? "bg-primary/20 font-bold text-primary"
+                          : ""
+                      } flex gap-3 items-center text-sm md:text-base py-3 px-5 duration-300 hover:bg-primary/20 rounded-e-full`}
                     >
                       <Icon className="md:w-4 w-3.5" />
                       {val.name}

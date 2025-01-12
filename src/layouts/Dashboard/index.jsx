@@ -9,24 +9,27 @@ import WhatsappContact from "../../components/General/WhatsappContact";
 const DashbordLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [clicked, setClicked] = useState(null);
-  
 
   return (
     <>
       <Header isOpen={isOpen} setIsOpen={setIsOpen} setClicked={setClicked} />
       <div className="w-full flex">
-        <MobileSidebar
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          setClicked={setClicked}
-          clicked={clicked}
-        />
-        <DesktopSidebar
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          setClicked={setClicked}
-          clicked={clicked}
-        />
+        <div className="md:hidden">
+          <MobileSidebar
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            setClicked={setClicked}
+            clicked={clicked}
+          />
+        </div>
+        <div className="hidden md:block">
+          <DesktopSidebar
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            setClicked={setClicked}
+            clicked={clicked}
+          />
+        </div>
         <Outlet />
       </div>
       <WhatsappContact />
