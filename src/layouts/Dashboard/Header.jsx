@@ -8,7 +8,7 @@ const Header = () => {
     <section className="w-full flex items-center justify-between py-6 px-4">
       <div className="w-full">
         <div className="w-full flex items-center gap-2">
-          <div className="w-[40px] md:w-[50px] lg:w-[60px]">
+          <div className="w-[60px] md:w-[70px] lg:w-[80px]">
             <img src={Logo1} alt="" className="w-full" />
           </div>
           <h2 className="font-black text-primary text-lg md:text-xl lg:text-[26px]">SWIFT CURRENT</h2>
