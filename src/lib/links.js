@@ -19,16 +19,16 @@ export const navLinks = [
 ];
 export const sidebarLinks = [
   { name: "Dashboard", link: "/dashboard", icon: LayoutDashboard },
-  { name: "Fund Account", link: "/Funding", icon: TicketPlus },
+  { name: "Fund Account", link: "/dashboard/Funding", icon: TicketPlus },
   {
     name: "Transfer",
     icon: Send,
     subMenu: [
-      { name: "Internal Transfer", link: "/internal-transfer" },
-      { name: "International Transfer", link: "/international-transfer" },
-      { name: "Local Transfer", link: "/local-transfer" },
-      { name: "Crypto Transfer", link: "/crypto-transfer" },
-      { name: "Paypal Transfer", link: "/paypal-transfer" },
+      { name: "Internal Transfer", link: "/dashboard/internal-transfer" },
+      { name: "International Transfer", link: "/dashboard/international-transfer" },
+      { name: "Local Transfer", link: "/dashboard/local-transfer" },
+      { name: "Crypto Transfer", link: "/dashboard/crypto-transfer" },
+      { name: "Paypal Transfer", link: "/dashboard/paypal-transfer" },
     ],
   },
   {

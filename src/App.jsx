@@ -6,7 +6,20 @@ import {
 import { useSelector } from "react-redux";
 import LandingLayout from "./layouts/LandingLayout";
 import AuthLayout from "./layouts/AuthLayout/Index";
-import { Home, About, Services, Contact, FAQ, SignUp, SignUpSuccess, Login, ForgetPassword, ResetPassword, Dashboard } from "./routes";
+import {
+  Home,
+  About,
+  Services,
+  Contact,
+  FAQ,
+  SignUp,
+  SignUpSuccess,
+  Login,
+  ForgetPassword,
+  ResetPassword,
+  Dashboard,
+  Funding
+} from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DashbordLayout from "./layouts/Dashboard";
@@ -78,13 +91,17 @@ function App() {
         //Dashboard routes
         {
           path: "dashboard",
-          element: <DashbordLayout/>,
-          children:[
+          element: <DashbordLayout />,
+          children: [
             {
               path: "",
-              element: <Dashboard />
-            }
-          ]
+              element: <Dashboard />,
+            },
+            {
+              path: "funding",
+              element: <Funding />,
+            },
+          ],
         },
 
         {

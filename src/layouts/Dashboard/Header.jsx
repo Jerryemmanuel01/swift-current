@@ -3,7 +3,11 @@ import ProfileImg from "../../assets/Images/testimonyImg1.jpg";
 import Logo1 from "../../assets/Images/swiftcurrent-blueLogo.png";
 import { AlignJustify, X } from "lucide-react";
 
-const Header = () => {
+const Header = ({isOpen, setIsOpen, setClicked}) => {
+    const toggleDrawer = () => {
+      setIsOpen(!isOpen);
+      setClicked(null);
+    };
   return (
     <section className="w-full flex items-center justify-between py-6 px-4">
       <div className="w-full">
@@ -11,7 +15,9 @@ const Header = () => {
           <div className="w-[60px] md:w-[70px] lg:w-[80px]">
             <img src={Logo1} alt="" className="w-full" />
           </div>
-          <h2 className="font-black text-primary text-lg md:text-xl lg:text-[26px]">SWIFT CURRENT</h2>
+          <h2 className="font-black text-primary text-lg md:text-xl lg:text-[26px]">
+            SWIFT CURRENT
+          </h2>
         </div>
       </div>
       <div className="flex items-center gap-6">
@@ -28,9 +34,14 @@ const Header = () => {
               alt=""
               className="w-8 rounded-full border border-primary md:block hidden"
             />
-            <div className="w-full md:hidden">
-              <AlignJustify className="w-5" />
-            </div>
+            
+              <button
+                className="md:hidden outline-none"
+                onClick={toggleDrawer}
+              >
+                {isOpen ? <X /> : <AlignJustify />}
+              </button>
+            
           </div>
         </div>
       </div>

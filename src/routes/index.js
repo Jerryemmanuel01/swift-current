@@ -15,3 +15,4 @@ export const ResetPassword = lazy(()=>import("../pages/Auth/ResetPassword/ResetP
 
 // Dashboard routes
 export const Dashboard = lazy(()=>import("../pages/Dashboard/Dashborad/Dashboard"))
+export const Funding = lazy(()=>import("../pages/Dashboard/Funding/Funding"))
