@@ -35,6 +35,7 @@ const useLoginForm = () => {
     validationSchema: loginSchema,
     onSubmit: (values) => {
       console.log("Values: ", values);
+      navigate("/dashboard")
       //    dispatch(login(values));
     },
   });

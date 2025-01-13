@@ -1,7 +1,11 @@
+import DashboardInfo from "../../../components/Dashboard/DashboardInfo"
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <section className="px-6 w-full">
+      <h2 className="font-poppins font-mediumn text-2xl">Dashboard</h2>
+      <DashboardInfo />
+    </section>
   )
 }
 

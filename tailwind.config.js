@@ -7,6 +7,7 @@ export default {
         lato: ["Lato", "sans-serif"],
         merriweather: ["Merriweather", "serif"],
         poppins: ["Poppins", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       backgroundColor: {
         primary: "#002f5b",

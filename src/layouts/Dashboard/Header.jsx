@@ -1,24 +1,25 @@
 import { IoMdNotifications } from "react-icons/io";
 import ProfileImg from "../../assets/Images/testimonyImg1.jpg";
 import Logo1 from "../../assets/Images/swiftcurrent-blueLogo.png";
-import { AlignJustify, X } from "lucide-react";
+import { AlignJustify, Settings, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Header = ({isOpen, setIsOpen, setClicked}) => {
-    const toggleDrawer = () => {
-      setIsOpen(!isOpen);
-      setClicked(null);
-    };
+const Header = ({ isOpen, setIsOpen, setClicked }) => {
+  const toggleDrawer = () => {
+    setIsOpen(!isOpen);
+    setClicked(null);
+  };
   return (
-    <section className="w-full flex items-center justify-between py-6 px-4">
+    <section className="w-full flex items-center justify-between py-6 px-6 relative">
       <div className="w-full">
-        <div className="w-full flex items-center gap-2">
+        <Link className="w-full flex items-center gap-2" to="/dashboard">
           <div className="w-[60px] md:w-[70px] lg:w-[80px]">
             <img src={Logo1} alt="" className="w-full" />
           </div>
           <h2 className="font-black text-primary text-lg md:text-xl lg:text-[26px]">
             SWIFT CURRENT
           </h2>
-        </div>
+        </Link>
       </div>
       <div className="flex items-center gap-6">
         <div className="relative">
@@ -27,24 +28,17 @@ const Header = ({isOpen, setIsOpen, setClicked}) => {
             2
           </span>
         </div>
-        <div className="w-full">
+        <div className="w-full md:hidden ">
           <div className="w-8 ">
-            <img
-              src={ProfileImg}
-              alt=""
-              className="w-8 rounded-full border border-primary md:block hidden"
-            />
-            
-              <button
-                className="md:hidden outline-none"
-                onClick={toggleDrawer}
-              >
-                {isOpen ? <X /> : <AlignJustify />}
-              </button>
-            
+            <button className="outline-none" onClick={toggleDrawer}>
+              {isOpen ? <X /> : <AlignJustify />}
+            </button>
           </div>
         </div>
       </div>
+      <Link className=" w-10 h-10 rounded-full fixed z-10 bottom-6 right-6 bg-secondary flex items-center justify-center text-white md:text-3xl text-2xl">
+        <Settings className="animate-spin w-5" />
+      </Link>
     </section>
   );
 };

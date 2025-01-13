@@ -19,7 +19,7 @@ export const navLinks = [
 ];
 export const sidebarLinks = [
   { name: "Dashboard", link: "/dashboard", icon: LayoutDashboard },
-  { name: "Fund Account", link: "/dashboard/Funding", icon: TicketPlus },
+  { name: "Fund Account", link: "/dashboard/funding", icon: TicketPlus },
   {
     name: "Transfer",
     icon: Send,
