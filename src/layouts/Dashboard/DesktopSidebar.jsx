@@ -79,7 +79,7 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
                         location.pathname === val.link
                           ? "bg-primary/20 font-bold text-primary"
                           : ""
-                      } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/20 rounded-e-full cursor-pointer`}
+                      } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full cursor-pointer`}
                       onClick={() => setClicked(isClicked ? null : i)}
                     >
                       <Icon className="md:w-4 w-3.5" />
@@ -124,7 +124,7 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
                         location.pathname === val.link
                           ? "bg-primary/20 font-bold text-primary"
                           : ""
-                      } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/20 rounded-e-full`}
+                      } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full`}
                     >
                       <Icon className="md:w-4 w-3.5" />
                       {val.name}

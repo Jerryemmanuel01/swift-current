@@ -45,7 +45,7 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
   return (
     <section className={``}>
       <motion.div
-        className={`fixed w-[250px] md:hidden left-0 right-0  md:top-0 overflow-y-auto h-full bg-white border-r border-[#e7e5e5]`}
+        className={`fixed w-[250px] md:hidden left-0 right-0 z-10 md:top-0 overflow-y-auto h-full bg-white border-r border-[#e7e5e5]`}
         initial={{ x: "-100%" }}
         animate={{ x: isOpen ? "0%" : "-100%", y: headerFixed?  "-80px":"0"}}
       >
@@ -85,7 +85,7 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
                         location.pathname === val.link
                           ? "bg-primary/20 font-bold text-primary"
                           : ""
-                      } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/20 rounded-e-full cursor-pointer`}
+                      } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full cursor-pointer`}
                       onClick={() => setClicked(isClicked ? null : i)}
                     >
                       <Icon className="md:w-4 w-3.5" />
@@ -132,7 +132,7 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
                         location.pathname === val.link
                           ? "bg-primary/20 font-bold text-primary"
                           : ""
-                      } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/20 rounded-e-full`}
+                      } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full`}
                     >
                       <Icon className="md:w-4 w-3.5" />
                       {val.name}
