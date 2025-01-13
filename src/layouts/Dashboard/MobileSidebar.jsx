@@ -43,13 +43,11 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
     setClicked(null);
   };
   return (
-    <section className="">
+    <section className={``}>
       <motion.div
-        className={`fixed w-[250px] md:hidden left-0 right-0 ${
-          headerFixed ? "top-0" : "top-20"
-        } duration-300 md:top-0 overflow-y-auto h-full bg-white border-r border-[#e7e5e5]`}
+        className={`fixed w-[250px] md:hidden left-0 right-0  md:top-0 overflow-y-auto h-full bg-white border-r border-[#e7e5e5]`}
         initial={{ x: "-100%" }}
-        animate={{ x: isOpen ? "0%" : "-100%" }}
+        animate={{ x: isOpen ? "0%" : "-100%", y: headerFixed?  "-80px":"0"}}
       >
         <div className="">
           <div
