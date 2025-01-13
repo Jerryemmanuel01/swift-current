@@ -103,7 +103,7 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
                         initial="exit"
                         animate={isClicked ? "enter" : "exit"}
                         variants={subMenuDrawer}
-                        className="pl-14 bg-[#e8e7e7] text-xs md:text-sm"
+                        className="pl-14 text-xs md:text-sm"
                       >
                         {val.subMenu?.map(({ name, link }) => (
                           <li className="list-disc" key={name}>
