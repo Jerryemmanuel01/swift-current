@@ -22,6 +22,7 @@ export default {
         dark: "#012243",
         darker: "#00152a",
         yellow: "#fcd315",
+        borderColor: "#D0D5DD",
       },
       boxShadow: {
         custom: "0 0 10px #b3b3b3",
