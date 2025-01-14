@@ -67,7 +67,7 @@ const TransactionTable = () => {
                 <td className="px-4 py-2 whitespace-nowrap">{val.category}</td>
                 <td className="px-4 py-2 whitespace-nowrap">
                   <h2 className="">{val.date}</h2>
-                  <span className="text-gray text-xs">{val.time}</span>
+                  <span className="text-gray text-[9px] md:text-xs">{val.time}</span>
                 </td>
                 <td className="px-4 py-2 whitespace-nowrap">{val.amount}</td>
                 <td className={`px-4 py-2 whitespace-nowrap font-medium font-inter ${val.status === "Approved" ? "text-green-500": val.status === "Pending" ? "text-yellow":"text-red-500"}`}>{val.status}</td>
