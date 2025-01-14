@@ -30,10 +30,14 @@ const DashbordLayout = () => {
             clicked={clicked}
           />
         </div>
-        <Outlet />
+        <div className="overflow-hidden w-full">
+          <div className=" min-h-[85vh] w-full">
+            <Outlet />
+          </div>
+          <Footer />
+        </div>
       </div>
       <WhatsappContact />
-      <Footer />
     </>
   );
 };

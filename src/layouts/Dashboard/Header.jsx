@@ -36,7 +36,7 @@ const Header = ({ isOpen, setIsOpen, setClicked }) => {
           </div>
         </div>
       </div>
-      <Link className=" w-10 h-10 rounded-full fixed z-10 bottom-6 right-6 bg-secondary flex items-center justify-center text-white md:text-3xl text-2xl">
+      <Link className="hidden md:flex w-10 h-10 rounded-full fixed z-10 bottom-6 right-6 bg-secondary items-center justify-center text-white md:text-3xl text-2xl">
         <Settings className="animate-spin w-5" />
       </Link>
     </section>
