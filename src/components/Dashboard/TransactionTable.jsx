@@ -1,46 +1,6 @@
+import { transactionData } from "../../lib/utils";
+
 const TransactionTable = () => {
-  const data = [
-    {
-      ref: "#2353232",
-      category: "Credit",
-      date: "22 Aug, 2024",
-      time: "01 : 36 : 42 AM",
-      amount: "$600,000",
-      status: "Approved",
-    },
-    {
-      ref: "#5849332",
-      category: "Debit",
-      date: "09 Sep, 2024",
-      time: "11 : 44 : 09 PM",
-      amount: "$30,000",
-      status: "Pending",
-    },
-    {
-      ref: "#3432328",
-      category: "Credit",
-      date: "25 Sep, 2024",
-      time: "03 : 36 : 42 AM",
-      amount: "$90,000",
-      status: "Approved",
-    },
-    {
-      ref: "#9382283",
-      category: "Debit",
-      date: "12 Dec, 2024",
-      time: "06 : 16 : 32 AM",
-      amount: "$10,000",
-      status: "Failed",
-    },
-    {
-      ref: "#8994843",
-      category: "Credit",
-      date: "12 Jan, 2025",
-      time: "11 : 36 : 42 AM",
-      amount: "$50,000",
-      status: "Approved",
-    },
-  ];
   return (
     <section className="py-4 ">
       <div className="overflow-x-auto">
@@ -60,7 +20,7 @@ const TransactionTable = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((val, i) => (
+            {transactionData.map((val, i) => (
               <tr className="even:bg-primary/5 text-xs md:text-sm " key={i}>
                 <td className="px-4 py-2 whitespace-nowrap">{i + 1}</td>
                 <td className="px-4 py-2 whitespace-nowrap">{val.ref}</td>

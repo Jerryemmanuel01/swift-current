@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
   const [headerFixed, setheaderFixed] = useState(false);
   const location = useLocation();
-  console.log(headerFixed);
 
   useEffect(() => {
     const handleScroll = () => {
