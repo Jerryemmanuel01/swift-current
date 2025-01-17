@@ -44,7 +44,6 @@ const useKYCForm = () => {
       console.log(profileUrl);
       console.log("url: ", profileUrl.type);
       if (profileUrl.type === "user/imageUpload/fulfilled") {
-        navigate("/dashboard");
         const photourl = profileUrl.payload;
         const userData = { country, medium, number, photourl };
         console.log("Values: ", userData);
