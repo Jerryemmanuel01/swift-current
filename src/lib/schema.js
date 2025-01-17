@@ -104,3 +104,34 @@ export const resetPasswordSchema = Yup.object().shape({
     .oneOf([Yup.ref("password")], "Passwords must match")
     .required("Please confirm your password"),
 });
+
+export const fundingSchema = Yup.object().shape({
+  amount: Yup.string()
+    .required("Amount is required")
+    .matches(/^\d+(\.\d+)?$/, "Must be a valid number or decimal"),
+  network: Yup.string().notRequired(),
+  address: Yup.string().notRequired(),
+  transactionId: Yup.string().required("Transaction ID is required"),
+});
+
+export const KYCSchema = Yup.object().shape({
+  country: Yup.string().required("Country is required"),
+  medium: Yup.string().required("Id medium is required"),
+  number: Yup.string()
+    .required("Id Number is required")
+    .matches(/^\d+$/, "Must be a valid number"),
+  photo: Yup.mixed()
+    .required("A photo is required")
+    .test("fileSize", "File size is too large (max 5MB)", (value) => {
+      return value ? value.size <= 5 * 1024 * 1024 : true;
+    })
+    .test(
+      "fileType",
+      "Unsupported file type (only JPEG, PNG, GIF allowed)",
+      (value) => {
+        return value
+          ? ["image/jpeg", "image/jpg", "image/png"].includes(value.type)
+          : true;
+      }
+    ),
+});

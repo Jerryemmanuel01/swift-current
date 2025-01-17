@@ -1,5 +1,6 @@
 import { Check, Copy, DollarSign, Hash } from "lucide-react";
 import useFundingForm from "../../hooks/formHooks/useFundingForm";
+import { IoIosInformation } from "react-icons/io";
 
 const FundingForm = () => {
   const {
@@ -11,9 +12,8 @@ const FundingForm = () => {
     walletAddresses,
     qrCode,
     setQrCode,
+    isLoading,
   } = useFundingForm();
-
-  console.log(qrCode);
 
   return (
     <form className="w-full" onSubmit={formik.handleSubmit}>
@@ -155,7 +155,7 @@ const FundingForm = () => {
       <div className="flex items-center justify-center">
         <button
           type="submit"
-          //   disabled={isLoading}
+          disabled={isLoading}
           className={`${
             ""
               ? // !formik.dirty || !formik.isValid || isLoading
@@ -165,6 +165,28 @@ const FundingForm = () => {
         >
           {/* {isLoading ? "Please wait..." : "Login"} */}Deposit
         </button>
+      </div>
+
+      <div className=" mt-7">
+        <div className="flex gap-2">
+          <div className="">
+            <IoIosInformation className="text-xs mt-1 bg-[#dbb610] text-white rounded-full" />
+          </div>
+          <p className="text-xs tracking-wide text-[#dbb610]">
+            Kindly note that this order will be automatically adjusted to
+            reflect the exact amount you have sent. In the event of any
+            discrepancy, rest assured it will be promptly corrected to align
+            with your transaction
+          </p>
+        </div>
+        <div className="flex gap-2 items-center mt-3">
+          <div className="">
+            <IoIosInformation className="text-xs bg-light text-white rounded-full" />
+          </div>
+          <p className="text-xs tracking-wide text-light">
+            Account will credited once we received your payment.
+          </p>
+        </div>
       </div>
     </form>
   );

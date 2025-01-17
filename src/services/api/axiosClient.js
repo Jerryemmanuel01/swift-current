@@ -21,8 +21,25 @@ axiosClient.interceptors.request.use((config) => {
 // Basic error handling interceptor
 axiosClient.interceptors.response.use(
   (response) => response,
-  (error) => {
-    // You can add custom error handling here if needed
+  async (error) => {
+    const originalRequest = error.config;
+    if (error?.response?.status === 401 && !originalRequest?._retry) {
+      originalRequest._retry = true;
+      const refreshToken = localStorage.getItem("");
+      try {
+        const response = await axios.post("", {
+          token: refreshToken,
+        });
+        const newAccessToken = response.data.data.accessToken;
+        localStorage.setItem("", newAccessToken);
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${newAccessToken}`;
+        return axiosClient(originalRequest);
+      } catch (err) {
+        console.log(err);
+      }
+    }
     return Promise.reject(error);
   }
 );

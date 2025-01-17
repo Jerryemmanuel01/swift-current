@@ -18,7 +18,8 @@ import {
   ForgetPassword,
   ResetPassword,
   Dashboard,
-  Funding
+  Funding,
+  KYC,
 } from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -100,6 +101,10 @@ function App() {
             {
               path: "funding",
               element: <Funding />,
+            },
+            {
+              path: "KYC",
+              element: <KYC />,
             },
           ],
         },

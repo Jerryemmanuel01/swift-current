@@ -4,9 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import { login, reset } from "../../services/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { loginSchema } from "../../lib/schema";
+import { fundingSchema, loginSchema } from "../../lib/schema";
 import { walletAddresses } from "../../lib/utils";
-
 
 const useFundingForm = () => {
   const [copied, setCopied] = useState(false);
@@ -16,7 +15,7 @@ const useFundingForm = () => {
   const dispatch = useDispatch();
 
   const { isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.auth
+    (state) => state.user
   );
 
   useEffect(() => {
@@ -37,8 +36,12 @@ const useFundingForm = () => {
       address: "",
       transactionId: "",
     },
-    validationSchema: loginSchema,
+    validationSchema: fundingSchema,
     onSubmit: (values) => {
+      if (formik.values.network === "") {
+        toast.error("Blockchain Network is required");
+        return
+      }
       console.log("Values: ", values);
       navigate("/dashboard");
       //    dispatch(login(values));
@@ -67,7 +70,9 @@ const useFundingForm = () => {
       ?.address;
   };
   const findQRCodeByNetwork = (network) => {
-    setQrCode(walletAddresses.find((qrCode) => qrCode.network === network)?.qrCode);
+    setQrCode(
+      walletAddresses.find((qrCode) => qrCode.network === network)?.qrCode
+    );
   };
 
   return {
@@ -78,7 +83,8 @@ const useFundingForm = () => {
     findQRCodeByNetwork,
     walletAddresses,
     qrCode,
-    setQrCode
+    setQrCode,
+    isLoading,
   };
 };
 
