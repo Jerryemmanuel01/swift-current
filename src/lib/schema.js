@@ -42,7 +42,7 @@ export const signUpSchema = Yup.object().shape({
     .required("Last Name is required")
     .min(2, "Last Name must be at least 2 characters")
     .max(50, "Last Name cannot exceed 50 characters"),
-  username: Yup.string()
+  userName: Yup.string()
     .required("Username is required")
     .min(2, "Username must be at least 2 characters")
     .max(50, "Username cannot exceed 50 characters"),
@@ -51,7 +51,7 @@ export const signUpSchema = Yup.object().shape({
     .required("Email is required"),
   phone: Yup.string().matches(/^\d+$/, "Only numbers are allowed"),
   country: Yup.string(),
-  account: Yup.string().required("Account Type is required"),
+  accountType: Yup.string().required("Account Type is required"),
   password: Yup.string()
     .required("Password is required")
     .min(8, "Password must be at least 8 characters long")
@@ -65,8 +65,8 @@ export const signUpSchema = Yup.object().shape({
     .oneOf([Yup.ref("password")], "Passwords must match")
     .required("Please confirm your password"),
   currency: Yup.string().required("Currency is required"),
-  photo: Yup.mixed()
-    .required("A photo is required")
+  profileImage: Yup.mixed()
+    .required("profileImage is required")
     .test("fileSize", "File size is too large (max 5MB)", (value) => {
       return value ? value.size <= 5 * 1024 * 1024 : true;
     })

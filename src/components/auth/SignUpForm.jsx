@@ -64,7 +64,7 @@ const SignUpForm = () => {
       </div>
       <div className="mt-2 lg:mt-3">
         <label
-          htmlFor="username"
+          htmlFor="userName"
           className="text-xs font-medium tracking-wide lg:text-sm"
         >
           Username
@@ -72,18 +72,18 @@ const SignUpForm = () => {
         <div className="border-[#D0D5DD] text-gray border w-full px-3 mt-1 lg:px-4 flex items-center gap-2 rounded-md">
           <input
             type="text"
-            name="username"
-            id="username"
+            name="userName"
+            id="userName"
             placeholder="Enter Username *"
             className={`w-full text-xs h-8 lg:h-10 lg:text-sm font-medium outline-none tracking-wide`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.username}
+            value={formik.values.userName}
           />
         </div>
-        {formik.touched.username && formik.errors.username ? (
+        {formik.touched.userName && formik.errors.userName ? (
           <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
-            {formik.errors.username}
+            {formik.errors.userName}
           </div>
         ) : null}
       </div>
@@ -172,20 +172,20 @@ const SignUpForm = () => {
       </div>
       <div className="mt-2 lg:mt-3">
         <label
-          htmlFor="account"
+          htmlFor="accountType"
           className="text-xs font-medium tracking-wide lg:text-sm"
         >
           Account Type
         </label>
         <div className="border-[#D0D5DD] text-gray border w-full mt-1 flex items-center gap-2 rounded-md">
           <select
-            name="account"
-            id="account"
+            name="accountType"
+            id="accountType"
             className={`w-full text-xs px-3 h-8 lg:h-10 lg:text-sm font-medium outline-none tracking-wide appearance-none`}
             aria-placeholder="Please select state"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.account}
+            value={formik.values.accountType}
           >
             <option value="" disabled>
               Select Account Type
@@ -197,9 +197,9 @@ const SignUpForm = () => {
             ))}
           </select>
         </div>
-        {formik.touched.account && formik.errors.account ? (
+        {formik.touched.accountType && formik.errors.accountType ? (
           <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
-            {formik.errors.account}
+            {formik.errors.accountType}
           </div>
         ) : null}
       </div>
@@ -288,7 +288,7 @@ const SignUpForm = () => {
       </div>
       <div className="mt-2 lg:mt-3">
         <label
-          htmlFor="photo"
+          htmlFor="profileImage"
           className="text-xs font-medium tracking-wide lg:text-sm"
         >
           Profile Photo *
@@ -296,18 +296,18 @@ const SignUpForm = () => {
         <div className="border-[#D0D5DD] text-gray border w-full mt-1 rounded-md">
           <input
             type="file"
-            name="photo"
-            id="photo"
+            name="profileImage"
+            id="profileImage"
             placeholder="Select photo *"
             className={`w-full text-xs leading-6 lg:text-sm lg:leading-8 font-medium outline-none tracking-wide`}
             onChange={(e) => {
-              formik.setFieldValue("photo", e.target.files[0]);
+              formik.setFieldValue("profileImage", e.target.files[0]);
             }}
           />
         </div>
-        {formik.touched.photo && formik.errors.photo ? (
+        {formik.touched.profileImage && formik.errors.profileImage ? (
           <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
-            {formik.errors.photo}
+            {formik.errors.profileImage}
           </div>
         ) : null}
       </div>
@@ -345,11 +345,11 @@ const SignUpForm = () => {
         </button>
       </div>
 
-      {message && (
+      {/* {message && (
         <p className="text-sm text-[#B3261E] tracking-wide text-center mt-6">
           {message}
         </p>
-      )}
+      )} */}
 
       <div className="text-sm flex items-center mt-3 gap-1 w-full justify-center">
         <span className="">Already have an account?</span>

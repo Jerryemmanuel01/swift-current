@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseURL = "";
+export const baseURL = "https://2fb1fgx8-5000.uks1.devtunnels.ms/v1";
 
 const axiosClient = axios.create({
   baseURL,

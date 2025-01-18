@@ -1,10 +1,25 @@
 import axiosClient from "../../api/axiosClient";
-// import axios from "axios";
+import axios from "axios";
 
-const sign_up = async (userData) => {  
-  const response = await axiosClient.post(``, userData);
+const sign_up = async (userData) => {
+  console.log("authSlice: ", userData);
+  const { profileImage, ...rest } = userData;
+  const data = new FormData();
+  data.append("file", profileImage);
+  data.append("upload_preset", "swift_current");
+  data.append("cloud_name", "duhdvdbdm");
 
-  localStorage.setItem("userId", response.data.data._id);
+  const uploadImage = await axios.post(
+    "https://api.cloudinary.com/v1_1/duhdvdbdm/image/upload",
+    data
+  );
+  const photoUrl = uploadImage.data.url;
+
+  if (photoUrl === "" || undefined) throw new Error("Error uploading image");
+
+  userData = { ...rest, profileImage: photoUrl };
+
+  const response = await axiosClient.post(`/auth/register`, userData);
 
   return response.data;
 };
@@ -50,6 +65,7 @@ const reset_password = async (userData) => {
 
 const authService = {
   sign_up,
+  image_upload,
   verify_email,
   login,
   forget_password,

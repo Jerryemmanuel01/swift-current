@@ -41,8 +41,7 @@ const useKYCForm = () => {
     validationSchema: KYCSchema,
     onSubmit: async ({ country, medium, number, photo } = values) => {
       const profileUrl = await dispatch(imageUpload(photo));
-      console.log(profileUrl);
-      console.log("url: ", profileUrl.type);
+     
       if (profileUrl.type === "user/imageUpload/fulfilled") {
         const photourl = profileUrl.payload;
         const userData = { country, medium, number, photourl };

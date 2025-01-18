@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import { signUp, reset } from "../../services/features/auth/authSlice";
@@ -17,83 +17,83 @@ const useSignUpForm = () => {
   );
 
   useEffect(() => {
+    if (isError) console.log(message);
+
     if (isError) toast.error(message);
     if (isSuccess) {
       toast.success(message);
       formik.resetForm();
-      navigate("/home");
+      navigate("/auth/sign-up-success");
     }
     dispatch(reset());
     return;
   }, [isSuccess, isError, message]);
 
-  const handleImageUpload = async (photo) => {
-    const data = new FormData();
-    data.append("file", photo);
-    data.append("upload_preset", "swift_current");
-    data.append("cloud_name", "duhdvdbdm");
+  // const handleImageUpload = async (photo) => {
+  //   const data = new FormData();
+  //   data.append("file", photo);
+  //   data.append("upload_preset", "swift_current");
+  //   data.append("cloud_name", "duhdvdbdm");
 
-    try {
-      const res = await fetch(
-        "https://api.cloudinary.com/v1_1/duhdvdbdm/image/upload",
-        {
-          method: "POST",
-          body: data,
-        }
-      );
-      const uploadedImageURL = await res.json();
+  //   try {
+  //     const res = await fetch(
+  //       "https://api.cloudinary.com/v1_1/duhdvdbdm/image/upload",
+  //       {
+  //         method: "POST",
+  //         body: data,
+  //       }
+  //     );
+  //     const uploadedImageURL = await res.json();
 
-      return uploadedImageURL.url;
-    } catch (error) {
-      console.error("Error uploading the image:", error);
-      toast.error("Failed to upload image. Please try again.");
-    }
-  };
+  //     return uploadedImageURL.url;
+  //   } catch (error) {
+  //     console.error("Error uploading the image:", error);
+  //     toast.error("Failed to upload image. Please try again.");
+  //   }
+  // };
 
   const formik = useFormik({
     initialValues: {
       firstName: "",
       lastName: "",
-      username: "",
+      userName: "",
       email: "",
       phone: "",
       country: "",
-      account: "",
+      accountType: "",
       password: "",
       confirmPassword: "",
       currency: "",
-      photo: null,
+      profileImage: null,
       terms: false,
     },
     validationSchema: signUpSchema,
     onSubmit: async ({
-      account,
+      accountType,
       country,
       currency,
       email,
       firstName,
       lastName,
       password,
+      confirmPassword,
       phone,
-      photo,
-      username,
+      profileImage,
+      userName,
     } = values) => {
-      const profileUrl = await handleImageUpload(photo);
-
       const userData = {
-        account,
+        accountType,
         country,
         currency,
         email,
         firstName,
         lastName,
         password,
+        confirmPassword,
         phone,
-        photo,
-        username,
-        profileUrl,
+        profileImage,
+        userName,
       };
-
       dispatch(signUp(userData));
     },
   });

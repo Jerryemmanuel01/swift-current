@@ -232,9 +232,9 @@ export const FAQS = [
 ];
 
 export const accountTypies = [
-  { account: "Checking", value: "checking" },
-  { account: "Savings", value: "savings" },
-  { account: "fixed Deposit", value: "fixed" },
+  { account: "Checking", value: "Checking" },
+  { account: "Savings", value: "Savings" },
+  { account: "fixed Deposit", value: "Fixed Deposit" },
 ];
 
 export const currenciesTypies = [
