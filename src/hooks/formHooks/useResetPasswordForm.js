@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import { resetPassword, reset } from "../../services/features/auth/authSlice";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { resetPasswordSchema } from "../../lib/schema";
 
 const useResetPasswordForm = () => {
@@ -19,7 +19,7 @@ const useResetPasswordForm = () => {
     if (isSuccess) {
       toast.success(message);
       formik.resetForm();
-      navigate("/home");
+      // navigate("/home");
     }
     dispatch(reset());
     return;
@@ -32,7 +32,7 @@ const useResetPasswordForm = () => {
     },
     validationSchema: resetPasswordSchema,
     onSubmit: (values) => {
-      //    dispatch(resetPassword(values));
+      dispatch(resetPassword(values));
     },
   });
   return { formik, isLoading, message };

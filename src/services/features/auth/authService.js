@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import axiosClient from "../../api/axiosClient";
 import axios from "axios";
 
@@ -39,7 +40,7 @@ const verify_email = async (userData) => {
 const login = async (userData) => {
   const response = await axiosClient.post(`/auth/login`, userData);
   console.log(response.data.result.data);
-  
+
   if (response.data.result.data) {
     localStorage.setItem("SC_access_token", response.data.result.data);
   }
@@ -48,15 +49,19 @@ const login = async (userData) => {
 };
 
 const forget_password = async (userData) => {
-  const response = await axiosClient.post(``, userData);
+  const response = await axiosClient.post(`/auth/forgot-password`, userData);
 
-  // if (response.data.success === true)
-  //   localStorage.setItem("token", response.data.data);
   return response.data;
 };
 
 const reset_password = async (userData) => {
-  const response = await axiosClient.post(`/auth/reset-password`, userData);
+  const location = useLocation();
+
+  const params = new URLSearchParams(location.search);
+  const token = params.get("token");
+  console.log(token);
+  
+  const response = await axiosClient.post(`/auth/reset-password?token=${token}`, userData);
 
   if (response.data.success === true) localStorage.removeItem("token");
   return response.data;

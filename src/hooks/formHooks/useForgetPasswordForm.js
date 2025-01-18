@@ -19,7 +19,7 @@ const useForgetPasswordForm = () => {
     if (isSuccess) {
       toast.success(message);
       formik.resetForm();
-      navigate("/home");
+      navigate("/auth/login");
     }
     dispatch(reset());
     return;
@@ -31,7 +31,7 @@ const useForgetPasswordForm = () => {
     },
     validationSchema: forgetPasswordSchema,
     onSubmit: (values) => {
-      //    dispatch(forgetPassword(values));
+      dispatch(forgetPassword(values));
     },
   });
   return { formik, isLoading, message };
