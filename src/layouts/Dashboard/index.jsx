@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import Header from "./Header";
 import MobileSidebar from "./MobileSidebar";
 import Footer from "./Footer";
@@ -32,6 +32,7 @@ const DashbordLayout = () => {
         </div>
         <div className="overflow-hidden w-full">
           <div className=" min-h-[85vh] w-full">
+            <ScrollRestoration />
             <Outlet />
           </div>
           <Footer />

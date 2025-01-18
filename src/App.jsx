@@ -20,6 +20,17 @@ import {
   Dashboard,
   Funding,
   KYC,
+  CryptoTransfer,
+  InternalTransfer,
+  InternationalTransfer,
+  LocalTransfer,
+  PaypalTransfer,
+  Loan,
+  NFT,
+  Settings,
+  Stock,
+  Token,
+  TransactionHistory,
 } from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -103,8 +114,48 @@ function App() {
               element: <Funding />,
             },
             {
+              path: "internal-transfer",
+              element: <InternalTransfer />,
+            },
+            {
+              path: "international-transfer",
+              element: <InternationalTransfer />,
+            },
+            {
+              path: "local-transfer",
+              element: <LocalTransfer />,
+            },
+            {
+              path: "crypto-transfer",
+              element: <CryptoTransfer />,
+            },
+            {
+              path: "paypal-transfer",
+              element: <PaypalTransfer />,
+            },
+            {
+              path: "NFT",
+              element: <NFT />,
+            },
+            {
+              path: "stock",
+              element: <Stock />,
+            },
+            {
+              path: "transaction-history",
+              element: <TransactionHistory />,
+            },
+            {
+              path: "loan",
+              element: <Loan />,
+            },
+            {
               path: "KYC",
               element: <KYC />,
+            },
+            {
+              path: "settings",
+              element: <Settings />,
             },
           ],
         },
