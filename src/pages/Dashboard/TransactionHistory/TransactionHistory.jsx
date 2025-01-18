@@ -1,9 +1,15 @@
-import React from 'react'
+import DashboardTransactions from "../../../components/Dashboard/DashboardTransactions";
+import TransactionTable from "../../../components/Dashboard/TransactionTable";
 
 const TransactionHistory = () => {
   return (
-    <div>TransactionHistory</div>
-  )
-}
+    <section className="px-6 w-full lg:w-full overflow-hidden">
+      <h2 className="font-semibold text-lg font-inter text-dark">
+        Transaction History
+      </h2>
+      <TransactionTable />
+    </section>
+  );
+};
 
-export default TransactionHistory
+export default TransactionHistory;
