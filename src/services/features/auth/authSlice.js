@@ -94,7 +94,7 @@ const authSlice = createSlice({
         state.isSuccess = false;
       })
 
-      //verifyEmail case
+      //login case
       .addCase(login.pending, (state) => {
         state.isLoading = true;
       })
@@ -102,7 +102,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.message = action.payload.message;
+        state.message = action.payload.result.message;
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;

@@ -38,12 +38,11 @@ const verify_email = async (userData) => {
 
 const login = async (userData) => {
   const response = await axiosClient.post(`/auth/login`, userData);
-
-  // if (response.data.success === true) {
-  //   localStorage.setItem("_access_token", response.data.data.accessToken);
-
-  //   localStorage.setItem("_refresh_token", response.data.data.refreshToken);
-  // }
+  console.log(response.data.result.data);
+  
+  if (response.data.result.data) {
+    localStorage.setItem("SC_access_token", response.data.result.data);
+  }
 
   return response.data;
 };
@@ -65,7 +64,6 @@ const reset_password = async (userData) => {
 
 const authService = {
   sign_up,
-  image_upload,
   verify_email,
   login,
   forget_password,
