@@ -293,6 +293,64 @@ export const transactionData = [
   },
 ];
 
+export const transactionHistoryData = [
+  {
+    ref: "#2353232",
+    category: "Credit",
+    date: "22 Aug, 2024",
+    time: "01 : 36 : 42 AM",
+    amount: "$600,000",
+    status: "Approved",
+    name: "kelvin",
+    charges: "$0",
+    description: "Transfer",
+  },
+  {
+    ref: "#5849332",
+    category: "Debit",
+    date: "09 Sep, 2024",
+    time: "11 : 44 : 09 PM",
+    amount: "$30,000",
+    status: "Pending",
+    name: "ben",
+    charges: "$0",
+    description: "Transfer",
+  },
+  {
+    ref: "#3432328",
+    category: "Credit",
+    date: "25 Sep, 2024",
+    time: "03 : 36 : 42 AM",
+    amount: "$90,000",
+    status: "Approved",
+    name: "Charles",
+    charges: "$0",
+    description: "Transfer",
+  },
+  {
+    ref: "#9382283",
+    category: "Debit",
+    date: "12 Dec, 2024",
+    time: "06 : 16 : 32 AM",
+    amount: "$10,000",
+    status: "Failed",
+    name: "Dani kim",
+    charges: "$0",
+    description: "Transfer",
+  },
+  {
+    ref: "#8994843",
+    category: "Credit",
+    date: "12 Jan, 2025",
+    time: "11 : 36 : 42 AM",
+    amount: "$50,000",
+    status: "Approved",
+    name: "balde frank",
+    charges: "$0",
+    description: "Transfer",
+  },
+];
+
 export const walletAddresses = [
   {
     network: "USDT (ERC20)",

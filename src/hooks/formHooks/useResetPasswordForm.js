@@ -10,16 +10,24 @@ const useResetPasswordForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const location = useLocation();
+
+  const params = new URLSearchParams(location.search);
+  const token = params.get("token");
+
   const { isLoading, isError, message, isSuccess } = useSelector(
     (state) => state.auth
   );
 
   useEffect(() => {
-    if (isError) toast.error(message);
+    if (isError) {
+      toast.error(message);
+      if (message === "Reset Token Expired") navigate("/auth/forget-password");
+    }
     if (isSuccess) {
       toast.success(message);
       formik.resetForm();
-      // navigate("/home");
+      navigate("/auth/login");
     }
     dispatch(reset());
     return;

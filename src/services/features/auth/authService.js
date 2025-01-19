@@ -54,16 +54,17 @@ const forget_password = async (userData) => {
   return response.data;
 };
 
-const reset_password = async (userData) => {
-  const location = useLocation();
+const reset_password = async ({
+  password,
+  confirmPassword,
+  token,
+} = userData) => {
+  const data = { password, confirmPassword };
 
-  const params = new URLSearchParams(location.search);
-  const token = params.get("token");
-  console.log(token);
-  
-  const response = await axiosClient.post(`/auth/reset-password?token=${token}`, userData);
-
-  if (response.data.success === true) localStorage.removeItem("token");
+  const response = await axiosClient.patch(
+    `/auth/reset-password?token=${token}`,
+    data
+  );
   return response.data;
 };
 

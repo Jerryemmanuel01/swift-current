@@ -1,4 +1,4 @@
-import DashboardTransactions from "../../../components/Dashboard/DashboardTransactions";
+import TransactionHistoryTable from "../../../components/Dashboard/TransactionHistoryTable";
 import TransactionTable from "../../../components/Dashboard/TransactionTable";
 
 const TransactionHistory = () => {
@@ -7,7 +7,7 @@ const TransactionHistory = () => {
       <h2 className="font-semibold text-lg font-inter text-dark">
         Transaction History
       </h2>
-      <TransactionTable />
+      <TransactionHistoryTable />
     </section>
   );
 };
