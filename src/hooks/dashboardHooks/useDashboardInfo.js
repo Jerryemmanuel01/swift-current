@@ -14,6 +14,12 @@ const useDashboardInfo = () => {
   useEffect(() => {
     dispatch(fetchUserInfo());
   }, [retry]);
+  
+  useEffect(() => {
+    if(isSuccess) dispatch(reset())
+  }, [isSuccess]);
+
+
 
   if (isError) toast.error(message);
 

@@ -23,7 +23,7 @@ const useFundingForm = () => {
     if (isSuccess) {
       toast.success(message);
       formik.resetForm();
-      navigate("/home");
+      // navigate("/home");
     }
     dispatch(reset());
     return;

@@ -5,10 +5,17 @@ import Footer from "./Footer";
 import { useState } from "react";
 import DesktopSidebar from "./DesktopSidebar";
 import WhatsappContact from "../../components/General/WhatsappContact";
+import useDashboardInfo from "../../hooks/dashboardHooks/useDashboardInfo";
+import Loader from "../../components/General/Loader";
+import DashboardFetchError from "../../components/Dashboard/DashboardFetchError";
 
 const DashbordLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [clicked, setClicked] = useState(null);
+
+  const { isLoading, user, isError, setRetry } = useDashboardInfo();
+  if (isLoading) return <Loader title="Getting User Information" />;
+  if (isError) return <DashboardFetchError setRetry={setRetry} />;
 
   return (
     <>

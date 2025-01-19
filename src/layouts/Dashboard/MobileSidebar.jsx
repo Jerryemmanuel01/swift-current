@@ -5,8 +5,10 @@ import { motion } from "framer-motion";
 import HomeAboutBg from "../../assets/Images/service6.jpg";
 import ProfileImg from "../../assets/Images/testimonyImg1.jpg";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
+    const { user } = useSelector((state) => state.user);
   const [headerFixed, setheaderFixed] = useState(false);
   const location = useLocation();
 
@@ -46,7 +48,7 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
       <motion.div
         className={`fixed w-[250px] md:hidden left-0 right-0 z-10 md:top-0 overflow-y-auto h-full bg-white border-r border-[#e7e5e5]`}
         initial={{ x: "-100%" }}
-        animate={{ x: isOpen ? "0%" : "-100%", y: headerFixed?  "-80px":"0"}}
+        animate={{ x: isOpen ? "0%" : "-100%", y: headerFixed ? "-80px" : "0" }}
       >
         <div className="">
           <div
@@ -56,18 +58,20 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
             <div className="bg-primary/60 flex flex-col justify-center items-center text-white h-20 mb-12 relative">
               <div className="absolute -translate-x-[50%] -translate-y-[50%] top-[100%] left-[50%] rounded-full w-20">
                 <img
-                  src={ProfileImg}
+                  src={user?.profileImage}
                   alt=""
-                  className="w-full rounded-full border-[6px] border-[#002f5b56]"
+                  className="w-20 h-20 object-cover rounded-full border-[6px] border-[#002f5b56]"
                 />
               </div>
             </div>
           </div>
           <div className="mb-6">
             <h2 className="font-merriweather text-center font-semibold text-primary">
-              Username
+              {user?.userName}
             </h2>
-            <h4 className="text-center text-gray text-sm">Savings</h4>
+            <h4 className="text-center text-gray text-sm">
+              {user?.accountType}
+            </h4>
           </div>
         </div>
         <ul className=" pr-2">
