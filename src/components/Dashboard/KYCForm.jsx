@@ -1,4 +1,4 @@
-import useKYCForm from "../../hooks/formHooks/useKYCForm";
+import useKYCForm from "../../hooks/dashboardHooks/useKYCForm";
 
 const KYCForm = () => {
   const { countryLists, formik, isLoading, IdMedium, message } = useKYCForm();

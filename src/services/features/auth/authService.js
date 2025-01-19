@@ -39,7 +39,6 @@ const verify_email = async (userData) => {
 
 const login = async (userData) => {
   const response = await axiosClient.post(`/auth/login`, userData);
-  console.log(response.data.result.data);
 
   if (response.data.result.data) {
     localStorage.setItem("SC_access_token", response.data.result.data);

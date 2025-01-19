@@ -38,7 +38,7 @@ const TransactionHistoryTable = () => {
                 <td className="px-4 py-2 whitespace-nowrap">{val.category}</td>
                 <td className="px-4 py-2 whitespace-nowrap">
                   <h2 className="">{val.date}</h2>
-                  <span className="text-gray text-[9.5px] md:text-xs">
+                  <span className="text-gray text-[9.5px]">
                     {val.time}
                   </span>
                 </td>

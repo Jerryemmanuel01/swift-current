@@ -12,6 +12,13 @@ const initialState = {
   user: user ? JSON.parse(user) : null,
 };
 
+export const fetchUserInfo = createAsyncThunkWithHandler(
+  "user/fetchUserInfo",
+  async () => {
+    return await userService.getUserProfile();
+  }
+);
+
 export const funding = createAsyncThunkWithHandler(
   "user/funding",
   async (data, _) => {
@@ -47,7 +54,24 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
 
-      .addCase(funding.pending, (state, _) => {
+      .addCase(fetchUserInfo.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchUserInfo.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.result.message;
+        state.user = action.payload.result.data
+      })
+      .addCase(fetchUserInfo.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload.message;
+        state.isSuccess = false;
+      })
+
+      .addCase(funding.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(funding.fulfilled, (state, action) => {

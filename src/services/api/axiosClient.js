@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseURL = "https://2fb1fgx8-5000.uks1.devtunnels.ms/v1";
+export const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const axiosClient = axios.create({
   baseURL,
@@ -11,7 +11,7 @@ const axiosClient = axios.create({
 
 // Simple interceptor to add authorization header if token exists
 axiosClient.interceptors.request.use((config) => {
-  const accessToken = localStorage.getItem("");
+  const accessToken = localStorage.getItem("SC_access_token");
   if (accessToken) {
     config.headers["Authorization"] = `Bearer ${accessToken}`;
   }

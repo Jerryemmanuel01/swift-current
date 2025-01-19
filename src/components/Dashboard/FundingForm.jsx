@@ -1,5 +1,5 @@
 import { Check, Copy, DollarSign, Hash } from "lucide-react";
-import useFundingForm from "../../hooks/formHooks/useFundingForm";
+import useFundingForm from "../../hooks/dashboardHooks/useFundingForm";
 import { IoIosInformation } from "react-icons/io";
 
 const FundingForm = () => {

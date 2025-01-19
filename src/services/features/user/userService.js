@@ -1,8 +1,16 @@
 import axiosClient from "../../api/axiosClient";
-import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { reset } from "./userSlice";
 import axios from "axios";
+
+const getUserProfile = async () => {
+  const response = await axiosClient.get(`/user/profile`);
+
+  localStorage.setItem(
+    "SC_user_info",
+    JSON.stringify(response.data.result.data)
+  );
+
+  return response.data;
+};
 
 const funding = async (userData) => {
   const response = await axiosClient.post(``);
@@ -30,6 +38,6 @@ const image_upload = async (photo) => {
   return response.data.url;
 };
 
-const userService = { funding, verify_KYC, image_upload };
+const userService = { funding, verify_KYC, image_upload, getUserProfile };
 
 export default userService;
