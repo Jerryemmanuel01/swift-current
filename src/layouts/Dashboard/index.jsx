@@ -13,7 +13,7 @@ const DashbordLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [clicked, setClicked] = useState(null);
 
-  const { isLoading, user, isError, setRetry } = useDashboardInfo();
+  const { isLoading, isError, setRetry } = useDashboardInfo();
   if (isLoading) return <Loader title="Getting User Information" />;
   if (isError) return <DashboardFetchError setRetry={setRetry} />;
 

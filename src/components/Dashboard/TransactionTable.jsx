@@ -20,7 +20,7 @@ const TransactionTable = () => {
             </tr>
           </thead>
           <tbody>
-            {transactionData.map((val, i) => (
+            {/* {transactionData.map((val, i) => (
               <tr className="even:bg-primary/5 text-xs md:text-sm " key={i}>
                 <td className="px-4 py-2 whitespace-nowrap">{i + 1}</td>
                 <td className="px-4 py-2 whitespace-nowrap">{val.ref}</td>
@@ -44,9 +44,10 @@ const TransactionTable = () => {
                   {val.status}
                 </td>
               </tr>
-            ))}
+            ))} */}
           </tbody>
         </table>
+            <div className="text-center w-full bg-primary/5 py-4 text-sm font-inter font-medium">No Transaction available</div>
       </div>
     </section>
   );

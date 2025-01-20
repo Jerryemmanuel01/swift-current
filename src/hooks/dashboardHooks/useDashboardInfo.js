@@ -10,16 +10,17 @@ const useDashboardInfo = () => {
   const { user, isLoading, isError, message, isSuccess } = useSelector(
     (state) => state.user
   );
-  
+
   useEffect(() => {
     dispatch(fetchUserInfo());
   }, [retry]);
-  
+
   useEffect(() => {
-    if(isSuccess) dispatch(reset())
+    if (isSuccess) {
+      toast.success(`Welcome ${user?.firstName}`);
+      dispatch(reset());
+    }
   }, [isSuccess]);
-
-
 
   if (isError) toast.error(message);
 
