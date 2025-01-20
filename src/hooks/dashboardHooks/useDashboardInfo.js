@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import { fetchUserInfo, reset } from "../../services/features/user/userSlice";
+import { fetchUserInfo, reset } from "../../services/features/userInfo/userInfoSlice";
 
 const useDashboardInfo = () => {
   const [retry, setRetry] = useState(false);
   const dispatch = useDispatch();
 
   const { user, isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.user
+    (state) => state.userInfo
   );
 
   useEffect(() => {

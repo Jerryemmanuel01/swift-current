@@ -12,10 +12,11 @@ const initialState = {
   user: user ? JSON.parse(user) : null,
 };
 
-export const fetchUserInfo = createAsyncThunkWithHandler(
-  "user/fetchUserInfo",
+
+export const resendEmail = createAsyncThunkWithHandler(
+  "user/resendEmail",
   async () => {
-    return await userService.getUserProfile();
+    return await userService.resendEmail();
   }
 );
 
@@ -54,17 +55,17 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
 
-      .addCase(fetchUserInfo.pending, (state) => {
+      .addCase(resendEmail.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchUserInfo.fulfilled, (state, action) => {
+      .addCase(resendEmail.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
         state.message = action.payload.result.message;
         state.user = action.payload.result.data
       })
-      .addCase(fetchUserInfo.rejected, (state, action) => {
+      .addCase(resendEmail.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload.message;

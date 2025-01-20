@@ -12,6 +12,12 @@ const getUserProfile = async () => {
   return response.data;
 };
 
+const resendEmail = async () => {
+  const response = await axiosClient.get(`/user/resend-email`);
+
+  return response.data;
+};
+
 const funding = async (userData) => {
   const response = await axiosClient.post(``);
 
@@ -38,6 +44,12 @@ const image_upload = async (photo) => {
   return response.data.url;
 };
 
-const userService = { funding, verify_KYC, image_upload, getUserProfile };
+const userService = {
+  funding,
+  verify_KYC,
+  image_upload,
+  getUserProfile,
+  resendEmail,
+};
 
 export default userService;
