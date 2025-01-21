@@ -1,6 +1,4 @@
-//restructure slice so it can runonce without altering with other requests
 import axiosClient from "../../api/axiosClient";
-import axios from "axios";
 
 const getUserProfile = async () => {
   const response = await axiosClient.get(`/user/profile`);

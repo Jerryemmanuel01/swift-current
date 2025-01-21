@@ -1,6 +1,6 @@
 import TransactionTable from "./TransactionTable";
 
-const DashboardTransactions = ({ user }) => {
+const DashboardTransactions = ({ transactions, user }) => {
   return (
     <>
       {user && (
@@ -8,7 +8,7 @@ const DashboardTransactions = ({ user }) => {
           <h2 className="font-semibold text-lg font-inter text-dark">
             Latest Transactions
           </h2>
-          <TransactionTable />
+          <TransactionTable transactions={transactions} />
         </section>
       )}
     </>

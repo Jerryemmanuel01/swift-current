@@ -16,7 +16,7 @@ const Dashboard = () => {
       <HeaderName title={"Dashboard"} />
       {!user.userInfo?.emailVerification && <ResendEmail user={user.userInfo} />}
       <DashboardInfo user={user.userInfo} />
-      <DashboardTransactions user={user.userInfo} />
+      <DashboardTransactions transactions={user.transactions} user={user.userInfo} />
     </section>
   );
 };
