@@ -99,7 +99,7 @@ const KYCForm = () => {
           htmlFor="photo"
           className="text-xs font-medium tracking-wide lg:text-sm"
         >
-          Profile Photo *
+          Identity Photo *
         </label>
         <div className="border-[#D0D5DD] text-gray border w-full mt-1 rounded-md">
           <input

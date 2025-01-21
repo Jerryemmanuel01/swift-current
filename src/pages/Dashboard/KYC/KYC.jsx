@@ -19,7 +19,7 @@ const KYC = () => {
           <p className="text-sm text-center">Thank you for choosing us.</p>
         </div> */}
         {/* KYC Form */}
-        {/* <div className="">
+        <div className="">
           <div className="div rounded-md w-full bg-[#00458549] p-3 text-primary text-xs">
             Please submit the required KYC information to verify your identity.
             Otherwise you will not be allowed to make withdrawal request within
@@ -51,8 +51,9 @@ const KYC = () => {
             </ul>
           </div>
           <KYCForm />
-        </div> */}
-        <div cla ssName="flex items-center justify-center flex-col">
+        </div>
+
+        {/* <div cla ssName="flex items-center justify-center flex-col">
           <h2 className="text-3xl font-bold font-inter text-center text-[#303539]">
             Verificaiton Pending
           </h2>
@@ -60,7 +61,7 @@ const KYC = () => {
             Your KYC information is being verify.
           </p>
           <p className="text-sm text-center">Thank you for choosing us.</p>
-        </div>
+        </div> */}
       </div>
     </section>
   );

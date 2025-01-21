@@ -31,6 +31,7 @@ import {
   Stock,
   Token,
   TransactionHistory,
+  VerifyEmail,
 } from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -52,24 +53,28 @@ function App() {
           element: <LandingLayout />,
           children: [
             {
-              path: "/home",
+              path: "home",
               element: <Home />,
             },
             {
-              path: "/contact",
+              path: "contact",
               element: <Contact />,
             },
             {
-              path: "/about",
+              path: "about",
               element: <About />,
             },
             {
-              path: "/faq",
+              path: "faq",
               element: <FAQ />,
             },
             {
-              path: "/services",
+              path: "services",
               element: <Services />,
+            },
+            {
+              path: "verify",
+              element: <VerifyEmail />,
             },
           ],
         },
@@ -148,6 +153,10 @@ function App() {
             {
               path: "loan",
               element: <Loan />,
+            },
+            {
+              path: "token",
+              element: <Token />,
             },
             {
               path: "KYC",

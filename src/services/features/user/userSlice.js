@@ -12,6 +12,12 @@ const initialState = {
   user: user ? JSON.parse(user) : null,
 };
 
+export const verifyEmail = createAsyncThunkWithHandler(
+  "user/verifyEmail",
+  async (data, _) => {
+    return await userService.verify_email(data);
+  }
+);
 
 export const resendEmail = createAsyncThunkWithHandler(
   "user/resendEmail",
@@ -50,10 +56,28 @@ const userSlice = createSlice({
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
+      state.user = user ? JSON.parse(user) : null;
     },
   },
   extraReducers: (builder) => {
     builder
+
+      // .addCase(fetchUserInfo.pending, (state) => {
+      //   state.isLoading = true;
+      // })
+      // .addCase(fetchUserInfo.fulfilled, (state, action) => {
+      //   state.isLoading = false;
+      //   state.isError = false;
+      //   state.isSuccess = true;
+      //   state.message = action.payload.result.message;
+      //   state.user = action.payload.result.data;
+      // })
+      // .addCase(fetchUserInfo.rejected, (state, action) => {
+      //   state.isLoading = false;
+      //   state.isError = true;
+      //   state.message = action.payload.message;
+      //   state.isSuccess = false;
+      // })
 
       .addCase(resendEmail.pending, (state) => {
         state.isLoading = true;
@@ -63,9 +87,26 @@ const userSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.message = action.payload.result.message;
-        state.user = action.payload.result.data
+        state.user = action.payload.result.data;
       })
       .addCase(resendEmail.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload.message;
+        state.isSuccess = false;
+      })
+
+      .addCase(verifyEmail.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(verifyEmail.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.result.message;
+        state.user = action.payload.result.data;
+      })
+      .addCase(verifyEmail.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload.message;
@@ -122,5 +163,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { reset } = userSlice.actions
+export const { reset } = userSlice.actions;
 export default userSlice.reducer;

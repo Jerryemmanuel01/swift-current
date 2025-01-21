@@ -1,10 +1,13 @@
 import React from "react";
 
-const DashboardFetchError = ({ setRetry }) => {
+const DashboardFetchError = ({
+  setRetry,
+  title = "Error fetching your details",
+}) => {
   return (
     <div className="w-full h-screen text-center flex items-center justify-center flex-col gap-3 ">
       <p className="text-xl font-semibold font-merriweather">
-        Error fetching your details
+        {title}
       </p>
       <button
         onClick={() => setRetry((prevState) => !prevState)}

@@ -53,7 +53,7 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
             <div className=" bg-primary/60 flex flex-col justify-center items-center text-white h-20 mb-12 relative">
               <div className="absolute -translate-x-[50%] -translate-y-[50%] top-[100%] left-[50%] rounded-full w-20">
                 <img
-                  src={user?.profileImage}
+                  src={user.userInfo?.profileImage}
                   alt=""
                   className="w-20 h-20 object-cover rounded-full border-[6px] border-[#002f5b56]"
                 />
@@ -62,10 +62,10 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
           </div>
           <div className="mb-6">
             <h2 className="font-merriweather text-center font-semibold text-lg text-primary">
-              {user?.userName}
+              {user.userInfo?.userName}
             </h2>
             <h4 className="text-center text-gray text-sm">
-              {user?.accountType}
+              {user.userInfo?.accountType}
             </h4>
           </div>
         </div>

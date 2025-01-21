@@ -17,6 +17,11 @@ const resendEmail = async () => {
 
   return response.data;
 };
+const verify_email = async (token) => {
+  const response = await axiosClient.get(`/auth/verify?token=${token}`);
+
+  return response.data;
+};
 
 const funding = async (userData) => {
   const response = await axiosClient.post(``);
@@ -50,6 +55,7 @@ const userService = {
   image_upload,
   getUserProfile,
   resendEmail,
+  verify_email,
 };
 
 export default userService;

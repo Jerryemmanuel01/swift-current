@@ -15,6 +15,7 @@ export const ResetPassword = lazy(()=>import("../pages/Auth/ResetPassword/ResetP
 
 // Dashboard routes
 export const Dashboard = lazy(()=>import("../pages/Dashboard/Dashborad/Dashboard"))
+export const VerifyEmail = lazy(()=>import("../pages/Dashboard/Verify/Verify"))
 export const Funding = lazy(()=>import("../pages/Dashboard/Funding/Funding"))
 export const KYC = lazy(()=>import("../pages/Dashboard/KYC/KYC"))
 export const InternalTransfer = lazy(()=>import("../pages/Dashboard/Transfer/InternalTransfer/InternalTransfer"))
