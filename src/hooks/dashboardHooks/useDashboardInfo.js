@@ -20,7 +20,7 @@ const useDashboardInfo = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success(`Welcome ${user?.firstName}`);
+      toast.success(`Welcome ${user.userInfo?.firstName}`);
       dispatch(reset());
     }
   }, [isSuccess]);
