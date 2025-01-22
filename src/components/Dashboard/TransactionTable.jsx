@@ -22,43 +22,49 @@ const TransactionTable = ({ transactions }) => {
           </thead>
           <tbody>
             {transactions.length &&
-              transactions.slice(0, 5).map((val, i) => {
-                const dateTime = val.createdAt;
-                const date = moment(dateTime).format("YYYY-MM-DD");
-                const time = moment(dateTime).format("HH:mm:ss");
+              transactions
+                .slice(0, 5)
+                .reverse()
+                .map((val, i) => {
+                  const dateTime = val.createdAt;
+                  const date = moment(dateTime).format("YYYY-MM-DD");
+                  const time = moment(dateTime).format("HH:mm:ss");
 
-                return (
-                  <tr className="even:bg-primary/5 text-xs md:text-sm " key={i}>
-                    <td className="px-4 py-2 whitespace-nowrap">{i + 1}</td>
-                    <td className="px-4 py-2 whitespace-nowrap">
-                      {val.id.substring(0, 10) + "..."}
-                    </td>
-                    <td className="px-4 py-2 whitespace-nowrap">
-                      {val.category}
-                    </td>
-                    <td className="px-4 py-2 whitespace-nowrap">
-                      <h2 className="">{date}</h2>
-                      <span className="text-gray text-[9.5px] md:text-xs">
-                        {time}
-                      </span>
-                    </td>
-                    <td className="px-4 py-2 whitespace-nowrap">
-                      {val.amount}
-                    </td>
-                    <td
-                      className={`px-4 py-2 whitespace-nowrap font-medium font-inter ${
-                        val.status === "Approved"
-                          ? "text-green-500"
-                          : val.status === "Pending"
-                          ? "text-yellow"
-                          : "text-red-500"
-                      }`}
+                  return (
+                    <tr
+                      className="even:bg-primary/5 text-xs md:text-sm "
+                      key={i}
                     >
-                      {val.status}
-                    </td>
-                  </tr>
-                );
-              })}
+                      <td className="px-4 py-2 whitespace-nowrap">{i + 1}</td>
+                      <td className="px-4 py-2 whitespace-nowrap">
+                        {val.id.substring(0, 10) + "..."}
+                      </td>
+                      <td className="px-4 py-2 whitespace-nowrap">
+                        {val.category}
+                      </td>
+                      <td className="px-4 py-2 whitespace-nowrap">
+                        <h2 className="">{date}</h2>
+                        <span className="text-gray text-[9.5px] md:text-xs">
+                          {time}
+                        </span>
+                      </td>
+                      <td className="px-4 py-2 whitespace-nowrap">
+                        {val.amount}
+                      </td>
+                      <td
+                        className={`px-4 py-2 whitespace-nowrap font-medium font-inter ${
+                          val.status === "Approved"
+                            ? "text-green-500"
+                            : val.status === "Pending"
+                            ? "text-yellow"
+                            : "text-red-500"
+                        }`}
+                      >
+                        {val.status}
+                      </td>
+                    </tr>
+                  );
+                })}
           </tbody>
         </table>
         {!transactions.length && (

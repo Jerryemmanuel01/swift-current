@@ -24,7 +24,11 @@ const verify_email = async (token) => {
 };
 
 const funding = async (userData) => {
-  const response = await axiosClient.post(``);
+  const response = await axiosClient.post(
+    `/user/transaction/deposit`,
+    userData
+  );
+  console.log(response.data);
 
   return response.data;
 };

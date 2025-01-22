@@ -45,15 +45,15 @@ const FundingForm = () => {
       <div className="md:flex gap-4 mt-4 items-center w-full">
         <div className="md:w-1/2">
           <label
-            htmlFor="network"
+            htmlFor="blockchainNetwork"
             className="font-medium tracking-wide text-sm"
           >
             Blockchain Network
           </label>
           <div className="border-[#D0D5DD] text-gray border w-full mt-0.5 flex items-center gap-2 rounded-md">
             <select
-              name="network"
-              id="network"
+              name="blockchainNetwork"
+              id="blockchainNetwork"
               className={`w-full px-3 h-10 text-sm font-medium outline-1 outline-primary/50 tracking-wide appearance-none`}
               aria-placeholder="Please select state"
               onChange={(e) => {
@@ -61,30 +61,30 @@ const FundingForm = () => {
                 const selectedNetwork = e.target.value;
                 const address = findAddressByNetwork(selectedNetwork);
                 findQRCodeByNetwork(selectedNetwork);
-                formik.setFieldValue("address", address);
+                formik.setFieldValue("walletAddress", address);
               }}
               onBlur={formik.handleBlur}
-              value={formik.values.network}
+              value={formik.values.blockchainNetwork}
             >
               <option value="" disabled>
                 Select Blockchain Network
               </option>
               {walletAddresses.map((val, i) => (
-                <option value={val.network} key={i}>
-                  {val.network}
+                <option value={val.blockchainNetwork} key={i}>
+                  {val.blockchainNetwork}
                 </option>
               ))}
             </select>
           </div>
-          {formik.touched.network && formik.errors.network ? (
+          {formik.touched.blockchainNetwork && formik.errors.blockchainNetwork ? (
             <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
-              {formik.errors.network}
+              {formik.errors.blockchainNetwork}
             </div>
           ) : null}
         </div>
         <div className="md:w-1/2 mt-4 md:mt-0">
           <label
-            htmlFor="address"
+            htmlFor="walletAddress"
             className="font-medium tracking-wide text-sm"
           >
             Wallet Address
@@ -92,11 +92,12 @@ const FundingForm = () => {
           <div className="border-[#D0D5DD] border w-full mt-0.5 flex items-center gap- rounded-md">
             <input
               type="text"
-              name="address"
-              id="address"
+              name="walletAddress"
+              id="walletAddress"
               disabled
               className={`w-full h-10 text-sm font-medium outline-none px-2 lg:px-4 appearance-none`}
-              value={formik.values.address}
+              value={formik.values.walletAddress}
+              onChange={formik.handleChange}
             />
             <button
               onClick={handleCopy}
@@ -110,9 +111,9 @@ const FundingForm = () => {
               )}
             </button>
           </div>
-          {formik.touched.address && formik.errors.address ? (
+          {formik.touched.walletAddress && formik.errors.walletAddress ? (
             <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
-              {formik.errors.address}
+              {formik.errors.walletAddress}
             </div>
           ) : null}
         </div>

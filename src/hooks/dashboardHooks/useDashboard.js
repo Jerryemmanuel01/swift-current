@@ -6,7 +6,7 @@ import {
   reset,
 } from "../../services/features/userInfo/userInfoSlice";
 
-const useDashboardInfo = () => {
+const useDashboard = () => {
   const [retry, setRetry] = useState(false);
   const dispatch = useDispatch();
 
@@ -20,14 +20,13 @@ const useDashboardInfo = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      // toast.success(`Welcome ${user.userInfo?.firstName}`);
       dispatch(reset());
     }
-  }, []);
+  }, [isSuccess]);
 
-  if (isError) toast.error(message);
+//   if (isError) toast.error(message);
 
   return { user, isLoading, setRetry, isError };
 };
 
-export default useDashboardInfo;
+export default useDashboard;

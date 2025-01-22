@@ -2,9 +2,9 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import { login, reset } from "../../services/features/auth/authSlice";
+import { funding, reset } from "../../services/features/user/userSlice";
 import { useNavigate } from "react-router-dom";
-import { fundingSchema, loginSchema } from "../../lib/schema";
+import { fundingSchema } from "../../lib/schema";
 import { walletAddresses } from "../../lib/utils";
 
 const useFundingForm = () => {
@@ -21,9 +21,9 @@ const useFundingForm = () => {
   useEffect(() => {
     if (isError) toast.error(message);
     if (isSuccess) {
-      toast.success(message);
+      toast.success("Transaction Processing... please wait");
       formik.resetForm();
-      // navigate("/home");
+      navigate("/dashboard");
     }
     dispatch(reset());
     return;
@@ -32,26 +32,35 @@ const useFundingForm = () => {
   const formik = useFormik({
     initialValues: {
       amount: "",
-      network: "",
-      address: "",
+      blockchainNetwork: "",
+      walletAddress: "",
       transactionId: "",
     },
     validationSchema: fundingSchema,
-    onSubmit: (values) => {
-      if (formik.values.network === "") {
+    onSubmit: ({
+      amount,
+      blockchainNetwork,
+      transactionId,
+      walletAddress,
+    } = values) => {
+      if (formik.values.blockchainNetwork === "") {
         toast.error("Blockchain Network is required");
-        return
+        return;
       }
-      console.log("Values: ", values);
-      navigate("/dashboard");
-      //    dispatch(login(values));
+      const metadata = {
+        blockchainNetwork,
+        walletAddress,
+        transactionId,
+      };
+      const userData = { amount, metadata };
+      dispatch(funding(userData));
     },
   });
 
   const handleCopy = () => {
-    if (formik.values.address) {
+    if (formik.values.walletAddress) {
       navigator.clipboard
-        .writeText(formik.values.address)
+        .writeText(formik.values.walletAddress)
         .then(() => {
           setCopied(true);
           toast.success("Wallet address copied");
@@ -65,13 +74,16 @@ const useFundingForm = () => {
     toast.error("Please select a blockchain network");
   };
 
-  const findAddressByNetwork = (network) => {
-    return walletAddresses.find((wallet) => wallet.network === network)
-      ?.address;
+  const findAddressByNetwork = (blockchainNetwork) => {
+    return walletAddresses.find(
+      (wallet) => wallet.blockchainNetwork === blockchainNetwork
+    )?.walletAddress;
   };
-  const findQRCodeByNetwork = (network) => {
+  const findQRCodeByNetwork = (blockchainNetwork) => {
     setQrCode(
-      walletAddresses.find((qrCode) => qrCode.network === network)?.qrCode
+      walletAddresses.find(
+        (qrCode) => qrCode.blockchainNetwork === blockchainNetwork
+      )?.qrCode
     );
   };
 

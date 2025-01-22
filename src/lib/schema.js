@@ -109,8 +109,8 @@ export const fundingSchema = Yup.object().shape({
   amount: Yup.string()
     .required("Amount is required")
     .matches(/^\d+(\.\d+)?$/, "Must be a valid number or decimal"),
-  network: Yup.string().notRequired(),
-  address: Yup.string().notRequired(),
+  blockchainNetwork: Yup.string().notRequired(),
+  walletAddress: Yup.string().notRequired(),
   transactionId: Yup.string().required("Transaction ID is required"),
 });
 

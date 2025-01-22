@@ -24,7 +24,7 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
   return (
     <section className="">
       <motion.div
-        className={`w-[250px] dashbboard-sidebar overflow-y-auto h-[90vh] backdrop-blur-3xl border-r border-[#e7e5e5]`}
+        className={`w-[250px] dashbboard-sidebar overflow-y-auto min-h-[90vh] backdrop-blur-3xl border-r border-[#e7e5e5]`}
         initial={{ x: "-100%" }}
         animate={{ x: "0%" }}
       >

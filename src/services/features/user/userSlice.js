@@ -87,7 +87,6 @@ const userSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.message = action.payload.result.message;
-        state.user = action.payload.result.data;
       })
       .addCase(resendEmail.rejected, (state, action) => {
         state.isLoading = false;
@@ -104,7 +103,6 @@ const userSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.message = action.payload.result.message;
-        state.user = action.payload.result.data;
       })
       .addCase(verifyEmail.rejected, (state, action) => {
         state.isLoading = false;
@@ -120,12 +118,12 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.message = action.payload.message;
+        state.message = action.payload.result.message;
       })
       .addCase(funding.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.message = action.payload;
+        state.message = action.payload.message;
         state.isSuccess = false;
       })
 

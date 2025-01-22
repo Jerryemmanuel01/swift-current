@@ -4,12 +4,13 @@ import DashboardTransactions from "../../../components/Dashboard/DashboardTransa
 import HeaderName from "../../../components/Dashboard/HeaderName";
 import ResendEmail from "../../../components/Dashboard/ResendEmail";
 import Loader from "../../../components/General/Loader";
+import useDashboard from "../../../hooks/dashboardHooks/useDashboard";
 
 const Dashboard = () => {
   const { user } = useSelector((state) => state.userInfo);
   const { isLoading } = useSelector((state) => state.user);
   if(isLoading) return <Loader />
-
+  const {} = useDashboard();
 
   return (
     <section className="px-6 w-full lg:w-full overflow-hidden">
