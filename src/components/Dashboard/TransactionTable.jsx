@@ -5,7 +5,7 @@ const TransactionTable = ({ transactions }) => {
       <div className="overflow-x-auto">
         <table className="min-w-full bg-[#f8f8f8] font-inter">
           <thead>
-            <tr className="bg-primary/10 text-sm md:text-base">
+            <tr className="bg-primary/10 text-sm">
               <th className=" px-4 py-4 text-left whitespace-nowrap">#</th>
               <th className=" px-4 py-4 text-left whitespace-nowrap">Ref</th>
               <th className=" px-4 py-4 text-left whitespace-nowrap">
@@ -21,8 +21,9 @@ const TransactionTable = ({ transactions }) => {
           <tbody>
             {transactions.length &&
               transactions
-                .slice(0, 5)
+                .slice()
                 .reverse()
+                .slice(0, 5)
                 .map((val, i) => {
                   const dateTime = val.createdAt;
                   const date = moment(dateTime).format("YYYY-MM-DD");
@@ -30,7 +31,7 @@ const TransactionTable = ({ transactions }) => {
 
                   return (
                     <tr
-                      className="even:bg-primary/5 text-xs md:text-sm "
+                      className="even:bg-primary/5 text-xs"
                       key={i}
                     >
                       <td className="px-4 py-2 whitespace-nowrap">{i + 1}</td>
@@ -42,12 +43,12 @@ const TransactionTable = ({ transactions }) => {
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
                         <h2 className="">{date}</h2>
-                        <span className="text-gray text-[9.5px] md:text-xs">
+                        <span className="text-gray text-[9.5px]">
                           {time}
                         </span>
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
-                        {val.amount}
+                        {val.amount.toLocaleString()}
                       </td>
                       <td
                         className={`px-4 py-2 whitespace-nowrap font-medium font-inter ${

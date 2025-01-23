@@ -22,7 +22,7 @@ const TransactionReceipt = () => {
           <ChevronLeft className="w-4 md:w-5" />
           <span className="text-sm md:text-base">Transaction Details</span>
         </button>
-        <div className="w-full border border-[#D0D5DD] shadow-custom rounded-xl mt-5">
+        <div className="w-full border border-[#D0D5DD] shadow-md rounded-xl mt-5">
           <div className="w-full flex flex-col justify-center items-center md:text-sm text-xs px-4 py-6 bg-slate-100">
             <img src={Logo} alt="" className="w-10 h-5" />
             <p className="mt-1 md:mt-3 font-medium font-inter">
@@ -48,7 +48,7 @@ const TransactionReceipt = () => {
               {transaction.status}
             </h4>
           </div>
-          <div className="flex flex-col justify-center items-center md:text-sm text-xs shadow-xl px-4 pb-6 pt-2 rounded-b-xl bg-slate-100">
+          <div className="flex flex-col justify-center items-center md:text-sm text-xs shadow-xl px-4 pb-4 rounded-b-xl bg-slate-100">
             <h2 className="font-merriweather font-semibold w-full">
               Transaction Details
             </h2>
@@ -96,7 +96,7 @@ const TransactionReceipt = () => {
                 {transaction.category}
               </p>
             </div>
-            <div className="border-b border-[#D0D5DD] py-2 mt-1 w-full flex justify-between items-center">
+            <div className="py-2 mt-1 w-full flex justify-between items-center">
               <p className="text-textGray">Description</p>
               <p className="text-textGrafy font-medium font-inter">
                 {transaction.description || "null"}

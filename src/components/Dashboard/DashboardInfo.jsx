@@ -35,7 +35,7 @@ const DashboardInfo = ({ user }) => {
                 <h2 className="font-poppins text">Balance</h2>
               </div>
               <h2 className="font-poppins tracking-wider">
-                ${user?.accountBalance}
+                ${user?.accountBalance.toLocaleString()}
               </h2>
             </div>
             <div className="text-[10px] lg:text-xs flex items-center justify-between gap-4">
@@ -66,7 +66,7 @@ const DashboardInfo = ({ user }) => {
                   <h3 className="text-sm font-inter font-medium ">Income</h3>
                 </div>
                 <h2 className="font-poppins text-sm tracking-wider font-medium mt-2 text-darker">
-                  ${user?.income}
+                  ${user?.income.toLocaleString()}
                 </h2>
               </div>
               <div className="px-6 py-5 sm:py-1 md:py-5 lg:py-2 flex flex-col justify-center shadow border border-borderColor bg-[#f8f8f8] rounded-lg hover:scale-[1.03] duration-300">
@@ -77,7 +77,7 @@ const DashboardInfo = ({ user }) => {
                   <h3 className="text-sm font-inter font-medium ">Expenses</h3>
                 </div>
                 <h2 className="font-poppins text-sm tracking-wider font-medium mt-2 text-darker">
-                  ${user?.expenses}
+                  ${user?.expenses.toLocaleString()}
                 </h2>
               </div>
             </div>
@@ -94,7 +94,7 @@ const DashboardInfo = ({ user }) => {
                   <h3 className="text-sm font-inter font-medium ">Loan</h3>
                 </div>
                 <h2 className="font-poppins text-sm tracking-wider font-medium text-darker">
-                  ${user?.loan}
+                  ${user?.loan.toLocaleString()}
                 </h2>
               </div>
             </div>
