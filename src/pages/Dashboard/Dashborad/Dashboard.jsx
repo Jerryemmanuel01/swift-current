@@ -15,9 +15,9 @@ const Dashboard = () => {
   return (
     <section className="px-6 w-full lg:w-full overflow-hidden">
       <HeaderName title={"Dashboard"} />
-      {!user.userInfo?.emailVerification && <ResendEmail user={user.userInfo} />}
-      <DashboardInfo user={user.userInfo} />
-      <DashboardTransactions transactions={user.transactions} user={user.userInfo} />
+      {!user?.userInfo?.emailVerification && <ResendEmail user={user?.userInfo} />}
+      <DashboardInfo user={user?.userInfo} />
+      <DashboardTransactions transactions={user?.transactions} user={user?.userInfo} />
     </section>
   );
 };

@@ -7,7 +7,7 @@ import ProfileImg from "../../assets/Images/testimonyImg1.jpg";
 import { useSelector } from "react-redux";
 
 const DesktopSidebar = ({ clicked, setClicked }) => {
-    const { user } = useSelector((state) => state.user);
+    const { user } = useSelector((state) => state.userInfo);
   const location = useLocation();
 
   const subMenuDrawer = {

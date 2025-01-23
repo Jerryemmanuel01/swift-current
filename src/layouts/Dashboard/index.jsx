@@ -13,39 +13,47 @@ const DashbordLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [clicked, setClicked] = useState(null);
 
-  const { isLoading, isError, setRetry } = useDashboardInfo();
+  const { user, isLoading, isError, setRetry } = useDashboardInfo();
   if (isLoading) return <Loader title="Getting User Information" />;
   if (isError) return <DashboardFetchError setRetry={setRetry} />;
 
   return (
     <>
-      <Header isOpen={isOpen} setIsOpen={setIsOpen} setClicked={setClicked} />
-      <div className="w-full flex">
-        <div className="md:hidden">
-          <MobileSidebar
+      {user && (
+        <>
+          <Header
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             setClicked={setClicked}
-            clicked={clicked}
           />
-        </div>
-        <div className="hidden md:block">
-          <DesktopSidebar
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-            setClicked={setClicked}
-            clicked={clicked}
-          />
-        </div>
-        <div className="overflow-hidden w-full">
-          <div className=" min-h-[85vh] w-full">
-            <ScrollRestoration />
-            <Outlet />
+          <div className="w-full flex">
+            <div className="md:hidden">
+              <MobileSidebar
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                setClicked={setClicked}
+                clicked={clicked}
+              />
+            </div>
+            <div className="hidden md:block">
+              <DesktopSidebar
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                setClicked={setClicked}
+                clicked={clicked}
+              />
+            </div>
+            <div className="overflow-hidden w-full">
+              <div className=" min-h-[85vh] w-full">
+                <ScrollRestoration />
+                <Outlet />
+              </div>
+              <Footer />
+            </div>
           </div>
-          <Footer />
-        </div>
-      </div>
-      <WhatsappContact />
+          <WhatsappContact />
+        </>
+      )}
     </>
   );
 };

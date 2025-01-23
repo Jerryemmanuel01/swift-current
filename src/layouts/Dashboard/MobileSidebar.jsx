@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.userInfo);
   const [headerFixed, setheaderFixed] = useState(false);
   const location = useLocation();
 
