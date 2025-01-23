@@ -1,7 +1,5 @@
 import moment from "moment";
 const TransactionTable = ({ transactions }) => {
-  console.log(transactions.length);
-
   return (
     <section className="py-4 ">
       <div className="overflow-x-auto">

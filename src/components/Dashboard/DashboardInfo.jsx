@@ -35,7 +35,7 @@ const DashboardInfo = ({ user }) => {
                 <h2 className="font-poppins text">Balance</h2>
               </div>
               <h2 className="font-poppins tracking-wider">
-                ${user.accountBalance}
+                ${user?.accountBalance}
               </h2>
             </div>
             <div className="text-[10px] lg:text-xs flex items-center justify-between gap-4">
