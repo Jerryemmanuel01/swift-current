@@ -31,6 +31,7 @@ import {
   Stock,
   Token,
   TransactionHistory,
+  Receipt,
   VerifyEmail,
 } from "./routes";
 import "slick-carousel/slick/slick.css";
@@ -149,6 +150,10 @@ function App() {
             {
               path: "transaction-history",
               element: <TransactionHistory />,
+            },
+            {
+              path: "receipt/:id",
+              element: <Receipt />,
             },
             {
               path: "loan",

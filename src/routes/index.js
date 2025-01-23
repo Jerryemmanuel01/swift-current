@@ -29,3 +29,4 @@ export const TransactionHistory = lazy(()=>import("../pages/Dashboard/Transactio
 export const Token = lazy(()=>import("../pages/Dashboard/Token/Token"))
 export const Loan = lazy(()=>import("../pages/Dashboard/Loan/Loan"))
 export const Settings = lazy(()=>import("../pages/Dashboard/Settings/Settings"))
+export const Receipt = lazy(()=>import("../components/Dashboard/TransactionReceipt"))

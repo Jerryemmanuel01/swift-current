@@ -1,4 +1,5 @@
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 const TransactionHistoryTable = ({ transactions }) => {
   return (
@@ -76,9 +77,9 @@ const TransactionHistoryTable = ({ transactions }) => {
                         {val.status}
                       </td>
                       <td className="px-4 whitespace-nowrap">
-                        <button className="bg-primary/80 py-2 px-3 rounded-md text-white">
+                        <Link to={`/dashboard/receipt/${val.id}`} className="bg-primary/80 py-2 px-3 rounded-md text-white">
                           View Receipt
-                        </button>
+                        </Link>
                       </td>
                     </tr>
                   );

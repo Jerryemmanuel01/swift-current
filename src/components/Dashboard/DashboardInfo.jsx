@@ -47,7 +47,7 @@ const DashboardInfo = ({ user }) => {
                 </span>
               </h2>
               <Link
-                to="/dashboard/transactions"
+                to="/dashboard/transaction-history"
                 className="font-poppins tracking-wider hover:scale-[1.03] duration-300  flex items-center "
               >
                 Transaction Histroy <ChevronRight className="w-3.5" />
