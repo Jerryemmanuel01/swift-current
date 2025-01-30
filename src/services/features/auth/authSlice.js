@@ -2,7 +2,7 @@ import { createAsyncThunkWithHandler } from "../../api/apiHandler";
 import { createSlice } from "@reduxjs/toolkit";
 import authService from "./authService";
 
-const token = localStorage.getItem("");
+const token = localStorage.getItem("SC_access_token");
 
 const initialState = {
   isLoading: false,
@@ -19,12 +19,9 @@ export const signUp = createAsyncThunkWithHandler(
   }
 );
 
-export const verifyEmail = createAsyncThunkWithHandler(
-  "auth/verifyEmail",
-  async (data, _) => {
-    return await authService.verify_email(data);
-  }
-);
+export const logout = createAsyncThunkWithHandler("auth/logout", async () => {
+  return authService.logout();
+});
 
 export const login = createAsyncThunkWithHandler(
   "auth/login",
@@ -77,17 +74,17 @@ const authSlice = createSlice({
         state.isSuccess = false;
       })
 
-      //verifyEmail case
-      .addCase(verifyEmail.pending, (state) => {
+      //logout case
+      .addCase(logout.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(verifyEmail.fulfilled, (state, action) => {
+      .addCase(logout.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.message = action.payload.message;
+        state.message = action.payload?.message || "Logout Successful";
       })
-      .addCase(verifyEmail.rejected, (state, action) => {
+      .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -103,6 +100,7 @@ const authSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.message = action.payload.result.message;
+        state.token = action.payload.result.data;
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;

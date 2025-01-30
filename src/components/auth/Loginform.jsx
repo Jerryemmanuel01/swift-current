@@ -94,11 +94,11 @@ const Loginform = () => {
           {isLoading ? "Please wait..." : "Login"}
         </button>
       </div>
-      {message && (
+      {/* {message && (
         <p className="text-sm text-[#B3261E] tracking-wide text-center mt-6">
           {message}
         </p>
-      )}
+      )} */}
 
       <div className="text-xs lg:text-sm flex items-center mt-3 gap-1 w-full justify-center">
         <span className="">Don't have an account?</span>

@@ -1,14 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
 import { sidebarLinks } from "../../lib/links";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, LogOut } from "lucide-react";
 import { motion } from "framer-motion";
 import HomeAboutBg from "../../assets/Images/service6.jpg";
-import ProfileImg from "../../assets/Images/testimonyImg1.jpg";
 import { useSelector } from "react-redux";
+import useLogout from "../../hooks/dashboardHooks/useLogout";
 
 const DesktopSidebar = ({ clicked, setClicked }) => {
-    const { user } = useSelector((state) => state.userInfo);
+  const { user } = useSelector((state) => state.userInfo);
   const location = useLocation();
+  const { logoutBtn } = useLogout();
 
   const subMenuDrawer = {
     enter: {
@@ -22,7 +23,7 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
   };
 
   return (
-    <section className="">
+    <section className="mb-6">
       <motion.div
         className={`w-[250px] dashbboard-sidebar overflow-y-auto min-h-[90vh] backdrop-blur-3xl border-r border-[#e7e5e5]`}
         initial={{ x: "-100%" }}
@@ -138,6 +139,13 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
               </div>
             );
           })}
+
+          <button
+            onClick={logoutBtn}
+            className="flex gap-3 items-center text-sm md:text-base px-6 outline-none mt-10 hover:text-primary duration-300"
+          >
+            <LogOut className="md:w-4 w-3.5" /> Logout
+          </button>
         </ul>
       </motion.div>
     </section>

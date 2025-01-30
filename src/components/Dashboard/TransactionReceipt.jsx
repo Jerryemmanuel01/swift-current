@@ -22,8 +22,8 @@ const TransactionReceipt = () => {
           <ChevronLeft className="w-4 md:w-5" />
           <span className="text-sm md:text-base">Transaction Details</span>
         </button>
-        <div className="w-full border border-[#D0D5DD] shadow-md rounded-xl mt-5">
-          <div className="w-full flex flex-col justify-center items-center md:text-sm text-xs px-4 py-6 bg-slate-100">
+        <div className="w-full border border-[#D0D5DD] shadow-md rounded-xl mt-5 bg-slate-100">
+          <div className="w-full flex flex-col justify-center rounded-xl items-center md:text-sm text-xs px-4 py-6">
             <img src={Logo} alt="" className="w-10 h-5" />
             <p className="mt-1 md:mt-3 font-medium font-inter">
               {transaction.type} from {transaction.name.toUpperCase()}
@@ -48,7 +48,7 @@ const TransactionReceipt = () => {
               {transaction.status}
             </h4>
           </div>
-          <div className="flex flex-col justify-center items-center md:text-sm text-xs shadow-xl px-4 pb-4 rounded-b-xl bg-slate-100">
+          <div className="flex flex-col justify-center items-center rounded-xl md:text-sm text-xs shadow-xl px-4 pb-4">
             <h2 className="font-merriweather font-semibold w-full">
               Transaction Details
             </h2>

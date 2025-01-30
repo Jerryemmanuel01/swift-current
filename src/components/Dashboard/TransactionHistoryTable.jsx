@@ -35,7 +35,6 @@ const TransactionHistoryTable = ({ transactions }) => {
               transactions
                 .slice()
                 .reverse()
-                .slice(0, 5)
                 .map((val, i) => {
                   const dateTime = val.createdAt;
                   const date = moment(dateTime).format("YYYY-MM-DD");

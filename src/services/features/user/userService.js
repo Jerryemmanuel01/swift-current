@@ -1,17 +1,6 @@
 import axiosClient from "../../api/axiosClient";
 import axios from "axios";
 
-const getUserProfile = async () => {
-  const response = await axiosClient.get(`/user/profile`);
-
-  localStorage.setItem(
-    "SC_user_info",
-    JSON.stringify(response.data.result.data)
-  );
-
-  return response.data;
-};
-
 const resendEmail = async () => {
   const response = await axiosClient.get(`/user/resend-email`);
 
@@ -57,7 +46,6 @@ const userService = {
   funding,
   verify_KYC,
   image_upload,
-  getUserProfile,
   resendEmail,
   verify_email,
 };

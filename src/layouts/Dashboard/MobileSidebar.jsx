@@ -1,15 +1,18 @@
 import { Link, useLocation } from "react-router-dom";
 import { sidebarLinks } from "../../lib/links";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, LogOut } from "lucide-react";
 import { motion } from "framer-motion";
 import HomeAboutBg from "../../assets/Images/service6.jpg";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import useLogout from "../../hooks/dashboardHooks/useLogout";
 
 const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
   const { user } = useSelector((state) => state.userInfo);
   const [headerFixed, setheaderFixed] = useState(false);
   const location = useLocation();
+    const { logoutBtn } = useLogout();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -144,6 +147,13 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
               </div>
             );
           })}
+
+          <button
+            onClick={logoutBtn}
+            className="flex gap-3 items-center text-sm md:text-base px-6 outline-none mt-10 hover:text-primary duration-300"
+          >
+            <LogOut className="md:w-4 w-3.5" /> Logout
+          </button>
         </ul>
       </motion.div>
     </section>

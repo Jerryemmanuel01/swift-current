@@ -24,18 +24,6 @@ const sign_up = async (userData) => {
   return response.data;
 };
 
-const verify_email = async (userData) => {
-  const userId = localStorage.getItem("userId");
-  if (userId !== null) {
-    const response = await axiosClient.post(`/auth/verify/${userId}`, userData);
-
-    if (response.data.success === true) localStorage.removeItem("userId");
-
-    return response.data;
-  }
-  return;
-};
-
 const login = async (userData) => {
   const response = await axiosClient.post(`/auth/login`, userData);
 
@@ -66,12 +54,22 @@ const reset_password = async ({
   return response.data;
 };
 
+const logout = async () => {
+  const accessToken = localStorage.getItem("SC_access_token");
+  if (accessToken) {
+    localStorage.removeItem("SC_access_token");
+    localStorage.removeItem("SC_user_info");
+  }
+
+  return { message: "Logout successful" };
+};
+
 const authService = {
   sign_up,
-  verify_email,
   login,
   forget_password,
   reset_password,
+  logout,
 };
 
 export default authService;

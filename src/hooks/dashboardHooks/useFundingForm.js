@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import { funding, reset } from "../../services/features/user/userSlice";
+import { funding, reset } from "../../services/features/funding/fundingSlice";
 import { useNavigate } from "react-router-dom";
 import { fundingSchema } from "../../lib/schema";
 import { walletAddresses } from "../../lib/utils";
@@ -15,7 +15,7 @@ const useFundingForm = () => {
   const dispatch = useDispatch();
 
   const { isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.user
+    (state) => state.funding
   );
 
   useEffect(() => {
