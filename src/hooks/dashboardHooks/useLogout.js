@@ -21,7 +21,7 @@ const useLogout = () => {
       navigate("/auth/login", { replace: true });
       dispatch(reset());
     }
-  }, [isSuccess, dispatch]);
+  }, [isSuccess]);
 
   return { logoutBtn };
 };
