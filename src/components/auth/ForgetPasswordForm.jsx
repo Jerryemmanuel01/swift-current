@@ -2,6 +2,7 @@ import React from "react";
 import useForgetPasswordForm from "../../hooks/formHooks/useForgetPasswordForm";
 import { LockKeyhole, UserRound } from "lucide-react";
 import { Link } from "react-router-dom";
+import { PiSpinner } from "react-icons/pi";
 
 const ForgetPasswordForm = () => {
   const { formik, isLoading, message } = useForgetPasswordForm();
@@ -43,10 +44,17 @@ const ForgetPasswordForm = () => {
               : "bg-primary"
           } w-full lg:w-[385px]  text-white rounded-lg h-10 lg:h-14 px-6 mt-8 lg:mt- text-xs lg:text-base lg:font-semibold outline-none`}
         >
-          {isLoading ? "Please wait..." : "Reset"}
+          {isLoading ? (
+            <span className="flex items-center justify-center gap-2">
+              <PiSpinner className="text-base animate-spin" />
+              Please wait...
+            </span>
+          ) : (
+            "Reset"
+          )}
         </button>
       </div>
-       
+
       <div className="text-xs lg:text-sm flex items-center mt-4 gap-1 w-full justify-center">
         <span className="">Already have an account?</span>
         <Link to="/auth/login" className="text-lighter">

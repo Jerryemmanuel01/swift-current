@@ -3,7 +3,7 @@ import FundingForm from "../../../components/Dashboard/FundingForm";
 import Loader from "../../../components/General/Loader"
 
 const Funding = () => {
-  const { isLoading } = useSelector((state) => state.user);
+  const { isLoading } = useSelector((state) => state.funding);
   if(isLoading) return <Loader />
   return (
     <section className="px-6 mb-8 w-full md:max-w-[670px] mx-auto">

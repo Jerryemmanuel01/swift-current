@@ -1,5 +1,6 @@
 import React from "react";
 import useResetPasswordForm from "../../hooks/formHooks/useResetPasswordForm";
+import { PiSpinner } from "react-icons/pi";
 
 const ResetPasswordForm = () => {
   const { formik, isLoading, message } = useResetPasswordForm();
