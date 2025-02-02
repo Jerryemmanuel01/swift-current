@@ -66,7 +66,14 @@ const ResetPasswordForm = () => {
               : "bg-primary"
           } w-full  text-white rounded-lg h-10 px-6 mt-8 text-xs lg:text-sm lg:font-semibold outline-none`}
         >
-          {isLoading ? "Please wait..." : "Update Password"}
+          {isLoading ? (
+            <span className="flex items-center justify-center gap-2">
+              <PiSpinner className="text-base animate-spin" />
+              Please wait...
+            </span>
+          ) : (
+            "Update Password"
+          )}
         </button>
       </div>
 

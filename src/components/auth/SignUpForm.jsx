@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useSignUpForm from "../../hooks/formHooks/useSignUpForm";
+import { PiSpinner } from "react-icons/pi";
 
 const SignUpForm = () => {
   const {
@@ -299,6 +300,7 @@ const SignUpForm = () => {
             name="profileImage"
             id="profileImage"
             placeholder="Select photo *"
+            accept="image/*"
             className={`w-full text-xs leading-6 lg:text-sm lg:leading-8 font-medium outline-none tracking-wide`}
             onChange={(e) => {
               formik.setFieldValue("profileImage", e.target.files[0]);
@@ -341,7 +343,14 @@ const SignUpForm = () => {
               : "bg-primary"
           } w-full  text-white rounded-lg h-10 px-6 mt-8 text-xs lg:text-sm lg:font-semibold outline-none`}
         >
-          {isLoading ? "Please wait..." : "Sign Up"}
+          {isLoading ? (
+            <span className="flex items-center justify-center gap-2">
+              <PiSpinner className="text-base animate-spin" />
+              Please wait...
+            </span>
+          ) : (
+            "Sign Up"
+          )}
         </button>
       </div>
 

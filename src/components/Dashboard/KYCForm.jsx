@@ -141,12 +141,6 @@ const KYCForm = () => {
           )}
         </button>
       </div>
-
-      {message && (
-        <p className="text-sm text-[#B3261E] tracking-wide text-center mt-6">
-          {message || message.error || "error"}
-        </p>
-      )}
     </form>
   );
 };

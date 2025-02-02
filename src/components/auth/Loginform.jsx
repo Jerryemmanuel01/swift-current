@@ -91,7 +91,14 @@ const Loginform = () => {
               : "bg-primary"
           } w-full lg:w-[385px]  text-white rounded-lg h-10 lg:h-14 px-6 mt-8 lg:mt- text-xs lg:text-base lg:font-semibold outline-none`}
         >
-          {isLoading ? "Please wait..." : "Login"}
+          {isLoading ? (
+            <span className="flex items-center justify-center gap-2">
+              <PiSpinner className="text-base animate-spin" />
+              Please wait...
+            </span>
+          ) : (
+            "Login"
+          )}
         </button>
       </div>
       {/* {message && (
@@ -102,7 +109,9 @@ const Loginform = () => {
 
       <div className="text-xs lg:text-sm flex items-center mt-3 gap-1 w-full justify-center">
         <span className="">Don't have an account?</span>
-        <Link to="/auth/sign-up" className="text-lighter">Sign Up</Link>
+        <Link to="/auth/sign-up" className="text-lighter">
+          Sign Up
+        </Link>
       </div>
     </form>
   );

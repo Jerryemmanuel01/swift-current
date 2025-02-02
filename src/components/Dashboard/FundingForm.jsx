@@ -76,7 +76,8 @@ const FundingForm = () => {
               ))}
             </select>
           </div>
-          {formik.touched.blockchainNetwork && formik.errors.blockchainNetwork ? (
+          {formik.touched.blockchainNetwork &&
+          formik.errors.blockchainNetwork ? (
             <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
               {formik.errors.blockchainNetwork}
             </div>
@@ -158,13 +159,19 @@ const FundingForm = () => {
           type="submit"
           disabled={isLoading}
           className={`${
-            ""
-              ? // !formik.dirty || !formik.isValid || isLoading
-                "bg-[#D0D5DD]"
+            !formik.dirty || !formik.isValid || isLoading
+              ? "bg-[#D0D5DD]"
               : "bg-primary"
           } w-full  text-white rounded-lg h-10 lg:h-12 px-6 mt-8 text-sm lg:text-base font-inter font-medium outline-none`}
         >
-          {/* {isLoading ? "Please wait..." : "Login"} */}Deposit
+          {isLoading ? (
+            <span className="flex items-center justify-center gap-2">
+              <PiSpinner className="text-base animate-spin" />
+              Please wait...
+            </span>
+          ) : (
+            "Deposit"
+          )}
         </button>
       </div>
 

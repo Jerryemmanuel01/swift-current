@@ -46,11 +46,7 @@ const ForgetPasswordForm = () => {
           {isLoading ? "Please wait..." : "Reset"}
         </button>
       </div>
-      {message && (
-        <p className="text-sm text-[#B3261E] tracking-wide text-center mt-6">
-          {message}
-        </p>
-      )}
+       
       <div className="text-xs lg:text-sm flex items-center mt-4 gap-1 w-full justify-center">
         <span className="">Already have an account?</span>
         <Link to="/auth/login" className="text-lighter">

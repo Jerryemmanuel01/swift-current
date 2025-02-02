@@ -31,7 +31,7 @@ const TransactionHistoryTable = ({ transactions }) => {
             </tr>
           </thead>
           <tbody>
-            {transactions.length &&
+            {transactions.length ?
               transactions
                 .slice()
                 .reverse()
@@ -86,7 +86,7 @@ const TransactionHistoryTable = ({ transactions }) => {
                       </td>
                     </tr>
                   );
-                })}
+                }):""}
           </tbody>
         </table>
         {!transactions.length && (
