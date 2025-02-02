@@ -39,7 +39,7 @@ import "slick-carousel/slick/slick-theme.css";
 import DashbordLayout from "./layouts/Dashboard";
 
 function App() {
-const token = localStorage.getItem("SC_access_token");
+  const token = localStorage.getItem("SC_access_token");
 
   return (
     <RouterProvider
@@ -82,7 +82,7 @@ const token = localStorage.getItem("SC_access_token");
         // Auth routes
         {
           path: "auth",
-          element: <AuthLayout />,
+          element: token ? <Navigate to="/dashboard" /> : <AuthLayout />,
           children: [
             {
               path: "sign-up",
