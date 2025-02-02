@@ -6,6 +6,7 @@ import { funding, reset } from "../../services/features/funding/fundingSlice";
 import { useNavigate } from "react-router-dom";
 import { fundingSchema } from "../../lib/schema";
 import { walletAddresses } from "../../lib/utils";
+import { fetchUserInfo } from "../../services/features/userInfo/userInfoSlice";
 
 const useFundingForm = () => {
   const [copied, setCopied] = useState(false);
@@ -23,6 +24,7 @@ const useFundingForm = () => {
     if (isSuccess) {
       toast.success("Transaction Processing... please wait");
       formik.resetForm();
+      dispatch(fetchUserInfo());
       navigate("/dashboard");
     }
     dispatch(reset());

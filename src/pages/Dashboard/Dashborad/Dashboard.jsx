@@ -10,7 +10,7 @@ const Dashboard = () => {
   const { user } = useSelector((state) => state.userInfo);
   const { isLoading } = useSelector((state) => state.user);
   if(isLoading) return <Loader />
-  const {} = useDashboard();
+  // const {} = useDashboard();
 
   return (
     <section className="px-6 w-full lg:w-full overflow-hidden">

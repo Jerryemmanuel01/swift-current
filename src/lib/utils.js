@@ -380,6 +380,6 @@ export const walletAddresses = [
 
 export const IdMedium = [
   { medium: "Driver's Licence", value: "Driver's licence" },
-  { medium: "International Passport", value: "Passport" },
-  { medium: "National ID Card", value: "Id Caord" },
+  { medium: "International Passport", value: "International Passport" },
+  { medium: "National ID Card", value: "National Id Caord" },
 ];

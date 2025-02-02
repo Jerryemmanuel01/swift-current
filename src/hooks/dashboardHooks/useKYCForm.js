@@ -2,11 +2,8 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import {
-  verifyKYC,
-  imageUpload,
-  reset,
-} from "../../services/features/user/userSlice";
+import { verifyKYC, reset } from "../../services/features/KYC/KYCSlice";
+import { fetchUserInfo } from "../../services/features/userInfo/userInfoSlice";
 import { useNavigate } from "react-router-dom";
 import { KYCSchema } from "../../lib/schema";
 import countryLists from "../../lib/countries.json";
@@ -17,7 +14,7 @@ const useKYCForm = () => {
   const dispatch = useDispatch();
 
   const { isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.user
+    (state) => state.kyc
   );
 
   useEffect(() => {
@@ -25,7 +22,8 @@ const useKYCForm = () => {
     if (isSuccess) {
       toast.success(message);
       formik.resetForm();
-      // navigate("/home");
+      dispatch(fetchUserInfo());
+      navigate("/dashboard");
     }
     dispatch(reset());
     return;
@@ -33,22 +31,16 @@ const useKYCForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      country: "",
-      medium: "",
-      number: "",
-      photo: null,
+      issuingCountry: "",
+      identityMedium: "",
+      identityNumber: "",
+      identityCardPhoto: null,
     },
     validationSchema: KYCSchema,
-    onSubmit: async ({ country, medium, number, photo } = values) => {
-      const profileUrl = await dispatch(imageUpload(photo));
-     
-      if (profileUrl.type === "user/imageUpload/fulfilled") {
-        const photourl = profileUrl.payload;
-        const userData = { country, medium, number, photourl };
-        console.log("Values: ", userData);
+    onSubmit: async (values) => {
+      console.log(values);
 
-        //  dispatch(verifyKYC(values));
-      }
+      dispatch(verifyKYC(values));
     },
   });
 

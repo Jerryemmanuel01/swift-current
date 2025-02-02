@@ -115,12 +115,12 @@ export const fundingSchema = Yup.object().shape({
 });
 
 export const KYCSchema = Yup.object().shape({
-  country: Yup.string().required("Country is required"),
-  medium: Yup.string().required("Id medium is required"),
-  number: Yup.string()
+  issuingCountry: Yup.string().required("Country is required"),
+  identityMedium: Yup.string().required("Id medium is required"),
+  identityNumber: Yup.string()
     .required("Id Number is required")
     .matches(/^\d+$/, "Must be a valid number"),
-  photo: Yup.mixed()
+  identityCardPhoto: Yup.mixed()
     .required("A photo is required")
     .test("fileSize", "File size is too large (max 5MB)", (value) => {
       return value ? value.size <= 5 * 1024 * 1024 : true;

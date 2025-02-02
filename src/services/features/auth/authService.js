@@ -2,7 +2,6 @@ import axiosClient from "../../api/axiosClient";
 import axios from "axios";
 
 const sign_up = async (userData) => {
-  console.log("authSlice: ", userData);
   const { profileImage, ...rest } = userData;
   const data = new FormData();
   data.append("file", profileImage);
