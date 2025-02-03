@@ -1,8 +1,10 @@
 import { PiSpinner } from "react-icons/pi";
+import useInternalTransfer from "../../../hooks/dashboardHooks/transferHooks/useInternalTransfer";
 
 const InternalTransferForm = () => {
+  const { formik, isLoading } = useInternalTransfer();
   return (
-    <form className="">
+    <form className="font-inter" onSubmit={formik.handleSubmit}>
       <div className="">
         <label htmlFor="bankName" className="font-medium tracking-wide text-xs">
           Bank Name
@@ -14,18 +16,17 @@ const InternalTransferForm = () => {
             id="bankName"
             disabled
             placeholder="Bank Name"
-            value="Swiftcurrent"
             className={`w-full h-10 bg-textGray/5 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
-            // onChange={formik.handleChange}
-            // onBlur={formik.handleBlur}
-            // value={formik.values.bankName}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.bankName}
           />
         </div>
-        {/* {formik.touched.bankName && formik.errors.bankName ? (
-          <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
+        {formik.touched.bankName && formik.errors.bankName ? (
+          <div className="text-red-500 text-[10px] font-semibold">
             {formik.errors.bankName}
           </div>
-        ) : null} */}
+        ) : null}
       </div>
       <div className="md:flex gap-4 mt-4 items-center w-full">
         <div className="md:w-1/2">
@@ -41,16 +42,17 @@ const InternalTransferForm = () => {
               name="recipientAccountNumber"
               id="recipientAccountNumber"
               className={`w-full h-10 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
-              // onChange={formik.handleChange}
-              // onBlur={formik.handleBlur}
-              // value={formik.values.recipientAccountNumber}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.recipientAccountNumber}
             />
           </div>
-          {/* {formik.touched.recipientAccountNumber && formik.errors.recipientAccountNumber ? (
-          <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
-            {formik.errors.recipientAccountNumber}
-          </div>
-        ) : null} */}
+          {formik.touched.recipientAccountNumber &&
+          formik.errors.recipientAccountNumber ? (
+            <div className="text-red-500 text-[10px] font-semibold">
+              {formik.errors.recipientAccountNumber}
+            </div>
+          ) : null}
         </div>
         <div className="md:w-1/2 mt-4 md:mt-0">
           <label
@@ -66,23 +68,20 @@ const InternalTransferForm = () => {
               id="recipientName"
               disabled
               className={`w-full h-10 bg-textGray/5 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
-              // onChange={formik.handleChange}
-              // onBlur={formik.handleBlur}
-              // value={formik.values.recipientName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.recipientName}
             />
           </div>
-          {/* {formik.touched.recipientName && formik.errors.recipientName ? (
-          <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
-            {formik.errors.recipientName}
-          </div>
-        ) : null} */}
+          {formik.touched.recipientName && formik.errors.recipientName ? (
+            <div className="text-red-500 text-[10px] font-semibold">
+              {formik.errors.recipientName}
+            </div>
+          ) : null}
         </div>
       </div>
       <div className="mt-4">
-        <label
-          htmlFor="amount"
-          className="font-medium tracking-wide text-xs"
-        >
+        <label htmlFor="amount" className="font-medium tracking-wide text-xs">
           Amount
         </label>
         <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
@@ -91,16 +90,16 @@ const InternalTransferForm = () => {
             name="amount"
             id="amount"
             className={`w-full h-10 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
-            // onChange={formik.handleChange}
-            // onBlur={formik.handleBlur}
-            // value={formik.values.amount}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.amount}
           />
         </div>
-        {/* {formik.touched.amount && formik.errors.amount ? (
-          <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
+        {formik.touched.amount && formik.errors.amount ? (
+          <div className="text-red-500 text-[10px] font-semibold">
             {formik.errors.amount}
           </div>
-        ) : null} */}
+        ) : null}
       </div>
       <div className="mt-4">
         <label
@@ -115,16 +114,16 @@ const InternalTransferForm = () => {
             name="description"
             id="description"
             className={`w-full h-10 text-xs font-medium fund-description outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
-            // onChange={formik.handleChange}
-            // onBlur={formik.handleBlur}
-            // value={formik.values.description}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.description}
           />
         </div>
-        {/* {formik.touched.description && formik.errors.description ? (
-          <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
+        {formik.touched.description && formik.errors.description ? (
+          <div className="text-red-500 text-[10px] font-semibold">
             {formik.errors.description}
           </div>
-        ) : null} */}
+        ) : null}
       </div>
       <div className="mt-4">
         <label
@@ -139,40 +138,39 @@ const InternalTransferForm = () => {
             name="transactionPin"
             id="transactionPin"
             className={`w-full h-10 text-xs font-medium fund-transactionPin outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
-            // onChange={formik.handleChange}
-            // onBlur={formik.handleBlur}
-            // value={formik.values.transactionPin}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.transactionPin}
           />
         </div>
-        {/* {formik.touched.transactionPin && formik.errors.transactionPin ? (
-          <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
+        {formik.touched.transactionPin && formik.errors.transactionPin ? (
+          <div className="text-red-500 text-[10px] font-semibold">
             {formik.errors.transactionPin}
           </div>
-        ) : null} */}
-
-        <div className="flex items-center justify-center">
-                <button
-                  type="submit"
-                //   disabled={isLoading}
-                  className={`${""
-                    // !formik.dirty || !formik.isValid || isLoading
-                      ? "bg-[#D0D5DD]"
-                      : "bg-primary"
-                  } w-full  text-white rounded-lg h-10 px-6 mt-8 text-xs lg:text-sm lg:font-semibold outline-none`}
-                >
-                  {/* {isLoading ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <PiSpinner className="text-base animate-spin"/>
-                      Please wait...
-                    </span>
-                  ) : (
-                    "Send"
-                  )} */}Send
-                </button>
-              </div>
+        ) : null}
+      </div>
+      <div className="flex items-center justify-center">
+        <button
+          type="submit"
+          disabled={isLoading}
+          className={`${
+            !formik.dirty || !formik.isValid || isLoading
+              ? "bg-[#D0D5DD]"
+              : "bg-primary"
+          } w-full  text-white rounded-lg h-10 px-6 mt-8 text-xs lg:text-sm lg:font-semibold outline-none`}
+        >
+          {isLoading ? (
+            <span className="flex items-center justify-center gap-2">
+              <PiSpinner className="text-base animate-spin" />
+              Please wait...
+            </span>
+          ) : (
+            "Send"
+          )}
+        </button>
       </div>
     </form>
   );
-}
+};
 
-export default InternalTransferForm
+export default InternalTransferForm;

@@ -135,3 +135,17 @@ export const KYCSchema = Yup.object().shape({
       }
     ),
 });
+
+export const internalTransferSchema = Yup.object().shape({
+  bankName: Yup.string().notRequired(),
+  recipientAccountNumber: Yup.string()
+    .min(10, "Account number must be at least 10 characters long")
+    .max(10, "Account number cannot exceed 10 characters")
+    .required("Recipient account number is required"),
+  recipientName: Yup.string().notRequired(),
+  amount: Yup.string()
+    .required("Amount is required")
+    .matches(/^\d+(\.\d+)?$/, "Must be a valid number or decimal"),
+  description: Yup.string().required("Description is required"),
+  transactionPin: Yup.string().required("Transaction pin is required"),
+});
