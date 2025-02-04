@@ -1,9 +1,8 @@
-import { PiSpinner } from "react-icons/pi";
-import useInternationalTransferForm from "../../../hooks/dashboardHooks/transferHooks/useInternationalTransferForm";
+import useLocalTransferForm from "../../../hooks/dashboardHooks/transferHooks/useLocalTransferForm";
 
-const InternationalTransferForm = () => {
-  const { formik, isLoading, countryLists, chargePriorityOptions } =
-    useInternationalTransferForm();
+const LocalTransferForm = () => {
+  const { chargePriorityOptions, formik, isLoading } =
+    useLocalTransferForm();
   return (
     <form className="font-inter" onSubmit={formik.handleSubmit}>
       <div className="">
@@ -78,85 +77,53 @@ const InternationalTransferForm = () => {
           ) : null}
         </div>
       </div>
-      <div className="mt-4">
-        <label
-          htmlFor="country"
-          className="text-xs font-medium tracking-wide"
-        >
-          Country
-        </label>
-        <div className="border-[#D0D5DD] text-gray border w-full mt-1 flex items-center gap-2 rounded-md">
-          <select
-            name="country"
-            id="country"
-            className={`w-full text-xs px-3 h-10 font-medium outline-none tracking-wide appearance-none`}
-            aria-placeholder="Please select state"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.country}
-          >
-            <option value="" disabled>
-              Select Country
-            </option>
-            {countryLists.map((val, i) => (
-              <option value={val.toLocaleLowerCase()} key={i}>
-                {val}
-              </option>
-            ))}
-          </select>
-        </div>
-        {formik.touched.country && formik.errors.country ? (
-          <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
-            {formik.errors.country}
-          </div>
-        ) : null}
-      </div>
       <div className="flex gap-4 mt-4 items-center w-full">
         <div className="w-1/2">
           <label
-            htmlFor="swiftCode"
+            htmlFor="sortCode"
             className="font-medium tracking-wide text-xs"
           >
-            Swift Code
+            Sort Code
           </label>
           <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
             <input
               type="number"
-              name="swiftCode"
-              id="swiftCode"
+              name="sortCode"
+              id="sortCode"
               className={`w-full h-10 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.swiftCode}
+              value={formik.values.sortCode}
             />
           </div>
-          {formik.touched.swiftCode && formik.errors.swiftCode ? (
+          {formik.touched.sortCode && formik.errors.sortCode ? (
             <div className="text-red-500 text-[10px] font-semibold">
-              {formik.errors.swiftCode}
+              {formik.errors.sortCode}
             </div>
           ) : null}
         </div>
         <div className="w-1/2">
           <label
-            htmlFor="ibanCode"
+            htmlFor="branchNumber"
             className="font-medium tracking-wide text-xs"
           >
-            IBAN Code
+            Branch Number
           </label>
           <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
             <input
               type="number"
-              name="ibanCode"
-              id="ibanCode"
+              name="branchNumber"
+              id="branchNumber"
+              placeholder="(Optional)"
               className={`w-full h-10 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.ibanCode}
+              value={formik.values.branchNumber}
             />
           </div>
-          {formik.touched.ibanCode && formik.errors.ibanCode ? (
+          {formik.touched.branchNumber && formik.errors.branchNumber ? (
             <div className="text-red-500 text-[10px] font-semibold">
-              {formik.errors.ibanCode}
+              {formik.errors.branchNumber}
             </div>
           ) : null}
         </div>
@@ -287,4 +254,4 @@ const InternationalTransferForm = () => {
   );
 };
 
-export default InternationalTransferForm;
+export default LocalTransferForm;

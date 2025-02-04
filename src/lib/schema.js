@@ -165,3 +165,20 @@ export const internationalTransferSchema = Yup.object().shape({
   description: Yup.string().required("Description is required"),
   transactionPin: Yup.string().required("Transaction pin is required"),
 });
+
+export const localTransferSchema = Yup.object().shape({
+  bankName: Yup.string().required("Bank name is required"),
+  recipientAccountNumber: Yup.string()
+    .min(10, "Account number must be at least 10 characters long")
+    .required("Recipient account number is required"),
+  recipientName: Yup.string().required("Recipient name is required"),
+  country: Yup.string().required("Country is required"),
+  sortCode: Yup.string().required("Sort Code is required"),
+  branchNumber: Yup.string().notRequired(),
+  amount: Yup.string()
+    .required("Amount is required")
+    .matches(/^\d+(\.\d+)?$/, "Must be a valid number or decimal"),
+  chargePriority: Yup.string().required("Payment Fee is required"),
+  description: Yup.string().required("Description is required"),
+  transactionPin: Yup.string().required("Transaction pin is required"),
+});
