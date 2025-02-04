@@ -12,7 +12,9 @@ const InternalTransfer = () => {
       <div className="w-fit bg-textGray/10 py-3 px-4 rounded-lg mt-4">
         <p className="text-xs font-medium font-inter text-secondary">
           Account Balance:{" "}
-          <span className="text-primary font-semibold">{user.userInfo.accountBalance}</span>
+          <span className="text-primary font-semibold">
+            {user.userInfo.accountBalance.toLocaleString()}
+          </span>
         </p>
       </div>
 
