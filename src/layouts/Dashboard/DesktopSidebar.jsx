@@ -5,29 +5,11 @@ import { motion } from "framer-motion";
 import HomeAboutBg from "../../assets/Images/service6.jpg";
 import { useSelector } from "react-redux";
 import useLogout from "../../hooks/dashboardHooks/useLogout";
-import { useEffect, useState } from "react";
 
 const DesktopSidebar = ({ clicked, setClicked }) => {
   const { user } = useSelector((state) => state.userInfo);
-  const [headerFixed, setheaderFixed] = useState(false);
-
   const location = useLocation();
   const { logoutBtn } = useLogout();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 18) {
-        setheaderFixed(true);
-      } else {
-        setheaderFixed(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const subMenuDrawer = {
     enter: {
@@ -41,11 +23,11 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
   };
 
   return (
-    <section className="mb-6 fixed">
+    <section className="fixed">
       <motion.div
-        className={`w-[250px] dashbboard-sidebar overflow-y-auto ${headerFixed? "h-[100vh]":"h-[90vh]"}  backdrop-blur-3xl border-r border-[#e7e5e5]`}
+        className={`w-[250px] dashbboard-sidebar overflow-y-auto h-[88vh] backdrop-blur-3xl border-r border-[#e7e5e5]`}
         initial={{ x: "-100%" }}
-        animate={{ x: "0%", y: headerFixed ? "-80px" : "0" }}
+        animate={{ x: "0%" }}
       >
         <style>
           {`
@@ -160,7 +142,7 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
 
           <button
             onClick={logoutBtn}
-            className="flex gap-3 items-center text-sm md:text-base px-6 outline-none mt-10 hover:text-primary duration-300 pb-20"
+            className="flex gap-3 items-center text-sm md:text-base px-6 outline-none mt-10 hover:text-primary duration-300 mb-20"
           >
             <LogOut className="md:w-4 w-3.5" /> Logout
           </button>

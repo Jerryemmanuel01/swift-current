@@ -24,7 +24,6 @@ import {
   InternalTransfer,
   InternationalTransfer,
   LocalTransfer,
-  PaypalTransfer,
   Loan,
   NFT,
   Settings,
@@ -135,18 +134,15 @@ const token = localStorage.getItem("SC_access_token");
               path: "crypto-transfer",
               element: <CryptoTransfer />,
             },
-            {
-              path: "paypal-transfer",
-              element: <PaypalTransfer />,
-            },
-            {
-              path: "NFT",
-              element: <NFT />,
-            },
-            {
-              path: "stock",
-              element: <Stock />,
-            },
+            
+            // {
+            //   path: "NFT",
+            //   element: <NFT />,
+            // },
+            // {
+            //   path: "stock",
+            //   element: <Stock />,
+            // },
             {
               path: "transaction-history",
               element: <TransactionHistory />,

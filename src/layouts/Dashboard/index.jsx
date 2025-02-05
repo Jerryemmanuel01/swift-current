@@ -26,7 +26,7 @@ const DashbordLayout = () => {
             setIsOpen={setIsOpen}
             setClicked={setClicked}
           />
-          <div className="w-full flex">
+          <div className="w-full flex mt-[80px]">
             <div className="md:hidden">
               <MobileSidebar
                 isOpen={isOpen}
@@ -44,7 +44,7 @@ const DashbordLayout = () => {
               />
             </div>
             <div className="overflow-hidden w-full md:ml-[250px]">
-              <div className=" min-h-[85vh] w-full">
+              <div className=" min-h-[85vh] w-full mt-6">
                 <ScrollRestoration />
                 <Outlet />
               </div>

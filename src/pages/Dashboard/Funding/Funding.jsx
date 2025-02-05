@@ -11,7 +11,7 @@ const Funding = () => {
         Deposit Funds
       </h2>
 
-      <div className="mt-6 p-6 border border-borderColor rounded-lg shadow">
+      <div className="mt-6 p-6 border border-borderColor shadow-custom1 rounded-lg ">
         <FundingForm />
       </div>
     </section>

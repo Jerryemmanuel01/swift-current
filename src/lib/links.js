@@ -28,17 +28,16 @@ export const sidebarLinks = [
       { name: "International Transfer", link: "/dashboard/international-transfer" },
       { name: "Local Transfer", link: "/dashboard/local-transfer" },
       { name: "Crypto Transfer", link: "/dashboard/crypto-transfer" },
-      { name: "Paypal Transfer", link: "/dashboard/paypal-transfer" },
     ],
   },
-  {
-    name: "Finance",
-    icon: ChartLine,
-    subMenu: [
-      { name: "NFT", link: "/dashboard/NFT" },
-      { name: "Stocks", link: "/dashboard/stocks" },
-    ],
-  },
+  // {
+  //   name: "Finance",
+  //   icon: ChartLine,
+  //   subMenu: [
+  //     { name: "NFT", link: "/dashboard/NFT" },
+  //     { name: "Stocks", link: "/dashboard/stocks" },
+  //   ],
+  // },
   { name: "Transaction History", link: "/dashboard/transaction-history", icon: Clock3 },
   { name: "Token", link: "/dashboard/token", icon: CreditCard },
   { name: "Loan", link: "/dashboard/loan", icon: Tickets },

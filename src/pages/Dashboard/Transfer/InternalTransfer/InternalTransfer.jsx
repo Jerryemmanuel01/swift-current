@@ -18,7 +18,7 @@ const InternalTransfer = () => {
         </p>
       </div>
 
-      <div className="mt-6 p-6 border border-borderColor rounded-lg shadow">
+      <div className="mt-6 p-6 border border-borderColor rounded-lg shadow-custom1">
         <InternalTransferForm />
       </div>
     </section>

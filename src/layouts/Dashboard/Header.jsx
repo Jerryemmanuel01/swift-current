@@ -10,9 +10,9 @@ const Header = ({ isOpen, setIsOpen, setClicked }) => {
     setClicked(null);
   };
   return (
-    <section className="w-full flex items-center justify-between py-6 px-6 relative">
+    <section className="w-full flex items-center justify-between py-6 px-6 h-[80px] fixed top-0 left-0 z-50 bg-white shadow-lg mb-">
       <div className="w-full">
-        <Link className="w-full flex items-center gap-2" to="/dashboard">
+        <Link className="flex items-center gap-2" to="/dashboard">
           <div className="w-[60px] md:w-[70px] lg:w-[80px]">
             <img src={Logo1} alt="" className="w-full" />
           </div>
