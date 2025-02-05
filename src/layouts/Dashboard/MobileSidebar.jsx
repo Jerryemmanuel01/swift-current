@@ -47,9 +47,9 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
   return (
     <section className={``}>
       <motion.div
-        className={`fixed w-[250px] md:hidden left-0 right-0 z-10 md:top-0 overflow-y-auto h-full bg-white border-r border-[#e7e5e5]`}
+        className={`fixed w-[250px] md:hidden left-0 right-0 z-10 md:top-0 overflow-y-auto h-[88vh] bg-white border-r border-[#e7e5e5]`}
         initial={{ x: "-100%" }}
-        animate={{ x: isOpen ? "0%" : "-100%", y: headerFixed ? "-80px" : "0" }}
+        animate={{ x: isOpen ? "0%" : "-100%" }}
       >
         <div className="">
           <div
@@ -149,7 +149,7 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
 
           <button
             onClick={logoutBtn}
-            className="flex gap-3 items-center text-sm md:text-base px-6 outline-none mt-10 hover:text-primary duration-300 pb-20"
+            className="flex gap-3 items-center text-sm md:text-base px-6 outline-none mt-10 hover:text-primary duration-300 mb-20"
           >
             <LogOut className="md:w-4 w-3.5" /> Logout
           </button>
