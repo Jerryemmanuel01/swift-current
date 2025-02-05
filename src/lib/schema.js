@@ -163,6 +163,9 @@ export const internationalTransferSchema = Yup.object().shape({
     .matches(/^\d+(\.\d+)?$/, "Must be a valid number or decimal"),
   chargePriority: Yup.string().required("Payment Fee is required"),
   description: Yup.string().required("Description is required"),
+  tokenId: Yup.string()
+    .min(6, "Token ID must be at least 6 characters long")
+    .required("Token ID is required"),
   transactionPin: Yup.string().required("Transaction pin is required"),
 });
 
@@ -180,5 +183,8 @@ export const localTransferSchema = Yup.object().shape({
     .matches(/^\d+(\.\d+)?$/, "Must be a valid number or decimal"),
   chargePriority: Yup.string().required("Payment Fee is required"),
   description: Yup.string().required("Description is required"),
+  tokenId: Yup.string()
+    .min(6, "Token ID must be at least 6 characters long")
+    .required("Token ID is required"),
   transactionPin: Yup.string().required("Transaction pin is required"),
 });

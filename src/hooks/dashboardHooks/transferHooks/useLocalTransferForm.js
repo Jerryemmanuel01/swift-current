@@ -7,7 +7,10 @@ import {
   reset,
 } from "../../../services/features/transfer/transferSlice";
 import { useNavigate } from "react-router-dom";
-import { internationalTransferSchema, localTransferSchema } from "../../../lib/schema";
+import {
+  internationalTransferSchema,
+  localTransferSchema,
+} from "../../../lib/schema";
 import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
 
 const useLocalTransferForm = () => {
@@ -52,6 +55,7 @@ const useLocalTransferForm = () => {
       amount: "",
       chargePriority: "",
       description: "",
+      tokenId: "",
       transactionPin: "",
     },
     validationSchema: localTransferSchema,

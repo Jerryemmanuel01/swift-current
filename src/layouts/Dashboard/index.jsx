@@ -43,7 +43,7 @@ const DashbordLayout = () => {
                 clicked={clicked}
               />
             </div>
-            <div className="overflow-hidden w-full">
+            <div className="overflow-hidden w-full md:ml-[250px]">
               <div className=" min-h-[85vh] w-full">
                 <ScrollRestoration />
                 <Outlet />

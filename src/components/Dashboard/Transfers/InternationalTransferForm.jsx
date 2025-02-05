@@ -1,5 +1,6 @@
 import { PiSpinner } from "react-icons/pi";
 import useInternationalTransferForm from "../../../hooks/dashboardHooks/transferHooks/useInternationalTransferForm";
+import { Link } from "react-router-dom";
 
 const InternationalTransferForm = () => {
   const { formik, isLoading, countryLists, chargePriorityOptions } =
@@ -236,6 +237,30 @@ const InternationalTransferForm = () => {
         {formik.touched.chargePriority && formik.errors.chargePriority ? (
           <div className="text-red-500 text-[10px] font-semibold">
             {formik.errors.chargePriority}
+          </div>
+        ) : null}
+      </div>
+      <div className="mt-4">
+        <label
+          htmlFor="tokenId"
+          className="font-medium tracking-wide text-xs"
+        >
+          Token ID <Link to="/dashboard/token" className="text-red-600">(Click to activate your token)</Link>
+        </label>
+        <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
+          <input
+            type="number"
+            name="tokenId"
+            id="tokenId"
+            className={`w-full h-10 text-xs font-medium fund-tokenId outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.tokenId}
+          />
+        </div>
+        {formik.touched.tokenId && formik.errors.tokenId ? (
+          <div className="text-red-500 text-[10px] font-semibold">
+            {formik.errors.tokenId}
           </div>
         ) : null}
       </div>

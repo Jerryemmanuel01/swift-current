@@ -11,8 +11,7 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
   const { user } = useSelector((state) => state.userInfo);
   const [headerFixed, setheaderFixed] = useState(false);
   const location = useLocation();
-    const { logoutBtn } = useLogout();
-
+  const { logoutBtn } = useLogout();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -150,7 +149,7 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
 
           <button
             onClick={logoutBtn}
-            className="flex gap-3 items-center text-sm md:text-base px-6 outline-none mt-10 hover:text-primary duration-300"
+            className="flex gap-3 items-center text-sm md:text-base px-6 outline-none mt-10 hover:text-primary duration-300 pb-20"
           >
             <LogOut className="md:w-4 w-3.5" /> Logout
           </button>

@@ -53,6 +53,7 @@ const useInternationalTransferForm = () => {
       amount: "",
       chargePriority:"",
       description: "",
+      tokenId:"",
       transactionPin: "",
     },
     validationSchema: internationalTransferSchema,
