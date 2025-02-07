@@ -23,7 +23,7 @@ const Profile = () => {
   };
   return (
     <section className="">
-      <section className="px-6 mb-8 w-full md:max-w-[670px] lg:max-w-[770px] xl:max-w-[900px] mx-auto">
+      <div className="px-6 mb-8 w-full md:max-w-[670px] lg:max-w-[770px] xl:max-w-[900px] mx-auto">
         <div className="mt-14 p-6 bg-[#eef3f9] border border-borderColor shadow-custom1 rounded-lg relative">
           <div className="absolute -top-6 w-24 h-24 rounded-full bg">
             <img
@@ -156,7 +156,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </section>
   );
 };

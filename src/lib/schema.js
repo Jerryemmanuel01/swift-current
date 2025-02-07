@@ -201,3 +201,55 @@ export const cryptoTransferSchema = Yup.object().shape({
     .required("Token ID is required"),
   transactionPin: Yup.string().required("Transaction pin is required"),
 });
+
+export const editProfileSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .required("First Name is required")
+    .min(2, "First Name must be at least 2 characters")
+    .max(50, "First Name cannot exceed 50 characters"),
+  lastName: Yup.string()
+    .required("Last Name is required")
+    .min(2, "Last Name must be at least 2 characters")
+    .max(50, "Last Name cannot exceed 50 characters"),
+  userName: Yup.string()
+    .required("Username is required")
+    .min(2, "Username must be at least 2 characters")
+    .max(50, "Username cannot exceed 50 characters"),
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+  phone: Yup.string().matches(/^\d+$/, "Only numbers are allowed"),
+  country: Yup.string().notRequired(),
+  currency: Yup.string().notRequired(),
+  occupation: Yup.string().notRequired(),
+});
+
+export const editPinSchema = Yup.object().shape({
+  pin: Yup.string()
+    .min(4, "Pin must be at least 4 characters long")
+    .max(4, "Pin must not exceed 4 characters long")
+    .matches(/^\d+$/, "Only numbers are allowed")
+    .notRequired(),
+  currentPassword: Yup.string()
+
+    .min(8, "Password must be at least 8 characters long")
+    .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .matches(/[0-9]/, "Password must contain at least one number")
+    .matches(
+      /[\W_]/,
+      "Password must contain at least one special character (e.g., $, &, @, etc.)"
+    )
+    .required("Current password is required"),
+  newPassword: Yup.string()
+    .min(8, "Password must be at least 8 characters long")
+    .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .matches(/[0-9]/, "Password must contain at least one number")
+    .matches(
+      /[\W_]/,
+      "Password must contain at least one special character (e.g., $, &, @, etc.)"
+    )
+    .notRequired(),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("newPassword")], "Passwords must match")
+    .notRequired(),
+});

@@ -130,7 +130,7 @@ const InternalTransferForm = () => {
           htmlFor="transactionPin"
           className="font-medium tracking-wide text-xs"
         >
-          Transaction Pin
+          Transfer Pin
         </label>
         <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
           <input
