@@ -18,6 +18,7 @@ import {
   ForgetPassword,
   ResetPassword,
   Dashboard,
+  Profile,
   Funding,
   KYC,
   CryptoTransfer,
@@ -113,6 +114,10 @@ const token = localStorage.getItem("SC_access_token");
             {
               path: "",
               element: <Dashboard />,
+            },
+            {
+              path: "profile",
+              element: <Profile />,
             },
             {
               path: "funding",

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { sidebarLinks } from "../../lib/links";
-import { ChevronDown, LogOut } from "lucide-react";
+import { ChevronDown, ChevronRight, LogOut } from "lucide-react";
 import { motion } from "framer-motion";
 import HomeAboutBg from "../../assets/Images/service6.jpg";
 import { useEffect, useState } from "react";
@@ -70,9 +70,13 @@ const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
             <h2 className="font-merriweather text-center font-semibold text-primary">
               {user.userInfo?.userName}
             </h2>
-            <h4 className="text-center text-gray text-sm">
-              {user.userInfo?.accountType}
-            </h4>
+            <Link
+              onClick={toggleDrawer}
+              to="/dashboard/profile"
+              className="text-center flex items-center justify-center text-gray text-sm"
+            >
+              Profile <ChevronRight className="w-4 mt-0.5" />
+            </Link>
           </div>
         </div>
         <ul className=" pr-2">

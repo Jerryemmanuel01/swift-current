@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { sidebarLinks } from "../../lib/links";
-import { ChevronDown, LogOut } from "lucide-react";
+import { ChevronDown, ChevronRight, LogOut } from "lucide-react";
 import { motion } from "framer-motion";
 import HomeAboutBg from "../../assets/Images/service6.jpg";
 import { useSelector } from "react-redux";
@@ -65,9 +65,9 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
             <h2 className="font-merriweather text-center font-semibold text-lg text-primary">
               {user.userInfo?.userName}
             </h2>
-            <h4 className="text-center text-gray text-sm">
-              {user.userInfo?.accountType}
-            </h4>
+            <Link to="/dashboard/profile" className="text-center flex items-center justify-center text-gray text-sm">
+              Profile <ChevronRight className="w-4"/>
+            </Link>
           </div>
         </div>
         <ul className=" pr-2">
@@ -82,7 +82,7 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
                     <span
                       className={`${
                         location.pathname === val.link
-                          ? "bg-primary/20 font-bold text-primary"
+                          ? "bg-primary/20 fosemint-bold text-primary"
                           : ""
                       } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full cursor-pointer`}
                       onClick={() => setClicked(isClicked ? null : i)}
@@ -110,7 +110,7 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
                               to={link}
                               className={`${
                                 location.pathname === val.link
-                                  ? "font-bold text-primary"
+                                  ? "fosemint-bold text-primary"
                                   : ""
                               } py-2 block rounded-e-full list-disc cursor-pointer hover:font-bold duration-300`}
                             >
@@ -127,7 +127,7 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
                       to={val.link}
                       className={`${
                         location.pathname === val.link
-                          ? "bg-primary/20 font-bold text-primary"
+                          ? "bg-primary/20 font-semibold text-primary"
                           : ""
                       } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full`}
                     >

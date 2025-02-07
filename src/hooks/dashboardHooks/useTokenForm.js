@@ -55,7 +55,9 @@ const useTokenForm = () => {
         transactionId,
       };
       const userData = { amount, metadata };
-      dispatch(funding(userData));
+      console.log(userData);
+      
+      // dispatch(funding(userData));
     },
   });
 
