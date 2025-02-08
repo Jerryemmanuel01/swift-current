@@ -1,5 +1,6 @@
 import { IoIosInformation } from "react-icons/io";
 import useEditPinForm from "../../hooks/dashboardHooks/useEditPinForm";
+import { PiSpinner } from "react-icons/pi";
 
 const EditPinForm = () => {
   const { formik, isLoading } = useEditPinForm();
@@ -12,7 +13,7 @@ const EditPinForm = () => {
           </label>
           <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
             <input
-              type="number"
+              type="text"
               name="pin"
               id="pin"
               className={`w-full h-10 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}

@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import { funding, reset } from "../../services/features/funding/fundingSlice";
+import { editProfile, reset } from "../../services/features/user/userSlice";
 import { useNavigate } from "react-router-dom";
 import { editPinSchema } from "../../lib/schema";
 import { currenciesTypies, walletAddresses } from "../../lib/utils";
@@ -19,7 +19,7 @@ const useEditPinForm = () => {
   useEffect(() => {
     if (isError) toast.error(message);
     if (isSuccess) {
-      toast.success("Transaction Processing... please wait");
+      toast.success(message);
       formik.resetForm();
       dispatch(fetchUserInfo());
       navigate("/dashboard");
@@ -44,9 +44,14 @@ const useEditPinForm = () => {
       const userData = Object.fromEntries(
         Object.entries(values).filter(([_, value]) => value)
       );
-
-      console.log(userData);
-      //   dispatch(funding(userData));
+      if (
+        Object.entries(userData).length === 1 &&
+        "currentPassword" in userData
+      ) {
+        toast.error("Cannot submit only current password");
+        return;
+      }
+      dispatch(editProfile(userData));
     },
   });
   return { formik, isLoading, countryLists, currenciesTypies };

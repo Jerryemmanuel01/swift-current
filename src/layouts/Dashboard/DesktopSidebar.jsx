@@ -6,10 +6,9 @@ import HomeAboutBg from "../../assets/Images/service6.jpg";
 import { useSelector } from "react-redux";
 import useLogout from "../../hooks/dashboardHooks/useLogout";
 
-const DesktopSidebar = ({ clicked, setClicked }) => {
+const DesktopSidebar = ({ clicked, setClicked, logoutBtn }) => {
   const { user } = useSelector((state) => state.userInfo);
   const location = useLocation();
-  const { logoutBtn } = useLogout();
 
   const subMenuDrawer = {
     enter: {
@@ -65,8 +64,11 @@ const DesktopSidebar = ({ clicked, setClicked }) => {
             <h2 className="font-merriweather text-center font-semibold text-lg text-primary">
               {user.userInfo?.userName}
             </h2>
-            <Link to="/dashboard/profile" className="text-center flex items-center justify-center text-gray text-sm">
-              Profile <ChevronRight className="w-4"/>
+            <Link
+              to="/dashboard/profile"
+              className="text-center flex items-center justify-center text-gray text-sm"
+            >
+              Profile <ChevronRight className="w-4" />
             </Link>
           </div>
         </div>

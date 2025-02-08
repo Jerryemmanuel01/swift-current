@@ -24,6 +24,13 @@ export const resendEmail = createAsyncThunkWithHandler(
   }
 );
 
+export const editProfile = createAsyncThunkWithHandler(
+  "user/editProfile",
+  async (data, _) => {
+    return await userService.editProfile(data);
+  }
+);
+
 
 const userSlice = createSlice({
   name: "user",
@@ -65,6 +72,22 @@ const userSlice = createSlice({
         state.message = action.payload.result.message;
       })
       .addCase(verifyEmail.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload.message;
+        state.isSuccess = false;
+      })
+
+      .addCase(editProfile.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(editProfile.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.result.message;
+      })
+      .addCase(editProfile.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload.message;

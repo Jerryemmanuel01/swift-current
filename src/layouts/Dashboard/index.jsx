@@ -8,10 +8,13 @@ import WhatsappContact from "../../components/General/WhatsappContact";
 import useDashboardInfo from "../../hooks/dashboardHooks/useDashboardInfo";
 import Loader from "../../components/General/Loader";
 import DashboardFetchError from "../../components/Dashboard/DashboardFetchError";
+import useLogout from "../../hooks/dashboardHooks/useLogout";
 
 const DashbordLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [clicked, setClicked] = useState(null);
+
+  const { logoutBtn } = useLogout();
 
   const { user, isLoading, isError, setRetry } = useDashboardInfo();
   if (isLoading) return <Loader title="Getting User Information" />;
@@ -33,6 +36,7 @@ const DashbordLayout = () => {
                 setIsOpen={setIsOpen}
                 setClicked={setClicked}
                 clicked={clicked}
+                logoutBtn={logoutBtn}
               />
             </div>
             <div className="hidden md:block">
@@ -41,12 +45,13 @@ const DashbordLayout = () => {
                 setIsOpen={setIsOpen}
                 setClicked={setClicked}
                 clicked={clicked}
+                logoutBtn={logoutBtn}
               />
             </div>
             <div className="overflow-hidden w-full md:ml-[250px]">
               <div className=" min-h-[75vh] w-full mt-6">
                 <ScrollRestoration />
-                <Outlet />
+                <Outlet context={{ logoutBtn }} />
               </div>
               <Footer />
             </div>

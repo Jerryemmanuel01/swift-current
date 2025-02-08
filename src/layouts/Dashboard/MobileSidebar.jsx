@@ -7,11 +7,16 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import useLogout from "../../hooks/dashboardHooks/useLogout";
 
-const MobileSidebar = ({ isOpen, setIsOpen, clicked, setClicked }) => {
+const MobileSidebar = ({
+  isOpen,
+  setIsOpen,
+  clicked,
+  setClicked,
+  logoutBtn,
+}) => {
   const { user } = useSelector((state) => state.userInfo);
   const [headerFixed, setheaderFixed] = useState(false);
   const location = useLocation();
-  const { logoutBtn } = useLogout();
 
   useEffect(() => {
     const handleScroll = () => {

@@ -1,3 +1,4 @@
+import { PiSpinner } from "react-icons/pi";
 import useEditProfileForm from "../../hooks/dashboardHooks/useEditProfileForm";
 
 const EditProfileForm = () => {
@@ -58,33 +59,9 @@ const EditProfileForm = () => {
         </div>
       </div>
       <div className="sm:flex gap-4 items-center w-full mt-4">
-        <div className="sm:w-1/2">
-          <label
-            htmlFor="userName"
-            className="font-medium tracking-wide text-xs"
-          >
-            Username <span className="text-primary font-bold">*</span>
-          </label>
-          <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
-            <input
-              type="text"
-              name="userName"
-              id="userName"
-              className={`w-full  h-10 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.userName}
-            />
-          </div>
-          {formik.touched.userName && formik.errors.userName ? (
-            <div className="text-red-500 text-[10px] font-semibold">
-              {formik.errors.userName}
-            </div>
-          ) : null}
-        </div>
         <div className="sm:w-1/2 mt-4 sm:mt-0">
           <label htmlFor="email" className="font-medium tracking-wide text-xs">
-            Email <span className="text-primary font-bold">*</span>
+            Email
           </label>
           <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
             <input
@@ -103,15 +80,13 @@ const EditProfileForm = () => {
             </div>
           ) : null}
         </div>
-      </div>
-      <div className="sm:flex gap-4 items-center w-full mt-4">
         <div className="sm:w-1/2 mt-4 sm:mt-0">
           <label htmlFor="phone" className="font-medium tracking-wide text-xs">
             Phone Number
           </label>
           <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
             <input
-              type="number"
+              type="text"
               name="phone"
               id="phone"
               className={`w-full h-10  text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
@@ -126,7 +101,9 @@ const EditProfileForm = () => {
             </div>
           ) : null}
         </div>
-        <div className="sm:w-1/2">
+      </div>
+      <div className=" w-full mt-4">
+        <div className="">
           <label
             htmlFor="country"
             className="text-xs font-medium tracking-wide"
@@ -137,7 +114,7 @@ const EditProfileForm = () => {
             <select
               name="country"
               id="country"
-              className={`w-full text-xs px-3 h-8 lg:h-10 font-medium outline-none tracking-wide appearance-none`}
+              className={`w-full text-xs px-3 h-10 font-medium outline-none tracking-wide appearance-none`}
               aria-placeholder="Please select state"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -224,9 +201,7 @@ const EditProfileForm = () => {
           type="submit"
           disabled={isLoading}
           className={`${
-             !formik.isValid || isLoading
-              ? "bg-[#D0D5DD]"
-              : "bg-primary"
+            !formik.isValid || isLoading ? "bg-[#D0D5DD]" : "bg-primary"
           } w-full  text-white rounded-lg h-10 px-6 mt-8 text-xs lg:text-[12.5px] lg:font-semibold outline-none`}
         >
           {isLoading ? (

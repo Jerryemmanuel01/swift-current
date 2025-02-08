@@ -10,10 +10,16 @@ const verify_email = async (token) => {
 
   return response.data;
 };
+const editProfile = async (userData) => {
+  const response = await axiosClient.patch(`/user/edit-profile`, userData);
+
+  return response.data;
+};
 
 const userService = {
   resendEmail,
   verify_email,
+  editProfile,
 };
 
 export default userService;

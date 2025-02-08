@@ -27,8 +27,10 @@ import {
   LocalTransfer,
   Loan,
   NFT,
-  Settings,
   Stock,
+  Settings,
+  ManagePin,
+  ManageProfile,
   Token,
   TransactionHistory,
   Receipt,
@@ -171,6 +173,14 @@ const token = localStorage.getItem("SC_access_token");
             {
               path: "settings",
               element: <Settings />,
+            },
+            {
+              path: "manage-profile",
+              element: <ManageProfile />,
+            },
+            {
+              path: "manage-pin",
+              element: <ManagePin />,
             },
           ],
         },
