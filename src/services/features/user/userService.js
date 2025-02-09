@@ -12,12 +12,15 @@ const verify_email = async (token) => {
 };
 const editProfile = async (userData) => {
   const response = await axiosClient.patch(`/user/edit-profile`, userData);
+  if (response.data.result.data) {
+    localStorage.setItem("SC_access_token", response.data.result.data);
+  }
 
   return response.data;
 };
 const getAccountName = async (userData) => {
   const response = await axiosClient.post(`/user/account-name`, userData);
-  
+
   return response.data;
 };
 
