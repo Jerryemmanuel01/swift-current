@@ -2,12 +2,12 @@ import { createAsyncThunkWithHandler } from "../../api/apiHandler";
 import { createSlice } from "@reduxjs/toolkit";
 import userService from "./userService";
 
-
 const initialState = {
   isLoading: false,
   message: "",
   isSuccess: false,
   isError: false,
+  accountName: "",
 };
 
 export const verifyEmail = createAsyncThunkWithHandler(
@@ -31,6 +31,12 @@ export const editProfile = createAsyncThunkWithHandler(
   }
 );
 
+export const getAccountName = createAsyncThunkWithHandler(
+  "user/getAccountName",
+  async (data, _) => {
+    return await userService.getAccountName(data);
+  }
+);
 
 const userSlice = createSlice({
   name: "user",
@@ -41,6 +47,7 @@ const userSlice = createSlice({
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
+      state.accountName= "";
     },
   },
   extraReducers: (builder) => {
@@ -93,6 +100,23 @@ const userSlice = createSlice({
         state.message = action.payload.message;
         state.isSuccess = false;
       })
+
+      .addCase(getAccountName.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAccountName.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.result.message;
+        state.accountName = action.payload.result.data;
+      })
+      .addCase(getAccountName.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload.message;
+        state.isSuccess = false;
+      });
   },
 });
 

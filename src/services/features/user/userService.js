@@ -15,11 +15,17 @@ const editProfile = async (userData) => {
 
   return response.data;
 };
+const getAccountName = async (userData) => {
+  const response = await axiosClient.post(`/user/account-name`, userData);
+  
+  return response.data;
+};
 
 const userService = {
   resendEmail,
   verify_email,
   editProfile,
+  getAccountName,
 };
 
 export default userService;

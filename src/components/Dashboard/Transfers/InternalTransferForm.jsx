@@ -31,7 +31,7 @@ const InternalTransferForm = () => {
       <div className="md:flex gap-4 mt-4 items-center w-full">
         <div className="md:w-1/2">
           <label
-            htmlFor="recipientAccountNumber"
+            htmlFor="accountNumber"
             className="font-medium tracking-wide text-xs"
           >
             Recipient's Account Number
@@ -39,18 +39,17 @@ const InternalTransferForm = () => {
           <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
             <input
               type="number"
-              name="recipientAccountNumber"
-              id="recipientAccountNumber"
+              name="accountNumber"
+              id="accountNumber"
               className={`w-full h-10 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
-              onChange={formik.handleChange}
+              onChange={(e)=>formik.setFieldValue("accountNumber", e.target.value)}
               onBlur={formik.handleBlur}
-              value={formik.values.recipientAccountNumber}
+              value={formik.values.accountNumber}
             />
           </div>
-          {formik.touched.recipientAccountNumber &&
-          formik.errors.recipientAccountNumber ? (
+          {formik.touched.accountNumber && formik.errors.accountNumber ? (
             <div className="text-red-500 text-[10px] font-semibold">
-              {formik.errors.recipientAccountNumber}
+              {formik.errors.accountNumber}
             </div>
           ) : null}
         </div>
@@ -66,10 +65,10 @@ const InternalTransferForm = () => {
               type="text"
               name="recipientName"
               id="recipientName"
-              disabled
+              readOnly
               className={`w-full h-10 bg-textGray/5 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              // onChange={formik.handleChange}
+              // onBlur={formik.handleBlur}
               value={formik.values.recipientName}
             />
           </div>
@@ -126,26 +125,23 @@ const InternalTransferForm = () => {
         ) : null}
       </div>
       <div className="mt-4">
-        <label
-          htmlFor="transactionPin"
-          className="font-medium tracking-wide text-xs"
-        >
+        <label htmlFor="pin" className="font-medium tracking-wide text-xs">
           Transfer Pin
         </label>
         <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
           <input
-            type="number"
-            name="transactionPin"
-            id="transactionPin"
-            className={`w-full h-10 text-xs font-medium fund-transactionPin outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
+            type="text"
+            name="pin"
+            id="pin"
+            className={`w-full h-10 text-xs font-medium fund-pin outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.transactionPin}
+            value={formik.values.pin}
           />
         </div>
-        {formik.touched.transactionPin && formik.errors.transactionPin ? (
+        {formik.touched.pin && formik.errors.pin ? (
           <div className="text-red-500 text-[10px] font-semibold">
-            {formik.errors.transactionPin}
+            {formik.errors.pin}
           </div>
         ) : null}
       </div>

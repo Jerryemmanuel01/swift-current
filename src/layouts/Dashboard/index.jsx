@@ -51,7 +51,7 @@ const DashbordLayout = () => {
             <div className="overflow-hidden w-full md:ml-[250px]">
               <div className=" min-h-[75vh] w-full mt-6">
                 <ScrollRestoration />
-                <Outlet context={{ logoutBtn }} />
+                <Outlet context={{ logoutBtn, user }} />
               </div>
               <Footer />
             </div>

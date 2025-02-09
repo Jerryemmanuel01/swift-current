@@ -1,12 +1,9 @@
-import { ChevronDown, ChevronRight, ChevronUp, LogOut } from "lucide-react";
-import EditPinForm from "../../../components/Dashboard/EditPinForm";
-import EditProfileForm from "../../../components/Dashboard/EditProfileForm";
-import { useState } from "react";
+import { ChevronRight, LogOut } from "lucide-react";
 import HeaderName from "../../../components/Dashboard/HeaderName";
 import { Link, useOutletContext } from "react-router-dom";
 
 const Settings = () => {
-   const { logoutBtn } = useOutletContext(); 
+  const { logoutBtn } = useOutletContext();
   return (
     <section className="px-6 mb-8 w-full md:max-w-[670px] lg:max-w-[770px] xl:max-w-[900px] mx-auto">
       <HeaderName title={"Settings"} />
@@ -55,52 +52,3 @@ const Settings = () => {
 };
 
 export default Settings;
-{
-  /* <div className="overflow-hidden mt-8">
-        <div
-          className={`flex items-center justify-between text-darker px-6 py-3 border-x border-borderColor bg-borderColor/30 md:text-lg font-inter tracking-wide font-medium ${
-            toggleProfile ? "rounded-t-md  border-t" : "rounded-md  border"
-          }`}
-        >
-          <span className="">Manage Profile</span>
-          <button
-            className="outline-none"
-            onClick={() => setToggleProfile((prev) => !prev)}
-          >
-            {toggleProfile ? <ChevronUp /> : <ChevronDown />}
-          </button>
-        </div>
-
-        <div
-          className={`overflow-hidden duration-500 transition-all mt- px-6 border-x border-b border-borderColor shadow-custo rounded-b-lg ${
-            toggleProfile ? "opacity-100 py-4 md:py-6" : "opacity-0 h-0"
-          }`}
-        >
-          <EditProfileForm />
-        </div>
-      </div>
-
-      <div className="mt-10">
-        <div
-          className={`flex items-center justify-between text-darker px-6 py-3 border-x border-borderColor bg-borderColor/30 md:text-lg font-inter tracking-wide font-medium ${
-            togglePin ? "rounded-t-md  border-t" : "rounded-md  border"
-          }`}
-        >
-          <span className="">Manage pin & password</span>
-          <button
-            className="outline-none"
-            onClick={() => setTogglePin((prev) => !prev)}
-          >
-            {togglePin ? <ChevronUp /> : <ChevronDown />}
-          </button>
-        </div>
-
-        <div
-          className={`overflow-hidden duration-500 transition-all mt- px-6 md:py-6 border-x border-b border-borderColor shadow-custo rounded-b-lg ${
-            togglePin ? "opacity-100 py-4" : "opacity-0 h-0"
-          }`}
-        >
-          <EditPinForm />
-        </div>
-      </div> */
-}

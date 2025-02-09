@@ -1,12 +1,16 @@
 import { useFormik } from "formik";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import {
   internalTransfer,
   reset,
 } from "../../../services/features/transfer/transferSlice";
-import { useNavigate } from "react-router-dom";
+import {
+  getAccountName,
+  reset as userReset,
+} from "../../../services/features/user/userSlice";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { internalTransferSchema } from "../../../lib/schema";
 import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
 
@@ -17,11 +21,18 @@ const useInternalTransfer = () => {
   const { isLoading, isError, message, isSuccess } = useSelector(
     (state) => state.transfer
   );
+  const {
+    accountName,
+    isError: userError,
+    message: userMessage,
+  } = useSelector((state) => state.user);
+  const { user } = useOutletContext();
+  const userInfo = user.userInfo;
 
   useEffect(() => {
     if (isError) toast.error(message);
     if (isSuccess) {
-      toast.success("Transaction Processing... please wait");
+      toast.success(message);
       formik.resetForm();
       dispatch(fetchUserInfo());
       navigate("/dashboard");
@@ -33,20 +44,42 @@ const useInternalTransfer = () => {
   const formik = useFormik({
     initialValues: {
       bankName: "Swiftcurrent",
-      recipientAccountNumber: "",
-      recipientName: "",
+      accountNumber: "",
+      recipientName: "Emmanuel",
       amount: "",
       description: "",
-      transactionPin: "",
+      pin: "",
     },
     validationSchema: internalTransferSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: ({ accountNumber, amount, description, pin } = values) => {
+      if (amount > userInfo.accountBalance) {
+        toast.error("Insufficient Balance");
+        return;
+      }
+      const userData = {
+        amount,
+        accountNumber,
+        description,
+        pin,
+      };
 
-      //   dispatch(internalTransfer(values));
+      dispatch(internalTransfer(userData));
     },
   });
-  return {formik, isLoading};
+  useEffect(() => {
+    if (String(formik.values.accountNumber).length == 10) {
+      dispatch(getAccountName({accountNumber:formik.values.accountNumber}));
+      if (userError) {
+        toast.error(userMessage);
+        return;
+      }
+    }else{
+      dispatch(userReset())
+    }
+    formik.setFieldValue("recipientName", accountName);
+  }, [formik.values.accountNumber, accountName, userError, userMessage]);
+
+  return { formik, isLoading };
 };
 
 export default useInternalTransfer;
