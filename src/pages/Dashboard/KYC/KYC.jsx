@@ -10,8 +10,8 @@ const KYC = () => {
       </h2>
 
       <div className="mt-6 py-6 px-4 border border-borderColor rounded-lg shadow">
-        {user.userInfo.kycStatus === "Completed" ? (
-          <div cla ssName="flex items-center justify-center flex-col">
+        {user.userInfo.kycStatus === "Complete" ? (
+          <div className="flex items-center justify-center flex-col">
             <h2 className="text-3xl font-bold font-inter text-center text-[#303539]">
               Congratulations
             </h2>

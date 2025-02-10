@@ -196,10 +196,10 @@ export const cryptoTransferSchema = Yup.object().shape({
     .required("Amount is required")
     .matches(/^\d+(\.\d+)?$/, "Must be a valid number or decimal"),
   description: Yup.string().required("Description is required"),
-  tokenId: Yup.string()
+  otp: Yup.string()
     .min(6, "Token ID must be at least 6 characters long")
     .required("Token ID is required"),
-  transactionPin: Yup.string().required("Transaction pin is required"),
+  pin: Yup.string().required("Transaction pin is required"),
 });
 
 export const editProfileSchema = Yup.object().shape({

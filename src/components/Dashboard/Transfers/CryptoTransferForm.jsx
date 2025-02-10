@@ -119,50 +119,50 @@ const CryptoTransferForm = () => {
         ) : null}
       </div>
       <div className="mt-4">
-        <label htmlFor="tokenId" className="font-medium tracking-wide text-xs">
-          Token ID{" "}
+        <label htmlFor="otp" className="font-medium tracking-wide text-xs">
+          Token ID {" "}
           <Link to="/dashboard/token" className="text-red-600">
             (Click to activate your token)
           </Link>
         </label>
         <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
           <input
-            type="number"
-            name="tokenId"
-            id="tokenId"
-            className={`w-full h-10 text-xs font-medium fund-tokenId outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
+            type="text"
+            name="otp"
+            id="otp"
+            className={`w-full h-10 text-xs font-medium fund-otp outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.tokenId}
+            value={formik.values.otp}
           />
         </div>
-        {formik.touched.tokenId && formik.errors.tokenId ? (
+        {formik.touched.otp && formik.errors.otp ? (
           <div className="text-red-500 text-[10px] font-semibold">
-            {formik.errors.tokenId}
+            {formik.errors.otp}
           </div>
         ) : null}
       </div>
       <div className="mt-4">
         <label
-          htmlFor="transactionPin"
+          htmlFor="pin"
           className="font-medium tracking-wide text-xs"
         >
           Transfer Pin
         </label>
         <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
           <input
-            type="number"
-            name="transactionPin"
-            id="transactionPin"
-            className={`w-full h-10 text-xs font-medium fund-transactionPin outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
+            type="text"
+            name="pin"
+            id="pin"
+            className={`w-full h-10 text-xs font-medium fund-pin outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.transactionPin}
+            value={formik.values.pin}
           />
         </div>
-        {formik.touched.transactionPin && formik.errors.transactionPin ? (
+        {formik.touched.pin && formik.errors.pin ? (
           <div className="text-red-500 text-[10px] font-semibold">
-            {formik.errors.transactionPin}
+            {formik.errors.pin}
           </div>
         ) : null}
       </div>

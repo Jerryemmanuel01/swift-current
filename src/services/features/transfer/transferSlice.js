@@ -17,6 +17,13 @@ export const internalTransfer = createAsyncThunkWithHandler(
   }
 );
 
+export const cryptoTransfer = createAsyncThunkWithHandler(
+  "transfer/crypto",
+  async (data, _) => {
+    return await transferService.cryptoTransfer(data);
+  }
+);
+
 const transferSlice = createSlice({
   name: "transfer",
   initialState,
@@ -45,7 +52,22 @@ const transferSlice = createSlice({
         state.isError = true;
         state.message = action.payload.message;
         state.isSuccess = false;
-      });
+      })
+      .addCase(cryptoTransfer.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(cryptoTransfer.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.result.message;
+      })
+      .addCase(cryptoTransfer.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload.message;
+        state.isSuccess = false;
+      })
   },
 });
 

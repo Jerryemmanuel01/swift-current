@@ -5,7 +5,7 @@ const internalTransfer = async (userData) => {
     `/user/transaction/internal-transfer`,
     userData
   );
-  
+
   return response.data;
 };
 
@@ -22,7 +22,13 @@ const localTransfer = async (userData) => {
 
   return response.data;
 };
+const cryptoTransfer = async (userData) => {
+  const response = await axiosClient.post(`/user/transaction/crypto-transfer`, userData);
+  console.log(response.data);
 
-const transferService = { internalTransfer, internationalTransfer, localTransfer };
+  return response.data;
+};
+
+const transferService = { internalTransfer, internationalTransfer, localTransfer, cryptoTransfer};
 
 export default transferService;

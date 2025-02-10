@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import {
-  internalTransfer,
+  cryptoTransfer,
   reset,
 } from "../../../services/features/transfer/transferSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { cryptoTransferSchema } from "../../../lib/schema";
 import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
 import { walletAddresses } from "../../../lib/utils";
@@ -19,6 +19,9 @@ const useCryptoTransferForm = () => {
   const { isLoading, isError, message, isSuccess } = useSelector(
     (state) => state.transfer
   );
+  const { user } = useOutletContext();
+  const userInfo = user.userInfo;
+
   useEffect(() => {
     if (isError) toast.error(message);
     if (isSuccess) {
@@ -37,19 +40,39 @@ const useCryptoTransferForm = () => {
       walletAddress: "",
       amount: "",
       description: "",
-      tokenId: "",
-      transactionPin: "",
+      otp: "",
+      pin: "",
     },
     validationSchema: cryptoTransferSchema,
-    onSubmit: (values) => {
-      console.log(values);
-
-      //   dispatch(internalTransfer(values));
+    onSubmit: ({
+      amount,
+      blockchainNetwork,
+      description,
+      otp,
+      pin,
+      walletAddress,
+    } = values) => {
+      if (amount > userInfo.accountBalance) {
+        toast.error("Insufficient Balance");
+        return;
+      }
+      const metadata = {
+        blockchainNetwork,
+        walletAddress,
+      };
+      const userData = {
+        amount,
+        description,
+        otp,
+        pin,
+        metadata
+      };
+        dispatch(cryptoTransfer(userData));
     },
   });
 
   const swapBtn = () => {
-    setSwapValue("$"+formik.values.amount.toLocaleString());
+    setSwapValue("$" + formik.values.amount.toLocaleString());
   };
   return { formik, isLoading, walletAddresses, swapBtn, swapValue };
 };
