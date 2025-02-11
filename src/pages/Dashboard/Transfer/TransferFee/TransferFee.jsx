@@ -31,6 +31,9 @@ const TransferFee = () => {
       </button>
 
       <div className="shadow-custom1 p-4 text-sm bg-borderColor/30 mt-4">
+        <h2 className="font-poppins font-semibold text-dark text-base lg:text-lg">
+          Swift Fee Payment
+        </h2>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Bank Rate</h3>
           <h4 className="w-full">1.0%</h4>

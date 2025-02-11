@@ -60,7 +60,7 @@ const useTransferFee = (rate) => {
       const userData = { amount, metadata };
       console.log(userData);
 
-      dispatch(purchaseToken(userData));
+    //   dispatch(purchaseToken(userData));
     },
   });
 
