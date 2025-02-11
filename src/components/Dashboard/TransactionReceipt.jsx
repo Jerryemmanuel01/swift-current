@@ -29,7 +29,9 @@ const TransactionReceipt = () => {
               {transaction.type} from {transaction.name.toUpperCase()}
             </p>
             <h2 className="mt-1 font-semibold text-base md:text-lg font-poppins text-dark">
-              {transaction.amount.toLocaleString()}
+              {transaction.category === "Debit"
+                ? "-" + transaction.amount.toLocaleString()
+                : transaction.amount.toLocaleString()}
             </h2>
             <h4
               className={`mt-1 font-medium font-inter flex items-center gap-1 ${

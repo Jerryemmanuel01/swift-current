@@ -19,21 +19,14 @@ const TransactionTable = ({ transactions }) => {
             </tr>
           </thead>
           <tbody>
-            {transactions.length ?
-              transactions
-                .slice()
-                .reverse()
-                .slice(0, 5)
-                .map((val, i) => {
+            {transactions.length
+              ? transactions.slice(0, 5).map((val, i) => {
                   const dateTime = val.createdAt;
                   const date = moment(dateTime).format("YYYY-MM-DD");
                   const time = moment(dateTime).format("HH:mm:ss");
 
                   return (
-                    <tr
-                      className="even:bg-primary/5 text-xs"
-                      key={i}
-                    >
+                    <tr className="even:bg-primary/5 text-xs" key={i}>
                       <td className="px-4 py-2 whitespace-nowrap">{i + 1}</td>
                       <td className="px-4 py-2 whitespace-nowrap">
                         {val.id.substring(0, 10) + "..."}
@@ -43,12 +36,12 @@ const TransactionTable = ({ transactions }) => {
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
                         <h2 className="">{date}</h2>
-                        <span className="text-gray text-[9.5px]">
-                          {time}
-                        </span>
+                        <span className="text-gray text-[9.5px]">{time}</span>
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
-                        {val.amount.toLocaleString()}
+                        {val.category === "Debit"
+                          ? "-" + val.amount.toLocaleString()
+                          : val.amount.toLocaleString()}
                       </td>
                       <td
                         className={`px-4 py-2 whitespace-nowrap font-medium font-inter ${
@@ -63,7 +56,8 @@ const TransactionTable = ({ transactions }) => {
                       </td>
                     </tr>
                   );
-                }):""}
+                })
+              : ""}
           </tbody>
         </table>
         {!transactions.length && (

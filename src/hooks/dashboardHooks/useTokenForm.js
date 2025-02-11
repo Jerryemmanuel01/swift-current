@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import { funding, reset } from "../../services/features/funding/fundingSlice";
+import { purchaseToken, reset } from "../../services/features/transfer/transferSlice";
 import { useNavigate } from "react-router-dom";
 import { fundingSchema } from "../../lib/schema";
 import { walletAddresses } from "../../lib/utils";
@@ -16,13 +16,13 @@ const useTokenForm = () => {
   const dispatch = useDispatch();
 
   const { isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.funding
+    (state) => state.transfer
   );
 
   useEffect(() => {
     if (isError) toast.error(message);
     if (isSuccess) {
-      toast.success("Transaction Processing... please wait");
+      toast.success(message);
       formik.resetForm();
       dispatch(fetchUserInfo());
       navigate("/dashboard");
@@ -33,7 +33,7 @@ const useTokenForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      amount: "3000",
+      amount: 3000,
       blockchainNetwork: "",
       walletAddress: "",
       transactionId: "",
@@ -57,7 +57,7 @@ const useTokenForm = () => {
       const userData = { amount, metadata };
       console.log(userData);
       
-      // dispatch(funding(userData));
+      dispatch(purchaseToken(userData));
     },
   });
 

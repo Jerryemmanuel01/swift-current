@@ -33,8 +33,6 @@ const TransactionHistoryTable = ({ transactions }) => {
           <tbody>
             {transactions.length ?
               transactions
-                .slice()
-                .reverse()
                 .map((val, i) => {
                   const dateTime = val.createdAt;
                   const date = moment(dateTime).format("YYYY-MM-DD");
@@ -57,7 +55,7 @@ const TransactionHistoryTable = ({ transactions }) => {
                         <span className="text-gray text-[9.5px]">{time}</span>
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
-                        {val.amount.toLocaleString()}
+                        {val.category==="Debit"? "-"+val.amount.toLocaleString(): val.amount.toLocaleString()}
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
                         {val.charges}

@@ -180,8 +180,8 @@ const TokenForm = () => {
             <IoIosInformation className="text-xs mt-1 bg-[#dbb610] text-white rounded-full" />
           </div>
           <p className="text-xs tracking-wide text-[#dbb610]">
-            To proceed, please use the designated payment medium selected above to send
-            $3000.
+            To proceed, please use the designated payment medium selected above
+            to send $3000.
           </p>
         </div>
         <div className="flex gap-2 items-center mt-3">
@@ -189,7 +189,7 @@ const TokenForm = () => {
             <IoIosInformation className="text-xs bg-dark text-white rounded-full" />
           </div>
           <p className="text-xs tracking-wide text-dark leading-5">
-             After payment, kindly paste your transaction hash for confirmation.
+            After payment, kindly paste your transaction hash for confirmation.
           </p>
         </div>
       </div>
