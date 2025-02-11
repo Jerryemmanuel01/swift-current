@@ -51,6 +51,9 @@ const MobileSidebar = ({
   };
   return (
     <section className={``}>
+     {isOpen && (
+      <div onClick={()=>setIsOpen(false)} className="fixed bg-black opacity-30 w-full h-full top-0"></div>
+     )} 
       <motion.div
         className={`fixed w-[250px] md:hidden left-0 right-0 z-10 md:top-0 overflow-y-auto h-[88vh] bg-white border-r border-[#e7e5e5]`}
         initial={{ x: "-100%" }}
