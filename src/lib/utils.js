@@ -383,3 +383,9 @@ export const IdMedium = [
   { medium: "International Passport", value: "International Passport" },
   { medium: "National ID Card", value: "National Id Caord" },
 ];
+
+export const swiftRate = (amount) => {
+  const rate = (4 / 100) * amount;
+
+  return rate;
+};

@@ -35,6 +35,7 @@ import {
   TransactionHistory,
   Receipt,
   VerifyEmail,
+  TransferFee
 } from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -140,6 +141,10 @@ const token = localStorage.getItem("SC_access_token");
             {
               path: "crypto-transfer",
               element: <CryptoTransfer />,
+            },
+            {
+              path: "transfer-fee",
+              element: <TransferFee />,
             },
             
             // {

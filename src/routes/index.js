@@ -23,6 +23,7 @@ export const InternalTransfer = lazy(()=>import("../pages/Dashboard/Transfer/Int
 export const InternationalTransfer = lazy(()=>import("../pages/Dashboard/Transfer/InternationalTransfer/InternationalTransfer"))
 export const LocalTransfer = lazy(()=>import("../pages/Dashboard/Transfer/LocalTransfer/LocalTransfer"))
 export const CryptoTransfer = lazy(()=>import("../pages/Dashboard/Transfer/CryptoTransfer/CryptoTransfer"))
+export const TransferFee = lazy(()=>import("../pages/Dashboard/Transfer/TransferFee/TransferFee"))
 export const NFT = lazy(()=>import("../pages/Dashboard/Finance/NFT/NFT"))
 export const Stock = lazy(()=>import("../pages/Dashboard/Finance/Stock/Stock"))
 export const TransactionHistory = lazy(()=>import("../pages/Dashboard/TransactionHistory/TransactionHistory"))

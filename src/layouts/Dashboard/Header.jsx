@@ -22,12 +22,12 @@ const Header = ({ isOpen, setIsOpen, setClicked }) => {
         </Link>
       </div>
       <div className="flex items-center gap-6">
-        <div className="relative">
+        <Link to="/dashboard/transfer-fee?id=2000000" className="relative">
           <IoMdNotifications className="text-xl md:text-2xl" />
           <span className="bg-red-600 w-3.5 h-3.5 md:w-4 md:h-4 rounded-full absolute flex items-center justify-center text-[9.5px] font-bold font-poppins text-white -top-1 -right-1">
             2
           </span>
-        </div>
+        </Link>
         <div className="w-full md:hidden ">
           <div className="w-8 ">
             <button className="outline-none" onClick={toggleDrawer}>
