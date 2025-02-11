@@ -40,7 +40,7 @@ const TransferFee = () => {
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Transfer Amount</h3>
-          <h4 className="w-full">{amount.toLocaleString()}</h4>
+          <h4 className="w-full">{Number(amount).toLocaleString()}</h4>
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Wire Fee</h3>
