@@ -73,7 +73,7 @@ const TransferFee = () => {
             </button>
           </h4>
         </div>
-        <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+        <Modal isOpen={showModal} onClose={() => setShowModal(false)} title="Swift Fee Payment">
           <TransferFeeForm rate={rate} />
         </Modal>
       </div>
