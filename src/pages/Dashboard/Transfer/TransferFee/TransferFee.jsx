@@ -1,11 +1,10 @@
 import { ChevronLeft } from "lucide-react";
 import React, { useState } from "react";
 import { ImSpinner5 } from "react-icons/im";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Modal from "../../../../components/General/Modal";
 import TransferFeeForm from "../../../../components/Dashboard/Transfers/TransferFeeForm";
 import { swiftRate } from "../../../../lib/utils";
-import { useSelector } from "react-redux";
 
 const TransferFee = () => {
   const navigate = useNavigate();
@@ -15,7 +14,6 @@ const TransferFee = () => {
 
   const rate = swiftRate(amount);
 
-//   const { user } = useSelector((state) => state.userInfo);
 //   const transactions = user.transactions;
 
 //   const transaction = transactions.find((obj) => obj.id === id);
@@ -31,7 +29,7 @@ const TransferFee = () => {
       </button>
 
       <div className="shadow-custom1 p-4 text-sm bg-borderColor/30 mt-4">
-        <h2 className="font-poppins font-semibold text-dark text-base lg:text-lg">
+        <h2 className="font-merriweather font-semibold text-dark text-base lg:text-lg">
           Swift Fee Payment
         </h2>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">

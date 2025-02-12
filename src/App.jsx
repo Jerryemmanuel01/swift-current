@@ -35,7 +35,8 @@ import {
   TransactionHistory,
   Receipt,
   VerifyEmail,
-  TransferFee
+  TransferFee,
+  UpgradeFee,
 } from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -145,6 +146,10 @@ const token = localStorage.getItem("SC_access_token");
             {
               path: "transfer-fee",
               element: <TransferFee />,
+            },
+            {
+              path: "upgrade-fee",
+              element: <UpgradeFee />,
             },
             
             // {

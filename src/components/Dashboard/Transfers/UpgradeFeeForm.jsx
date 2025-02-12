@@ -1,8 +1,8 @@
-import useTransferFee from "../../../hooks/dashboardHooks/transferHooks/useTransferFee";
+import useUpgradeFeeForm from "../../../hooks/dashboardHooks/transferHooks/useUpgradeFeeForm";
 import { Check, Copy, DollarSign, Hash } from "lucide-react";
 import { PiSpinner } from "react-icons/pi";
 
-const TransferFeeForm = ({rate}) => {
+const UpgradeFeeForm = () => {
   const {
     copied,
     findAddressByNetwork,
@@ -13,7 +13,7 @@ const TransferFeeForm = ({rate}) => {
     qrCode,
     setQrCode,
     walletAddresses,
-  } = useTransferFee(rate);
+  } = useUpgradeFeeForm();
   return (
     <form className="w-full" onSubmit={formik.handleSubmit}>
       <div className="">
@@ -178,4 +178,4 @@ const TransferFeeForm = ({rate}) => {
   );
 };
 
-export default TransferFeeForm;
+export default UpgradeFeeForm;

@@ -11,7 +11,7 @@ import { fundingSchema } from "../../../lib/schema";
 import { walletAddresses } from "../../../lib/utils";
 import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
 
-const useTransferFee = (rate) => {
+const useUpgradeFeeForm = () => {
   const [copied, setCopied] = useState(false);
   const [qrCode, setQrCode] = useState("");
 
@@ -36,7 +36,7 @@ const useTransferFee = (rate) => {
 
   const formik = useFormik({
     initialValues: {
-      amount: rate,
+      amount: 40000,
       blockchainNetwork: "",
       walletAddress: "",
       transactionId: "",
@@ -59,9 +59,8 @@ const useTransferFee = (rate) => {
       };
       const userData = { amount, metadata };
       console.log(userData);
-      navigate("/dashboard/upgrade-fee")
 
-    //   dispatch(purchaseToken(userData));
+      //   dispatch(purchaseToken(userData));
     },
   });
 
@@ -108,4 +107,4 @@ const useTransferFee = (rate) => {
   };
 };
 
-export default useTransferFee;
+export default useUpgradeFeeForm;
