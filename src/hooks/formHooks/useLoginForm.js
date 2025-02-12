@@ -18,7 +18,9 @@ const useLoginForm = () => {
 
   useEffect(() => {
     if (isError) toast.error(message);
-    if (isSuccess) {
+    if (isSuccess && message === "Login successful") {
+      console.log(message);
+      
       toast.success(message);
       formik.resetForm();
       navigate("/dashboard");

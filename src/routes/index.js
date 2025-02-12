@@ -34,3 +34,11 @@ export const Settings = lazy(()=>import("../pages/Dashboard/Settings/Settings"))
 export const ManageProfile = lazy(()=>import("../pages/Dashboard/Settings/ManageProfile"))
 export const ManagePin = lazy(()=>import("../pages/Dashboard/Settings/ManagePin"))
 export const Receipt = lazy(()=>import("../components/Dashboard/TransactionReceipt"))
+
+// Admin routes
+export const AdminDashboard = lazy(()=>import("../pages/Admin/AdminDashboard/AdminDashboard"))
+export const AdminManagement = lazy(()=>import("../pages/Admin/AdminManagement/AdminManagement"))
+export const ApproveKYC = lazy(()=>import("../pages/Admin/ApproveKYC/ApproveKYC"))
+export const ApproveTransaction = lazy(()=>import("../pages/Admin/ApproveTransaction/ApproveTransaction"))
+export const FundUser = lazy(()=>import("../pages/Admin/FundUser/FundUser"))
+export const GetUsers = lazy(()=>import("../pages/Admin/GetUsers/GetUsers"))

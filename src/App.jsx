@@ -37,14 +37,20 @@ import {
   VerifyEmail,
   TransferFee,
   UpgradeFee,
+  AdminDashboard,
+  AdminManagement,
+  ApproveKYC,
+  ApproveTransaction,
+  FundUser,
+  GetUsers,
 } from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DashbordLayout from "./layouts/Dashboard";
+import AdminLayout from "./layouts/AdminLayout/Index";
 
 function App() {
-const token = localStorage.getItem("SC_access_token");
-
+  const { token } = useSelector((state) => state.auth);
   return (
     <RouterProvider
       router={createBrowserRouter([
@@ -86,7 +92,7 @@ const token = localStorage.getItem("SC_access_token");
         // Auth routes
         {
           path: "auth",
-          element:<AuthLayout />,
+          element: token? <Navigate to="/dashboard"/>:<AuthLayout />,
           children: [
             {
               path: "sign-up",
@@ -120,6 +126,16 @@ const token = localStorage.getItem("SC_access_token");
               element: <Dashboard />,
             },
             {
+              path: "admin",
+              element: <AdminLayout />,
+              children: [
+                {
+                  path: "",
+                  element: <AdminDashboard />,
+                },
+              ],
+            },
+            {
               path: "profile",
               element: <Profile />,
             },
@@ -151,7 +167,7 @@ const token = localStorage.getItem("SC_access_token");
               path: "upgrade-fee",
               element: <UpgradeFee />,
             },
-            
+
             // {
             //   path: "NFT",
             //   element: <NFT />,
