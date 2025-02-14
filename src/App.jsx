@@ -92,7 +92,7 @@ function App() {
         // Auth routes
         {
           path: "auth",
-          element: token? <Navigate to="/dashboard"/>:<AuthLayout />,
+          element: token ? <Navigate to="/dashboard" /> : <AuthLayout />,
           children: [
             {
               path: "sign-up",
@@ -132,6 +132,26 @@ function App() {
                 {
                   path: "",
                   element: <AdminDashboard />,
+                },
+                {
+                  path: "admin-management",
+                  element: <AdminManagement />,
+                },
+                {
+                  path: "approve-kyc",
+                  element: <ApproveKYC />,
+                },
+                {
+                  path: "approve-transaction",
+                  element: <ApproveTransaction />,
+                },
+                {
+                  path: "fund-user",
+                  element: <FundUser />,
+                },
+                {
+                  path: "get-users",
+                  element: <GetUsers />,
                 },
               ],
             },

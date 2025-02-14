@@ -8,6 +8,7 @@ import {
   CreditCard,
   Settings,
   Clock3,
+  Landmark,
 } from "lucide-react";
 
 export const navLinks = [
@@ -18,6 +19,7 @@ export const navLinks = [
   { name: "Contact", link: "/contact" },
 ];
 export const sidebarLinks = [
+  { name: "Admin Dashboard", link: "/dashboard/admin", icon: Landmark },
   { name: "Dashboard", link: "/dashboard", icon: LayoutDashboard },
   { name: "Fund Account", link: "/dashboard/funding", icon: TicketPlus },
   {
@@ -25,7 +27,10 @@ export const sidebarLinks = [
     icon: Send,
     subMenu: [
       { name: "Internal Transfer", link: "/dashboard/internal-transfer" },
-      { name: "International Transfer", link: "/dashboard/international-transfer" },
+      {
+        name: "International Transfer",
+        link: "/dashboard/international-transfer",
+      },
       { name: "Local Transfer", link: "/dashboard/local-transfer" },
       { name: "Crypto Transfer", link: "/dashboard/crypto-transfer" },
     ],
@@ -38,7 +43,11 @@ export const sidebarLinks = [
   //     { name: "Stocks", link: "/dashboard/stocks" },
   //   ],
   // },
-  { name: "Transaction History", link: "/dashboard/transaction-history", icon: Clock3 },
+  {
+    name: "Transaction History",
+    link: "/dashboard/transaction-history",
+    icon: Clock3,
+  },
   { name: "Token", link: "/dashboard/token", icon: CreditCard },
   { name: "Loan", link: "/dashboard/loan", icon: Tickets },
   { name: "KYC", link: "/dashboard/KYC", icon: Link2 },

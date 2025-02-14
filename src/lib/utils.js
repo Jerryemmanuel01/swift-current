@@ -28,6 +28,9 @@ import { BsCashCoin } from "react-icons/bs";
 import { PiBank, PiHandCoins } from "react-icons/pi";
 import { HiOutlineBanknotes } from "react-icons/hi2";
 import { RiVisaFill } from "react-icons/ri";
+import { FaUserAlt } from "react-icons/fa";
+import { GrTransaction } from "react-icons/gr";
+import { MdPendingActions } from "react-icons/md";
 
 export const sliderOption = [
   {
@@ -389,3 +392,38 @@ export const swiftRate = (amount) => {
 
   return rate;
 };
+
+export const dashboardCardInfos = [
+  {
+    bg: "bg-gradient-to-br from-primary/80 to-secondary",
+    title: "Total Users",
+    icon: FaUserAlt,
+    disc: "Users",
+    value: "20,000",
+    tooltip: "Total User",
+  },
+  {
+    bg: "bg-gradient-to-br from-[#dd4343]/70 to-[#dd4343]",
+    title: "Total Transactions",
+    icon: GrTransaction,
+    disc: "Transactions",
+    value: "800,000",
+    tooltip: "Total Transactions",
+  },
+  {
+    bg: "bg-gradient-to-br from-[#2e90eb]/70 to-[#2e90eb]",
+    title: "Pending KYC",
+    icon: VscWorkspaceTrusted,
+    disc: "KYC",
+    value: "10",
+    tooltip: "Pending KYC",
+  },
+  {
+    bg: "bg-gradient-to-br from-[#6762da]/70 to-[#6762da]",
+    title: "Pending Transactions",
+    icon: MdPendingActions,
+    disc: "Pending",
+    value: "200",
+    tooltip: "Total User",
+  },
+];
