@@ -42,7 +42,9 @@ import {
   ApproveKYC,
   ApproveTransaction,
   FundUser,
+  DebitUser,
   GetUsers,
+  UserProfile,
 } from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -146,12 +148,20 @@ function App() {
                   element: <ApproveTransaction />,
                 },
                 {
-                  path: "fund-user",
+                  path: "credit-user",
                   element: <FundUser />,
+                },
+                {
+                  path: "debit-user",
+                  element: <DebitUser />,
                 },
                 {
                   path: "get-users",
                   element: <GetUsers />,
+                },
+                {
+                  path: "user-profile/:id",
+                  element: <UserProfile />,
                 },
               ],
             },

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import { logout, resetToken } from "../../services/features/auth/authSlice";
 import { resetUser } from "../../services/features/userInfo/userInfoSlice";
+import { resetUsers } from "../../services/features/adminUser/adminUserSlice";
 import { useNavigate } from "react-router-dom";
 
 const useLogout = () => {
@@ -17,6 +18,8 @@ const useLogout = () => {
       dispatch(resetToken())
       dispatch(logout());
       dispatch(resetUser());
+      dispatch(resetUsers());
+
       navigate("/auth/login", { replace: true });
     }
   };

@@ -27,7 +27,7 @@ const useDashboardInfo = () => {
     }
   }, []);
 
-  if (isError) toast.error(message);
+  if (isError && message) toast.error(message);
 
   if (message === "Authorization token required") {
     navigate("/auth/login");
