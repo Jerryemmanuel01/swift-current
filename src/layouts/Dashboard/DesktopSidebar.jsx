@@ -9,6 +9,7 @@ import useLogout from "../../hooks/dashboardHooks/useLogout";
 const DesktopSidebar = ({ clicked, setClicked, logoutBtn }) => {
   const { user } = useSelector((state) => state.userInfo);
   const location = useLocation();
+  const isRole = user.userInfo.role;
 
   const subMenuDrawer = {
     enter: {
@@ -64,12 +65,18 @@ const DesktopSidebar = ({ clicked, setClicked, logoutBtn }) => {
             <h2 className="font-merriweather text-center font-semibold text-lg text-primary">
               {user.userInfo?.userName}
             </h2>
-            <Link
-              to="/dashboard/profile"
-              className="text-center flex items-center justify-center text-gray text-sm"
-            >
-              Profile <ChevronRight className="w-4" />
-            </Link>
+            {isRole === "User" ? (
+              <Link
+                to="/dashboard/profile"
+                className="text-center flex items-center justify-center text-gray text-sm"
+              >
+                Profile <ChevronRight className="w-4" />
+              </Link>
+            ) : (
+              <h2 className="text-center flex items-center justify-center text-gray text-sm">
+                {isRole}
+              </h2>
+            )}
           </div>
         </div>
         <ul className=" pr-2">
@@ -77,59 +84,78 @@ const DesktopSidebar = ({ clicked, setClicked, logoutBtn }) => {
             const Icon = val.icon;
             const isClicked = clicked === i;
             const hasSubMenu = val.subMenu?.length;
+            const role = val.role;
             return (
               <div className="" key={i}>
-                {hasSubMenu ? (
-                  <li>
-                    <span
-                      className={`${
-                        location.pathname === val.link
-                          ? "bg-primary/20 fosemint-bold text-primary"
-                          : ""
-                      } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full cursor-pointer`}
-                      onClick={() => setClicked(isClicked ? null : i)}
-                    >
-                      <Icon className="md:w-4 w-3.5" />
-                      {val.name}
-                      {hasSubMenu && (
-                        <ChevronDown
-                          className={`ml-auto w-4 ${
-                            isClicked && "rotate-180"
-                          } `}
-                        />
-                      )}
-                    </span>
-                    {hasSubMenu && (
-                      <motion.ul
-                        initial="exit"
-                        animate={isClicked ? "enter" : "exit"}
-                        variants={subMenuDrawer}
-                        className="pl-14 bg-[#f4f4ffsd4] rounded-e-xl  text-xs md:text-sm"
+                {isRole === "User" &&
+                  role === "user" &&
+                  (hasSubMenu ? (
+                    <li>
+                      <span
+                        className={`${
+                          location.pathname === val.link
+                            ? "bg-primary/20 fosemint-bold text-primary"
+                            : ""
+                        } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full cursor-pointer`}
+                        onClick={() => setClicked(isClicked ? null : i)}
                       >
-                        {val.subMenu?.map(({ name, link }) => (
-                          <li key={name} className="list-disc">
-                            <Link
-                              to={link}
-                              className={`${
-                                location.pathname === val.link
-                                  ? "fosemint-bold text-primary"
-                                  : ""
-                              } py-2 block rounded-e-full list-disc cursor-pointer hover:font-bold duration-300`}
-                            >
-                              {name}
-                            </Link>
-                          </li>
-                        ))}
-                      </motion.ul>
-                    )}
-                  </li>
-                ) : (
+                        <Icon className="md:w-4 w-3.5" />
+                        {val.name}
+                        {hasSubMenu && (
+                          <ChevronDown
+                            className={`ml-auto w-4 ${
+                              isClicked && "rotate-180"
+                            } `}
+                          />
+                        )}
+                      </span>
+                      {hasSubMenu && (
+                        <motion.ul
+                          initial="exit"
+                          animate={isClicked ? "enter" : "exit"}
+                          variants={subMenuDrawer}
+                          className="pl-14 bg-[#f4f4ffsd4] rounded-e-xl  text-xs md:text-sm"
+                        >
+                          {val.subMenu?.map(({ name, link }) => (
+                            <li key={name} className="list-disc">
+                              <Link
+                                to={link}
+                                className={`${
+                                  location.pathname === val.link
+                                    ? "fosemint-bold text-primary"
+                                    : ""
+                                } py-2 block rounded-e-full list-disc cursor-pointer hover:font-bold duration-300`}
+                              >
+                                {name}
+                              </Link>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </li>
+                  ) : (
+                    <li className="pb-0.5">
+                      <Link
+                        to={val.link}
+                        className={`${
+                          location.pathname === val.link
+                            ? "bg-primary/20 font-semibold text-primary"
+                            : ""
+                        } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full`}
+                      >
+                        <Icon className="md:w-4 w-3.5" />
+                        {val.name}
+                      </Link>
+                    </li>
+                  ))}
+
+                {isRole !== "User" && role === "admin" && (
                   <li className="pb-0.5">
                     <Link
                       to={val.link}
                       className={`${
                         location.pathname === val.link
-                          ? "bg-primary/20 font-semibold text-primary"
+                          ? "bg-primary/20 font-bold text-primary"
                           : ""
                       } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full`}
                     >
@@ -144,7 +170,9 @@ const DesktopSidebar = ({ clicked, setClicked, logoutBtn }) => {
 
           <button
             onClick={logoutBtn}
-            className="flex gap-3 items-center text-sm md:text-base px-6 outline-none mt-10 hover:text-primary duration-300 mb-20"
+            className={`flex gap-3 items-center text-sm md:text-base px-6 outline-none hover:text-primary duration-300 mb-20 ${
+              isRole === "User" ? "mt-10" : "mt-4"
+            }`}
           >
             <LogOut className="md:w-4 w-3.5" /> Logout
           </button>

@@ -401,6 +401,7 @@ export const dashboardCardInfos = [
     disc: "Users",
     value: "20,000",
     tooltip: "Total User",
+    to: "/admin/get-users",
   },
   {
     bg: "bg-gradient-to-br from-[#dd4343]/70 to-[#dd4343]",
@@ -409,6 +410,7 @@ export const dashboardCardInfos = [
     disc: "Transactions",
     value: "800,000",
     tooltip: "Total Transactions",
+    to: "",
   },
   {
     bg: "bg-gradient-to-br from-[#2e90eb]/70 to-[#2e90eb]",
@@ -417,6 +419,7 @@ export const dashboardCardInfos = [
     disc: "KYC",
     value: "10",
     tooltip: "Pending KYC",
+    to: "/admin/approve-kyc",
   },
   {
     bg: "bg-gradient-to-br from-[#6762da]/70 to-[#6762da]",
@@ -425,5 +428,6 @@ export const dashboardCardInfos = [
     disc: "Pending",
     value: "200",
     tooltip: "Total User",
+    to: "/admin/approve-transaction",
   },
 ];

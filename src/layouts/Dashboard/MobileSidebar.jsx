@@ -17,6 +17,7 @@ const MobileSidebar = ({
   const { user } = useSelector((state) => state.userInfo);
   const [headerFixed, setheaderFixed] = useState(false);
   const location = useLocation();
+  const isRole = user.userInfo.role;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,9 +52,12 @@ const MobileSidebar = ({
   };
   return (
     <section className={``}>
-     {isOpen && (
-      <div onClick={()=>setIsOpen(false)} className="fixed bg-black opacity-30 w-full h-full top-0"></div>
-     )} 
+      {isOpen && (
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed bg-black opacity-30 w-full h-full top-0"
+        ></div>
+      )}
       <motion.div
         className={`fixed w-[250px] md:hidden left-0 right-0 z-10 md:top-0 overflow-y-auto h-[88vh] bg-white border-r border-[#e7e5e5]`}
         initial={{ x: "-100%" }}
@@ -78,13 +82,19 @@ const MobileSidebar = ({
             <h2 className="font-merriweather text-center font-semibold text-primary">
               {user.userInfo?.userName}
             </h2>
-            <Link
-              onClick={toggleDrawer}
-              to="/dashboard/profile"
-              className="text-center flex items-center justify-center text-gray text-sm"
-            >
-              Profile <ChevronRight className="w-4 mt-0.5" />
-            </Link>
+            {isRole === "User" ? (
+              <Link
+                onClick={toggleDrawer}
+                to="/dashboard/profile"
+                className="text-center flex items-center justify-center text-gray text-sm"
+              >
+                Profile <ChevronRight className="w-4" />
+              </Link>
+            ) : (
+              <h2 className="text-center flex items-center justify-center text-gray text-sm">
+                {isRole}
+              </h2>
+            )}
           </div>
         </div>
         <ul className=" pr-2">
@@ -92,54 +102,74 @@ const MobileSidebar = ({
             const Icon = val.icon;
             const isClicked = clicked === i;
             const hasSubMenu = val.subMenu?.length;
+            const role = val.role;
             return (
               <div className="" key={i}>
-                {hasSubMenu ? (
-                  <li>
-                    <span
-                      className={`${
-                        location.pathname === val.link
-                          ? "bg-primary/20 font-bold text-primary"
-                          : ""
-                      } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full cursor-pointer`}
-                      onClick={() => setClicked(isClicked ? null : i)}
-                    >
-                      <Icon className="md:w-4 w-3.5" />
-                      {val.name}
-                      {hasSubMenu && (
-                        <ChevronDown
-                          className={`ml-auto w-4 ${
-                            isClicked && "rotate-180"
-                          } `}
-                        />
-                      )}
-                    </span>
-                    {hasSubMenu && (
-                      <motion.ul
-                        initial="exit"
-                        animate={isClicked ? "enter" : "exit"}
-                        variants={subMenuDrawer}
-                        className="pl-14 text-xs md:text-sm"
+                {isRole === "User" &&
+                  role === "user" &&
+                  (hasSubMenu ? (
+                    <li>
+                      <span
+                        className={`${
+                          location.pathname === val.link
+                            ? "bg-primary/20 font-bold text-primary"
+                            : ""
+                        } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full cursor-pointer`}
+                        onClick={() => setClicked(isClicked ? null : i)}
                       >
-                        {val.subMenu?.map(({ name, link }) => (
-                          <li className="list-disc" key={name}>
-                            <Link
-                              onClick={toggleDrawer}
-                              to={link}
-                              className={`${
-                                location.pathname === val.link
-                                  ? "font-bold text-primary"
-                                  : ""
-                              } py-2 block rounded-e-full list-disc cursor-pointer hover:font-bold duration-300`}
-                            >
-                              {name}
-                            </Link>
-                          </li>
-                        ))}
-                      </motion.ul>
-                    )}
-                  </li>
-                ) : (
+                        <Icon className="md:w-4 w-3.5" />
+                        {val.name}
+                        {hasSubMenu && (
+                          <ChevronDown
+                            className={`ml-auto w-4 ${
+                              isClicked && "rotate-180"
+                            } `}
+                          />
+                        )}
+                      </span>
+                      {hasSubMenu && (
+                        <motion.ul
+                          initial="exit"
+                          animate={isClicked ? "enter" : "exit"}
+                          variants={subMenuDrawer}
+                          className="pl-14 text-xs md:text-sm"
+                        >
+                          {val.subMenu?.map(({ name, link }) => (
+                            <li className="list-disc" key={name}>
+                              <Link
+                                onClick={toggleDrawer}
+                                to={link}
+                                className={`${
+                                  location.pathname === val.link
+                                    ? "font-bold text-primary"
+                                    : ""
+                                } py-2 block rounded-e-full list-disc cursor-pointer hover:font-bold duration-300`}
+                              >
+                                {name}
+                              </Link>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </li>
+                  ) : (
+                    <li className="pb-0.5">
+                      <Link
+                        onClick={toggleDrawer}
+                        to={val.link}
+                        className={`${
+                          location.pathname === val.link
+                            ? "bg-primary/20 font-bold text-primary"
+                            : ""
+                        } flex gap-3 items-center text-sm md:text-base py-3 px-6 duration-300 hover:bg-primary/10 rounded-e-full`}
+                      >
+                        <Icon className="md:w-4 w-3.5" />
+                        {val.name}
+                      </Link>
+                    </li>
+                  ))}
+
+                {isRole !== "User" && role === "admin" && (
                   <li className="pb-0.5">
                     <Link
                       onClick={toggleDrawer}
@@ -161,7 +191,9 @@ const MobileSidebar = ({
 
           <button
             onClick={logoutBtn}
-            className="flex gap-3 items-center text-sm md:text-base px-6 outline-none mt-10 hover:text-primary duration-300 mb-20"
+            className={`flex gap-3 items-center text-sm md:text-base px-6 outline-none hover:text-primary duration-300 mb-20 ${
+              isRole === "User" ? "mt-10" : "mt-4"
+            }`}
           >
             <LogOut className="md:w-4 w-3.5" /> Logout
           </button>

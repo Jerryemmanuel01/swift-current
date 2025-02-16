@@ -237,21 +237,21 @@ const UserProfile = () => {
               src={user.kycDocument.identityCardPhoto}
               className="w-full h-[220px] object-center rounded-lg"
             />
-            <div className="mt-4 text-sm text-gray">
+            <div className="mt-4 text-sm text-gray font-inter">
               <div className="flex items-center gap-2">
-                <h2 className="font-inter">Identity Number:</h2>
+                <h2 className=" font-medium">Identity Number:</h2>
                 <span className="text-[13px] tracking-wide">
                   {user.kycDocument.identityNumber}
                 </span>
               </div>
               <div className="flex items-center gap-2 mt-2">
-                <h2 className="font-inter">Issuing Country:</h2>
+                <h2 className=" font-medium">Issuing Country:</h2>
                 <span className="text-[13px] tracking-wide">
                   {user.kycDocument.issuingCountry}
                 </span>
               </div>
               <div className="flex items-center gap-2 mt-2">
-                <h2 className="font-inter">Identity Medium:</h2>
+                <h2 className=" font-medium">Identity Medium:</h2>
                 <span className="text-[13px] tracking-wide">
                   {user.kycDocument.identityMedium}
                 </span>

@@ -7,6 +7,7 @@ export const FAQ = lazy(()=>import("../pages/General/FAQ/FAQ"))
 export const Contact = lazy(()=>import("../pages/General/Contact/Contact"))
 
 // Auth routes
+export const ProtectAuth = lazy(()=>import("../pages/Auth/ProtectAuth"))
 export const SignUp = lazy(()=>import("../pages/Auth/SignUp/SignUp"))
 export const SignUpSuccess = lazy(()=>import("../pages/Auth/SignUp/SignupSuccess"))
 export const Login = lazy(()=>import("../pages/Auth/Login/Login"))
@@ -14,6 +15,7 @@ export const ForgetPassword = lazy(()=>import("../pages/Auth/ForgetPassword/Forg
 export const ResetPassword = lazy(()=>import("../pages/Auth/ResetPassword/ResetPassword"))
 
 // Dashboard routes
+export const ProtectDashboard = lazy(()=>import("../pages/Dashboard/ProtectDashboard"))
 export const Dashboard = lazy(()=>import("../pages/Dashboard/Dashborad/Dashboard"))
 export const Profile = lazy(()=>import("../pages/Dashboard/Profile/Profile"))
 export const VerifyEmail = lazy(()=>import("../pages/Dashboard/Verify/Verify"))
@@ -36,6 +38,7 @@ export const ManagePin = lazy(()=>import("../pages/Dashboard/Settings/ManagePin"
 export const Receipt = lazy(()=>import("../components/Dashboard/TransactionReceipt"))
 
 // Admin routes
+export const ProtectAdmin = lazy(()=>import("../pages/Admin/ProtectAdmin"))
 export const AdminDashboard = lazy(()=>import("../pages/Admin/AdminDashboard/AdminDashboard"))
 export const AdminManagement = lazy(()=>import("../pages/Admin/AdminManagement/AdminManagement"))
 export const ApproveKYC = lazy(()=>import("../pages/Admin/ApproveKYC/ApproveKYC"))

@@ -19,12 +19,28 @@ export const navLinks = [
   { name: "Contact", link: "/contact" },
 ];
 export const sidebarLinks = [
-  { name: "Admin Dashboard", link: "/dashboard/admin", icon: Landmark },
-  { name: "Dashboard", link: "/dashboard", icon: LayoutDashboard },
-  { name: "Fund Account", link: "/dashboard/funding", icon: TicketPlus },
+  {
+    name: "Admin Dashboard",
+    link: "/admin",
+    icon: Landmark,
+    role: "admin",
+  },
+  {
+    name: "Dashboard",
+    link: "/dashboard",
+    icon: LayoutDashboard,
+    role: "user",
+  },
+  {
+    name: "Fund Account",
+    link: "/dashboard/funding",
+    icon: TicketPlus,
+    role: "user",
+  },
   {
     name: "Transfer",
     icon: Send,
+    role: "user",
     subMenu: [
       { name: "Internal Transfer", link: "/dashboard/internal-transfer" },
       {
@@ -35,6 +51,21 @@ export const sidebarLinks = [
       { name: "Crypto Transfer", link: "/dashboard/crypto-transfer" },
     ],
   },
+  {
+    name: "Transaction History",
+    link: "/dashboard/transaction-history",
+    icon: Clock3,
+    role: "user",
+  },
+  { name: "Token", link: "/dashboard/token", icon: CreditCard, role: "user" },
+  { name: "Loan", link: "/dashboard/loan", icon: Tickets, role: "user" },
+  { name: "KYC", link: "/dashboard/KYC", icon: Link2, role: "user" },
+  {
+    name: "Settings",
+    link: "/dashboard/settings",
+    icon: Settings,
+    role: "user",
+  },
   // {
   //   name: "Finance",
   //   icon: ChartLine,
@@ -43,13 +74,4 @@ export const sidebarLinks = [
   //     { name: "Stocks", link: "/dashboard/stocks" },
   //   ],
   // },
-  {
-    name: "Transaction History",
-    link: "/dashboard/transaction-history",
-    icon: Clock3,
-  },
-  { name: "Token", link: "/dashboard/token", icon: CreditCard },
-  { name: "Loan", link: "/dashboard/loan", icon: Tickets },
-  { name: "KYC", link: "/dashboard/KYC", icon: Link2 },
-  { name: "Settings", link: "/dashboard/settings", icon: Settings },
 ];

@@ -24,7 +24,7 @@ const getAllUser = () => {
     }
   }, [isSuccess]);
 
-  if (isError && message) toast.error(message);
+  if (isError ) toast.error(message|| "Error getting users");
 
   return { users, isLoading, isError };
 };

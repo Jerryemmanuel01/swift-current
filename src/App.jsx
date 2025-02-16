@@ -3,7 +3,6 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
-import { useSelector } from "react-redux";
 import LandingLayout from "./layouts/LandingLayout";
 import AuthLayout from "./layouts/AuthLayout/Index";
 import {
@@ -45,6 +44,9 @@ import {
   DebitUser,
   GetUsers,
   UserProfile,
+  ProtectAdmin,
+  ProtectAuth,
+  ProtectDashboard,
 } from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -52,7 +54,6 @@ import DashbordLayout from "./layouts/Dashboard";
 import AdminLayout from "./layouts/AdminLayout/Index";
 
 function App() {
-  const { token } = useSelector((state) => state.auth);
   return (
     <RouterProvider
       router={createBrowserRouter([
@@ -94,7 +95,7 @@ function App() {
         // Auth routes
         {
           path: "auth",
-          element: token ? <Navigate to="/dashboard" /> : <AuthLayout />,
+          element: <ProtectAuth element={<AuthLayout />} />,
           children: [
             {
               path: "sign-up",
@@ -121,50 +122,13 @@ function App() {
         //Dashboard routes
         {
           path: "dashboard",
-          element: <DashbordLayout />,
+          element: <ProtectDashboard element={<DashbordLayout />} />,
           children: [
             {
-              path: "",
               element: <Dashboard />,
+              path: "",
             },
-            {
-              path: "admin",
-              element: <AdminLayout />,
-              children: [
-                {
-                  path: "",
-                  element: <AdminDashboard />,
-                },
-                {
-                  path: "admin-management",
-                  element: <AdminManagement />,
-                },
-                {
-                  path: "approve-kyc",
-                  element: <ApproveKYC />,
-                },
-                {
-                  path: "approve-transaction",
-                  element: <ApproveTransaction />,
-                },
-                {
-                  path: "credit-user",
-                  element: <FundUser />,
-                },
-                {
-                  path: "debit-user",
-                  element: <DebitUser />,
-                },
-                {
-                  path: "get-users",
-                  element: <GetUsers />,
-                },
-                {
-                  path: "user-profile/:id",
-                  element: <UserProfile />,
-                },
-              ],
-            },
+
             {
               path: "profile",
               element: <Profile />,
@@ -241,6 +205,45 @@ function App() {
           ],
         },
 
+        //Admin routes
+        {
+          path: "admin",
+          element: <ProtectAdmin element={<DashbordLayout />} />,
+          children: [
+            {
+              path: "",
+              element: <AdminDashboard />,
+            },
+            {
+              path: "admin-management",
+              element: <AdminManagement />,
+            },
+            {
+              path: "approve-kyc",
+              element: <ApproveKYC />,
+            },
+            {
+              path: "approve-transaction",
+              element: <ApproveTransaction />,
+            },
+            {
+              path: "credit-user",
+              element: <FundUser />,
+            },
+            {
+              path: "debit-user",
+              element: <DebitUser />,
+            },
+            {
+              path: "get-users",
+              element: <GetUsers />,
+            },
+            {
+              path: "user-profile/:id",
+              element: <UserProfile />,
+            },
+          ],
+        },
         {
           path: "*",
           element: <Navigate to="/" />,
