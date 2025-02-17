@@ -2,14 +2,36 @@ import axiosClient from "../../api/axiosClient";
 
 const getUsers = async () => {
   const response = await axiosClient.get(`/user`);
-    localStorage.setItem(
-      "SC_all_users",
-      JSON.stringify(response.data.result.data)
-    );
+  localStorage.setItem(
+    "SC_all_users",
+    JSON.stringify(response.data.result.data)
+  );
+
+  return response.data;
+};
+const getPendingTransactions = async (data) => {
+  const response = await axiosClient.get(
+    `/user/transaction/pending?type=${data}`
+  );
+  localStorage.setItem(
+    "SC_pending_transaction",
+    JSON.stringify(response.data.result.data)
+  );
+
+  return response.data;
+};
+const approveTransactions = async (data) => {
+  const response = await axiosClient.patch(
+    `/user/transaction/approve-transfer`, data
+  );
 
   return response.data;
 };
 
-const adminUserService = { getUsers };
+const adminUserService = {
+  getUsers,
+  getPendingTransactions,
+  approveTransactions,
+};
 
 export default adminUserService;

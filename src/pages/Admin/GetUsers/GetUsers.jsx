@@ -1,33 +1,19 @@
-import { useNavigate } from "react-router-dom";
 import HeaderName from "../../../components/Dashboard/HeaderName";
-import getAllUser from "../../../hooks/adminHooks/getAllUser";
+import useGetAllUser from "../../../hooks/adminHooks/useGetAllUser";
 import { ChevronLeft } from "lucide-react";
 import { ImSpinner5 } from "react-icons/im";
-import { useState } from "react";
 
 const GetUsers = () => {
-  const { users, isLoading, isError } = getAllUser();
-  const [data, setData] = useState(users);
-  const [sortOrder, setSortOrder] = useState("asc"); // Track sorting order
+  const {
+    isLoading,
+    isError,
+    data,
+    handleRowClick,
+    handleSort,
+    sortOrder,
+    navigate
+  } = useGetAllUser();
 
-  const handleSort = () => {
-    const sortedData = [...data].sort((a, b) => {
-      if (sortOrder === "asc") {
-        return a.firstName.localeCompare(b.firstName);
-      } else {
-        return b.firstName.localeCompare(a.firstName);
-      }
-    });
-
-    setData(sortedData);
-    setSortOrder(sortOrder === "asc" ? "desc" : "asc"); // Toggle order
-  };
-
-  const navigate = useNavigate();
-
-  const handleRowClick = (id) => {
-    navigate(`/admin/user-profile/${id}`);
-  };
   return (
     <section className="w-full px-6 bg-[#f1f5f6] -mt-6 py-6">
       <div className="flex items-center gap-3 mt-2">
