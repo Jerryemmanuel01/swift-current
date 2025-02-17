@@ -11,7 +11,7 @@ const getUsers = async () => {
 };
 const getPendingTransactions = async (data) => {
   const response = await axiosClient.get(
-    `/user/transaction/pending?type=${data}`
+    `/user/transaction/all?status=pending`
   );
   localStorage.setItem(
     "SC_pending_transaction",

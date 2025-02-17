@@ -40,6 +40,7 @@ import {
   AdminManagement,
   ApproveKYC,
   ApproveTransaction,
+  TransactionDetails,
   FundUser,
   DebitUser,
   GetUsers,
@@ -225,6 +226,10 @@ function App() {
             {
               path: "approve-transaction",
               element: <ApproveTransaction />,
+            },
+            {
+              path: "transaction-details/:id",
+              element: <TransactionDetails />,
             },
             {
               path: "credit-user",

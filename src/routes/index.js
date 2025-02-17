@@ -43,6 +43,7 @@ export const AdminDashboard = lazy(()=>import("../pages/Admin/AdminDashboard/Adm
 export const AdminManagement = lazy(()=>import("../pages/Admin/AdminManagement/AdminManagement"))
 export const ApproveKYC = lazy(()=>import("../pages/Admin/ApproveKYC/ApproveKYC"))
 export const ApproveTransaction = lazy(()=>import("../pages/Admin/ApproveTransaction/ApproveTransaction"))
+export const TransactionDetails = lazy(()=>import("../pages/Admin/ApproveTransaction/TransactionDetails"))
 export const FundUser = lazy(()=>import("../pages/Admin/FundUser/FundUser"))
 export const DebitUser = lazy(()=>import("../pages/Admin/DebitUser/DebitUser"))
 export const GetUsers = lazy(()=>import("../pages/Admin/GetUsers/GetUsers"))

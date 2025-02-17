@@ -12,15 +12,16 @@ const UserProfile = () => {
   const { users } = useSelector((state) => state.admin);
   const navigate = useNavigate();
   const { id } = useParams();
-  const user = users?.find((obj) => obj.id === id);
+  
+  const user = users?.find((obj) => obj._id === id);
 
-  const dateTime = user.createdAt;
+  const dateTime = user?.createdAt;
   const date = moment(dateTime).format("YYYY-MM-DD");
   const time = moment(dateTime).format("HH:mm:ss");
 
   const handleCopy = () => {
     navigator.clipboard
-      .writeText(user.accountNumber)
+      .writeText(user?.accountNumber)
       .then(() => {
         setCopied(true);
         toast.success("Account number copied");
@@ -53,19 +54,19 @@ const UserProfile = () => {
           <div className="mt-16">
             <div className="flex items-center gap-2">
               <h2 className="font-merriweather font-bold text-dark md:text-lg">
-                {user.lastName} {user.firstName}
+                {user?.lastName} {user?.firstName}
               </h2>
-              {user.emailVerification && (
+              {user?.emailVerification && (
                 <div className="rounded-full  bg-primary p-0.5">
                   <Check className="text-white w-2.5 h-2.5" />
                 </div>
               )}
             </div>
             <h4 className="text-gray text-sm capitalize mt-0.5">
-              {user.country}
+              {user?.country}
             </h4>
           </div>
-          {user.kycStatus === "Complete" && (
+          {user?.kycStatus === "Complete" && (
             <div className="flex items-center gap-2 mt-4 font-inter font-semibold">
               <button
                 onClick={() => setShowModal(true)}
@@ -87,8 +88,8 @@ const UserProfile = () => {
                   Email
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray w-full">
-                  <span className="">{user.email}</span>
-                  {user.emailVerification && (
+                  <span className="">{user?.email}</span>
+                  {user?.emailVerification && (
                     <div className="rounded-full  bg-primary p-0.5">
                       <Check className="text-white w-2.5 h-2.5" />
                     </div>
@@ -100,7 +101,7 @@ const UserProfile = () => {
                   Account Number
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray w-full">
-                  <span className="">{user.accountNumber}</span>
+                  <span className="">{user?.accountNumber}</span>
                   <button
                     onClick={handleCopy}
                     type="button"
@@ -120,16 +121,16 @@ const UserProfile = () => {
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
                   <span className="capitalize font-bold">
-                    {user.accountBalance.toLocaleString()}
+                    {user?.accountBalance.toLocaleString()}
                   </span>
                 </div>
               </div>
               <div className="w-full">
                 <h3 className="text-primary font-inter font-medium">
-                  Username
+                  User?name
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
-                  <span className="capitalize">{user.userName}</span>
+                  <span className="capitalize">{user?.userName}</span>
                 </div>
               </div>
               <div className="w-full">
@@ -137,7 +138,7 @@ const UserProfile = () => {
                   Currency
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
-                  <span className="capitalize">{user.currency}</span>
+                  <span className="capitalize">{user?.currency}</span>
                 </div>
               </div>
               <div className="w-full">
@@ -145,7 +146,7 @@ const UserProfile = () => {
                   Phone Number
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
-                  <span className="">{user.phone}</span>
+                  <span className="">{user?.phone}</span>
                 </div>
               </div>
               <div className="w-full">
@@ -153,13 +154,13 @@ const UserProfile = () => {
                   Account Type
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
-                  <span className="">{user.accountType}</span>
+                  <span className="">{user?.accountType}</span>
                 </div>
               </div>
               <div className="w-full">
                 <h3 className="text-primary font-inter font-medium">Role</h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
-                  <span className="capitalize">{user.role}</span>
+                  <span className="capitalize">{user?.role}</span>
                 </div>
               </div>
               <div className="w-full">
@@ -167,7 +168,7 @@ const UserProfile = () => {
                   KYC Status
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
-                  <span className="capitalize">{user.kycStatus}</span>
+                  <span className="capitalize">{user?.kycStatus}</span>
                 </div>
               </div>
               <div className="w-full">
@@ -175,7 +176,7 @@ const UserProfile = () => {
                   Account Status
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
-                  <span className="">{user.status}</span>
+                  <span className="">{user?.status}</span>
                 </div>
               </div>
               <div className="w-full">
@@ -184,7 +185,7 @@ const UserProfile = () => {
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
                   <span className="capitalize">
-                    {user.occupation || "null"}
+                    {user?.occupation || "null"}
                   </span>
                 </div>
               </div>
@@ -192,7 +193,7 @@ const UserProfile = () => {
                 <h3 className="text-primary font-inter font-medium">Income</h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
                   <span className="capitalize">
-                    {user.income.toLocaleString()}
+                    {user?.income.toLocaleString()}
                   </span>
                 </div>
               </div>
@@ -202,7 +203,7 @@ const UserProfile = () => {
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
                   <span className="capitalize">
-                    {user.expenses.toLocaleString()}
+                    {user?.expenses.toLocaleString()}
                   </span>
                 </div>
               </div>
@@ -210,7 +211,7 @@ const UserProfile = () => {
                 <h3 className="text-primary font-inter font-medium">Loan</h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
                   <span className="capitalize">
-                    {user.loan.toLocaleString()}
+                    {user?.loan.toLocaleString()}
                   </span>
                 </div>
               </div>
@@ -234,26 +235,26 @@ const UserProfile = () => {
           <div className="">
             <img
               alt="id card"
-              src={user.kycDocument.identityCardPhoto}
+              src={user?.kycDocument.identityCardPhoto}
               className="w-full h-[220px] object-center rounded-lg"
             />
             <div className="mt-4 text-sm text-gray font-inter">
               <div className="flex items-center gap-2">
                 <h2 className=" font-medium">Identity Number:</h2>
                 <span className="text-[13px] tracking-wide">
-                  {user.kycDocument.identityNumber}
+                  {user?.kycDocument.identityNumber}
                 </span>
               </div>
               <div className="flex items-center gap-2 mt-2">
                 <h2 className=" font-medium">Issuing Country:</h2>
                 <span className="text-[13px] tracking-wide">
-                  {user.kycDocument.issuingCountry}
+                  {user?.kycDocument.issuingCountry}
                 </span>
               </div>
               <div className="flex items-center gap-2 mt-2">
                 <h2 className=" font-medium">Identity Medium:</h2>
                 <span className="text-[13px] tracking-wide">
-                  {user.kycDocument.identityMedium}
+                  {user?.kycDocument.identityMedium}
                 </span>
               </div>
             </div>
@@ -261,7 +262,7 @@ const UserProfile = () => {
         </Modal>
       </div>
     </section>
-  );
+  )
 };
 
 export default UserProfile;

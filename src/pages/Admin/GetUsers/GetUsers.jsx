@@ -73,11 +73,11 @@ const GetUsers = () => {
                 <tr
                   key={i}
                   className="even:bg-primary/5 text-xs cursor-pointer"
-                  onClick={() => handleRowClick(val.id)}
+                  onClick={() => handleRowClick(val._id)}
                 >
                   <td className="px-4 py-3.5 whitespace-nowrap">{i + 1}</td>
                   <td className="px-4 py-3.5 whitespace-nowrap">
-                    {val.id.substring(0, 10) + "..."}
+                    {val._id?.substring(0, 10) + "..."}
                   </td>
                   <td className="px-4 py-3.5 whitespace-nowrap">
                     {val.firstName}
