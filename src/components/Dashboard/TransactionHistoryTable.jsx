@@ -31,8 +31,8 @@ const TransactionHistoryTable = ({ transactions }) => {
             </tr>
           </thead>
           <tbody>
-            {transactions.length ?
-              transactions
+            {Object.values(transactions).length ?
+              Object.values(transactions)
                 .map((val, i) => {
                   const dateTime = val.createdAt;
                   const date = moment(dateTime).format("YYYY-MM-DD");
@@ -42,7 +42,7 @@ const TransactionHistoryTable = ({ transactions }) => {
                     <tr className="even:bg-primary/5 text-xs" key={i}>
                       <td className="px-4 py-2 whitespace-nowrap">{i + 1}</td>
                       <td className="px-4 py-2 whitespace-nowrap">
-                        {val.id.substring(0, 10) + "..."}
+                        {val._id.substring(0, 10) + "..."}
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
                         {val.name}
@@ -76,7 +76,7 @@ const TransactionHistoryTable = ({ transactions }) => {
                       </td>
                       <td className="px-4 whitespace-nowrap">
                         <Link
-                          to={`/dashboard/receipt/${val.id}`}
+                          to={`/dashboard/receipt/${val._id}`}
                           className="bg-primary/80 py-2 px-3 rounded-md text-white"
                         >
                           View Receipt
@@ -87,7 +87,7 @@ const TransactionHistoryTable = ({ transactions }) => {
                 }):""}
           </tbody>
         </table>
-        {!transactions.length && (
+        {!Object.values(transactions).length && (
           <div className="text-center w-full py-4 text-sm font-inter font-medium">
             No Transaction available
           </div>

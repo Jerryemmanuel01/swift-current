@@ -1,4 +1,4 @@
-import { ChevronLeft, Copy } from "lucide-react";
+import { Check, ChevronLeft, Copy } from "lucide-react";
 import useTransactionDetails from "../../../hooks/adminHooks/useTransactionDetails";
 import HeaderName from "../../../components/Dashboard/HeaderName";
 import moment from "moment";
@@ -7,14 +7,8 @@ import { PiSpinner } from "react-icons/pi";
 
 const TransactionDetails = () => {
   const {
-    pendingTransaction,
     isLoading,
-    isError,
     navigate,
-    showModal,
-    setShowModal,
-    handleRowClick,
-    selectedTransaction,
     handleCopy,
     copied,
     copiedHash,

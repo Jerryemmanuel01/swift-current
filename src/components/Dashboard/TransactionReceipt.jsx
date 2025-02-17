@@ -10,7 +10,8 @@ const TransactionReceipt = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();
-  const transaction = transactions.find((obj) => obj.id === id)
+  const transaction = Object.values(transactions).find((obj) => obj._id === id)
+console.log(transaction);
 
   return (
     <section className="px-6 w-full ">
@@ -81,7 +82,7 @@ const TransactionReceipt = () => {
             <div className="border-b border-[#D0D5DD] py-2 mt-1 w-full flex justify-between items-center">
               <p className="text-textGray">Transaction Id</p>
               <p className="text-textGrafy font-medium font-inter">
-                {transaction.id}
+                {transaction._id}
               </p>
             </div>
             <div className="border-b border-[#D0D5DD] py-2 mt-1 w-full flex justify-between items-center">

@@ -83,12 +83,8 @@ const useTransactionDetails = () => {
   };
 
   return {
-    pendingTransaction,
     isLoading,
-    isError,
     navigate,
-    showModal,
-    setShowModal,
     handleCopy,
     copied,
     copiedHash,
