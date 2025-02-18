@@ -87,7 +87,6 @@ const useInternationalTransferForm = () => {
         pin: String(pin),
         metadata,
       };
-      console.log(userData);
       if (amount > user.userInfo.accountBalance) {
         toast.error("Insufficient Balance")
         return

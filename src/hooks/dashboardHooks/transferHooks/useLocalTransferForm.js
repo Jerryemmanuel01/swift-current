@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import {
-  internalTransfer,
+  localTransfer,
   reset,
 } from "../../../services/features/transfer/transferSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import {
   internationalTransferSchema,
   localTransferSchema,
@@ -16,6 +16,8 @@ import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice
 const useLocalTransferForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { user } = useOutletContext();
 
   const { isLoading, isError, message, isSuccess } = useSelector(
     (state) => state.transfer
@@ -47,22 +49,54 @@ const useLocalTransferForm = () => {
   const formik = useFormik({
     initialValues: {
       bankName: "",
-      recipientAccountNumber: "",
-      recipientName: "",
+      accountNumber: "",
+      name: "",
       country: "",
       sortCode: "",
       branchNumber: "",
       amount: "",
-      chargePriority: "",
+      chargePriorityFee: "",
       description: "",
-      tokenId: "",
-      transactionPin: "",
+      otp: "",
+      pin: "",
     },
     validationSchema: localTransferSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: ({
+      accountNumber,
+      amount,
+      bankName,
+      branchNumber,
+      chargePriorityFee,
+      country,
+      description,
+      name,
+      otp,
+      pin,
+      sortCode,
+    } = values) => {
+      const metadata = {
+        bankName,
+        accountNumber: String(accountNumber),
+        sortCode,
+        branchNumber,
+      };
+      const userData = {
+        amount,
+        chargePriorityFee,
+        country,
+        description,
+        name,
+        otp,
+        pin,
+        metadata,
+      };
+      if (amount > user.userInfo.accountBalance) {
+        toast.error("Insufficient Balance");
+        return;
+      }
+      console.log(userData);
 
-      //   dispatch(internalTransfer(values));
+      dispatch(localTransfer(userData));
     },
   });
   return { formik, isLoading, chargePriorityOptions };
