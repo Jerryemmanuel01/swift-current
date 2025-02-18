@@ -17,6 +17,19 @@ export const internalTransfer = createAsyncThunkWithHandler(
   }
 );
 
+export const internationalTransfer = createAsyncThunkWithHandler(
+  "transfer/international",
+  async (data, _) => {
+    return await transferService.internationalTransfer(data);
+  }
+);
+export const localTransfer = createAsyncThunkWithHandler(
+  "transfer/local",
+  async (data, _) => {
+    return await transferService.localTransfer(data);
+  }
+);
+
 export const cryptoTransfer = createAsyncThunkWithHandler(
   "transfer/crypto",
   async (data, _) => {
@@ -55,6 +68,36 @@ const transferSlice = createSlice({
         state.message = action.payload.result.message;
       })
       .addCase(internalTransfer.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload.message;
+        state.isSuccess = false;
+      })
+      .addCase(internationalTransfer.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(internationalTransfer.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.result.message;
+      })
+      .addCase(internationalTransfer.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload.message;
+        state.isSuccess = false;
+      })
+      .addCase(localTransfer.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(localTransfer.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.result.message;
+      })
+      .addCase(localTransfer.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload.message;

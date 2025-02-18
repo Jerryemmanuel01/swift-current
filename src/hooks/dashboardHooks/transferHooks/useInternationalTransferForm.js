@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import {
-  internalTransfer,
+  internationalTransfer,
   reset,
 } from "../../../services/features/transfer/transferSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import countryLists from "../../../lib/countries.json";
 import { internationalTransferSchema } from "../../../lib/schema";
 import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
@@ -18,22 +18,23 @@ const useInternationalTransferForm = () => {
   const { isLoading, isError, message, isSuccess } = useSelector(
     (state) => state.transfer
   );
+  const {user} = useOutletContext()
 
   const chargePriorityOptions = [
     {
-        charge: "SHARED",
-        value: "Shared"
+      charge: "SHARED",
+      value: "Shared",
     },
     {
-        charge: "OUR",
-        value: "Our"
+      charge: "OUR",
+      value: "Our",
     },
-  ]
+  ];
 
   useEffect(() => {
     if (isError) toast.error(message);
     if (isSuccess) {
-      toast.success("Transaction Processing... please wait");
+      toast.success(message);
       formik.resetForm();
       dispatch(fetchUserInfo());
       navigate("/dashboard");
@@ -45,22 +46,54 @@ const useInternationalTransferForm = () => {
   const formik = useFormik({
     initialValues: {
       bankName: "",
-      recipientAccountNumber: "",
-      recipientName: "",
+      accountNumber: "",
+      name: "",
       country: "",
       swiftCode: "",
-      ibanCode: "",
+      IBANCode: "",
       amount: "",
-      chargePriority:"",
+      chargePriorityFee: "",
       description: "",
-      tokenId:"",
-      transactionPin: "",
+      otp: "",
+      pin: "",
     },
     validationSchema: internationalTransferSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: ({
+      IBANCode,
+      accountNumber,
+      amount,
+      bankName,
+      chargePriorityFee,
+      country,
+      description,
+      name,
+      otp,
+      pin,
+      swiftCode,
+    } = values) => {
+      const metadata = {
+        bankName,
+        accountNumber: String(accountNumber),
+        country,
+        swiftCode,
+        IBANCode,
+      };
+      const userData = {
+        amount,
+        name,
+        description,
+        chargePriorityFee,
+        otp: String(otp),
+        pin: String(pin),
+        metadata,
+      };
+      console.log(userData);
+      if (amount > user.userInfo.accountBalance) {
+        toast.error("Insufficient Balance")
+        return
+      }
 
-      //   dispatch(internalTransfer(values));
+      dispatch(internationalTransfer(userData));
     },
   });
   return { formik, isLoading, countryLists, chargePriorityOptions };

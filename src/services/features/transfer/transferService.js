@@ -10,13 +10,19 @@ const internalTransfer = async (userData) => {
 };
 
 const internationalTransfer = async (userData) => {
-  const response = await axiosClient.post(`/user/internal-transfer`, userData);
+  const response = await axiosClient.post(
+    `/user/transaction/international-transfer`,
+    userData
+  );
 
   return response.data;
 };
 
 const localTransfer = async (userData) => {
-  const response = await axiosClient.post(`/user/internal-transfer`, userData);
+  const response = await axiosClient.post(
+    `/user/transaction/local-transfer`,
+    userData
+  );
 
   return response.data;
 };

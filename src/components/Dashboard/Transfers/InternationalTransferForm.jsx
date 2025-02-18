@@ -31,7 +31,7 @@ const InternationalTransferForm = () => {
       <div className="md:flex gap-4 mt-4 items-center w-full">
         <div className="md:w-1/2">
           <label
-            htmlFor="recipientAccountNumber"
+            htmlFor="accountNumber"
             className="font-medium tracking-wide text-xs"
           >
             Recipient's Account Number
@@ -39,24 +39,24 @@ const InternationalTransferForm = () => {
           <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
             <input
               type="number"
-              name="recipientAccountNumber"
-              id="recipientAccountNumber"
+              name="accountNumber"
+              id="accountNumber"
               className={`w-full h-10 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.recipientAccountNumber}
+              value={formik.values.accountNumber}
             />
           </div>
-          {formik.touched.recipientAccountNumber &&
-          formik.errors.recipientAccountNumber ? (
+          {formik.touched.accountNumber &&
+          formik.errors.accountNumber ? (
             <div className="text-red-500 text-[10px] font-semibold">
-              {formik.errors.recipientAccountNumber}
+              {formik.errors.accountNumber}
             </div>
           ) : null}
         </div>
         <div className="md:w-1/2 mt-4 md:mt-0">
           <label
-            htmlFor="recipientName"
+            htmlFor="name"
             className="font-medium tracking-wide text-xs"
           >
             Recipient's Name
@@ -64,17 +64,17 @@ const InternationalTransferForm = () => {
           <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
             <input
               type="text"
-              name="recipientName"
-              id="recipientName"
+              name="name"
+              id="name"
               className={`w-full h-10 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.recipientName}
+              value={formik.values.name}
             />
           </div>
-          {formik.touched.recipientName && formik.errors.recipientName ? (
+          {formik.touched.name && formik.errors.name ? (
             <div className="text-red-500 text-[10px] font-semibold">
-              {formik.errors.recipientName}
+              {formik.errors.name}
             </div>
           ) : null}
         </div>
@@ -122,7 +122,7 @@ const InternationalTransferForm = () => {
           </label>
           <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
             <input
-              type="number"
+              type="text"
               name="swiftCode"
               id="swiftCode"
               className={`w-full h-10 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
@@ -139,25 +139,25 @@ const InternationalTransferForm = () => {
         </div>
         <div className="w-1/2">
           <label
-            htmlFor="ibanCode"
+            htmlFor="IBANCode"
             className="font-medium tracking-wide text-xs"
           >
             IBAN Code
           </label>
           <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
             <input
-              type="number"
-              name="ibanCode"
-              id="ibanCode"
+              type="text"
+              name="IBANCode"
+              id="IBANCode"
               className={`w-full h-10 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.ibanCode}
+              value={formik.values.IBANCode}
             />
           </div>
-          {formik.touched.ibanCode && formik.errors.ibanCode ? (
+          {formik.touched.IBANCode && formik.errors.IBANCode ? (
             <div className="text-red-500 text-[10px] font-semibold">
-              {formik.errors.ibanCode}
+              {formik.errors.IBANCode}
             </div>
           ) : null}
         </div>
@@ -209,20 +209,20 @@ const InternationalTransferForm = () => {
       </div>
       <div className="mt-4">
         <label
-          htmlFor="chargePriority"
+          htmlFor="chargePriorityFee"
           className="font-medium tracking-wide text-xs"
         >
           Charge Priority Fee
         </label>
         <div className="border-[#D0D5DD] text-gray border w-full mt-1 flex items-center gap-2 rounded-md">
           <select
-            name="chargePriority"
-            id="chargePriority"
+            name="chargePriorityFee"
+            id="chargePriorityFee"
             className={`w-full text-xs px-3 h-10 font-medium outline-none tracking-wide appearance-none`}
             aria-placeholder="Please select state"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.chargePriority}
+            value={formik.values.chargePriorityFee}
           >
             <option value="" disabled>
               Select Payment
@@ -234,15 +234,15 @@ const InternationalTransferForm = () => {
             ))}
           </select>
         </div>
-        {formik.touched.chargePriority && formik.errors.chargePriority ? (
+        {formik.touched.chargePriorityFee && formik.errors.chargePriorityFee ? (
           <div className="text-red-500 text-[10px] font-semibold">
-            {formik.errors.chargePriority}
+            {formik.errors.chargePriorityFee}
           </div>
         ) : null}
       </div>
       <div className="mt-4">
         <label
-          htmlFor="tokenId"
+          htmlFor="otp"
           className="font-medium tracking-wide text-xs"
         >
           Token ID <Link to="/dashboard/token" className="text-red-600">(Click to activate your token)</Link>
@@ -250,23 +250,23 @@ const InternationalTransferForm = () => {
         <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
           <input
             type="number"
-            name="tokenId"
-            id="tokenId"
-            className={`w-full h-10 text-xs font-medium fund-tokenId outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
+            name="otp"
+            id="otp"
+            className={`w-full h-10 text-xs font-medium fund-otp outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.tokenId}
+            value={formik.values.otp}
           />
         </div>
-        {formik.touched.tokenId && formik.errors.tokenId ? (
+        {formik.touched.otp && formik.errors.otp ? (
           <div className="text-red-500 text-[10px] font-semibold">
-            {formik.errors.tokenId}
+            {formik.errors.otp}
           </div>
         ) : null}
       </div>
       <div className="mt-4">
         <label
-          htmlFor="transactionPin"
+          htmlFor="pin"
           className="font-medium tracking-wide text-xs"
         >
           Transfer Pin
@@ -274,17 +274,17 @@ const InternationalTransferForm = () => {
         <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
           <input
             type="number"
-            name="transactionPin"
-            id="transactionPin"
-            className={`w-full h-10 text-xs font-medium fund-transactionPin outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
+            name="pin"
+            id="pin"
+            className={`w-full h-10 text-xs font-medium fund-pin outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.transactionPin}
+            value={formik.values.pin}
           />
         </div>
-        {formik.touched.transactionPin && formik.errors.transactionPin ? (
+        {formik.touched.pin && formik.errors.pin ? (
           <div className="text-red-500 text-[10px] font-semibold">
-            {formik.errors.transactionPin}
+            {formik.errors.pin}
           </div>
         ) : null}
       </div>

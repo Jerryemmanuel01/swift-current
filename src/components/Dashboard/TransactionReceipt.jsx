@@ -11,7 +11,6 @@ const TransactionReceipt = () => {
 
   const { id } = useParams();
   const transaction = Object.values(transactions).find((obj) => obj._id === id)
-console.log(transaction);
 
   return (
     <section className="px-6 w-full ">
@@ -30,7 +29,7 @@ console.log(transaction);
               {transaction.type} from {transaction.name.toUpperCase()}
             </p>
             <h2 className="mt-1 font-semibold text-base md:text-lg font-poppins text-dark">
-              {transaction.category === "Debit"
+              ${transaction.category === "Debit"
                 ? "-" + transaction.amount.toLocaleString()
                 : transaction.amount.toLocaleString()}
             </h2>
@@ -76,7 +75,7 @@ console.log(transaction);
             <div className="border-b border-[#D0D5DD] py-2 mt-1 w-full flex justify-between items-center">
               <p className="text-textGray">Charges</p>
               <p className="text-textGrafy font-medium font-inter">
-                ${transaction.charges}
+                ${transaction.charges || 0}
               </p>
             </div>
             <div className="border-b border-[#D0D5DD] py-2 mt-1 w-full flex justify-between items-center">

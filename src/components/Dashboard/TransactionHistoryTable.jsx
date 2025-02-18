@@ -54,11 +54,11 @@ const TransactionHistoryTable = ({ transactions }) => {
                         <h2 className="">{date}</h2>
                         <span className="text-gray text-[9.5px]">{time}</span>
                       </td>
-                      <td className="px-4 py-2 whitespace-nowrap">
-                        {val.category==="Debit"? "-"+val.amount.toLocaleString(): val.amount.toLocaleString()}
+                      <td className={`px-4 py-2 whitespace-nowrap ${val.category === "Credit"? "text-primary":"text-red-600"}`}>
+                        ${val.category==="Debit"? "-"+val.amount.toLocaleString(): val.amount.toLocaleString()}
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
-                        {val.charges}
+                        ${val.charges || "0"}
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
                         {val.description ? val.description : val.type}

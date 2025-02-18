@@ -13,7 +13,6 @@ const useTransactionDetails = () => {
   const [copied, setCopied] = useState(false);
   const [copiedHash, setCopiedHash] = useState(false);
   const [pinForm, setPinForm] = useState(false);
-  const [showModal, setShowModal] = useState(false);
 
   const { id } = useParams();
   const transaction = pendingTransaction?.find((obj) => obj._id === id);
