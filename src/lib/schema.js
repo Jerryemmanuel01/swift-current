@@ -101,6 +101,7 @@ export const resetPasswordSchema = Yup.object().shape({
       "Password must contain at least one special character (e.g., $, &, @, etc.)"
     ),
   confirmPassword: Yup.string()
+
     .oneOf([Yup.ref("password")], "Passwords must match")
     .required("Please confirm your password"),
 });
@@ -114,6 +115,12 @@ export const fundingSchema = Yup.object().shape({
   transactionId: Yup.string().required("Transaction ID is required"),
 });
 
+export const blockchainFeeSchema = Yup.object().shape({
+  amount: Yup.string().required("Amount is required"),
+  blockchainNetwork: Yup.string().notRequired(),
+  walletAddress: Yup.string().notRequired(),
+  transactionId: Yup.string().required("Transaction ID is required"),
+});
 export const KYCSchema = Yup.object().shape({
   issuingCountry: Yup.string().required("Country is required"),
   identityMedium: Yup.string().required("Id medium is required"),

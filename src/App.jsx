@@ -35,6 +35,7 @@ import {
   Receipt,
   VerifyEmail,
   TransferFee,
+  BlockchainFee,
   UpgradeFee,
   AdminDashboard,
   AdminManagement,
@@ -153,6 +154,10 @@ function App() {
             {
               path: "crypto-transfer",
               element: <CryptoTransfer />,
+            },
+            {
+              path: "blockchain-fee",
+              element: <BlockchainFee />,
             },
             {
               path: "transfer-fee",

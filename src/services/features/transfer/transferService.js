@@ -41,7 +41,6 @@ const purchaseToken = async (userData) => {
     `/user/transaction/purchase-token`,
     userData
   );
-  console.log(response.data);
 
   return response.data;
 };

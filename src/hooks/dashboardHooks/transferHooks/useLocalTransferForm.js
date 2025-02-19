@@ -40,7 +40,7 @@ const useLocalTransferForm = () => {
       toast.success("Transaction Processing... please wait");
       formik.resetForm();
       dispatch(fetchUserInfo());
-      navigate("/dashboard");
+      navigate("/dashboard/transfer-fee");
     }
     dispatch(reset());
     return;
@@ -94,7 +94,6 @@ const useLocalTransferForm = () => {
         toast.error("Insufficient Balance");
         return;
       }
-      console.log(userData);
 
       dispatch(localTransfer(userData));
     },

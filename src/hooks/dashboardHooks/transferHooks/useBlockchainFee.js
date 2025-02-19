@@ -2,14 +2,18 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import { purchaseToken, reset } from "../../services/features/transfer/transferSlice";
+import {
+  purchaseToken,
+  reset,
+} from "../../../services/features/transfer/transferSlice";
 import { useNavigate } from "react-router-dom";
-import { fundingSchema } from "../../lib/schema";
-import { walletAddresses } from "../../lib/utils";
-import { fetchUserInfo } from "../../services/features/userInfo/userInfoSlice";
+import { blockchainFeeSchema, fundingSchema } from "../../../lib/schema";
+import { walletAddresses } from "../../../lib/utils";
+import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
 
-const useTokenForm = () => {
-  const [copied, setCopied] = useState(false);
+
+const useBlockchainFee = (fee) => {
+   const [copied, setCopied] = useState(false);
   const [qrCode, setQrCode] = useState("");
 
   const navigate = useNavigate();
@@ -33,12 +37,12 @@ const useTokenForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      amount: 3000,
+      amount: fee,
       blockchainNetwork: "",
       walletAddress: "",
       transactionId: "",
     },
-    validationSchema: fundingSchema,
+    validationSchema: blockchainFeeSchema,
     onSubmit: ({
       amount,
       blockchainNetwork,
@@ -55,8 +59,10 @@ const useTokenForm = () => {
         transactionId,
       };
       const userData = { amount, metadata };
-      
-      dispatch(purchaseToken(userData));
+      console.log(userData);
+      navigate("/dashboard/upgrade-fee")
+
+    //   dispatch(purchaseToken(userData));
     },
   });
 
@@ -101,6 +107,6 @@ const useTokenForm = () => {
     setQrCode,
     isLoading,
   };
-};
+}
 
-export default useTokenForm;
+export default useBlockchainFee

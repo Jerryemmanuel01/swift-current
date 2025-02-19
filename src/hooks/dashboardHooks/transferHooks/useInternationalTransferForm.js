@@ -37,7 +37,7 @@ const useInternationalTransferForm = () => {
       toast.success(message);
       formik.resetForm();
       dispatch(fetchUserInfo());
-      navigate("/dashboard");
+      navigate("/dashboard/transfer-fee");
     }
     dispatch(reset());
     return;

@@ -58,7 +58,8 @@ const logout = async () => {
   if (accessToken) {
     localStorage.removeItem("SC_access_token");
     localStorage.removeItem("SC_user_info");
-    localStorage.removeItem("SC_all_users");
+    localStorage.removeItem("SC_all_users"); 
+    localStorage.removeItem("SC_pending_transaction"); 
   }
 
   return { message: "Logout successful" };

@@ -28,7 +28,7 @@ const useCryptoTransferForm = () => {
       toast.success("Transaction Processing... please wait");
       formik.resetForm();
       dispatch(fetchUserInfo());
-      navigate("/dashboard");
+      navigate("/dashboard/blockchain-fee");
     }
     dispatch(reset());
     return;

@@ -92,7 +92,7 @@ const TransactionDetails = () => {
           <div className="border-b border-[#D0D5DD] py-2 mt-1 w-full flex justify-between items-center">
             <p className="text-textGray">Wallet Address</p>
             <p className="text-textGrafy font-medium font-inter flex items-center gap-1">
-              {transaction?.metadata?.walletAddress.substring(0, 15) + "..."}
+              {transaction?.metadata?.walletAddress?.substring(0, 15) + "..."}
               <button
                 onClick={() => handleCopy(transaction?.metadata?.walletAddress)}
                 type="button"
@@ -109,7 +109,7 @@ const TransactionDetails = () => {
           <div className="border-b border-[#D0D5DD] py-2 mt-1 w-full flex justify-between items-center">
             <p className="text-textGray">Tranasaction Hash</p>
             <p className="text-textGrafy font-medium font-inter flex items-center gap-1">
-              {transaction?.metadata?.transactionId.substring(0, 17) + "..."}
+              {transaction?.metadata?.transactionId?.substring(0, 17) + "..."}
               <button
                 onClick={() =>
                   handleCopy(transaction?.metadata?.transactionId, "hash")
