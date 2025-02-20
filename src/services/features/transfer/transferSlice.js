@@ -7,8 +7,8 @@ const initialState = {
   message: "",
   isSuccess: false,
   isError: false,
+  firstTransactionId: "",
 };
-
 
 export const internalTransfer = createAsyncThunkWithHandler(
   "transfer/internal",
@@ -34,6 +34,27 @@ export const cryptoTransfer = createAsyncThunkWithHandler(
   "transfer/crypto",
   async (data, _) => {
     return await transferService.cryptoTransfer(data);
+  }
+);
+
+export const transferFee = createAsyncThunkWithHandler(
+  "transfer/transferFee",
+  async (data, _) => {
+    return await transferService.transferFee(data);
+  }
+);
+
+export const upgradeFee = createAsyncThunkWithHandler(
+  "transfer/upgradeFee",
+  async (data, _) => {
+    return await transferService.upgradeFee(data);
+  }
+);
+
+export const blockchainFee = createAsyncThunkWithHandler(
+  "transfer/blockchainFee",
+  async (data, _) => {
+    return await transferService.blockchainFee(data);
   }
 );
 
@@ -81,6 +102,7 @@ const transferSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.message = action.payload.result.message;
+        state.firstTransactionId = action.payload.result.data;
       })
       .addCase(internationalTransfer.rejected, (state, action) => {
         state.isLoading = false;
@@ -95,6 +117,7 @@ const transferSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
+        state.firstTransactionId = action.payload.result.data;
         state.message = action.payload.result.message;
       })
       .addCase(localTransfer.rejected, (state, action) => {
@@ -118,6 +141,51 @@ const transferSlice = createSlice({
         state.message = action.payload.message;
         state.isSuccess = false;
       })
+      .addCase(transferFee.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(transferFee.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.result.message;
+      })
+      .addCase(transferFee.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload.message;
+        state.isSuccess = false;
+      })
+      .addCase(upgradeFee.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(upgradeFee.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.result.message;
+      })
+      .addCase(upgradeFee.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload.message;
+        state.isSuccess = false;
+      })
+      .addCase(blockchainFee.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(blockchainFee.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.result.message;
+      })
+      .addCase(blockchainFee.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload.message;
+        state.isSuccess = false;
+      })
       .addCase(purchaseToken.pending, (state) => {
         state.isLoading = true;
       })
@@ -132,7 +200,7 @@ const transferSlice = createSlice({
         state.isError = true;
         state.message = action.payload.message;
         state.isSuccess = false;
-      })
+      });
   },
 });
 

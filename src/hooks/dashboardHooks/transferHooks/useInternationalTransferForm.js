@@ -10,14 +10,14 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import countryLists from "../../../lib/countries.json";
 import { internationalTransferSchema } from "../../../lib/schema";
 import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
+import { getTransactions } from "../../../services/features/user/userSlice";
 
 const useInternationalTransferForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.transfer
-  );
+  const { firstTransactionId, isLoading, isError, message, isSuccess } =
+    useSelector((state) => state.transfer);
   const {user} = useOutletContext()
 
   const chargePriorityOptions = [
@@ -34,10 +34,15 @@ const useInternationalTransferForm = () => {
   useEffect(() => {
     if (isError) toast.error(message);
     if (isSuccess) {
-      toast.success(message);
+      toast.success(
+        "Transaction is currently pending. To proceed, please complete the required SWIFT fee payment."
+      );
       formik.resetForm();
       dispatch(fetchUserInfo());
-      navigate("/dashboard/transfer-fee");
+      dispatch(getTransactions());
+      navigate(
+        `/dashboard/transfer-fee?id=${firstTransactionId.transactionId}`
+      );
     }
     dispatch(reset());
     return;
@@ -91,6 +96,9 @@ const useInternationalTransferForm = () => {
         toast.error("Insufficient Balance")
         return
       }
+
+      console.log(userData);
+      
 
       dispatch(internationalTransfer(userData));
     },

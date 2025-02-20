@@ -23,7 +23,8 @@ const useInternalTransfer = () => {
   );
   const {
     accountName,
-    isError: userError,
+    isGetAccountNameError,
+    isGetAccountNameLoading,
     message: userMessage,
   } = useSelector((state) => state.user);
   const { user } = useOutletContext();
@@ -35,6 +36,7 @@ const useInternalTransfer = () => {
       toast.success(message);
       formik.resetForm();
       dispatch(fetchUserInfo());
+      dispatch(userReset());
       navigate("/dashboard");
     }
     dispatch(reset());
@@ -68,18 +70,23 @@ const useInternalTransfer = () => {
   });
   useEffect(() => {
     if (String(formik.values.accountNumber).length == 10) {
-      dispatch(getAccountName({accountNumber:formik.values.accountNumber}));
-      if (userError) {
+      dispatch(getAccountName({ accountNumber: formik.values.accountNumber }));
+      if (isGetAccountNameError) {
         toast.error(userMessage);
         return;
       }
-    }else{
-      dispatch(userReset())
+    } else {
+      dispatch(userReset());
     }
     formik.setFieldValue("recipientName", accountName);
-  }, [formik.values.accountNumber, accountName, userError, userMessage]);
+  }, [
+    formik.values.accountNumber,
+    accountName,
+    isGetAccountNameError,
+    userMessage,
+  ]);
 
-  return { formik, isLoading };
+  return { formik, isLoading, isGetAccountNameLoading };
 };
 
 export default useInternalTransfer;

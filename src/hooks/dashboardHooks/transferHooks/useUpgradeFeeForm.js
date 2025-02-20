@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import {
-  purchaseToken,
+  upgradeFee,
   reset,
 } from "../../../services/features/transfer/transferSlice";
 import { useNavigate } from "react-router-dom";
 import { fundingSchema } from "../../../lib/schema";
 import { walletAddresses } from "../../../lib/utils";
 import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
+import { getTransactions } from "../../../services/features/user/userSlice";
 
 const useUpgradeFeeForm = () => {
   const [copied, setCopied] = useState(false);
@@ -28,6 +29,7 @@ const useUpgradeFeeForm = () => {
       toast.success(message);
       formik.resetForm();
       dispatch(fetchUserInfo());
+      dispatch(getTransactions());
       navigate("/dashboard");
     }
     dispatch(reset());
@@ -58,9 +60,8 @@ const useUpgradeFeeForm = () => {
         transactionId,
       };
       const userData = { amount, metadata };
-      console.log(userData);
 
-      //   dispatch(purchaseToken(userData));
+      dispatch(upgradeFee(userData));
     },
   });
 

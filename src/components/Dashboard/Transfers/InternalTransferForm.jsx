@@ -1,8 +1,9 @@
 import { PiSpinner } from "react-icons/pi";
 import useInternalTransfer from "../../../hooks/dashboardHooks/transferHooks/useInternalTransfer";
+import { ImSpinner } from "react-icons/im";
 
 const InternalTransferForm = () => {
-  const { formik, isLoading } = useInternalTransfer();
+  const { formik, isLoading, isGetAccountNameLoading } = useInternalTransfer();
   return (
     <form className="font-inter" onSubmit={formik.handleSubmit}>
       <div className="">
@@ -36,16 +37,23 @@ const InternalTransferForm = () => {
           >
             Recipient's Account Number
           </label>
-          <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
+          <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md px-3 lg:px-4">
             <input
               type="number"
               name="accountNumber"
               id="accountNumber"
-              className={`w-full h-10 text-xs font-medium fund-amount outline-1 outline-primary/50 tracking-wide px-3 lg:px-4 appearance-none`}
-              onChange={(e)=>formik.setFieldValue("accountNumber", e.target.value)}
+              className={`w-full h-10 text-xs font-medium fund-amount outline-none tracking-wide appearance-none`}
+              onChange={(e) =>
+                formik.setFieldValue("accountNumber", e.target.value)
+              }
               onBlur={formik.handleBlur}
               value={formik.values.accountNumber}
             />
+            {isGetAccountNameLoading ? (
+              <ImSpinner className="animate-spin" />
+            ) : (
+              ""
+            )}
           </div>
           {formik.touched.accountNumber && formik.errors.accountNumber ? (
             <div className="text-red-500 text-[10px] font-semibold">

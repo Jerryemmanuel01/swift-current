@@ -19,6 +19,13 @@ export const fetchUserInfo = createAsyncThunkWithHandler(
   }
 );
 
+export const getUserInfo = createAsyncThunkWithHandler(
+  "user/getUserInfo",
+  async () => {
+    return await userInfoService.getUserProfile();
+  }
+);
+
 const userInfoSlice = createSlice({
   name: "userInfo",
   initialState,
@@ -54,7 +61,19 @@ const userInfoSlice = createSlice({
         state.isError = true;
         state.message = action.payload.message;
         state.isSuccess = false;
-      });
+      })
+      .addCase(getUserInfo.pending, (state) => {
+      })
+      .addCase(getUserInfo.fulfilled, (state, action) => {
+        state.isError = false;
+        state.message = action.payload.result.message;
+        state.user = action.payload.result.data;
+      })
+      .addCase(getUserInfo.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload.message;
+      })
   },
 });
 

@@ -2,31 +2,33 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import {
-  fetchUserInfo,
+   getTransactions,
   reset,
-} from "../../services/features/userInfo/userInfoSlice";
+} from "../../services/features/user/userSlice";
+import { getUserInfo } from "../../services/features/userInfo/userInfoSlice";
 
 const useDashboard = () => {
   const [retry, setRetry] = useState(false);
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.userInfo
+  const { isGetTransactionsLoading, isGetTransactionsError, message, isGetTransactionsSuccess } = useSelector(
+    (state) => state.user
   );
 
   useEffect(() => {
-    dispatch(fetchUserInfo());
+    dispatch(getTransactions());
+    dispatch(getUserInfo());
   }, [retry]);
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isGetTransactionsSuccess) {
       dispatch(reset());
     }
-  }, [isSuccess]);
+  }, [isGetTransactionsSuccess]);
 
-//   if (isError) toast.error(message);
+  if (isGetTransactionsError) toast.error(message);
 
-  return { user, isLoading, setRetry, isError };
+  return { isGetTransactionsLoading, setRetry, isGetTransactionsError };
 };
 
 export default useDashboard;

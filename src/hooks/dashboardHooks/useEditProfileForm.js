@@ -13,14 +13,17 @@ const useEditProfileForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.user
-  );
+  const {
+    isEditProfileLoading,
+    isEditProfileSuccess,
+    isEditProfileError,
+    message,
+  } = useSelector((state) => state.user);
   const { user } = useSelector((state) => state.userInfo);
 
   useEffect(() => {
-    if (isError) toast.error(message);
-    if (isSuccess) {
+    if (isEditProfileError) toast.error(message);
+    if (isEditProfileSuccess) {
       toast.success(message);
       formik.resetForm();
       dispatch(fetchUserInfo());
@@ -28,7 +31,7 @@ const useEditProfileForm = () => {
     }
     dispatch(reset());
     return;
-  }, [isSuccess, isError, message]);
+  }, [isEditProfileSuccess, isEditProfileError, message]);
 
   const formik = useFormik({
     initialValues: {
@@ -59,7 +62,7 @@ const useEditProfileForm = () => {
       dispatch(editProfile(changedValues));
     },
   });
-  return { formik, isLoading, countryLists, currenciesTypies };
+  return { formik, isEditProfileLoading, countryLists, currenciesTypies };
 };
 
 export default useEditProfileForm;

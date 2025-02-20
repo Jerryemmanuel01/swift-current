@@ -3,15 +3,16 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import {
-  purchaseToken,
+  transferFee,
   reset,
 } from "../../../services/features/transfer/transferSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { fundingSchema } from "../../../lib/schema";
 import { walletAddresses } from "../../../lib/utils";
 import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
+import { getTransactions } from "../../../services/features/user/userSlice";
 
-const useTransferFee = (rate) => {
+const useTransferFee = (rate, userTransaction) => {
   const [copied, setCopied] = useState(false);
   const [qrCode, setQrCode] = useState("");
 
@@ -21,6 +22,8 @@ const useTransferFee = (rate) => {
   const { isLoading, isError, message, isSuccess } = useSelector(
     (state) => state.transfer
   );
+  const { user } = useOutletContext();
+  const tier = user.userInfo.accountLevel;
 
   useEffect(() => {
     if (isError) toast.error(message);
@@ -28,7 +31,13 @@ const useTransferFee = (rate) => {
       toast.success(message);
       formik.resetForm();
       dispatch(fetchUserInfo());
-      navigate("/dashboard");
+      dispatch(getTransactions());
+
+      if (tier !== "Tier 3") {
+        navigate("/dashboard/upgrade-fee");
+      } else {
+        navigate("/dashboard");
+      }
     }
     dispatch(reset());
     return;
@@ -56,12 +65,11 @@ const useTransferFee = (rate) => {
         blockchainNetwork,
         walletAddress,
         transactionId,
+        firstTransactionId: userTransaction._id,
       };
       const userData = { amount, metadata };
-      console.log(userData);
-      navigate("/dashboard/upgrade-fee")
 
-    //   dispatch(purchaseToken(userData));
+      dispatch(transferFee(userData));
     },
   });
 

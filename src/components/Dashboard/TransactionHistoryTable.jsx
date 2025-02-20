@@ -19,12 +19,12 @@ const TransactionHistoryTable = ({ transactions }) => {
               </th>
               <th className=" px-4 py-4 text-left whitespace-nowrap">Amount</th>
               <th className=" px-4 py-4 text-left whitespace-nowrap">
-                Charges
+                Type
               </th>
+              <th className=" px-4 py-4 text-left whitespace-nowrap">Status</th>
               <th className=" px-4 py-4 text-left whitespace-nowrap">
                 Description
               </th>
-              <th className=" px-4 py-4 text-left whitespace-nowrap">Status</th>
               <th className=" px-4 py-4 text-left whitespace-nowrap">
                 Receipt
               </th>
@@ -54,14 +54,20 @@ const TransactionHistoryTable = ({ transactions }) => {
                         <h2 className="">{date}</h2>
                         <span className="text-gray text-[9.5px]">{time}</span>
                       </td>
-                      <td className={`px-4 py-2 whitespace-nowrap ${val.category === "Credit"? "text-primary":"text-red-600"}`}>
-                        ${val.category==="Debit"? "-"+val.amount.toLocaleString(): val.amount.toLocaleString()}
+                      <td
+                        className={`px-4 py-2 whitespace-nowrap ${
+                          val.category === "Credit"
+                            ? "text-primary"
+                            : "text-red-600"
+                        }`}
+                      >
+                        $
+                        {val.category === "Debit"
+                          ? "-" + val.amount.toLocaleString()
+                          : val.amount.toLocaleString()}
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
-                        ${val.charges || "0"}
-                      </td>
-                      <td className="px-4 py-2 whitespace-nowrap">
-                        {val.description ? val.description : val.type}
+                        {val.type}
                       </td>
                       <td
                         className={`px-4 py-2 whitespace-nowrap font-medium font-inter ${
@@ -73,6 +79,9 @@ const TransactionHistoryTable = ({ transactions }) => {
                         }`}
                       >
                         {val.status}
+                      </td>
+                      <td className="px-4 py-2 whitespace-nowrap">
+                        {val.description ? val.description : "null"}
                       </td>
                       <td className="px-4 whitespace-nowrap">
                         <Link

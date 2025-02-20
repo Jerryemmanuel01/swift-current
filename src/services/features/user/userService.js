@@ -23,12 +23,24 @@ const getAccountName = async (userData) => {
 
   return response.data;
 };
+const getTransactions = async () => {
+  const response = await axiosClient.get(`/user/transaction`);
+  
+  if (response.data.result.data) {
+    localStorage.setItem(
+      "SC_user_trasactions",
+      JSON.stringify(response.data.result.data)
+    );
+  }
+  return response.data;
+};
 
 const userService = {
   resendEmail,
   verify_email,
   editProfile,
   getAccountName,
+  getTransactions,
 };
 
 export default userService;

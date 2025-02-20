@@ -6,24 +6,23 @@ import { resendEmail, reset } from "../../services/features/user/userSlice";
 const useResendEmail = () => {
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.user
-  );
+  const { isError, message, isResendEmailSuccess, isResendEmailLoading } =
+    useSelector((state) => state.user);
 
   const resendEmailbtn = () => {
     return dispatch(resendEmail());
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isResendEmailSuccess) {
       toast.success(message);
       dispatch(reset());
     }
-  }, [isSuccess]);
+  }, [isResendEmailSuccess]);
 
   if (isError) toast.error(message);
 
-  return { resendEmailbtn, isLoading };
+  return { resendEmailbtn, isResendEmailLoading };
 };
 
 export default useResendEmail;

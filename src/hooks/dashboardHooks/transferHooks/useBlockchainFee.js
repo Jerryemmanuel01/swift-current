@@ -53,6 +53,7 @@ const useBlockchainFee = (fee) => {
         toast.error("Blockchain Network is required");
         return;
       }
+      amount:2
       const metadata = {
         blockchainNetwork,
         walletAddress,

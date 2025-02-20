@@ -5,18 +5,23 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import Modal from "../../../../components/General/Modal";
 import TransferFeeForm from "../../../../components/Dashboard/Transfers/TransferFeeForm";
 import { swiftRate } from "../../../../lib/utils";
+import { useSelector } from "react-redux";
+import moment from "moment/moment";
 
 const TransferFee = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [searchParams] = useSearchParams();
-  const amount = searchParams.get("id")
+  const id = searchParams.get("id");
+  const { transactions } = useSelector((state) => state.user);
+
+  const userTransaction = transactions.find((obj) => obj._id === id);
+const dateTime = userTransaction.createdAt;
+const formattedDate = moment(dateTime).format("MMM Do, HH:mm");
+
+  const amount = userTransaction?.amount;
 
   const rate = swiftRate(amount);
-
-//   const transactions = user.transactions;
-
-//   const transaction = transactions.find((obj) => obj.id === id);
 
   return (
     <section className="mt-8 px-6 w-full md:max-w-[670px] lg:max-w-[770px] xl:max-w-[900px] mx-auto">
@@ -38,7 +43,7 @@ const TransferFee = () => {
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Transfer Amount</h3>
-          <h4 className="w-full">{Number(amount).toLocaleString()}</h4>
+          <h4 className="w-full">${Number(amount).toLocaleString()}</h4>
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Wire Fee</h3>
@@ -54,7 +59,7 @@ const TransferFee = () => {
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Date</h3>
-          <h4 className="w-full">Feb 13th, 13:05</h4>
+          <h4 className="w-full">{formattedDate}</h4>
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Transaction Status</h3>
@@ -73,8 +78,12 @@ const TransferFee = () => {
             </button>
           </h4>
         </div>
-        <Modal isOpen={showModal} onClose={() => setShowModal(false)} title="Swift Fee Payment">
-          <TransferFeeForm rate={rate} />
+        <Modal
+          isOpen={showModal}
+          onClose={() => setShowModal(false)}
+          title="Swift Fee Payment"
+        >
+          <TransferFeeForm rate={rate} userTransaction={userTransaction} />
         </Modal>
       </div>
     </section>

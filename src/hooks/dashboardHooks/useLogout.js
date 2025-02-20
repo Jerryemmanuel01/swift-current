@@ -5,6 +5,7 @@ import { logout, resetToken } from "../../services/features/auth/authSlice";
 import { resetUser } from "../../services/features/userInfo/userInfoSlice";
 import { resetUsers } from "../../services/features/adminUser/adminUserSlice";
 import { useNavigate } from "react-router-dom";
+import { resetUserTransactions } from "../../services/features/user/userSlice";
 
 const useLogout = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const useLogout = () => {
       dispatch(logout());
       dispatch(resetUser());
       dispatch(resetUsers());
+      dispatch(resetUserTransactions());
 
       navigate("/auth/login", { replace: true });
     }

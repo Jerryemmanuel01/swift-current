@@ -3,8 +3,8 @@ import DashboardFetchError from '../../../components/Dashboard/DashboardFetchErr
 import Loader from '../../../components/General/Loader';
 
 const Verify = () => {
-  const { isError, isLoading, setRetry } = useVerifyEmail();
-  if (isLoading) return <Loader title="Verifying Email" />;
+  const { isError, isVerifyEmailLoading, setRetry } = useVerifyEmail();
+  if (isVerifyEmailLoading) return <Loader title="Verifying Email" />;
   if (isError) return <DashboardFetchError setRetry={setRetry} title="Verification failed" />;
 
   return (

@@ -3,7 +3,7 @@ import useEditPinForm from "../../hooks/dashboardHooks/useEditPinForm";
 import { PiSpinner } from "react-icons/pi";
 
 const EditPinForm = () => {
-  const { formik, isLoading } = useEditPinForm();
+  const { formik, isEditProfileLoading } = useEditPinForm();
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className="sm:flex gap-4 items-center w-full">
@@ -106,14 +106,14 @@ const EditPinForm = () => {
       <div className="flex items-center justify-center">
         <button
           type="submit"
-          disabled={isLoading}
+          disabled={isEditProfileLoading}
           className={`${
-            !formik.dirty || !formik.isValid || isLoading
+            !formik.dirty || !formik.isValid || isEditProfileLoading
               ? "bg-[#D0D5DD]"
               : "bg-primary"
           } w-full  text-white rounded-lg h-10 px-6 mt-8 text-xs lg:text-[12.5px] lg:font-semibold outline-none`}
         >
-          {isLoading ? (
+          {isEditProfileLoading ? (
             <span className="flex items-center justify-center gap-2">
               <PiSpinner className="text-base animate-spin" />
               Please wait...

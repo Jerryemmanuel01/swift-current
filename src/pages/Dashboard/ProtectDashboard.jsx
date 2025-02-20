@@ -10,9 +10,9 @@ const ProtectDashboard = ({element}) => {
   if(!token){
     return <Navigate to="/auth/login"/>
   } 
-  if(role !== "User"){
-    return <Navigate to="/admin"/>
-  } 
+  // if(role !== "User"){
+  //   return <Navigate to="/admin"/>
+  // } 
   return element
 };
 

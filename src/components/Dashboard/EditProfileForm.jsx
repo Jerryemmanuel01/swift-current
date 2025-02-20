@@ -2,7 +2,7 @@ import { PiSpinner } from "react-icons/pi";
 import useEditProfileForm from "../../hooks/dashboardHooks/useEditProfileForm";
 
 const EditProfileForm = () => {
-  const { formik, isLoading, countryLists, currenciesTypies } =
+  const { formik, isEditProfileLoading, countryLists, currenciesTypies } =
     useEditProfileForm();
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -199,12 +199,12 @@ const EditProfileForm = () => {
       <div className="flex items-center justify-center">
         <button
           type="submit"
-          disabled={isLoading}
+          disabled={isEditProfileLoading}
           className={`${
-            !formik.isValid || isLoading ? "bg-[#D0D5DD]" : "bg-primary"
+            !formik.isValid || isEditProfileLoading ? "bg-[#D0D5DD]" : "bg-primary"
           } w-full  text-white rounded-lg h-10 px-6 mt-8 text-xs lg:text-[12.5px] lg:font-semibold outline-none`}
         >
-          {isLoading ? (
+          {isEditProfileLoading ? (
             <span className="flex items-center justify-center gap-2">
               <PiSpinner className="text-base animate-spin" />
               Please wait...

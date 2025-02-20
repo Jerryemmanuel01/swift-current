@@ -6,6 +6,10 @@ import {
   reset,
 } from "../../services/features/userInfo/userInfoSlice";
 import { useNavigate } from "react-router-dom";
+import {
+  getTransactions,
+  reset as userReset,
+} from "../../services/features/user/userSlice";
 
 const useDashboardInfo = () => {
   const [retry, setRetry] = useState(false);
@@ -15,23 +19,31 @@ const useDashboardInfo = () => {
   const { user, isLoading, isError, message, isSuccess } = useSelector(
     (state) => state.userInfo
   );
+  const {
+    isLoading: userLoading,
+    isError: userError,
+    message: userMessage,
+    isSuccess: userSuccess,
+  } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(fetchUserInfo());
+    dispatch(getTransactions());
   }, [retry]);
 
   useEffect(() => {
     if (isSuccess) {
       // toast.success(`Welcome ${user.userInfo?.firstName}`);
       dispatch(reset());
+      dispatch(userReset());
     }
   }, []);
 
-  if (isError && message) toast.error(message);
+  if (isError || (userError && message)) toast.error(message);
 
   if (message === "Authorization token required") {
     navigate("/auth/login");
-    dispatch(reset())
+    dispatch(reset());
   }
   return { user, isLoading, setRetry, isError };
 };

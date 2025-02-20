@@ -13,7 +13,7 @@ const useVerifyEmail = () => {
 
   const [retry, setRetry] = useState(false);
 
-  const { isLoading, isError, message, isSuccess } = useSelector(
+  const { isVerifyEmailLoading, isError, message, isSuccess } = useSelector(
     (state) => state.user
   );
 
@@ -35,7 +35,7 @@ const useVerifyEmail = () => {
     dispatch(reset())
   }
 
-  return { isLoading, isError, setRetry };
+  return { isVerifyEmailLoading, isError, setRetry };
 };
 
 export default useVerifyEmail;

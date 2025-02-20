@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import {
@@ -7,11 +7,9 @@ import {
   reset,
 } from "../../../services/features/transfer/transferSlice";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import {
-  internationalTransferSchema,
-  localTransferSchema,
-} from "../../../lib/schema";
+import { localTransferSchema } from "../../../lib/schema";
 import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
+import { getTransactions } from "../../../services/features/user/userSlice";
 
 const useLocalTransferForm = () => {
   const navigate = useNavigate();
@@ -19,9 +17,8 @@ const useLocalTransferForm = () => {
 
   const { user } = useOutletContext();
 
-  const { isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.transfer
-  );
+  const { firstTransactionId, isLoading, isError, message, isSuccess } =
+    useSelector((state) => state.transfer);
 
   const chargePriorityOptions = [
     {
@@ -37,10 +34,15 @@ const useLocalTransferForm = () => {
   useEffect(() => {
     if (isError) toast.error(message);
     if (isSuccess) {
-      toast.success("Transaction Processing... please wait");
+      toast.success(
+        "Transaction pending. To proceed, please complete the required SWIFT fee payment."
+      );
       formik.resetForm();
       dispatch(fetchUserInfo());
-      navigate("/dashboard/transfer-fee");
+      dispatch(getTransactions());
+      navigate(
+        `/dashboard/transfer-fee?id=${firstTransactionId.transactionId}`
+      );
     }
     dispatch(reset());
     return;
@@ -86,8 +88,8 @@ const useLocalTransferForm = () => {
         country,
         description,
         name,
-        otp,
-        pin,
+        otp: String(otp),
+        pin: String(pin),
         metadata,
       };
       if (amount > user.userInfo.accountBalance) {
