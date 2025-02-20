@@ -10,15 +10,15 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { cryptoTransferSchema } from "../../../lib/schema";
 import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
 import { walletAddresses } from "../../../lib/utils";
+import { getTransactions } from "../../../services/features/user/userSlice";
 
 const useCryptoTransferForm = () => {
   const [swapValue, setSwapValue] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.transfer
-  );
+  const { firstTransactionId, isLoading, isError, message, isSuccess } =
+    useSelector((state) => state.transfer);
   const { user } = useOutletContext();
   const userInfo = user.userInfo;
 
@@ -28,7 +28,10 @@ const useCryptoTransferForm = () => {
       toast.success("Transaction Processing... please wait");
       formik.resetForm();
       dispatch(fetchUserInfo());
-      navigate("/dashboard/blockchain-fee");
+      dispatch(getTransactions());
+      navigate(
+        `/dashboard/blockchain-fee?id=${firstTransactionId.transactionId}`
+      );
     }
     dispatch(reset());
     return;
@@ -65,9 +68,9 @@ const useCryptoTransferForm = () => {
         description,
         otp,
         pin,
-        metadata
+        metadata,
       };
-        dispatch(cryptoTransfer(userData));
+      dispatch(cryptoTransfer(userData));
     },
   });
 

@@ -16,8 +16,8 @@ const TransferFee = () => {
   const { transactions } = useSelector((state) => state.user);
 
   const userTransaction = transactions.find((obj) => obj._id === id);
-const dateTime = userTransaction.createdAt;
-const formattedDate = moment(dateTime).format("MMM Do, HH:mm");
+  const dateTime = userTransaction.createdAt;
+  const formattedDate = moment(dateTime).format("MMM Do, HH:mm");
 
   const amount = userTransaction?.amount;
 
@@ -64,7 +64,7 @@ const formattedDate = moment(dateTime).format("MMM Do, HH:mm");
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Transaction Status</h3>
           <h4 className="w-full flex items-center gap-2">
-            Pending... <ImSpinner5 className="animate-spin" />
+            {userTransaction.status}... <ImSpinner5 className="animate-spin" />
           </h4>
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2">

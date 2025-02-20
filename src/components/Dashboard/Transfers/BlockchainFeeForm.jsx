@@ -1,8 +1,9 @@
 import useBlockchainFee from "../../../hooks/dashboardHooks/transferHooks/useBlockchainFee";
 import { Check, Copy, DollarSign, Hash } from "lucide-react";
+import { IoIosInformation } from "react-icons/io";
 import { PiSpinner } from "react-icons/pi";
 
-const BlockchainFeeForm = ({fee}) => {
+const BlockchainFeeForm = ({ fee, userTransaction }) => {
   const {
     copied,
     findAddressByNetwork,
@@ -13,7 +14,7 @@ const BlockchainFeeForm = ({fee}) => {
     qrCode,
     setQrCode,
     walletAddresses,
-  } = useBlockchainFee(fee);
+  } = useBlockchainFee(fee, userTransaction);
   return (
     <form className="w-full" onSubmit={formik.handleSubmit}>
       <div className="">
@@ -21,8 +22,8 @@ const BlockchainFeeForm = ({fee}) => {
           Amount
         </label>
         <div className="border-[#D0D5DD] border w-full flex items-center mt-0.5 rounded-md">
-          <div className="bg-borderColor w-10 h-10 flex items-center justify-center">
-            <DollarSign className="w-4 text-primary " />
+          <div className="bg-borderColor w-14 h-10 flex items-center justify-center">
+            <span className=" text-primary font-inter font-semibold ">ETH</span>
           </div>
           <input
             type="text"
@@ -173,6 +174,15 @@ const BlockchainFeeForm = ({fee}) => {
             "Proceed"
           )}
         </button>
+      </div>
+      <div className="flex gap-2 items-center mt-3">
+        <div className="">
+          <IoIosInformation className="text-xs bg-dark text-white rounded-full" />
+        </div>
+        <p className="text-xs tracking-wide text-dark leading-5">
+          Please select your preferred payment option and deposit an
+          equivalent of 2 ETH into the provided wallet address.
+        </p>
       </div>
     </form>
   );

@@ -74,6 +74,7 @@ const transferSlice = createSlice({
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
+      state.firstTransactionId = "";
     },
   },
   extraReducers: (builder) => {
@@ -133,6 +134,7 @@ const transferSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
+        state.firstTransactionId = action.payload.result.data;
         state.message = action.payload.result.message;
       })
       .addCase(cryptoTransfer.rejected, (state, action) => {

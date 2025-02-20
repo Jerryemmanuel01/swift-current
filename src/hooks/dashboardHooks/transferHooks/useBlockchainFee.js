@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import {
-  purchaseToken,
+  blockchainFee,
   reset,
 } from "../../../services/features/transfer/transferSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { blockchainFeeSchema, fundingSchema } from "../../../lib/schema";
 import { walletAddresses } from "../../../lib/utils";
 import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
+import { getTransactions } from "../../../services/features/user/userSlice";
 
-
-const useBlockchainFee = (fee) => {
-   const [copied, setCopied] = useState(false);
+const useBlockchainFee = (fee, userTransaction) => {
+  const [copied, setCopied] = useState(false);
   const [qrCode, setQrCode] = useState("");
 
   const navigate = useNavigate();
@@ -23,13 +23,22 @@ const useBlockchainFee = (fee) => {
     (state) => state.transfer
   );
 
+  const { user } = useOutletContext();
+  const tier = user.userInfo.accountLevel;
+
   useEffect(() => {
     if (isError) toast.error(message);
     if (isSuccess) {
       toast.success(message);
       formik.resetForm();
       dispatch(fetchUserInfo());
-      navigate("/dashboard");
+      dispatch(getTransactions());
+
+      if (tier !== "Tier 3") {
+        navigate("/dashboard/upgrade-fee");
+      } else {
+        navigate("/dashboard");
+      }
     }
     dispatch(reset());
     return;
@@ -53,17 +62,17 @@ const useBlockchainFee = (fee) => {
         toast.error("Blockchain Network is required");
         return;
       }
-      amount:2
+      amount: 2;
       const metadata = {
         blockchainNetwork,
         walletAddress,
         transactionId,
+        firstTransactionId: userTransaction._id,
       };
       const userData = { amount, metadata };
       console.log(userData);
-      navigate("/dashboard/upgrade-fee")
 
-    //   dispatch(purchaseToken(userData));
+      dispatch(blockchainFee(userData));
     },
   });
 
@@ -108,6 +117,6 @@ const useBlockchainFee = (fee) => {
     setQrCode,
     isLoading,
   };
-}
+};
 
-export default useBlockchainFee
+export default useBlockchainFee;

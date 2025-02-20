@@ -1,19 +1,30 @@
-import { ChevronLeft } from 'lucide-react';
-import React, { useState } from 'react'
-import { ImSpinner5 } from 'react-icons/im';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { swiftRate } from '../../../../lib/utils';
-import Modal from '../../../../components/General/Modal';
-import TransferFeeForm from '../../../../components/Dashboard/Transfers/TransferFeeForm';
+import { ChevronLeft } from "lucide-react";
+import React, { useState } from "react";
+import { ImSpinner5 } from "react-icons/im";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { swiftRate } from "../../../../lib/utils";
+import Modal from "../../../../components/General/Modal";
+import TransferFeeForm from "../../../../components/Dashboard/Transfers/TransferFeeForm";
 import BlockchainFeeForm from "../../../../components/Dashboard/Transfers/BlockchainFeeForm";
+import { useSelector } from "react-redux";
+import moment from "moment";
 
 const BlockchainFee = () => {
-      const navigate = useNavigate();
-      const [showModal, setShowModal] = useState(false);
-      const [searchParams] = useSearchParams();
-      const amount = searchParams.get("id");
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get("id");
 
-      const rate = swiftRate(amount);
+  const { transactions } = useSelector((state) => state.user);
+
+  const userTransaction = transactions.find((obj) => obj._id === id);
+  
+  const dateTime = userTransaction.createdAt;
+  const formattedDate = moment(dateTime).format("MMM Do, HH:mm");
+
+  const amount = userTransaction?.amount;
+
+  const rate = swiftRate(amount);
   return (
     <section className="mt-8 px-6 w-full md:max-w-[670px] lg:max-w-[770px] xl:max-w-[900px] mx-auto">
       <button
@@ -48,24 +59,26 @@ const BlockchainFee = () => {
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Transfer Amount</h3>
-          <h4 className="w-full">{Number(amount).toLocaleString()}</h4>
+          <h4 className="w-full">${Number(amount).toLocaleString()}</h4>
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Blockchain Network</h3>
-          <h4 className="w-full">USDT (ERC20)</h4>
+          <h4 className="w-full">
+            {userTransaction.metadata?.blockchainNetwork}
+          </h4>
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Recipient Wallet</h3>
-          <h4 className="w-full">0xhfsjsua82h3hj4hhaxxix9xu</h4>
+          <h4 className="w-full">{userTransaction.metadata?.walletAddress}</h4>
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Date</h3>
-          <h4 className="w-full">Feb 13th, 13:05</h4>
+          <h4 className="w-full">{formattedDate}</h4>
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2 border-b border-borderColor">
           <h3 className="w-full">Transaction Status</h3>
           <h4 className="w-full flex items-center gap-2">
-            Pending... <ImSpinner5 className="animate-spin" />
+            {userTransaction.status}... <ImSpinner5 className="animate-spin" />
           </h4>
         </div>
         <div className="flex justify-between gap-2 items-center py-2 my-2">
@@ -84,11 +97,11 @@ const BlockchainFee = () => {
           onClose={() => setShowModal(false)}
           title="Blockchain Gas Fee Payment"
         >
-          <BlockchainFeeForm fee={"2 ETH"} />
+          <BlockchainFeeForm fee={2} userTransaction={userTransaction}/>
         </Modal>
       </div>
     </section>
   );
-}
+};
 
-export default BlockchainFee
+export default BlockchainFee;
