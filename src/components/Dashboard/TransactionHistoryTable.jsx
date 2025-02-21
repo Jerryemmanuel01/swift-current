@@ -1,7 +1,53 @@
+import { ExternalLink } from "lucide-react";
 import moment from "moment";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 
 const TransactionHistoryTable = ({ transactions }) => {
+  const { user } = useOutletContext();
+  const userInfo = user?.userInfo;
+  console.log(transactions);
+  const navigate = useNavigate();
+
+  const handleRowClick = (id, transaction) => {
+    console.log(transaction.metadata?.transferType !== "Crypto Transfer");
+    
+    if (
+      transaction.type === "Transfer" &&
+      transaction.status === "Pending" &&
+      !transaction.metadata?.secondTransactionId &&
+      transaction.metadata?.transferType !== "Crypto Transfer"
+    ) {
+      navigate(`/dashboard/transfer-fee?id=${id}`);
+      return;
+    }
+    if (
+      transaction.type === "Transfer" &&
+      transaction.status === "Pending" &&
+      !transaction.metadata.secondTransactionId &&
+      transaction.metadata?.transferType === "Crypto Transfer"
+    ) {
+      navigate(`/dashboard/blockchain-fee?id=${id}`);
+      return;
+    }
+    if (
+      transaction.type === "Transfer" &&
+      transaction.status === "Pending" &&
+      transaction.metadata.secondTransactionId &&
+      userInfo.accountLevel !== "Tier 3"
+    ) {
+      navigate(`/dashboard/upgrade-fee`);
+      return;
+    }
+    if (
+      transaction.status === "Approved" ||
+      transaction.status === "Failed" ||
+      transaction.status === "Pending"
+    ) {
+      navigate(`/dashboard/receipt/${id}`);
+      return;
+    }
+  };
+
   return (
     <section className="py-4 ">
       <div className="overflow-x-auto">
@@ -11,6 +57,7 @@ const TransactionHistoryTable = ({ transactions }) => {
               <th className=" px-4 py-4 text-left whitespace-nowrap">#</th>
               <th className=" px-4 py-4 text-left whitespace-nowrap">Ref</th>
               <th className=" px-4 py-4 text-left whitespace-nowrap">Name</th>
+              <th className=" px-4 py-4 text-left whitespace-nowrap">Status</th>
               <th className=" px-4 py-4 text-left whitespace-nowrap">
                 Category
               </th>
@@ -18,34 +65,47 @@ const TransactionHistoryTable = ({ transactions }) => {
                 Transaction Date
               </th>
               <th className=" px-4 py-4 text-left whitespace-nowrap">Amount</th>
-              <th className=" px-4 py-4 text-left whitespace-nowrap">
-                Type
-              </th>
-              <th className=" px-4 py-4 text-left whitespace-nowrap">Status</th>
+              <th className=" px-4 py-4 text-left whitespace-nowrap">Type</th>
               <th className=" px-4 py-4 text-left whitespace-nowrap">
                 Description
-              </th>
-              <th className=" px-4 py-4 text-left whitespace-nowrap">
-                Receipt
               </th>
             </tr>
           </thead>
           <tbody>
-            {Object.values(transactions).length ?
-              Object.values(transactions)
-                .map((val, i) => {
+            {Object.values(transactions).length
+              ? Object.values(transactions).map((val, i) => {
                   const dateTime = val.createdAt;
                   const date = moment(dateTime).format("YYYY-MM-DD");
                   const time = moment(dateTime).format("HH:mm:ss");
 
                   return (
-                    <tr className="even:bg-primary/5 text-xs" key={i}>
+                    <tr
+                      className="even:bg-primary/5 text-xs cursor-pointer"
+                      key={i}
+                      onClick={() => handleRowClick(val._id, val)}
+                    >
                       <td className="px-4 py-2 whitespace-nowrap">{i + 1}</td>
                       <td className="px-4 py-2 whitespace-nowrap">
                         {val._id.substring(0, 10) + "..."}
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
-                        {val.name}
+                        {val.name || val.metadata.name}
+                      </td>
+                      <td
+                        className={`px-4 py-2 whitespace-nowrap font-medium font-inter ${
+                          val.status === "Approved"
+                            ? "text-green-500"
+                            : val.status === "Pending"
+                            ? "text-yellow"
+                            : "text-red-500"
+                        }`}
+                      >
+                        {val.status}
+                        {val.status === "Pending" && val.type==="Transfer" &&(
+                          <div className="text-[9px] text-green-600 flex gap-1 items-center">
+                            Continue <ExternalLink className="w-2.5" />
+                          </div>
+                        )}
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
                         {val.category}
@@ -69,31 +129,13 @@ const TransactionHistoryTable = ({ transactions }) => {
                       <td className="px-4 py-2 whitespace-nowrap">
                         {val.type}
                       </td>
-                      <td
-                        className={`px-4 py-2 whitespace-nowrap font-medium font-inter ${
-                          val.status === "Approved"
-                            ? "text-green-500"
-                            : val.status === "Pending"
-                            ? "text-yellow"
-                            : "text-red-500"
-                        }`}
-                      >
-                        {val.status}
-                      </td>
                       <td className="px-4 py-2 whitespace-nowrap">
                         {val.description ? val.description : "null"}
                       </td>
-                      <td className="px-4 whitespace-nowrap">
-                        <Link
-                          to={`/dashboard/receipt/${val._id}`}
-                          className="bg-primary/80 py-2 px-3 rounded-md text-white"
-                        >
-                          View Receipt
-                        </Link>
-                      </td>
                     </tr>
                   );
-                }):""}
+                })
+              : ""}
           </tbody>
         </table>
         {!Object.values(transactions).length && (

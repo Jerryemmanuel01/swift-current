@@ -5,7 +5,6 @@ const funding = async (userData) => {
     `/user/transaction/deposit`,
     userData
   );
-  console.log(response.data);
 
   return response.data;
 };
