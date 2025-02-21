@@ -49,6 +49,7 @@ import {
   ProtectAdmin,
   ProtectAuth,
   ProtectDashboard,
+  ProtectTransfer,
 } from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -141,31 +142,31 @@ function App() {
             },
             {
               path: "internal-transfer",
-              element: <InternalTransfer />,
+              element: <ProtectTransfer element={<InternalTransfer />} />,
             },
             {
               path: "international-transfer",
-              element: <InternationalTransfer />,
+              element: <ProtectTransfer element={<InternationalTransfer />} />,
             },
             {
               path: "local-transfer",
-              element: <LocalTransfer />,
+              element: <ProtectTransfer element={<LocalTransfer />} />,
             },
             {
               path: "crypto-transfer",
-              element: <CryptoTransfer />,
+              element: <ProtectTransfer element={<CryptoTransfer />} />,
             },
             {
               path: "blockchain-fee",
-              element: <BlockchainFee />,
+              element: <ProtectTransfer element={<BlockchainFee />} />,
             },
             {
               path: "transfer-fee",
-              element: <TransferFee />,
+              element: <ProtectTransfer element={<TransferFee />} />,
             },
             {
               path: "upgrade-fee",
-              element: <UpgradeFee />,
+              element: <ProtectTransfer element={<UpgradeFee />} />,
             },
 
             // {

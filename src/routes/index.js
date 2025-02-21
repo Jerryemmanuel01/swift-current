@@ -16,6 +16,7 @@ export const ResetPassword = lazy(()=>import("../pages/Auth/ResetPassword/ResetP
 
 // Dashboard routes
 export const ProtectDashboard = lazy(()=>import("../pages/Dashboard/ProtectDashboard"))
+export const ProtectTransfer = lazy(()=>import("../pages/Dashboard/Transfer/ProtectTransfer"))
 export const Dashboard = lazy(()=>import("../pages/Dashboard/Dashborad/Dashboard"))
 export const Profile = lazy(()=>import("../pages/Dashboard/Profile/Profile"))
 export const VerifyEmail = lazy(()=>import("../pages/Dashboard/Verify/Verify"))
