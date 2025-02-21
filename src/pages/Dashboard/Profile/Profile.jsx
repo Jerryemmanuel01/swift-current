@@ -3,7 +3,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { FaMedal } from "react-icons/fa6";
 
 const Profile = () => {
   const [copied, setCopied] = useState(false);
@@ -43,6 +43,11 @@ const Profile = () => {
                 </div>
               )}
             </div>
+
+            <h2 className="flex items-center gap-2 text-sm my-1 font-bold">
+              <FaMedal className="text-primary" />
+              <span className="text-darker">{user.userInfo.accountLevel}</span>
+            </h2>
             <h4 className="text-gray text-sm capitalize mt-0.5">
               {user.userInfo.country}
             </h4>
@@ -89,7 +94,9 @@ const Profile = () => {
                 </div>
               </div>
               <div className="w-full md:block flex items-center gap-2 justify-between mt-4 md:mt-0">
-                <h3 className="text-primary font-inter font-medium w-full">Email</h3>
+                <h3 className="text-primary font-inter font-medium w-full">
+                  Email
+                </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray w-full">
                   <span className="">{user.userInfo.email}</span>
                   {user.userInfo.emailVerification && (
@@ -150,7 +157,9 @@ const Profile = () => {
                   Occupation
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
-                  <span className="capitalize">{user.userInfo.occupation || "null"}</span>
+                  <span className="capitalize">
+                    {user.userInfo.occupation || "null"}
+                  </span>
                 </div>
               </div>
             </div>
