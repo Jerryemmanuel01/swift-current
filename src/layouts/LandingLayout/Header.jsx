@@ -3,11 +3,15 @@ import { navLinks } from "../../lib/links";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/Images/swiftcurrent-whiteLogo.png";
 import Logo1 from "../../assets/Images/white-name-logo.png";
-import { AlignJustify, X } from "lucide-react";
+import useLogout from "../../hooks/dashboardHooks/useLogout";
+import { AlignJustify, ExternalLink, X } from "lucide-react";
+import { useSelector } from "react-redux";
 const Header = () => {
   const [toggleNav, setToggleNav] = useState(false);
   const location = useLocation();
+  const { user } = useSelector((state) => state.userInfo);
 
+  const { logoutBtn } = useLogout();
   return (
     <section className=" bg-primary ">
       <div className="lg:max-w-[1200px] flex flex-col items-center justify-center mx-auto px-6 py-4 relative">
@@ -65,20 +69,37 @@ const Header = () => {
                   </li>
                 ))}
               </ul>
-              <div className="flex gap-4 flex-col md:flex-row items-center text-sm md:text-base">
-                <Link
-                  to="/auth/login"
-                  className="outline-none text-center w-full md:w-auto border-[1.5px] border-primary md:border-white px-6 py-2 rounded-lg text-primary md:text-white font-semibold hover:scale-[1.03] duration-300"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/auth/sign-up"
-                  className="bg-primary text-center md:bg-white w-full md:w-auto text-white md:text-primary py-2.5 px-6 rounded-lg font-semibold hover:scale-[1.03] duration-300"
-                >
-                  Get Started
-                </Link>
-              </div>
+              {user ? (
+                <div className="flex gap-4 flex-col md:flex-row items-center text-sm md:text-base">
+                  <Link
+                    to="/dashboard"
+                    className="flex items-center justify-center gap-2 outline-none text-center w-full md:w-auto border-[1.5px] border-primary md:border-white px-6 py-2 rounded-lg text-primary md:text-white font-semibold hover:scale-[1.03] duration-300"
+                  >
+                    Dashboard <ExternalLink className="w-3" />
+                  </Link>
+                  <button
+                    onClick={logoutBtn}
+                    className="bg-primary text-center md:bg-white w-full md:w-auto text-white md:text-primary py-2.5 px-6 rounded-lg font-semibold hover:scale-[1.03] duration-300"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <div className="flex gap-4 flex-col md:flex-row items-center text-sm md:text-base">
+                  <Link
+                    to="/auth/login"
+                    className="outline-none text-center w-full md:w-auto border-[1.5px] border-primary md:border-white px-6 py-2 rounded-lg text-primary md:text-white font-semibold hover:scale-[1.03] duration-300"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/auth/sign-up"
+                    className="bg-primary text-center md:bg-white w-full md:w-auto text-white md:text-primary py-2.5 px-6 rounded-lg font-semibold hover:scale-[1.03] duration-300"
+                  >
+                    Get Started
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>
