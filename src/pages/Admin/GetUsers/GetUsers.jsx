@@ -1,7 +1,7 @@
+import { PiSpinner } from "react-icons/pi";
 import HeaderName from "../../../components/Dashboard/HeaderName";
 import useGetAllUser from "../../../hooks/adminHooks/useGetAllUser";
 import { ChevronLeft } from "lucide-react";
-import { ImSpinner5 } from "react-icons/im";
 
 const GetUsers = () => {
   const {
@@ -29,7 +29,7 @@ const GetUsers = () => {
       <div className="overflow-x-auto">
         {isLoading ? (
           <h2 className="font-merriweather flex items-center gap-2 mt-5 justify-center text-sm">
-            Getting all users <ImSpinner5 className="animate-spin text-sm" />
+            Getting all users <PiSpinner className="animate-spin text-sm" />
           </h2>
         ) : isError ? (
           <h2 className="font-merriweather flex items-center gap-2 mt-5 justify-center text-sm">
@@ -75,28 +75,28 @@ const GetUsers = () => {
                   className="even:bg-primary/5 text-xs cursor-pointer"
                   onClick={() => handleRowClick(val._id)}
                 >
-                  <td className="px-4 py-3.5 whitespace-nowrap">{i + 1}</td>
-                  <td className="px-4 py-3.5 whitespace-nowrap">
+                  <td className="px-4 py-5 whitespace-nowrap">{i + 1}</td>
+                  <td className="px-4 py-5 whitespace-nowrap">
                     {val._id?.substring(0, 10) + "..."}
                   </td>
-                  <td className="px-4 py-3.5 whitespace-nowrap">
+                  <td className="px-4 py-5 whitespace-nowrap">
                     {val.firstName}
                   </td>
-                  <td className="px-4 py-3.5 whitespace-nowrap">
+                  <td className="px-4 py-5 whitespace-nowrap">
                     {val.lastName}
                   </td>
-                  <td className="px-4 py-3.5 whitespace-nowrap">{val.email}</td>
-                  <td className="px-4 py-3.5 whitespace-nowrap">
+                  <td className="px-4 py-5 whitespace-nowrap">{val.email}</td>
+                  <td className="px-4 py-5 whitespace-nowrap">
                     {val.accountNumber}
                   </td>
-                  <td className="px-4 py-3.5 whitespace-nowrap tracking-wide">
+                  <td className="px-4 py-5 whitespace-nowrap tracking-wide">
                     {val.accountBalance.toLocaleString()}
                   </td>
-                  <td className="px-4 py-3.5 whitespace-nowrap">{val.phone}</td>
-                  <td className="px-4 py-3.5 whitespace-nowrap">
+                  <td className="px-4 py-5 whitespace-nowrap">{val.phone}</td>
+                  <td className="px-4 py-5 whitespace-nowrap">
                     {val.kycStatus}
                   </td>
-                  <td className="px-4 py-3.5 whitespace-nowrap">{val.role}</td>
+                  <td className="px-4 py-5 whitespace-nowrap">{val.role}</td>
                 </tr>
               ))}
             </tbody>

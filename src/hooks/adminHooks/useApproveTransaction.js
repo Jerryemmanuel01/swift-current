@@ -9,15 +9,6 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const useApproveTransaction = () => {
-  const [copied, setCopied] = useState(false);
-  const [copiedHash, setCopiedHash] = useState(false);
-  const [pinForm, setPinForm] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedTransaction, setSelectedTransaction] = useState(null);
-
-  const [action, setAction] = useState("");
-  const [pin, setPin] = useState("");
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,7 +16,7 @@ const useApproveTransaction = () => {
     useSelector((state) => state.admin);
 
   useEffect(() => {
-    dispatch(getPendingTransactions());
+    dispatch(getPendingTransactions("pending"));
   }, []);
 
   useEffect(() => {

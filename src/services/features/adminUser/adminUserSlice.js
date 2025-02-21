@@ -4,6 +4,7 @@ import adminUserService from "./adminUserService";
 
 const users = localStorage.getItem("SC_all_users");
 const pendingTransaction = localStorage.getItem("SC_pending_transaction");
+const allTransaction = localStorage.getItem("SC_all_transaction");
 
 const initialState = {
   isLoading: false,
@@ -14,12 +15,20 @@ const initialState = {
   pendingTransaction: pendingTransaction
     ? JSON.parse(pendingTransaction)
     : null,
+  allTransaction: allTransaction ? JSON.parse(allTransaction) : null,
 };
 
 export const getUsers = createAsyncThunkWithHandler(
   "admin/getUsers",
   async () => {
     return await adminUserService.getUsers();
+  }
+);
+
+export const getTransactions = createAsyncThunkWithHandler(
+  "admin/getTransactions",
+  async (stat, type, _) => {
+    return await adminUserService.getPendingTransactions(stat, type);
   }
 );
 
@@ -54,6 +63,7 @@ const adminUserSlice = createSlice({
       state.message = "";
       state.users = null;
       state.pendingTransaction = null;
+      state.allTransaction = null;
     },
   },
   extraReducers: (builder) => {
@@ -75,6 +85,26 @@ const adminUserSlice = createSlice({
         state.message = action.payload.message;
         state.isSuccess = false;
       })
+      .addCase(getTransactions.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getTransactions.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.result.message;
+        state.allTransaction = action.payload.result.data;
+        localStorage.setItem(
+          "SC_all_transaction",
+          JSON.stringify(action.payload.result.data)
+        );
+      })
+      .addCase(getTransactions.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload.message;
+        state.isSuccess = false;
+      })
       .addCase(getPendingTransactions.pending, (state) => {
         state.isLoading = true;
       })
@@ -84,6 +114,10 @@ const adminUserSlice = createSlice({
         state.isSuccess = true;
         state.message = action.payload.result.message;
         state.pendingTransaction = action.payload.result.data;
+        localStorage.setItem(
+          "SC_pending_transaction",
+          JSON.stringify(action.payload.result.data)
+        );
       })
       .addCase(getPendingTransactions.rejected, (state, action) => {
         state.isLoading = false;
@@ -105,7 +139,7 @@ const adminUserSlice = createSlice({
         state.isError = true;
         state.message = action.payload.message;
         state.isSuccess = false;
-      })
+      });
   },
 });
 

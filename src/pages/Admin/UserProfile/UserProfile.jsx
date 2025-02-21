@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Modal from "../../../components/General/Modal";
+import { FaMedal } from "react-icons/fa6";
 
 const UserProfile = () => {
   const [copied, setCopied] = useState(false);
@@ -12,7 +13,7 @@ const UserProfile = () => {
   const { users } = useSelector((state) => state.admin);
   const navigate = useNavigate();
   const { id } = useParams();
-  
+
   const user = users?.find((obj) => obj._id === id);
 
   const dateTime = user?.createdAt;
@@ -66,6 +67,10 @@ const UserProfile = () => {
               {user?.country}
             </h4>
           </div>
+          <h2 className="flex items-center gap-2 text-sm my-1 font-bold">
+            <FaMedal className="text-primary" />
+            <span className="text-darker">{user?.accountLevel}</span>
+          </h2>
           {user?.kycStatus === "Complete" && (
             <div className="flex items-center gap-2 mt-4 font-inter font-semibold">
               <button
@@ -121,13 +126,13 @@ const UserProfile = () => {
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
                   <span className="capitalize font-bold">
-                    {user?.accountBalance.toLocaleString()}
+                    {user?.accountBalance?.toLocaleString()}
                   </span>
                 </div>
               </div>
               <div className="w-full">
                 <h3 className="text-primary font-inter font-medium">
-                  User?name
+                  Username
                 </h3>
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray">
                   <span className="capitalize">{user?.userName}</span>
@@ -262,7 +267,7 @@ const UserProfile = () => {
         </Modal>
       </div>
     </section>
-  )
+  );
 };
 
 export default UserProfile;

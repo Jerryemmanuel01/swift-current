@@ -23,6 +23,7 @@ const useGetAllUser = () => {
     if (isSuccess) {
       //   toast.success(message);
       dispatch(reset());
+      setData(users)
     }
   }, [isSuccess]);
 

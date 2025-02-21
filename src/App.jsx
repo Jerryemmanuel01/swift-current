@@ -67,7 +67,7 @@ function App() {
         },
         {
           path: "/",
-          element: <LandingLayout />,
+          element: <ProtectAuth element={<LandingLayout />} />,
           children: [
             {
               path: "home",

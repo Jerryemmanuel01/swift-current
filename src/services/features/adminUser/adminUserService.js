@@ -9,15 +9,11 @@ const getUsers = async () => {
 
   return response.data;
 };
-const getPendingTransactions = async (data) => {
+const getPendingTransactions = async (stat, type) => {
   const response = await axiosClient.get(
-    `/user/transaction/all?status=pending`
+    `/user/transaction/all?status=${stat}&type=${type}`
   );
-  localStorage.setItem(
-    "SC_pending_transaction",
-    JSON.stringify(response.data.result.data)
-  );
-
+  
   return response.data;
 };
 const approveTransactions = async (data) => {

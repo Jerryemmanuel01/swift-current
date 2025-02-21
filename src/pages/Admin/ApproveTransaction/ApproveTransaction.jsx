@@ -1,19 +1,12 @@
-import { Check, ChevronLeft, Copy } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import useApproveTransaction from "../../../hooks/adminHooks/useApproveTransaction";
 import HeaderName from "../../../components/Dashboard/HeaderName";
-import Modal from "../../../components/General/Modal";
-import { ImSpinner5 } from "react-icons/im";
 import moment from "moment";
 import { PiSpinner } from "react-icons/pi";
 
 const ApproveTransaction = () => {
-  const {
-    isError,
-    isLoading,
-    pendingTransaction,
-    navigate,
-    handleRowClick,
-  } = useApproveTransaction();
+  const { isError, isLoading, pendingTransaction, navigate, handleRowClick } =
+    useApproveTransaction();
   return (
     <section className="w-full px-6 bg-[#f1f5f6] -mt-6 py-6">
       <div className="flex items-center gap-3 mt-2">
@@ -30,7 +23,7 @@ const ApproveTransaction = () => {
         {isLoading ? (
           <h2 className="font-merriweather flex items-center gap-2 mt-5 justify-center text-sm">
             Getting pending transactions{" "}
-            <ImSpinner5 className="animate-spin text-sm" />
+            <PiSpinner className="animate-spin text-sm" />
           </h2>
         ) : isError ? (
           <h2 className="font-merriweather flex items-center gap-2 mt-5 justify-center text-sm">
@@ -52,9 +45,6 @@ const ApproveTransaction = () => {
                 </th>
                 <th className=" px-4 py-4 text-left whitespace-nowrap">
                   Status
-                </th>
-                <th className=" px-4 py-4 text-left whitespace-nowrap">
-                  Charges
                 </th>
                 <th className=" px-4 py-4 text-left whitespace-nowrap">
                   Description
@@ -91,9 +81,6 @@ const ApproveTransaction = () => {
                     </td>
                     <td className="px-4 py-3.5 whitespace-nowrap tracking-wide">
                       {val.status}
-                    </td>
-                    <td className="px-4 py-3.5 whitespace-nowrap">
-                      {val.charges}
                     </td>
                     <td className="px-4 py-3.5 whitespace-nowrap">
                       {val.description}
