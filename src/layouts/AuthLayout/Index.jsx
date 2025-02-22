@@ -7,7 +7,9 @@ const AuthLayout = () => {
     <>
       <ScrollRestoration />
       <Header />
-      <Outlet />
+      <div className="mt-4">
+        <Outlet />
+      </div>
       <WhatsappContact />
     </>
   );

@@ -90,7 +90,7 @@ const Loginform = () => {
             !formik.dirty || !formik.isValid || isLoading
               ? "bg-[#D0D5DD]"
               : "bg-primary"
-          } w-full lg:w-[385px]  text-white rounded-lg h-10 lg:h-14 px-6 mt-8 lg:mt- text-xs lg:text-base lg:font-semibold outline-none`}
+          } w-full text-white rounded-lg h-10 lg:h-14 px-6 mt-8 lg:mt- text-xs lg:text-base lg:font-semibold outline-none`}
         >
           {isLoading ? (
             <span className="flex items-center justify-center gap-2">

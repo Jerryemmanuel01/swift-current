@@ -1,9 +1,9 @@
 import { ChevronLeft } from "lucide-react";
 import HeaderName from "../../../components/Dashboard/HeaderName";
-import useApproveKyc from "../../../hooks/adminHooks/useApproveKyc";
-import moment from "moment";
-import { Modal, TablePagination } from "@mui/material";
+import { TablePagination } from "@mui/material";
 import { PiSpinner } from "react-icons/pi";
+import Modal from "../../../components/General/Modal";
+import useApproveKyc from "../../../hooks/adminHooks/useApproveKyc";
 
 const ApproveKYC = () => {
   const {
@@ -20,6 +20,11 @@ const ApproveKYC = () => {
     isLoading,
     isError,
     setShowModal,
+    userKyc,
+    showKycPhoto,
+    setShowKycPhoto,
+    handleAction,
+    isKycLoading,
   } = useApproveKyc();
   return (
     <section className="w-full px-6 -mt-6 py-6">
@@ -54,12 +59,12 @@ const ApproveKYC = () => {
       <div className="overflow-x-auto">
         {isLoading ? (
           <h2 className="font-merriweather flex items-center gap-2 mt-5 justify-center text-sm">
-            Getting all transactions{" "}
+            Getting KYC
             <PiSpinner className="animate-spin text-sm" />
           </h2>
         ) : isError ? (
           <h2 className="font-merriweather flex items-center gap-2 mt-5 justify-center text-sm">
-            Error getting users, please try again.
+            Error getting KYC, please try again.
           </h2>
         ) : (
           <>
@@ -67,91 +72,71 @@ const ApproveKYC = () => {
               <thead>
                 <tr className="bg-primary/10 text-sm ">
                   <th className=" px-4 py-4 text-left whitespace-nowrap">#</th>
+                  <th className=" px-4 py-4 text-left whitespace-nowrap">ID</th>
                   <th className=" px-4 py-4 text-left whitespace-nowrap">
-                    Ref
+                    First Name
                   </th>
                   <th className=" px-4 py-4 text-left whitespace-nowrap">
-                    Name
+                    Last Name
                   </th>
                   <th className=" px-4 py-4 text-left whitespace-nowrap">
-                    Status
+                    Email Address
                   </th>
                   <th className=" px-4 py-4 text-left whitespace-nowrap">
-                    Category
+                    Account Number
                   </th>
                   <th className=" px-4 py-4 text-left whitespace-nowrap">
-                    Transaction Date
+                    Country
                   </th>
                   <th className=" px-4 py-4 text-left whitespace-nowrap">
-                    Amount
+                    Phone Number
                   </th>
                   <th className=" px-4 py-4 text-left whitespace-nowrap">
-                    Type
+                    KYC Status
                   </th>
                   <th className=" px-4 py-4 text-left whitespace-nowrap">
-                    Description
+                    Tier
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {pendingKyc.length
                   ? products?.map((val, i) => {
-                      const dateTime = val.createdAt;
-                      const date = moment(dateTime).format("YYYY-MM-DD");
-                      const time = moment(dateTime).format("HH:mm:ss");
-
                       return (
                         <tr
                           className="even:bg-primary/5 text-xs cursor-pointer"
                           key={i}
-                          onClick={() => handleRowClick(val._id, val)}
+                          onClick={() => handleRowClick(val._id)}
                         >
-                          <td className="px-4 py-3.5 whitespace-nowrap">
+                          <td className="px-4 py-5 whitespace-nowrap">
                             {startIndex + i + 1}
                           </td>
-                          <td className="px-4 py-3.5 whitespace-nowrap">
+                          <td className="px-4 py-5 whitespace-nowrap">
                             {val._id.substring(0, 10) + "..."}
                           </td>
-                          <td className="px-4 py-3.5 whitespace-nowrap">
-                            {val?.name || val?.metadata?.name}
+                          <td className="px-4 py-5 whitespace-nowrap">
+                            {val?.firstName}
                           </td>
-                          <td
-                            className={`px-4 py-3.5 whitespace-nowrap font-medium font-inter ${
-                              val.status === "Approved"
-                                ? "text-green-500"
-                                : val.status === "Pending"
-                                ? "text-yellow"
-                                : "text-red-500"
-                            }`}
-                          >
-                            {val.status}
+                          <td className="px-4 py-5 whitespace-nowrap">
+                            {val?.lastName}
                           </td>
-                          <td className="px-4 py-3.5 whitespace-nowrap">
-                            {val.category}
+                          <td className="px-4 py-5 whitespace-nowrap">
+                            {val?.email}
                           </td>
-                          <td className="px-4 py-3.5 whitespace-nowrap">
-                            <h2 className="">{date}</h2>
-                            <span className="text-gray text-[9.5px]">
-                              {time}
-                            </span>
+                          <td className="px-4 py-5 whitespace-nowrap">
+                            {val?.accountNumber}
                           </td>
-                          <td
-                            className={`px-4 py-3.5 whitespace-nowrap ${
-                              val.category === "Credit"
-                                ? "text-primary"
-                                : "text-red-600"
-                            }`}
-                          >
-                            $
-                            {/* {val.category === "Debit"
-                              ? "-" + val.amount.toLocaleString()
-                              : val.amount.toLocaleString()} */}
+                          <td className="px-4 py-5 whitespace-nowrap capitalize">
+                            {val?.country}
                           </td>
-                          <td className="px-4 py-3.5 whitespace-nowrap">
-                            {val.type}
+                          <td className="px-4 py-5 whitespace-nowrap capitalize">
+                            {val?.phone}
                           </td>
-                          <td className="px-4 py-3.5 whitespace-nowrap">
-                            {val.description ? val.description : "null"}
+                          <td className="px-4 py-5 whitespace-nowrap capitalize">
+                            {val?.kycStatus}
+                          </td>
+                          <td className="px-4 py-5 whitespace-nowrap capitalize">
+                            {val?.accountLevel}
                           </td>
                         </tr>
                       );
@@ -159,270 +144,91 @@ const ApproveKYC = () => {
                   : ""}
               </tbody>
             </table>
-            <TablePagination
-              component="div"
-              count={pendingKyc.length}
-              page={page}
-              onPageChange={handleChangePage}
-              rowsPerPage={rowsPerPage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              rowsPerPageOptions={[10, 20, 25, 50, 100]} // Options for rows per page
-            />
-            {/* <Modal
+            {pendingKyc.length !== 0  ? (
+              <TablePagination
+                component="div"
+                count={pendingKyc.length}
+                page={page}
+                onPageChange={handleChangePage}
+                rowsPerPage={rowsPerPage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                rowsPerPageOptions={[10, 20, 25, 50, 100]} // Options for rows per page
+              />
+            ):<p className="text-center py-4">No pending KYC available </p>}
+            <Modal
               isOpen={showModal}
               onClose={() => setShowModal(false)}
-              title="Transaction Details"
+              title="KYC Details"
             >
-              {userTransaction && (
-                <div className="flex flex-col justify-center items-center  text-xs ">
-                  <div className="w-full flex flex-col justify-center rounded-xl items-center  text-xs px-4">
-                    <p className=" font-medium font-inter">
-                      {userTransaction?.type}{" "}
-                      {userTransaction?.type === "Transfer" ? "To" : "from"}{" "}
-                      {userTransaction?.name.toUpperCase()}
-                    </p>
-                    <h2 className="mt-1 font-semibold text-base md:text-lg font-poppins text-dark">
-                      {userTransaction?.category === "Debit"
-                        ? "-" + userTransaction?.amount.toLocaleString()
-                        : userTransaction?.amount.toLocaleString()}
-                    </h2>
-                    <h4
-                      className={`mt-1 font-medium font-inter flex items-center gap-1 ${
-                        userTransaction?.status === "Approved"
-                          ? "text-green-500"
-                          : userTransaction?.status === "Pending"
-                          ? "text-yellow"
-                          : "text-red-500"
+              {userKyc && (
+                <>
+                  <div className="">
+                    <div
+                      className={`px-4 py-1 rounded-md flex items-center justify-center text-primary bg-white font-medium font-inter absolute -translate-x-[50%] -translate-y-[50%] left-1/2 -top-16 shadow-custom duration-300 ${
+                        isKycLoading ? "opacity-100" : "opacity-0"
                       }`}
                     >
-                      {userTransaction?.status === "Approved" && (
-                        <span className="">
-                          <Check className="w-4 bg-green-800 h-4 rounded-full p-0.5 text-white " />
+                      <p className=" flex items-center gap-2">
+                        Loading... <PiSpinner className="animate-spin" />
+                      </p>
+                    </div>
+                    <img
+                      onClick={() => setShowKycPhoto(true)}
+                      alt="id card"
+                      src={userKyc?.kycDocument.identityCardPhoto}
+                      className="w-full h-[220px] object-center object-contain rounded-lg cursor-pointer"
+                    />
+                    <div className="mt-4 text-sm text-gray font-inter">
+                      <div className="flex items-center gap-2">
+                        <h2 className=" font-medium">Identity Number:</h2>
+                        <span className="text-[13px] tracking-wide">
+                          {userKyc?.kycDocument.identityNumber}
                         </span>
-                      )}
-                      {userTransaction?.status}
-                    </h4>
+                      </div>
+                      <div className="flex items-center gap-2 mt-2">
+                        <h2 className=" font-medium">Issuing Country:</h2>
+                        <span className="text-[13px] tracking-wide">
+                          {userKyc?.kycDocument.issuingCountry}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 mt-2">
+                        <h2 className=" font-medium">Identity Medium:</h2>
+                        <span className="text-[13px] tracking-wide">
+                          {userKyc?.kycDocument.identityMedium}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="mt-4 flex items-center justify-between gap-2 text-sm">
+                      <button
+                        className="py-2 px-4 bg-red-600 text-white rounded-lg hover:bg-red-700 duration-300"
+                        onClick={() => handleAction("Failed")}
+                      >
+                        Decline
+                      </button>
+                      <button
+                        className="py-2 px-4 bg-green-600 text-white rounded-lg hover:bg-green-700 duration-300"
+                        onClick={() => handleAction("Complete")}
+                      >
+                        Approve
+                      </button>
+                    </div>
                   </div>
-                  <h2 className="font-merriweather font-semibold w-full mt-4">
-                    Transaction Details
-                  </h2>
-                  <div className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-2">
-                    <p className="text-textGray ">Action</p>
-                    <p className=" font-medium font-inter">
-                      {userTransaction?.type}
-                    </p>
-                  </div>
-                  {userTransaction?.metadata?.transferType && (
-                    <div className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-1">
-                      <p className="text-textGray ">Transaction Type</p>
-                      <p className=" font-medium font-inter">
-                        {userTransaction?.metadata?.transferType}
-                      </p>
+                  <Modal
+                    isOpen={showKycPhoto}
+                    onClose={() => setShowKycPhoto(false)}
+                    title="ID Card"
+                  >
+                    <div className="w-full h-full">
+                      <img
+                        alt="id card"
+                        src={userKyc?.kycDocument.identityCardPhoto}
+                        className="w-full h-[500px] object-center object-scale-down rounded-lg"
+                      />
                     </div>
-                  )}
-                  {userTransaction?.name && (
-                    <div className="border-b border-[#D0D5DD] py-2 mt-1 w-full flex justify-between items-center">
-                      <p className="text-textGray">Account Name</p>
-                      <p className=" font-medium font-inter">
-                        {userTransaction?.name}
-                      </p>
-                    </div>
-                  )}
-                  {userTransaction?.metadata?.accountNumber && (
-                    <div className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-1">
-                      <p className="text-textGray ">Account Number</p>
-                      <p className=" font-medium font-inter">
-                        {userTransaction?.metadata?.accountNumber}
-                      </p>
-                    </div>
-                  )}
-                  {userTransaction?.metadata?.bankName && (
-                    <div className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-1">
-                      <p className="text-textGray ">Bank Name</p>
-                      <p className=" font-medium font-inter">
-                        {userTransaction?.metadata?.bankName}
-                      </p>
-                    </div>
-                  )}
-                  {userTransaction?.metadata?.branchNumber && (
-                    <div className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-1">
-                      <p className="text-textGray ">Branch Number</p>
-                      <p className=" font-medium font-inter">
-                        {userTransaction?.metadata?.branchNumber}
-                      </p>
-                    </div>
-                  )}
-                  {userTransaction?.metadata?.country && (
-                    <div className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-1">
-                      <p className="text-textGray ">Country</p>
-                      <p className=" font-medium font-inter">
-                        {userTransaction?.metadata?.country}
-                      </p>
-                    </div>
-                  )}
-                  {userTransaction?.metadata?.swiftCode && (
-                    <div className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-1">
-                      <p className="text-textGray ">Swift Code</p>
-                      <p className=" font-medium font-inter">
-                        {userTransaction?.metadata?.swiftCode}
-                      </p>
-                    </div>
-                  )}
-                  {userTransaction?.metadata?.sortCode && (
-                    <div className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-1">
-                      <p className="text-textGray ">Sort Code</p>
-                      <p className=" font-medium font-inter">
-                        {userTransaction?.metadata?.sortCode}
-                      </p>
-                    </div>
-                  )}
-                  {userTransaction?.metadata?.IBANCode && (
-                    <div className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-1">
-                      <p className="text-textGray ">IBAN Code</p>
-                      <p className=" font-medium font-inter">
-                        {userTransaction?.metadata?.IBANCode}
-                      </p>
-                    </div>
-                  )}
-                  {userTransaction?.metadata?.secondTransactionId && (
-                    <div
-                      className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-1 cursor-pointer"
-                      onClick={() =>
-                        filter === "" &&
-                        handleRowClick(
-                          userTransaction?.metadata?.secondTransactionId
-                        )
-                      }
-                    >
-                      <p className="text-textGray ">Transfer fee</p>
-                      <p className=" font-medium font-inter flex items-center gap-1">
-                        {userTransaction?.metadata?.secondTransactionId}{" "}
-                        {filter === "" ? (
-                          <ExternalLink className="w-2.5" />
-                        ) : (
-                          ""
-                        )}
-                      </p>
-                    </div>
-                  )}
-                  {userTransaction?.metadata?.firstTransactionId && (
-                    <div
-                      className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-1 cursor-pointer"
-                      onClick={() =>
-                        filter === "" &&
-                        handleRowClick(
-                          userTransaction?.metadata?.firstTransactionId
-                        )
-                      }
-                    >
-                      <p className="text-textGray ">Primary Transaction</p>
-                      <p className=" font-medium font-inter flex items-center gap-1">
-                        {userTransaction?.metadata?.firstTransactionId}{" "}
-                        {filter === "" ? (
-                          <ExternalLink className="w-2.5" />
-                        ) : (
-                          ""
-                        )}{" "}
-                      </p>
-                    </div>
-                  )}
-                  <div className="border-b border-[#D0D5DD] py-1.5 mt-1 w-full flex justify-between items-center">
-                    <p className="text-textGray">Description</p>
-                    <p className=" font-medium font-inter">
-                      {userTransaction?.description || "null"}
-                    </p>
-                  </div>
-                  {userTransaction?.metadata?.blockchainNetwork && (
-                    <div className="border-b border-[#D0D5DD] py-1.5 mt-1 w-full flex justify-between items-center">
-                      <p className="text-textGray">Blockchain Network</p>
-                      <p className=" font-medium font-inter">
-                        {userTransaction?.metadata?.blockchainNetwork}
-                      </p>
-                    </div>
-                  )}
-                  {userTransaction?.metadata?.walletAddress && (
-                    <div className="border-b border-[#D0D5DD] py-1.5 mt-1 w-full flex justify-between items-center">
-                      <p className="text-textGray">Wallet Address</p>
-                      <p className=" font-medium font-inter flex items-center gap-1">
-                        {userTransaction?.metadata?.walletAddress?.substring(
-                          0,
-                          15
-                        ) + "..."}
-                        <button
-                          onClick={() =>
-                            handleCopy(userTransaction?.metadata?.walletAddress)
-                          }
-                          type="button"
-                          className="flex items-center justify-center"
-                        >
-                          {copied ? (
-                            <Check className="w-3.5 " />
-                          ) : (
-                            <Copy className="w-3.5 " />
-                          )}
-                        </button>
-                      </p>
-                    </div>
-                  )}
-                  {userTransaction?.metadata?.transactionId && (
-                    <div className="border-b border-[#D0D5DD] py-1.5 mt-1 w-full flex justify-between items-center">
-                      <p className="text-textGray">Tranasaction Hash</p>
-                      <p className=" font-medium font-inter flex items-center gap-1">
-                        {userTransaction?.metadata?.transactionId?.substring(
-                          0,
-                          17
-                        ) + "..."}
-                        <button
-                          onClick={() =>
-                            handleCopy(
-                              userTransaction?.metadata?.transactionId,
-                              "hash"
-                            )
-                          }
-                          type="button"
-                          className="flex items-center justify-center"
-                        >
-                          {copiedHash ? (
-                            <Check className="w-3.5 " />
-                          ) : (
-                            <Copy className="w-3.5 " />
-                          )}
-                        </button>
-                      </p>
-                    </div>
-                  )}
-                  {userTransaction?.chargePriorityFee && (
-                    <div className="border-b border-[#D0D5DD] py-1.5 mt-1 w-full flex justify-between items-center">
-                      <p className="text-textGray">Charge Priority Fee</p>
-                      <p className=" font-medium font-inter flex items-center gap-1">
-                        {userTransaction?.chargePriorityFee}
-                      </p>
-                    </div>
-                  )}
-
-                  <div className="border-b border-[#D0D5DD] py-1.5 mt-1 w-full flex justify-between items-center">
-                    <p className="text-textGray">Transaction Id</p>
-                    <p className=" font-medium font-inter">
-                      {userTransaction?._id}
-                    </p>
-                  </div>
-                  <div className="border-b border-[#D0D5DD] py-1.5 mt-1 w-full flex justify-between items-center">
-                    <p className="text-textGray">Transaction Date</p>
-                    <p className=" font-medium font-inter">
-                      {moment(userTransaction?.createdAt).format(
-                        "MMM DD, YYYY hh:mm:ss A"
-                      )}
-                    </p>
-                  </div>
-                  <div className="py-1.5 mt-1 w-full flex justify-between items-center">
-                    <p className="text-textGray">Category</p>
-                    <p className=" font-medium font-inter">
-                      {userTransaction?.category}
-                    </p>
-                  </div>
-                </div>
+                  </Modal>
+                </>
               )}
-            </Modal> */}
+            </Modal>
           </>
         )}
       </div>

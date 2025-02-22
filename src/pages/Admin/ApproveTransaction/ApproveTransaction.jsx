@@ -115,15 +115,23 @@ const ApproveTransaction = () => {
                 })}
               </tbody>
             </table>
-            <TablePagination
-              component="div"
-              count={pendingTransaction.length}
-              page={page}
-              onPageChange={handleChangePage}
-              rowsPerPage={rowsPerPage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              rowsPerPageOptions={[10, 20, 25, 50, 100]} // Options for rows per page
-            />
+            {pendingTransaction.length !== 0 ? (
+              <TablePagination
+                component="div"
+                count={pendingTransaction.length}
+                page={page}
+                onPageChange={handleChangePage}
+                rowsPerPage={rowsPerPage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                rowsPerPageOptions={[10, 20, 25, 50, 100]} // Options for rows per page
+              />
+            ) : (
+              <p>
+                <p className="text-center py-4">
+                  No pending Transaction available{" "}
+                </p>
+              </p>
+            )}
           </>
         )}
       </div>

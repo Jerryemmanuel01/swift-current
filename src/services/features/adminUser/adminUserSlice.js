@@ -11,6 +11,9 @@ const initialState = {
   message: "",
   isSuccess: false,
   isError: false,
+  isKycLoading: false,
+  isKycError: false,
+  isKycSuccess: false,
   users: users ? JSON.parse(users) : null,
   pendingTransaction: pendingTransaction
     ? JSON.parse(pendingTransaction)
@@ -27,7 +30,7 @@ export const getUsers = createAsyncThunkWithHandler(
 
 export const getTransactions = createAsyncThunkWithHandler(
   "admin/getTransactions",
-  async (options, _) => {    
+  async (options, _) => {
     return await adminUserService.getPendingTransactions(options);
   }
 );
@@ -46,6 +49,13 @@ export const approveTransaction = createAsyncThunkWithHandler(
   }
 );
 
+export const approveKYC = createAsyncThunkWithHandler(
+  "admin/approveKYC",
+  async (data, _) => {
+    return await adminUserService.approveKYC(data);
+  }
+);
+
 const adminUserSlice = createSlice({
   name: "admin",
   initialState,
@@ -55,6 +65,9 @@ const adminUserSlice = createSlice({
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
+      state.isKycLoading = false;
+      state.isKycError = false;
+      state.isKycSuccess = false;
     },
     resetUsers: (state) => {
       state.isLoading = false;
@@ -139,6 +152,21 @@ const adminUserSlice = createSlice({
         state.isError = true;
         state.message = action.payload.message;
         state.isSuccess = false;
+      })
+      .addCase(approveKYC.pending, (state) => {
+        state.isKycLoading = true;
+      })
+      .addCase(approveKYC.fulfilled, (state, action) => {
+        state.isKycLoading = false;
+        state.isKycError = false;
+        state.isKycSuccess = true;
+        state.message = action.payload.result.message;
+      })
+      .addCase(approveKYC.rejected, (state, action) => {
+        state.isKycLoading = false;
+        state.isKycError = true;
+        state.message = action.payload.message;
+        state.isKycSuccess = false;
       });
   },
 });
