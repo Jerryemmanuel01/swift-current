@@ -1,10 +1,11 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import KYCForm from "../../../components/Dashboard/KYCForm";
 import { useEffect } from "react";
 import { getUserInfo } from "../../../services/features/userInfo/userInfoSlice";
 
 const KYC = () => {
   const { user } = useSelector((state) => state.userInfo);
+  const dispatch = useDispatch()
     useEffect(() => {
       dispatch(getUserInfo());
     }, []);
