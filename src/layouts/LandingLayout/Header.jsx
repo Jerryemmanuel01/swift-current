@@ -14,6 +14,12 @@ const Header = () => {
   const { logoutBtn } = useLogout();
   return (
     <section className=" bg-primary ">
+      {toggleNav && (
+        <div
+          onClick={() => setToggleNav(false)}
+          className="fixed bg-black opacity-30 w-full h-screen top-0"
+        ></div>
+      )}
       <div className="lg:max-w-[1200px] flex flex-col items-center justify-center mx-auto px-6 py-4 relative">
         <div className="w-full items-center justify-center flex">
           <div className="md:flex w-full justify-between items-center">
@@ -49,7 +55,7 @@ const Header = () => {
                 toggleNav
                   ? "opacity-100 left-0"
                   : "-left-96 opacity-0 md:opacity-100 "
-              }   md:relative md:flex justify-between w-2/3 md:w-full lg:w-2/3 items-center pt-4 pb-7 md:py-0 px-6 md:px-0 h-screen md:h-auto`}
+              }   md:relative md:flex justify-between w-2/3 md:w-full lg:w-2/3 items-center pt-4 pb-7 md:py-0 px-6 md:px-0 h-[110vh] md:h-auto`}
             >
               <ul className=" md:flex pb-7 md:pb-0">
                 {navLinks.map((link, i) => (

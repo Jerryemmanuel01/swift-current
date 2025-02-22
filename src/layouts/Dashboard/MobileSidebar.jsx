@@ -59,7 +59,7 @@ const MobileSidebar = ({
         ></div>
       )}
       <motion.div
-        className={`fixed w-[250px] md:hidden left-0 right-0 z-10 md:top-0 overflow-y-auto h-[88vh] bg-white border-r border-[#e7e5e5]`}
+        className={`fixed w-[250px] md:hidden left-0 right-0 z-10 md:top-0 overflow-y-auto h-[95vh] bg-white border-r border-[#e7e5e5]`}
         initial={{ x: "-100%" }}
         animate={{ x: isOpen ? "0%" : "-100%" }}
       >
