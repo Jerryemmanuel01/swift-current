@@ -36,16 +36,13 @@ const useGetAllTransactions = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      //   toast.success(message);
       dispatch(reset());
     }
   }, [isSuccess]);
 
   if (isError) toast.error(message || "Error getting Transactions");
 
-  const userTransaction = allTransaction?.find(
-    (obj) => obj._id === transactionId
-  );
+  const userTransaction = products?.find((obj) => obj._id === transactionId);
 
   const handleRowClick = (id) => {
     setShowModal(true);
@@ -98,6 +95,7 @@ const useGetAllTransactions = () => {
     copied,
     copiedHash,
     handleFilter,
+    filter,
   };
 };
 

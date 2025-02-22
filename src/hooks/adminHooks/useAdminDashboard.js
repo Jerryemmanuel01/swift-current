@@ -28,10 +28,6 @@ const useAdminDashboard = () => {
   const pendingKyc = users?.filter((user) => user.kycStatus === "Pending");
 
   useEffect(() => {
-    const options = {
-      stat: "pending",
-      // type: filter,
-    };
     dispatch(getUsers({}));
     dispatch(getPendingTransactions({ stat: "pending" }));
     dispatch(getTransactions({ type: "all" }));

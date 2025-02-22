@@ -5,12 +5,9 @@ import { Link, useNavigate, useOutletContext } from "react-router-dom";
 const TransactionHistoryTable = ({ transactions }) => {
   const { user } = useOutletContext();
   const userInfo = user?.userInfo;
-  console.log(transactions);
   const navigate = useNavigate();
 
-  const handleRowClick = (id, transaction) => {
-    console.log(transaction.metadata?.transferType !== "Crypto Transfer");
-    
+  const handleRowClick = (id, transaction) => {    
     if (
       transaction.type === "Transfer" &&
       transaction.status === "Pending" &&

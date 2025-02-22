@@ -127,25 +127,25 @@ export const homeAbouts = [
 
 export const homeTestimonies = [
   {
-    desc: "Thanks to swiftcredence! my small business received the funding it needed to expand. The platform process was smooth, and the team was incredibly supportive throughout.",
+    desc: "Thanks to swiftcurrent! my small business received the funding it needed to expand. The platform process was smooth, and the team was incredibly supportive throughout.",
     name: "Aamir Graves",
     title: "Businessman",
     img: testimony1,
   },
   {
-    desc: "The team at swiftcredence took the time to understand our specific needs. They offered competitive rates and a flexible repayment plan that helped us expand our manufacturing operations.",
+    desc: "The team at swiftcurrent took the time to understand our specific needs. They offered competitive rates and a flexible repayment plan that helped us expand our manufacturing operations.",
     name: "James Davies",
     title: "Entrepreneur",
     img: testimony2,
   },
   {
-    desc: "I can't thank swiftcredence enough for helping me secure the financing I needed to open my dream retail store. Their team is responsive, professional, and truly cares about their clients' success.",
+    desc: "I can't thank swiftcurrent enough for helping me secure the financing I needed to open my dream retail store. Their team is responsive, professional, and truly cares about their clients' success.",
     name: "Henry Thomas",
     title: "Sales Executive",
     img: testimony3,
   },
   {
-    desc: "I'm grateful to have found swiftcredence for my startup. They offered flexible loan options and guided me every step of the way. My business is thriving, and it's all thanks to them.",
+    desc: "I'm grateful to have found swiftcurrent for my startup. They offered flexible loan options and guided me every step of the way. My business is thriving, and it's all thanks to them.",
     name: "Oliver Harris",
     title: "Sales Executive",
     img: testimony4,
@@ -189,7 +189,7 @@ export const FAQS = [
   {
     id: 1,
     question:
-      "How long does my deposit take before it can reflect on my swiftcredence account dashboard?",
+      "How long does my deposit take before it can reflect on my swiftcurrent account dashboard?",
     answer:
       "Your deposit will be reflected immediately once it is confirmed on the blockchain network.",
   },

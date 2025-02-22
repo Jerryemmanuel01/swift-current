@@ -50,7 +50,7 @@ const DashbordLayout = () => {
             </div>
             <div className="overflow-hidden w-full md:ml-[250px]">
               <div
-                className={` min-h-[75vh] w-full pt-6 ${
+                className={` min-h-[75vh] w-full mt-6 ${
                   user?.userInfo?.role !== "User" ? "bg-[#f1f5f6]" : ""
                 }`}
               >

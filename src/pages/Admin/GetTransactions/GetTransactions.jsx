@@ -32,6 +32,7 @@ const GetTransactions = () => {
     copiedHash,
     handleCopy,
     handleFilter,
+    filter,
   } = useGetAllTransactions();
   return (
     <section className="w-full px-6 -mt-6 py-6">
@@ -300,6 +301,7 @@ const GetTransactions = () => {
                     <div
                       className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-1 cursor-pointer"
                       onClick={() =>
+                        filter === "" &&
                         handleRowClick(
                           userTransaction?.metadata?.secondTransactionId
                         )
@@ -308,7 +310,11 @@ const GetTransactions = () => {
                       <p className="text-textGray ">Transfer fee</p>
                       <p className=" font-medium font-inter flex items-center gap-1">
                         {userTransaction?.metadata?.secondTransactionId}{" "}
-                        <ExternalLink className="w-2.5" />
+                        {filter === "" ? (
+                          <ExternalLink className="w-2.5" />
+                        ) : (
+                          ""
+                        )}
                       </p>
                     </div>
                   )}
@@ -316,6 +322,7 @@ const GetTransactions = () => {
                     <div
                       className="border-b border-[#D0D5DD] py-1.5 w-full flex justify-between items-center mt-1 cursor-pointer"
                       onClick={() =>
+                        filter === "" &&
                         handleRowClick(
                           userTransaction?.metadata?.firstTransactionId
                         )
@@ -324,7 +331,11 @@ const GetTransactions = () => {
                       <p className="text-textGray ">Primary Transaction</p>
                       <p className=" font-medium font-inter flex items-center gap-1">
                         {userTransaction?.metadata?.firstTransactionId}{" "}
-                        <ExternalLink className="w-2.5" />
+                        {filter === "" ? (
+                          <ExternalLink className="w-2.5" />
+                        ) : (
+                          ""
+                        )}{" "}
                       </p>
                     </div>
                   )}

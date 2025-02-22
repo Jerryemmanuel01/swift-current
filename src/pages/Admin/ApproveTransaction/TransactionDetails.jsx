@@ -24,7 +24,7 @@ const TransactionDetails = () => {
   } = useTransactionDetails();
 
   return (
-    <section className="px-6 w-full  pb-6">
+    <section className="px-6 w-full -mt-6 py-6">
       <div className="sm:w-[450px] lg:w-[500px] mx-auto">
         <div className="flex items-center gap-3 mt-2">
           <button
@@ -47,7 +47,7 @@ const TransactionDetails = () => {
                   {transaction?.name.toUpperCase()}
                 </p>
                 <h2 className="mt-1 font-semibold text-base md:text-lg font-poppins text-dark">
-                  {transaction?.category === "Debit"
+                  ${transaction?.category === "Debit"
                     ? "-" + transaction?.amount.toLocaleString()
                     : transaction?.amount.toLocaleString()}
                 </h2>
