@@ -19,7 +19,7 @@ const TransactionTable = ({ transactions }) => {
             </tr>
           </thead>
           <tbody>
-            {transactions.length
+            {transactions?.length
               ? transactions.slice(0, 5).map((val, i) => {
                   const dateTime = val.createdAt;
                   const date = moment(dateTime).format("YYYY-MM-DD");
@@ -66,7 +66,7 @@ const TransactionTable = ({ transactions }) => {
               : ""}
           </tbody>
         </table>
-        {!transactions.length && (
+        {!transactions?.length && (
           <div className="text-center w-full py-4 text-sm font-inter font-medium">
             No Transaction available
           </div>

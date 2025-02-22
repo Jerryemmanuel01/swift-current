@@ -9,7 +9,7 @@ const TransactionReceipt = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();
-  const transaction = Object.values(transactions).find((obj) => obj._id === id);
+  const transaction = transactions.find((obj) => obj._id === id);
 
   return (
     <section className="px-6 w-full ">
