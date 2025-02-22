@@ -45,6 +45,7 @@ import {
   FundUser,
   DebitUser,
   GetUsers,
+  GetTransactions,
   UserProfile,
   ProtectAdmin,
   ProtectAuth,
@@ -248,6 +249,10 @@ function App() {
             {
               path: "get-users",
               element: <GetUsers />,
+            },
+            {
+              path: "get-transactions",
+              element: <GetTransactions />,
             },
             {
               path: "user-profile/:id",

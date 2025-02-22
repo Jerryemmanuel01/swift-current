@@ -72,8 +72,8 @@ const TransactionHistoryTable = ({ transactions }) => {
             </tr>
           </thead>
           <tbody>
-            {Object.values(transactions).length
-              ? Object.values(transactions).map((val, i) => {
+            {transactions.length
+              ? transactions.map((val, i) => {
                   const dateTime = val.createdAt;
                   const date = moment(dateTime).format("YYYY-MM-DD");
                   const time = moment(dateTime).format("HH:mm:ss");
@@ -138,7 +138,7 @@ const TransactionHistoryTable = ({ transactions }) => {
               : ""}
           </tbody>
         </table>
-        {!Object.values(transactions).length && (
+        {!transactions.length && (
           <div className="text-center w-full py-4 text-sm font-inter font-medium">
             No Transaction available
           </div>

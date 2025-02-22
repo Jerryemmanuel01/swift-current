@@ -80,6 +80,9 @@ const useTransactionDetails = () => {
     }
     dispatch(approveTransaction(userData));
   };
+   const handleRowClick = (id) => {
+     navigate(`/admin/transaction-details/${id}`);
+   };
 
   return {
     isLoading,
@@ -95,6 +98,7 @@ const useTransactionDetails = () => {
     setPin,
     handleChange,
     transaction,
+    handleRowClick,
   };
 };
 

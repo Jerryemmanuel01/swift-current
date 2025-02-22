@@ -51,4 +51,5 @@ export const TransactionDetails = lazy(()=>import("../pages/Admin/ApproveTransac
 export const FundUser = lazy(()=>import("../pages/Admin/FundUser/FundUser"))
 export const DebitUser = lazy(()=>import("../pages/Admin/DebitUser/DebitUser"))
 export const GetUsers = lazy(()=>import("../pages/Admin/GetUsers/GetUsers"))
+export const GetTransactions = lazy(()=>import("../pages/Admin/GetTransactions/GetTransactions"))
 export const UserProfile = lazy(()=>import("../pages/Admin/UserProfile/UserProfile"))

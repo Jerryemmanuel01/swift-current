@@ -35,7 +35,7 @@ const UserProfile = () => {
   };
 
   return (
-    <section className="w-full px-6 bg-[#f1f5f6] -mt-6 py-7">
+    <section className="w-full px-6 -mt-6 py-7">
       <div className="">
         <button
           onClick={() => navigate(-1)}

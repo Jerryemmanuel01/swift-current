@@ -4,19 +4,28 @@ import { toast } from "react-hot-toast";
 import {
   reset,
   getPendingTransactions,
-  approveTransaction,
 } from "../../services/features/adminUser/adminUserSlice";
 import { useNavigate } from "react-router-dom";
+import usePagination from "../usePagination";
 
 const useApproveTransaction = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const { pendingTransaction, isLoading, isError, message, isSuccess } =
     useSelector((state) => state.admin);
 
+  const {
+    handleChangePage,
+    handleChangeRowsPerPage,
+    page,
+    products,
+    rowsPerPage,
+    startIndex,
+  } = usePagination(pendingTransaction);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
-    dispatch(getPendingTransactions("pending"));
+    dispatch(getPendingTransactions({ stat: "pending" }));
   }, []);
 
   useEffect(() => {
@@ -38,6 +47,12 @@ const useApproveTransaction = () => {
     isError,
     handleRowClick,
     navigate,
+    handleChangePage,
+    handleChangeRowsPerPage,
+    page,
+    products,
+    rowsPerPage,
+    startIndex,
   };
 };
 

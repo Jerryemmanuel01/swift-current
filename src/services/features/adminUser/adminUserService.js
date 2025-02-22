@@ -9,9 +9,9 @@ const getUsers = async () => {
 
   return response.data;
 };
-const getPendingTransactions = async (stat, type) => {
+const getPendingTransactions = async (options) => {
   const response = await axiosClient.get(
-    `/user/transaction/all?status=${stat}&type=${type}`
+    `/user/transaction/all?status=${options?.stat}&type=${options?.type}`
   );
   
   return response.data;

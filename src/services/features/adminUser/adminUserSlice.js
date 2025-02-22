@@ -27,8 +27,8 @@ export const getUsers = createAsyncThunkWithHandler(
 
 export const getTransactions = createAsyncThunkWithHandler(
   "admin/getTransactions",
-  async (stat, type, _) => {
-    return await adminUserService.getPendingTransactions(stat, type);
+  async (options, _) => {    
+    return await adminUserService.getPendingTransactions(options);
   }
 );
 

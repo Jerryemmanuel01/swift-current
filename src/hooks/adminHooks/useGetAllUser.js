@@ -6,6 +6,7 @@ import {
   getUsers,
 } from "../../services/features/adminUser/adminUserSlice";
 import { useNavigate } from "react-router-dom";
+import usePagination from "../usePagination";
 
 const useGetAllUser = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,16 @@ const useGetAllUser = () => {
   const { users, isLoading, isError, message, isSuccess } = useSelector(
     (state) => state.admin
   );
+  const [data, setData] = useState(users);
+  const [sortOrder, setSortOrder] = useState("asc"); // Track sorting order
+  const {
+    handleChangePage,
+    handleChangeRowsPerPage,
+    page,
+    products,
+    rowsPerPage,
+    startIndex,
+  } = usePagination(data);
 
   useEffect(() => {
     dispatch(getUsers());
@@ -23,14 +34,11 @@ const useGetAllUser = () => {
     if (isSuccess) {
       //   toast.success(message);
       dispatch(reset());
-      setData(users)
+      setData(users);
     }
   }, [isSuccess]);
 
   if (isError) toast.error(message || "Error getting users");
-
-  const [data, setData] = useState(users);
-  const [sortOrder, setSortOrder] = useState("asc"); // Track sorting order
 
   const handleSort = () => {
     const sortedData = [...data].sort((a, b) => {
@@ -58,6 +66,12 @@ const useGetAllUser = () => {
     handleSort,
     handleRowClick,
     navigate,
+    handleChangePage,
+    handleChangeRowsPerPage,
+    page,
+    products,
+    rowsPerPage,
+    startIndex,
   };
 };
 
