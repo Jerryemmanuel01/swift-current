@@ -1,38 +1,26 @@
 import { Check, ChevronLeft, Copy } from "lucide-react";
 import moment from "moment";
-import { useState } from "react";
-import toast from "react-hot-toast";
-import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
 import Modal from "../../../components/General/Modal";
 import { FaMedal } from "react-icons/fa6";
+import useUserProfile from "../../../hooks/adminHooks/useUserProfile";
+import { PiSpinner } from "react-icons/pi";
 
 const UserProfile = () => {
-  const [copied, setCopied] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const { users } = useSelector((state) => state.admin);
-  const navigate = useNavigate();
-  const { id } = useParams();
-
-  const user = users?.find((obj) => obj._id === id);
-
+  const {
+    copied,
+    navigate,
+    setShowModal,
+    showModal,
+    user,
+    handleCopy,
+    handleChage,
+    isRoleLoading,
+    showKycPhoto,
+    setShowKycPhoto,
+  } = useUserProfile();
   const dateTime = user?.createdAt;
   const date = moment(dateTime).format("YYYY-MM-DD");
   const time = moment(dateTime).format("HH:mm:ss");
-
-  const handleCopy = () => {
-    navigator.clipboard
-      .writeText(user?.accountNumber)
-      .then(() => {
-        setCopied(true);
-        toast.success("Account number copied");
-        setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
-      })
-      .catch((error) => {
-        toast.error("Failed to copy text: ", error);
-      });
-    return;
-  };
 
   return (
     <section className="w-full px-6 -mt-6 py-7">
@@ -44,43 +32,66 @@ const UserProfile = () => {
           <ChevronLeft className="w-[18px] md:w-5" />
           Back
         </button>
-        <div className="mt-10 p-6 bg-[#f6f8fa] border border-borderColor shadow-custom1 rounded-lg relative">
-          <div className="absolute -top-6 w-24 h-24 rounded-full bg">
-            <img
-              src={user?.profileImage}
-              alt=""
-              className="w-24 h-24 object-cover rounded-full border-[6px] border-[#e8edf4]"
-            />
-          </div>
-          <div className="mt-16">
-            <div className="flex items-center gap-2">
-              <h2 className="font-merriweather font-bold text-dark md:text-lg">
-                {user?.lastName} {user?.firstName}
-              </h2>
-              {user?.emailVerification && (
-                <div className="rounded-full  bg-primary p-0.5">
-                  <Check className="text-white w-2.5 h-2.5" />
-                </div>
-              )}
+        <div className="mt-10 p-6 bg-[#f6f8fa] border border-borderColor shadow-custom1 rounded-lg relative flex justify-between">
+          <div>
+            <div className="absolute -top-6 w-24 h-24 rounded-full bg">
+              <img
+                src={user?.profileImage}
+                alt=""
+                className="w-24 h-24 object-cover rounded-full border-[6px] border-[#e8edf4]"
+              />
             </div>
-            <h4 className="text-gray text-sm capitalize mt-0.5">
-              {user?.country}
-            </h4>
+            <div className="mt-16">
+              <div className="flex items-center gap-2">
+                <h2 className="font-merriweather font-bold text-dark md:text-lg">
+                  {user?.lastName} {user?.firstName}
+                </h2>
+                {user?.emailVerification && (
+                  <div className="rounded-full  bg-primary p-0.5">
+                    <Check className="text-white w-2.5 h-2.5" />
+                  </div>
+                )}
+              </div>
+              <h4 className="text-gray text-sm capitalize mt-0.5">
+                {user?.country}
+              </h4>
+            </div>
+            <h2 className="flex items-center gap-2 text-sm my-1 font-bold">
+              <FaMedal className="text-primary" />
+              <span className="text-darker">{user?.accountLevel}</span>
+            </h2>
+            {user?.kycStatus === "Complete" && (
+              <div className="flex items-center gap-2 mt-4 font-inter font-semibold">
+                <button
+                  onClick={() => setShowModal(true)}
+                  className="px-3 py-2 tracking-wide text-[12px] md:text-[13px] rounded-lg hover:shadow-custom1 hover:scale-[1.01] duration-300 shadow-custom0 border border-borderColor text-primary"
+                >
+                  KYC Details
+                </button>
+              </div>
+            )}
           </div>
-          <h2 className="flex items-center gap-2 text-sm my-1 font-bold">
-            <FaMedal className="text-primary" />
-            <span className="text-darker">{user?.accountLevel}</span>
-          </h2>
-          {user?.kycStatus === "Complete" && (
-            <div className="flex items-center gap-2 mt-4 font-inter font-semibold">
-              <button
-                onClick={() => setShowModal(true)}
-                className="px-3 py-2 tracking-wide text-[12px] md:text-[13px] rounded-lg hover:shadow-custom1 hover:scale-[1.01] duration-300 shadow-custom0 border border-borderColor text-primary"
+
+          <div className="text-xs font-inter flex flex-col items-center">
+            <p>Manage Role</p>
+            {isRoleLoading ? (
+              <PiSpinner className="animate-spin mt-2" />
+            ) : (
+              <select
+                name="role"
+                id="role"
+                className="py-2 px-4 mt-2 rounded-sm outline-none"
+                onChange={handleChage}
               >
-                KYC Details
-              </button>
-            </div>
-          )}
+                <option value={user?.role}>{user?.role}</option>
+                {user?.role === "User" ? (
+                  <option value="Admin">Admin</option>
+                ) : (
+                  <option value="User">User</option>
+                )}
+              </select>
+            )}
+          </div>
         </div>
         <div className="mt-10 bg-borderColor/30 rounded-lg relative">
           <h2 className="text-darker px-6 py-3 bg-borderColor/30 text-lg font-inter tracking-wide font-medium">
@@ -239,9 +250,10 @@ const UserProfile = () => {
         >
           <div className="">
             <img
+              onClick={()=>setShowKycPhoto(true)}
               alt="id card"
               src={user?.kycDocument.identityCardPhoto}
-              className="w-full h-[220px] object-center rounded-lg"
+              className="w-full h-[220px] object-center object-contain cursor-pointer rounded-lg"
             />
             <div className="mt-4 text-sm text-gray font-inter">
               <div className="flex items-center gap-2">
@@ -264,6 +276,19 @@ const UserProfile = () => {
               </div>
             </div>
           </div>
+          <Modal
+            isOpen={showKycPhoto}
+            onClose={() => setShowKycPhoto(false)}
+            title="ID Card"
+          >
+            <div className="w-full h-full">
+              <img
+                alt="id card"
+                src={user?.kycDocument.identityCardPhoto}
+                className="w-full h-[500px] object-center object-scale-down rounded-lg"
+              />
+            </div>
+          </Modal>
         </Modal>
       </div>
     </section>

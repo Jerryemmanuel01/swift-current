@@ -14,6 +14,9 @@ const initialState = {
   isKycLoading: false,
   isKycError: false,
   isKycSuccess: false,
+  isRoleLoading: false,
+  isRoleError: false,
+  isRoleSuccess: false,
   users: users ? JSON.parse(users) : null,
   pendingTransaction: pendingTransaction
     ? JSON.parse(pendingTransaction)
@@ -56,6 +59,13 @@ export const approveKYC = createAsyncThunkWithHandler(
   }
 );
 
+export const updateRole = createAsyncThunkWithHandler(
+  "admin/updateRole",
+  async (data, _) => {
+    return await adminUserService.updateRole(data);
+  }
+);
+
 const adminUserSlice = createSlice({
   name: "admin",
   initialState,
@@ -68,6 +78,9 @@ const adminUserSlice = createSlice({
       state.isKycLoading = false;
       state.isKycError = false;
       state.isKycSuccess = false;
+      state.isRoleLoading = false;
+      state.isRoleError = false;
+      state.isRoleSuccess = false;
     },
     resetUsers: (state) => {
       state.isLoading = false;
@@ -167,7 +180,22 @@ const adminUserSlice = createSlice({
         state.isKycError = true;
         state.message = action.payload.message;
         state.isKycSuccess = false;
-      });
+      })
+      .addCase(updateRole.pending, (state) => {
+        state.isRoleLoading = true;
+      })
+      .addCase(updateRole.fulfilled, (state, action) => {
+        state.isRoleLoading = false;
+        state.isRoleError = false;
+        state.isRoleSuccess = true;
+        state.message = action.payload.result.message;
+      })
+      .addCase(updateRole.rejected, (state, action) => {
+        state.isRoleLoading = false;
+        state.isRoleError = true;
+        state.message = action.payload.message;
+        state.isRoleSuccess = false;
+      })
   },
 });
 

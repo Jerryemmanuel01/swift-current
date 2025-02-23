@@ -31,11 +31,18 @@ const approveKYC = async (data) => {
   return response.data;
 };
 
+const updateRole = async (data) => {
+  const response = await axiosClient.patch(`/user/manage-admin`, data);
+
+  return response.data;
+};
+
 const adminUserService = {
   getUsers,
   getPendingTransactions,
   approveTransactions,
   approveKYC,
+  updateRole,
 };
 
 export default adminUserService;
