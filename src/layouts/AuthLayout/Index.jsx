@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 import WhatsappContact from "../../components/General/WhatsappContact";
-import Header from "../LandingLayout/Header";
+import Header from "./Header";
 const AuthLayout = () => {
   return (
     <>
