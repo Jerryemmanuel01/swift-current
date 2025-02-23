@@ -17,6 +17,9 @@ const initialState = {
   isRoleLoading: false,
   isRoleError: false,
   isRoleSuccess: false,
+  isFundsLoading: false,
+  isFundsError: false,
+  isFundsSuccess: false,
   users: users ? JSON.parse(users) : null,
   pendingTransaction: pendingTransaction
     ? JSON.parse(pendingTransaction)
@@ -65,6 +68,18 @@ export const updateRole = createAsyncThunkWithHandler(
     return await adminUserService.updateRole(data);
   }
 );
+export const creditUser = createAsyncThunkWithHandler(
+  "admin/creditUser",
+  async (data, _) => {
+    return await adminUserService.creditUser(data);
+  }
+);
+export const debitUser = createAsyncThunkWithHandler(
+  "admin/debitUser",
+  async (data, _) => {
+    return await adminUserService.debitUser(data);
+  }
+);
 
 const adminUserSlice = createSlice({
   name: "admin",
@@ -81,6 +96,9 @@ const adminUserSlice = createSlice({
       state.isRoleLoading = false;
       state.isRoleError = false;
       state.isRoleSuccess = false;
+      state.isFundsLoading = false;
+      state.isFundsError = false;
+      state.isFundsSuccess = false;
     },
     resetUsers: (state) => {
       state.isLoading = false;
@@ -111,6 +129,7 @@ const adminUserSlice = createSlice({
         state.message = action.payload.message;
         state.isSuccess = false;
       })
+
       .addCase(getTransactions.pending, (state) => {
         state.isLoading = true;
       })
@@ -131,6 +150,7 @@ const adminUserSlice = createSlice({
         state.message = action.payload.message;
         state.isSuccess = false;
       })
+
       .addCase(getPendingTransactions.pending, (state) => {
         state.isLoading = true;
       })
@@ -151,6 +171,7 @@ const adminUserSlice = createSlice({
         state.message = action.payload.message;
         state.isSuccess = false;
       })
+
       .addCase(approveTransaction.pending, (state) => {
         state.isLoading = true;
       })
@@ -166,6 +187,7 @@ const adminUserSlice = createSlice({
         state.message = action.payload.message;
         state.isSuccess = false;
       })
+
       .addCase(approveKYC.pending, (state) => {
         state.isKycLoading = true;
       })
@@ -181,6 +203,7 @@ const adminUserSlice = createSlice({
         state.message = action.payload.message;
         state.isKycSuccess = false;
       })
+
       .addCase(updateRole.pending, (state) => {
         state.isRoleLoading = true;
       })
@@ -195,6 +218,36 @@ const adminUserSlice = createSlice({
         state.isRoleError = true;
         state.message = action.payload.message;
         state.isRoleSuccess = false;
+      })
+      .addCase(creditUser.pending, (state) => {
+        state.isFundsLoading = true;
+      })
+      .addCase(creditUser.fulfilled, (state, action) => {
+        state.isFundsLoading = false;
+        state.isFundsError = false;
+        state.isFundsSuccess = true;
+        state.message = action.payload.result.message;
+      })
+      .addCase(creditUser.rejected, (state, action) => {
+        state.isFundsLoading = false;
+        state.isFundsError = true;
+        state.message = action.payload.message;
+        state.isFundsSuccess = false;
+      })
+      .addCase(debitUser.pending, (state) => {
+        state.isFundsLoading = true;
+      })
+      .addCase(debitUser.fulfilled, (state, action) => {
+        state.isFundsLoading = false;
+        state.isFundsError = false;
+        state.isFundsSuccess = true;
+        state.message = action.payload.result.message;
+      })
+      .addCase(debitUser.rejected, (state, action) => {
+        state.isFundsLoading = false;
+        state.isFundsError = true;
+        state.message = action.payload.message;
+        state.isFundsSuccess = false;
       })
   },
 });

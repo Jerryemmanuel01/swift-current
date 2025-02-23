@@ -47,20 +47,23 @@ const GetTransactions = () => {
           <HeaderName title={"All Transactions"} />
         </div>
 
-        <div className="flex items-center">
+        <div className="mt-2 rounded-md bg-[#e4e4e4] relative">
           <select
             onChange={(e) => handleFilter(e)}
             name="fiter"
             id="filter"
-            className="text-[10px] md:text-xs font-merriweather outline-none p-2 rounded-md"
+            className="text-[10px] md:text-xs font-merriweather py-2 px-4 pr-8 rounded-md outline-none bg-inherit appearance-none"
           >
-            <option value="">All</option>
-            <option value="deposit">Deposit</option>
-            <option value="transfer">Transfer</option>
-            {/* <option value="swift fee">Swift Fee</option>
-            <option value="account upgrade">Upgrade</option>
-            <option value="crypto swift fee">Blockchain Fee</option> */}
+            <option value="all">All</option>
+            <option value="Deposit">Deposit</option>
+            <option value="Transfer">Transfer</option>
+            <option value="Swift Fee">Swift Fee</option>
+            <option value="Account Upgrade">Upgrade</option>
+            <option value="Crypto_Swift_Fee">Blockchain Fee</option>
+            <option value="Token">Token</option>
+            <option value="Loan">Loan</option>
           </select>
+          <ChevronDown className="absolute top-1 right-2 w-4 pointer-events-none" />
         </div>
       </div>
 
@@ -172,15 +175,20 @@ const GetTransactions = () => {
                   : ""}
               </tbody>
             </table>
-            <TablePagination
-              component="div"
-              count={allTransaction.length}
-              page={page}
-              onPageChange={handleChangePage}
-              rowsPerPage={rowsPerPage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              rowsPerPageOptions={[10, 20, 25, 50, 100]} // Options for rows per page
-            />
+
+            {allTransaction.length !== 0 ? (
+              <TablePagination
+                component="div"
+                count={allTransaction.length}
+                page={page}
+                onPageChange={handleChangePage}
+                rowsPerPage={rowsPerPage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                rowsPerPageOptions={[10, 20, 25, 50, 100]} // Options for rows per page
+              />
+            ) : (
+              <p className="text-center py-4">No Transaction Available</p>
+            )}
             <Modal
               isOpen={showModal}
               onClose={() => setShowModal(false)}

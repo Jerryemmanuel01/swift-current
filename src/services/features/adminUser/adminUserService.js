@@ -37,12 +37,32 @@ const updateRole = async (data) => {
   return response.data;
 };
 
+const creditUser = async (data) => {
+  const response = await axiosClient.post(
+    `/user/transaction/credit-account`,
+    data
+  );
+
+  return response.data;
+};
+
+const debitUser = async (data) => {
+  const response = await axiosClient.post(
+    `/user/transaction/debit-account`,
+    data
+  );
+
+  return response.data;
+};
+
 const adminUserService = {
   getUsers,
   getPendingTransactions,
   approveTransactions,
   approveKYC,
   updateRole,
+  creditUser,
+  debitUser,
 };
 
 export default adminUserService;

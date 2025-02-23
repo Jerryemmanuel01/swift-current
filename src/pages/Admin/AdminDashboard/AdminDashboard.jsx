@@ -35,6 +35,12 @@ const AdminDashboard = () => {
             View All Users <ChevronRight className="w-4 h-4" />
           </Link>
           <Link
+            to="/admin/get-transactions"
+            className="bg-[#f1f5f6] rounded-lg h-16 md:h-14 flex items-center justify-between px-4 font-inter text-base md:text-sm text-gray hover:text-primary hover:scale-[1.02] duration-200"
+          >
+            Get All Transactions <ChevronRight className="w-4 h-4" />
+          </Link>
+          <Link
             to="/admin/approve-transaction"
             className="bg-[#f1f5f6] rounded-lg h-16 md:h-14 flex items-center justify-between px-4 font-inter text-base md:text-sm text-gray hover:text-primary hover:scale-[1.02] duration-200"
           >
@@ -50,13 +56,7 @@ const AdminDashboard = () => {
             to="/admin/credit-user"
             className="bg-[#f1f5f6] rounded-lg h-16 md:h-14 flex items-center justify-between px-4 font-inter text-base md:text-sm text-gray hover:text-primary hover:scale-[1.02] duration-200"
           >
-            Credit User <ChevronRight className="w-4 h-4" />
-          </Link>
-          <Link
-            to="/admin/debit-user"
-            className="bg-[#f1f5f6] rounded-lg h-16 md:h-14 flex items-center justify-between px-4 font-inter text-base md:text-sm text-gray hover:text-primary hover:scale-[1.02] duration-200"
-          >
-            Debit User <ChevronRight className="w-4 h-4" />
+            Funds Management <ChevronRight className="w-4 h-4" />
           </Link>
           <Link
             to="/admin/admin-management"

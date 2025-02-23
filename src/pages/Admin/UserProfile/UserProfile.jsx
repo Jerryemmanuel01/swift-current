@@ -1,4 +1,4 @@
-import { Check, ChevronLeft, Copy } from "lucide-react";
+import { Check, ChevronDown, ChevronLeft, Copy } from "lucide-react";
 import moment from "moment";
 import Modal from "../../../components/General/Modal";
 import { FaMedal } from "react-icons/fa6";
@@ -77,19 +77,22 @@ const UserProfile = () => {
             {isRoleLoading ? (
               <PiSpinner className="animate-spin mt-2" />
             ) : (
-              <select
-                name="role"
-                id="role"
-                className="py-2 px-4 mt-2 rounded-sm outline-none"
-                onChange={handleChage}
-              >
-                <option value={user?.role}>{user?.role}</option>
-                {user?.role === "User" ? (
-                  <option value="Admin">Admin</option>
-                ) : (
-                  <option value="User">User</option>
-                )}
-              </select>
+              <div className="mt-2 rounded-md bg-[#e4e4e4] relative">
+                <select
+                  name="role"
+                  id="role"
+                  className="py-2 px-4 pr-8 rounded-md outline-none bg-inherit appearance-none"
+                  onChange={handleChage}
+                >
+                  <option value={user?.role}>{user?.role}</option>
+                  {user?.role === "User" ? (
+                    <option value="Admin">Admin</option>
+                  ) : (
+                    <option value="User">User</option>
+                  )}
+                </select>
+                <ChevronDown className="absolute top-1 right-2 w-4 pointer-events-none" />
+              </div>
             )}
           </div>
         </div>
@@ -250,7 +253,7 @@ const UserProfile = () => {
         >
           <div className="">
             <img
-              onClick={()=>setShowKycPhoto(true)}
+              onClick={() => setShowKycPhoto(true)}
               alt="id card"
               src={user?.kycDocument.identityCardPhoto}
               className="w-full h-[220px] object-center object-contain cursor-pointer rounded-lg"

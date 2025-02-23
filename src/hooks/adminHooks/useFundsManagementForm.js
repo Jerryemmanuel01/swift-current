@@ -1,51 +1,48 @@
+import { useState } from "react";
 import { useFormik } from "formik";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import {
-  internalTransfer,
-  reset,
-} from "../../../services/features/transfer/transferSlice";
-import {
   getAccountName,
   reset as userReset,
-} from "../../../services/features/user/userSlice";
-import { useNavigate, useOutletContext } from "react-router-dom";
-import { internalTransferSchema } from "../../../lib/schema";
-import { fetchUserInfo } from "../../../services/features/userInfo/userInfoSlice";
+} from "../../services/features/user/userSlice";
+import { useNavigate } from "react-router-dom";
+import { internalTransferSchema } from "../../lib/schema";
+import {
+  creditUser,
+  debitUser,
+  reset,
+} from "../../services/features/adminUser/adminUserSlice";
 
-const useInternalTransfer = () => {
+const useFundsManagementForm = () => {
+  const [action, setAction] = useState("Credit");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.transfer
+  const { isFundsLoading, isFundsError, isFundsSuccess, message } = useSelector(
+    (state) => state.admin
   );
+
   const {
     accountName,
     isGetAccountNameError,
     isGetAccountNameLoading,
     message: userMessage,
   } = useSelector((state) => state.user);
-  const { user } = useOutletContext();
-  const userInfo = user.userInfo;
 
   useEffect(() => {
-    if (isError) toast.error(message);
-    if (isSuccess) {
+    if (isFundsSuccess) {
       toast.success(message);
-      formik.resetForm();
-      dispatch(fetchUserInfo());
-      dispatch(userReset());
-      navigate("/dashboard");
+      formik.resetForm()
+      dispatch(reset());
     }
-    dispatch(reset());
-    return;
-  }, [isSuccess, isError, message]);
+  }, [isFundsSuccess]);
+
+  if (isFundsError) toast.error(message || "Error performing this action");
 
   const formik = useFormik({
     initialValues: {
-      bankName: "Swiftcurrent",
       accountNumber: "",
       recipientName: "",
       amount: "",
@@ -54,10 +51,6 @@ const useInternalTransfer = () => {
     },
     validationSchema: internalTransferSchema,
     onSubmit: ({ accountNumber, amount, description, pin } = values) => {
-      if (amount > userInfo.accountBalance) {
-        toast.error("Insufficient Balance");
-        return;
-      }
       const userData = {
         amount,
         accountNumber,
@@ -65,7 +58,8 @@ const useInternalTransfer = () => {
         pin,
       };
 
-      dispatch(internalTransfer(userData));
+      if (action === "Credit") dispatch(creditUser(userData));
+      if (action === "Debit") dispatch(debitUser(userData));
     },
   });
   useEffect(() => {
@@ -86,7 +80,7 @@ const useInternalTransfer = () => {
     userMessage,
   ]);
 
-  return { formik, isLoading, isGetAccountNameLoading };
+  return { action, setAction, formik, isGetAccountNameLoading, isFundsLoading };
 };
 
-export default useInternalTransfer;
+export default useFundsManagementForm;
