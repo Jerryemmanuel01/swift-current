@@ -72,29 +72,31 @@ const UserProfile = () => {
             )}
           </div>
 
-          <div className="text-xs font-inter flex flex-col items-center">
-            <p>Manage Role</p>
-            {isRoleLoading ? (
-              <PiSpinner className="animate-spin mt-2" />
-            ) : (
-              <div className="mt-2 rounded-md bg-[#e4e4e4] relative">
-                <select
-                  name="role"
-                  id="role"
-                  className="py-2 px-4 pr-8 rounded-md outline-none bg-inherit appearance-none"
-                  onChange={handleChage}
-                >
-                  <option value={user?.role}>{user?.role}</option>
-                  {user?.role === "User" ? (
-                    <option value="Admin">Admin</option>
-                  ) : (
-                    <option value="User">User</option>
-                  )}
-                </select>
-                <ChevronDown className="absolute top-1 right-2 w-4 pointer-events-none" />
-              </div>
-            )}
-          </div>
+          {user.role !== "Owner" && (
+            <div className="text-xs font-inter flex flex-col items-center">
+              <p>Manage Role</p>
+              {isRoleLoading ? (
+                <PiSpinner className="animate-spin mt-2" />
+              ) : (
+                <div className="mt-2 rounded-md bg-[#e4e4e4] relative">
+                  <select
+                    name="role"
+                    id="role"
+                    className="py-2 px-4 pr-8 rounded-md outline-none bg-inherit appearance-none"
+                    onChange={handleChage}
+                  >
+                    <option value={user?.role}>{user?.role}</option>
+                    {user?.role === "User" ? (
+                      <option value="Admin">Admin</option>
+                    ) : (
+                      <option value="User">User</option>
+                    )}
+                  </select>
+                  <ChevronDown className="absolute top-1 right-2 w-4 pointer-events-none" />
+                </div>
+              )}
+            </div>
+          )}
         </div>
         <div className="mt-10 bg-borderColor/30 rounded-lg relative">
           <h2 className="text-darker px-6 py-3 bg-borderColor/30 text-lg font-inter tracking-wide font-medium">

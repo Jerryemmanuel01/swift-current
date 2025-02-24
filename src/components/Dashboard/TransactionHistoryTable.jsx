@@ -1,49 +1,19 @@
 import { ExternalLink } from "lucide-react";
 import moment from "moment";
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import useTransactionHistoryTable from "../../hooks/dashboardHooks/useTransactionHistoryTable";
+import { TablePagination } from "@mui/material";
 
 const TransactionHistoryTable = ({ transactions }) => {
-  const { user } = useOutletContext();
-  const userInfo = user?.userInfo;
-  const navigate = useNavigate();
-
-  const handleRowClick = (id, transaction) => {    
-    if (
-      transaction.type === "Transfer" &&
-      transaction.status === "Pending" &&
-      !transaction.metadata?.secondTransactionId &&
-      transaction.metadata?.transferType !== "Crypto Transfer"
-    ) {
-      navigate(`/dashboard/transfer-fee?id=${id}`);
-      return;
-    }
-    if (
-      transaction.type === "Transfer" &&
-      transaction.status === "Pending" &&
-      !transaction.metadata.secondTransactionId &&
-      transaction.metadata?.transferType === "Crypto Transfer"
-    ) {
-      navigate(`/dashboard/blockchain-fee?id=${id}`);
-      return;
-    }
-    if (
-      transaction.type === "Transfer" &&
-      transaction.status === "Pending" &&
-      transaction.metadata.secondTransactionId &&
-      userInfo.accountLevel !== "Tier 3"
-    ) {
-      navigate(`/dashboard/upgrade-fee`);
-      return;
-    }
-    if (
-      transaction.status === "Approved" ||
-      transaction.status === "Failed" ||
-      transaction.status === "Pending"
-    ) {
-      navigate(`/dashboard/receipt/${id}`);
-      return;
-    }
-  };
+  const {
+    handleRowClick,
+    user,
+    handleChangePage,
+    handleChangeRowsPerPage,
+    page,
+    products,
+    rowsPerPage,
+    startIndex,
+  } = useTransactionHistoryTable(transactions);
 
   return (
     <section className="py-4 ">
@@ -70,7 +40,7 @@ const TransactionHistoryTable = ({ transactions }) => {
           </thead>
           <tbody>
             {transactions.length
-              ? transactions.map((val, i) => {
+              ? products?.map((val, i) => {
                   const dateTime = val.createdAt;
                   const date = moment(dateTime).format("YYYY-MM-DD");
                   const time = moment(dateTime).format("HH:mm:ss");
@@ -81,7 +51,7 @@ const TransactionHistoryTable = ({ transactions }) => {
                       key={i}
                       onClick={() => handleRowClick(val._id, val)}
                     >
-                      <td className="px-4 py-2 whitespace-nowrap">{i + 1}</td>
+                      <td className="px-4 py-2 whitespace-nowrap">{i + 1 + startIndex}</td>
                       <td className="px-4 py-2 whitespace-nowrap">
                         {val._id.substring(0, 10) + "..."}
                       </td>
@@ -98,11 +68,12 @@ const TransactionHistoryTable = ({ transactions }) => {
                         }`}
                       >
                         {val.status}
-                        {val.status === "Pending" && val.type==="Transfer" &&(
-                          <div className="text-[9px] text-green-600 flex gap-1 items-center">
-                            Continue <ExternalLink className="w-2.5" />
-                          </div>
-                        )}
+                        {val.status === "Pending" &&
+                          val.type === "Transfer" && (
+                            <div className="text-[9px] text-green-600 flex gap-1 items-center">
+                              Continue <ExternalLink className="w-2.5" />
+                            </div>
+                          )}
                       </td>
                       <td className="px-4 py-2 whitespace-nowrap">
                         {val.category}
@@ -135,6 +106,19 @@ const TransactionHistoryTable = ({ transactions }) => {
               : ""}
           </tbody>
         </table>
+        {transactions.length !== 0 ? (
+          <TablePagination
+            component="div"
+            count={transactions.length}
+            page={page}
+            onPageChange={handleChangePage}
+            rowsPerPage={rowsPerPage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+            rowsPerPageOptions={[10, 20, 25, 50, 100]} // Options for rows per page
+          />
+        ) : (
+          <p className="text-center py-4">No Transaction Available</p>
+        )}
         {!transactions.length && (
           <div className="text-center w-full py-4 text-sm font-inter font-medium">
             No Transaction available

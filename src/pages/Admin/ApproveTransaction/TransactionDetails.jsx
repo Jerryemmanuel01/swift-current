@@ -40,7 +40,6 @@ const TransactionDetails = () => {
           <div className="">
             <div className="flex flex-col justify-center items-center rounded-xl md:text-sm text-xs shadow-xl px-4 py-4 mt-2">
               <div className="w-full flex flex-col justify-center mt-4 rounded-xl items-center md:text-sm text-xs px-4">
-                {/* <img src={Logo} alt="" className="w-10 h-5" /> */}
                 <p className="mt-1 md:mt-3 font-medium font-inter">
                   {transaction?.type}{" "}
                   {transaction?.type === "Transfer" ? "To" : "from"}{" "}
@@ -239,7 +238,6 @@ const TransactionDetails = () => {
                   </p>
                 </div>
               )}
-
               <div className="border-b border-[#D0D5DD] py-2 mt-1 w-full flex justify-between items-center">
                 <p className="text-textGray">Transaction Id</p>
                 <p className=" font-medium font-inter">{transaction?._id}</p>

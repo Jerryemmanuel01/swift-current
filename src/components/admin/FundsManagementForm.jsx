@@ -14,7 +14,7 @@ const FundsManagementForm = () => {
         }`}
       >
         <div
-          className={`w-full bg text-center rounded-s-md duration-300 py-4 flex items-center justify-center gap-2 ${
+          className={`w-full cursor-pointer text-center rounded-s-md duration-300 py-4 flex items-center justify-center gap-2 ${
             action === "Credit" ? "bg-primary text-white" : ""
           } `}
           onClick={() => setAction("Credit")}
@@ -22,7 +22,7 @@ const FundsManagementForm = () => {
           Credit Account
         </div>
         <div
-          className={`w-full text-center py-4 rounded-e-md duration-300 ${
+          className={`w-full cursor-pointer text-center py-4 rounded-e-md duration-300 ${
             action === "Debit" ? "bg-red-600 text-white" : ""
           } `}
           onClick={() => setAction("Debit")}
