@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const baseURL = import.meta.env.VITE_API_BASE_URL;
 
@@ -11,7 +12,7 @@ const axiosClient = axios.create({
 
 // Simple interceptor to add authorization header if token exists
 axiosClient.interceptors.request.use((config) => {
-  const accessToken = localStorage.getItem("SC_access_token");
+  const accessToken = Cookies.get("SC_access_token");
   if (accessToken) {
     config.headers["Authorization"] = `Bearer ${accessToken}`;
   }
@@ -25,13 +26,13 @@ axiosClient.interceptors.response.use(
     const originalRequest = error.config;
     if (error?.response?.status === 401 && !originalRequest?._retry) {
       originalRequest._retry = true;
-      const refreshToken = localStorage.getItem("");
+      const refreshToken = Cookies.get("");
       try {
         const response = await axios.post("", {
           token: refreshToken,
         });
         const newAccessToken = response.data.data.accessToken;
-        localStorage.setItem("", newAccessToken);
+        Cookies.set("", newAccessToken);
         axios.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${newAccessToken}`;

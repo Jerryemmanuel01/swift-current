@@ -1,4 +1,5 @@
 import axiosClient from "../../api/axiosClient";
+import Cookies from "js-cookie";
 
 const resendEmail = async () => {
   const response = await axiosClient.get(`/user/resend-email`);
@@ -13,7 +14,7 @@ const verify_email = async (token) => {
 const editProfile = async (userData) => {
   const response = await axiosClient.patch(`/user/edit-profile`, userData);
   if (response.data.result.data) {
-    localStorage.setItem("SC_access_token", response.data.result.data);
+    Cookies.set("SC_access_token", response.data.result.data);
   }
 
   return response.data;

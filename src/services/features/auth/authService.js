@@ -1,5 +1,6 @@
 import axiosClient from "../../api/axiosClient";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const sign_up = async (userData) => {
   const { profileImage, ...rest } = userData;
@@ -27,7 +28,12 @@ const login = async (userData) => {
   const response = await axiosClient.post(`/auth/login`, userData);
 
   if (response.data.result.data) {
-    localStorage.setItem("SC_access_token", response.data.result.data);
+    const token = response.data.result.data;
+    Cookies.set("SC_access_token", token, {
+      expires: 7,
+      secure: true,
+      sameSite: "Strict",
+    });
   }
 
   return response.data;
@@ -54,14 +60,14 @@ const reset_password = async ({
 };
 
 const logout = async () => {
-  const accessToken = localStorage.getItem("SC_access_token");
+  const accessToken = Cookies.get("SC_access_token");
   if (accessToken) {
-    localStorage.removeItem("SC_access_token");
+    Cookies.remove("SC_access_token");
     localStorage.removeItem("SC_user_info");
-    localStorage.removeItem("SC_all_users"); 
-    localStorage.removeItem("SC_pending_transaction"); 
-    localStorage.removeItem("SC_user_trasactions"); 
-    localStorage.removeItem("SC_all_transaction"); 
+    localStorage.removeItem("SC_all_users");
+    localStorage.removeItem("SC_pending_transaction");
+    localStorage.removeItem("SC_user_trasactions");
+    localStorage.removeItem("SC_all_transaction");
   }
 
   return { message: "Logout successful" };

@@ -1,8 +1,10 @@
 import { createAsyncThunkWithHandler } from "../../api/apiHandler";
 import { createSlice } from "@reduxjs/toolkit";
 import authService from "./authService";
+import Cookies from "js-cookie";
 
-const token = localStorage.getItem("SC_access_token");
+
+const token = Cookies.get("SC_access_token");
 
 const initialState = {
   isLoading: false,
@@ -10,6 +12,7 @@ const initialState = {
   isSuccess: false,
   isError: false,
   token: token ? token : null,
+  isLogoutSuccess: false
 };
 
 export const signUp = createAsyncThunkWithHandler(
@@ -52,13 +55,13 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.isSuccess = false;
       state.isError = false;
+      state.isLogoutSuccess=false;
       state.message = "";
     },
     resetToken: (state) => {
       state.isLoading = false;
       state.isSuccess = false;
       state.isError = false;
-      state.message = "";
       state.token = null;
     },
   },
@@ -87,15 +90,13 @@ const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isError = false;
-        state.isSuccess = true;
+        state.isLogoutSuccess = true;
         state.message = action.payload?.message || "Logout Successful";
       })
       .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
-        state.isError = true;
         state.message = action.payload;
-        state.isSuccess = false;
+        state.isLogoutSuccess = false;
       })
 
       //login case

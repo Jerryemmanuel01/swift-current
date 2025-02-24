@@ -190,7 +190,7 @@ const MobileSidebar = ({
           })}
 
           <button
-            onClick={logoutBtn}
+            onClick={()=>logoutBtn()}
             className={`flex gap-3 items-center text-sm md:text-base px-6 outline-none hover:text-primary duration-300 mb-20 ${
               isRole === "User" ? "mt-10" : "mt-4"
             }`}

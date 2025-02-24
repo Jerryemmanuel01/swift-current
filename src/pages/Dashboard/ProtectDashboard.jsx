@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const ProtectDashboard = ({ element }) => {
   const { user } = useSelector((state) => state.userInfo);
-  const { token } = useSelector((state) => state.auth);
-
+  const token = Cookies.get("SC_access_token");
   const role = user?.userInfo.role;
 
   if (!token) {

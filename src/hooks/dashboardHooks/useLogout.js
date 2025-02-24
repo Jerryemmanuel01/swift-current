@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import { logout, resetToken } from "../../services/features/auth/authSlice";
+import { logout, reset, resetToken } from "../../services/features/auth/authSlice";
 import { resetUser } from "../../services/features/userInfo/userInfoSlice";
 import { resetUsers } from "../../services/features/adminUser/adminUserSlice";
 import { useNavigate } from "react-router-dom";
@@ -11,26 +11,27 @@ const useLogout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLoading, isError, message, isSuccess } = useSelector(
+  const { isLoading, isError, message, isLogoutSuccess } = useSelector(
     (state) => state.auth
   );
-  const logoutBtn = () => {
-    if (!isLoading) {
-      dispatch(resetToken())
-      dispatch(logout());
+
+  useEffect(() => {
+    if (isLogoutSuccess) {
+      toast.success(message);
+      dispatch(resetToken());
       dispatch(resetUser());
       dispatch(resetUsers());
       dispatch(resetUserTransactions());
-
+      dispatch(reset())
       navigate("/auth/login", { replace: true });
     }
-  };
+  }, [isLogoutSuccess]);
 
-  useEffect(() => {
-    if (isSuccess && message === "Logout successful") {
-      toast.success(message);
+  const logoutBtn = () => {
+    if (!isLoading) {
+      dispatch(logout());
     }
-  }, [isSuccess]);
+  };
 
   return { logoutBtn };
 };
