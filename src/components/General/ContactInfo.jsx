@@ -51,7 +51,7 @@ const ContactInfo = () => {
                   </div>
                 </div>
               </div>
-              <div className="border-t border-[#D0D5DD] mt-8 md:mt-14 lg:mt-20 py-4 md:py-6 lg:py-8 w-full flex justify-between items-center">
+              {/* <div className="border-t border-[#D0D5DD] mt-8 md:mt-14 lg:mt-20 py-4 md:py-6 lg:py-8 w-full flex justify-between items-center">
                 <p className="text-sm font-bold lg:text-base">Social Media :</p>
                 <div className="flex gap-2 md:gap-3 lg:gap-4">
                   <div className="w-8 h-8 bg-primary/30 flex items-center justify-center text-dark rounded hover:bg-primary/60 duration-300">
@@ -67,7 +67,7 @@ const ContactInfo = () => {
                     <FaInstagram className="" />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
