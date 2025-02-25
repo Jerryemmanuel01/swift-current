@@ -1,6 +1,7 @@
 import useVerifyEmail from '../../../hooks/dashboardHooks/useVerifyEmail'
 import DashboardFetchError from '../../../components/Dashboard/DashboardFetchError';
 import Loader from '../../../components/General/Loader';
+import Header from '../../../layouts/AuthLayout/Header';
 
 const Verify = () => {
   const { isError, isVerifyEmailLoading, setRetry } = useVerifyEmail();
@@ -8,7 +9,9 @@ const Verify = () => {
   if (isError) return <DashboardFetchError setRetry={setRetry} title="Verification failed" />;
 
   return (
-    <section className=''>Verify</section>
+    <section className=''>
+      <Header />
+    </section>
   )
 }
 

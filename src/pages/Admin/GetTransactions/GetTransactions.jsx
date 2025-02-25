@@ -34,6 +34,10 @@ const GetTransactions = () => {
     handleFilter,
     filter,
   } = useGetAllTransactions();
+
+  console.log(userTransaction);
+  
+  
   return (
     <section className="w-full px-6 -mt-6 py-6">
       <div className="flex items-center justify-between">
@@ -54,7 +58,7 @@ const GetTransactions = () => {
             id="filter"
             className="text-[10px] md:text-xs font-merriweather py-2 px-4 pr-8 rounded-md outline-none bg-inherit appearance-none"
           >
-            <option value="all">All</option>
+            <option value="">All</option>
             <option value="Deposit">Deposit</option>
             <option value="Transfer">Transfer</option>
             <option value="Swift Fee">Swift Fee</option>
@@ -158,7 +162,7 @@ const GetTransactions = () => {
                                 : "text-red-600"
                             }`}
                           >
-                            $
+                            {val?.type === "Crypto Swift Fee" ? "ETH " : "$"}
                             {val.category === "Debit"
                               ? "-" + val.amount.toLocaleString()
                               : val.amount.toLocaleString()}
@@ -202,7 +206,8 @@ const GetTransactions = () => {
                       {userTransaction?.type === "Transfer" ? "To" : "from"}{" "}
                       {userTransaction?.name.toUpperCase()}
                     </p>
-                    <h2 className="mt-1 font-semibold text-base md:text-lg font-poppins text-dark">
+                    <h2 className={`mt-1 font-semibold text-base md:text-lg font-poppins ${userTransaction?.category === "Debit" ? "text-red-600":"text-dark"}`}>
+                      {userTransaction?.type === "Crypto Swift Fee" ? "ETH " : "$"}
                       {userTransaction?.category === "Debit"
                         ? "-" + userTransaction?.amount.toLocaleString()
                         : userTransaction?.amount.toLocaleString()}

@@ -45,8 +45,9 @@ const TransactionDetails = () => {
                   {transaction?.type === "Transfer" ? "To" : "from"}{" "}
                   {transaction?.name.toUpperCase()}
                 </p>
-                <h2 className="mt-1 font-semibold text-base md:text-lg font-poppins text-dark">
-                  ${transaction?.category === "Debit"
+                <h2 className={`mt-1 font-semibold text-base md:text-lg font-poppins ${transaction.category === "Debit"? "text-red-600":"text-dark"}`}>
+                  {transaction?.type === "Crypto Swift Fee" ? "ETH " : "$"}
+                  {transaction?.category === "Debit"
                     ? "-" + transaction?.amount.toLocaleString()
                     : transaction?.amount.toLocaleString()}
                 </h2>
@@ -275,8 +276,15 @@ const TransactionDetails = () => {
           </div>
         ) : (
           <div className="mt-6">
-            <p className="font-merriweather md:text-lg text-base text-darker font-medium">This transaction has been proccessed</p>
-            <button className="outline-none py-1 mt-2 px-4 shadow-custom1 rounded-lg text-primary flex items-center gap-2" onClick={()=>navigate(-1)}>Back</button>
+            <p className="font-merriweather md:text-lg text-base text-darker font-medium">
+              This transaction has been proccessed
+            </p>
+            <button
+              className="outline-none py-1 mt-2 px-4 shadow-custom1 rounded-lg text-primary flex items-center gap-2"
+              onClick={() => navigate(-1)}
+            >
+              Back
+            </button>
           </div>
         )}
 

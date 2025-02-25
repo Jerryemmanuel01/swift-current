@@ -68,6 +68,10 @@ function App() {
           element: <Navigate to="/home" />,
         },
         {
+          path: "/verify",
+          element: <VerifyEmail />,
+        },
+        {
           path: "/",
           element: <ProtectAuth element={<LandingLayout />} />,
           children: [
@@ -90,10 +94,6 @@ function App() {
             {
               path: "services",
               element: <Services />,
-            },
-            {
-              path: "verify",
-              element: <VerifyEmail />,
             },
           ],
         },

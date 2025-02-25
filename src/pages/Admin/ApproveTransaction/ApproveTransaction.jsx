@@ -92,6 +92,7 @@ const ApproveTransaction = () => {
                         {val.name}
                       </td>
                       <td className="px-4 py-3.5 whitespace-nowrap">
+                        {val?.type === "Crypto Swift Fee" ? "ETH " : "$"}
                         {val.amount.toLocaleString()}
                       </td>
                       <td className="px-4 py-3.5 whitespace-nowrap">
