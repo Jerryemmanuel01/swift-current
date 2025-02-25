@@ -16,14 +16,14 @@ const HomeService = () => {
           <div className="" key={i}>
             <div className="relative">
               <img src={val.img} alt="" className="w-full h-[230px] object-cover "/>
-              <Link
+              <div
                 to={val?.link }
-                className={`w-full h-full flex items-center justify-center top-0 left-0  absolute bg-primary/50 transition-all duration-300 opacity-0 hover:opacity-100`}
+                className={`w-full h-full flex items-center justify-center top-0 left-0  absolute bg-primary/20 transition-all duration-300 opacity-0 hover:opacity-100`}
               >
-                <div className="w-10 h-10 flex items-center justify-center bg-yellow rounded-md">
+                {/* <div className="w-10 h-10 flex items-center justify-center bg-yellow rounded-md">
                   <IoMdArrowRoundForward className="text-primary font-black text-xl" />
-                </div>
-              </Link>
+                </div> */}
+              </div>
             </div>
             <div className=" mt-4">
               <Link to={val?.link} className="text-[#3679b8] hover:text-primary text-base md:text-lg lg:text-xl transition-all font-semibold">

@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa6";
 import { ChevronRight, Mail } from "lucide-react";
+import Logo from "../../assets/Images/swiftcurrent-whiteLogo.png";
 import WhatsappContact from "../../components/General/WhatsappContact";
 
 const Footer = () => {
   const companyLinks = [
-    { name: "Help & Support", to: "/support" },
+    { name: "Help & Support", to: "/contact" },
     { name: "Terms of Service", to: "/terms" },
     { name: "Privacy Policy", to: "/privacy" },
   ];
@@ -13,7 +14,17 @@ const Footer = () => {
     <section className="bg-dark ">
       <div className="lg:max-w-[1200px] mx-auto py-12 md:pt-20 md:pb-32 text-light px-6 grid gap-6 md:grid-cols-2 lg:grid-cols-4 justify-between">
         <div className="">
-          <h2 className="text-3xl font-bold">LOGO</h2>
+          <Link
+            to="/home"
+            className="flex items-center gap-2"
+          >
+            <div className="w-[60px] md:w-[70px] ">
+              <img src={Logo} alt="" className="w-full" />
+            </div>
+            <h2 className="font-black text-white text-lg md:text-xl ">
+              SWIFT CURRENT
+            </h2>
+          </Link>
           <p className="text-xs md:text-sm lg:text-base mt-4 md:mt-5 lg:mt-7 leading-5 md:leading-6 lg:leading-7">
             From our small London beginnings more than 100 years ago to today’s
             current operations Swift Current Corporation has always been driven
@@ -35,7 +46,7 @@ const Footer = () => {
                 >
                   <ChevronRight className="w-5 text-yellow" />
                   <Link
-                    to={link.link}
+                    to={link.to}
                     className={`font-medium duration-300 hover:text-yellow`}
                   >
                     {link.name}
