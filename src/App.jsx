@@ -52,6 +52,7 @@ import {
   ProtectDashboard,
   ProtectTransfer,
   Terms,
+  Privacy,
 } from "./routes";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -99,6 +100,10 @@ function App() {
             {
               path: "terms",
               element: <Terms />,
+            },
+            {
+              path: "privacy",
+              element: <Privacy />,
             },
           ],
         },
