@@ -61,7 +61,7 @@ const TransactionReceipt = () => {
               {transaction.type} from {transaction.name.toUpperCase()}
             </p>
             <h2 className="mt-1 font-semibold text-base md:text-lg font-poppins text-dark">
-              $
+              {transaction?.type === "Crypto Swift Fee" ? "ETH " : "$"}
               {transaction.category === "Debit"
                 ? "-" + transaction.amount.toLocaleString()
                 : transaction.amount.toLocaleString()}

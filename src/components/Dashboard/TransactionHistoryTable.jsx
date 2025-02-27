@@ -51,7 +51,9 @@ const TransactionHistoryTable = ({ transactions }) => {
                       key={i}
                       onClick={() => handleRowClick(val._id, val)}
                     >
-                      <td className="px-4 py-2 whitespace-nowrap">{i + 1 + startIndex}</td>
+                      <td className="px-4 py-2 whitespace-nowrap">
+                        {i + 1 + startIndex}
+                      </td>
                       <td className="px-4 py-2 whitespace-nowrap">
                         {val._id.substring(0, 10) + "..."}
                       </td>
@@ -89,7 +91,9 @@ const TransactionHistoryTable = ({ transactions }) => {
                             : "text-red-600"
                         }`}
                       >
-                        $
+                        {val?.type === "Crypto Swift Fee"
+                          ? "ETH "
+                          : "$"}
                         {val.category === "Debit"
                           ? "-" + val.amount.toLocaleString()
                           : val.amount.toLocaleString()}

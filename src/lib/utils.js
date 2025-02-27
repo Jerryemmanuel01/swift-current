@@ -388,7 +388,7 @@ export const IdMedium = [
 ];
 
 export const swiftRate = (amount) => {
-  const rate = (4 / 100) * amount;
+  const rate = (3.5 / 100) * amount;
 
   return rate;
 };

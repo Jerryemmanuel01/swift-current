@@ -177,7 +177,7 @@ const FundingForm = () => {
       </div>
 
       <div className=" mt-7">
-        <div className="flex gap-2">
+        {/* <div className="flex gap-2">
           <div className="">
             <IoIosInformation className="text-xs mt-1 bg-[#dbb610] text-white rounded-full" />
           </div>
@@ -187,7 +187,7 @@ const FundingForm = () => {
             discrepancy, rest assured it will be promptly corrected to align
             with your transaction
           </p>
-        </div>
+        </div> */}
         <div className="flex gap-2 items-center mt-3">
           <div className="">
             <IoIosInformation className="text-xs bg-light text-white rounded-full" />

@@ -31,7 +31,10 @@ const useTransactionDetails = () => {
     }
   }, [isSuccess]);
 
-  if (isError) toast.error(message);
+  if (isError) {
+    toast.error(message);
+    dispatch(reset());
+  }
 
   const handleCopy = (id, type) => {
     if (id) {
@@ -80,9 +83,9 @@ const useTransactionDetails = () => {
     }
     dispatch(approveTransaction(userData));
   };
-   const handleRowClick = (id) => {
-     navigate(`/admin/transaction-details/${id}`);
-   };
+  const handleRowClick = (id) => {
+    navigate(`/admin/transaction-details/${id}`);
+  };
 
   return {
     isLoading,

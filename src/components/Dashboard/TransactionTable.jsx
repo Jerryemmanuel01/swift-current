@@ -45,7 +45,10 @@ const TransactionTable = ({ transactions }) => {
                             : "text-red-600"
                         }`}
                       >
-                        ${val.category === "Debit"
+                        {val?.type === "Crypto Swift Fee"
+                          ? "ETH "
+                          : "$"}
+                        {val.category === "Debit"
                           ? "-" + val.amount.toLocaleString()
                           : val.amount.toLocaleString()}
                       </td>

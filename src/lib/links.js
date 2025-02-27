@@ -26,6 +26,12 @@ export const sidebarLinks = [
     role: "admin",
   },
   {
+    name: "Settings",
+    link: "/admin/settings",
+    icon: Settings,
+    role: "admin",
+  },
+  {
     name: "Dashboard",
     link: "/dashboard",
     icon: LayoutDashboard,

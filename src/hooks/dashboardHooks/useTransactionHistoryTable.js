@@ -5,6 +5,7 @@ const useTransactionHistoryTable = (transactions) => {
   const { user } = useOutletContext();
   const userInfo = user?.userInfo;
   const navigate = useNavigate();
+  const totalTransaction = transactions;
   const {
     handleChangePage,
     handleChangeRowsPerPage,
@@ -12,7 +13,7 @@ const useTransactionHistoryTable = (transactions) => {
     products,
     rowsPerPage,
     startIndex,
-  } = usePagination(transactions);
+  } = usePagination(transactions.slice().reverse());
 
   const handleRowClick = (id, transaction) => {
     if (

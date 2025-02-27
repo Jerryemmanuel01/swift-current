@@ -269,6 +269,10 @@ function App() {
               path: "user-profile/:id",
               element: <UserProfile />,
             },
+            {
+              path: "settings",
+              element: <Settings />,
+            },
           ],
         },
         {

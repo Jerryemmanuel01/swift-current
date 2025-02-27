@@ -25,6 +25,17 @@ const Settings = () => {
         </Link>
       </div>
       <div className="text-sm mt-6">
+        <h3 className="text-Gray font-inter font-medium">Account Upgrade</h3>
+        <Link
+          to="/dashboard/upgrade-fee"
+          className="flex items-center justify-between text-textGray border-b border-borderColor py-2 mt-1 "
+        >
+          <span>Upgrade</span>
+          <ChevronRight width={16} />
+        </Link>
+        
+      </div>
+      <div className="text-sm mt-6">
         <h3 className="text-Gray font-inter font-medium">Security</h3>
         <Link
           to="/dashboard/manage-pin"
