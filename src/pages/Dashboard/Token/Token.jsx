@@ -12,7 +12,6 @@ const Token = () => {
   const userInfo = user.userInfo;
   
   const token = userInfo.otp;
-  console.log(token);
   const isTokenValid = (str) => str.trim() !== "" && !isNaN(str);
 
   const handleCopy = (id) => {
