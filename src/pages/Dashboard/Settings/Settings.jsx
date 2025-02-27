@@ -3,9 +3,12 @@ import HeaderName from "../../../components/Dashboard/HeaderName";
 import { Link, useOutletContext } from "react-router-dom";
 
 const Settings = () => {
-  const { logoutBtn } = useOutletContext();
+  const { logoutBtn, user } = useOutletContext();
+  const userInfo = user?.userInfo
+  console.log(userInfo);
+  
   return (
-    <section className="px-6 mb-8 w-full md:max-w-[670px] lg:max-w-[770px] xl:max-w-[900px] mx-auto">
+    <section className={`${userInfo?.role !== "User" ? "-mt-6 pt-6":""} px-6 mb-8 w-full md:max-w-[670px] lg:max-w-[770px] xl:max-w-[900px] mx-auto`}>
       <HeaderName title={"Settings"} />
       <div className="text-sm mt-6">
         <h3 className="text-Gray font-inter font-medium">Profile Settings</h3>
