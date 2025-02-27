@@ -3,12 +3,17 @@ import ProfileImg from "../../assets/Images/testimonyImg1.jpg";
 import Logo1 from "../../assets/Images/swiftcurrent-blueLogo.png";
 import { AlignJustify, Settings, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = ({ isOpen, setIsOpen, setClicked }) => {
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
     setClicked(null);
   };
+  const { user } = useSelector((state) => state.userInfo);
+  const userInfo = user?.userInfo
+  console.log(userInfo);
+  
   return (
     <section className="w-full flex items-center justify-between py-6 px-6 h-[80px] fixed top-0 left-0 z-50 bg-white shadow-md">
       <div className="">
@@ -36,7 +41,10 @@ const Header = ({ isOpen, setIsOpen, setClicked }) => {
           </div>
         </div>
       </div>
-      <Link className="hidden md:flex w-10 h-10 rounded-full fixed z-10 bottom-6 right-6 bg-secondary items-center justify-center text-white md:text-3xl text-2xl">
+      <Link
+        to={userInfo !== "User" ? "/admin/settings" : "/dashboard/settings"}
+        className="hidden md:flex w-10 h-10 rounded-full fixed z-10 bottom-6 right-6 bg-secondary items-center justify-center text-white md:text-3xl text-2xl"
+      >
         <Settings className="animate-spin w-5" />
       </Link>
     </section>

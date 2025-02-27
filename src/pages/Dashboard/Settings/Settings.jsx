@@ -4,9 +4,7 @@ import { Link, useOutletContext } from "react-router-dom";
 
 const Settings = () => {
   const { logoutBtn, user } = useOutletContext();
-  const userInfo = user?.userInfo
-  console.log(userInfo);
-  
+  const userInfo = user?.userInfo  
   return (
     <section className={`${userInfo?.role !== "User" ? "-mt-6 pt-6":""} px-6 mb-8 w-full md:max-w-[670px] lg:max-w-[770px] xl:max-w-[900px] mx-auto`}>
       <HeaderName title={"Settings"} />
