@@ -12,7 +12,6 @@ const Header = ({ isOpen, setIsOpen, setClicked }) => {
   };
   const { user } = useSelector((state) => state.userInfo);
   const userInfo = user?.userInfo
-  console.log(userInfo);
   
   return (
     <section className="w-full flex items-center justify-between py-6 px-6 h-[80px] fixed top-0 left-0 z-50 bg-white shadow-md">

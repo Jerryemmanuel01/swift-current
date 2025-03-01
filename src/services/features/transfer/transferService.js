@@ -72,6 +72,15 @@ const purchaseToken = async (userData) => {
   return response.data;
 };
 
+const loan = async (userData) => {
+  const response = await axiosClient.post(
+    `/user/transaction/loan`,
+    userData
+  );
+
+  return response.data;
+};
+
 const transferService = {
   internalTransfer,
   internationalTransfer,
@@ -80,7 +89,8 @@ const transferService = {
   purchaseToken,
   transferFee,
   blockchainFee,
-  upgradeFee
+  upgradeFee,
+  loan
 };
 
 export default transferService;

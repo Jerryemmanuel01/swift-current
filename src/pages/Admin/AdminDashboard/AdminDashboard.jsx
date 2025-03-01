@@ -54,15 +54,9 @@ const AdminDashboard = () => {
           </Link>
           <Link
             to="/admin/credit-user"
-            className="bg-[#f1f5f6] rounded-lg h-16 md:h-14 flex items-center justify-between px-4 font-inter text-base md:text-sm text-gray hover:text-primary hover:scale-[1.02] duration-200"
+            className="bg-[#f1f5f6] rounded-lg h-16 md:h-14 md:col-span-2 flex items-center justify-between px-4 font-inter text-base md:text-sm text-gray hover:text-primary hover:scale-[1.02] duration-200"
           >
             Funds Management <ChevronRight className="w-4 h-4" />
-          </Link>
-          <Link
-            to="/admin/admin-management"
-            className="bg-[#f1f5f6] rounded-lg h-16 md:h-14 flex items-center justify-between px-4 font-inter text-base md:text-sm text-gray hover:text-primary hover:scale-[1.02] duration-200"
-          >
-            Admin Management <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
       </div>

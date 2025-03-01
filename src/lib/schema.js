@@ -217,10 +217,6 @@ export const editProfileSchema = Yup.object().shape({
     .required("Last Name is required")
     .min(2, "Last Name must be at least 2 characters")
     .max(50, "Last Name cannot exceed 50 characters"),
-  // userName: Yup.string()
-  //   .required("Username is required")
-  //   .min(2, "Username must be at least 2 characters")
-  //   .max(50, "Username cannot exceed 50 characters"),
   email: Yup.string()
     .email("Invalid email format")
     .required("Email is required"),
@@ -258,4 +254,13 @@ export const editPinSchema = Yup.object().shape({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("newPassword")], "Passwords must match")
     .notRequired(),
+});
+
+export const loanFormSchema = Yup.object().shape({
+  amount: Yup.string()
+    .required("Amount is required")
+    .matches(/^\d+(\.\d+)?$/, "Must be a valid number or decimal"),
+  description: Yup.string().required("Description is required"),
+  sourceOfIncome: Yup.string().required("Source of Income is required"),
+  monthlyIncome: Yup.string().required("Monthly Income is required"),
 });
