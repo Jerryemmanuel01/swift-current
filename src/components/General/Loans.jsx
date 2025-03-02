@@ -1,4 +1,4 @@
-import servicesImg2 from "../../assets/Images/servicesImg3.jpg";
+import servicesImg2 from "../../assets/Images/servicesImg3.webp";
 
 const Loans = () => {
   return (

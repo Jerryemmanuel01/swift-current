@@ -1,39 +1,14 @@
 import { Star } from "lucide-react";
-import Slider from "react-slick";
 import { homeTestimonies } from "../../lib/utils";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 const HomeTestimony = () => {
-  const settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 800,
-    autoplaySpeed: 3000,
-    waitForAnimate: false,
-    pauseOnHover: false,
-    cssEase: "linear",
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 650,
-        settings: {
-          centerMode: false,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
-  };
+
+    const [emblaRef, emblaApi] = useEmblaCarousel(
+      { loop: true },
+      [Autoplay({ delay: 3500 })] 
+    );
   return (
     <section className="bg-[#f5f5f5] ">
       <div className="p-10 md:py-16 lg:py-24 px-6 w-full lg:max-w-[960px] xl:max-w-[1200px] mx-auto">
@@ -47,12 +22,12 @@ const HomeTestimony = () => {
             clients greatly, their testimony has encouraged us greatly.
           </p>
         </div>
-        <div className="testimoy-slider">
-          <Slider {...settings} className="mt-8 overflow-hidden">
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="mt-8 flex ">
             {homeTestimonies.map((val, i) => (
               <div
                 key={i}
-                className="p-7 border max-h-[400px] bg-white border-[#E7E7E7] rounded-md shadow-md"
+                className="flex-[0_0_80%] ml-4 md:flex-[0_0_50%] p-7 border max-h-[400px] bg-white border-[#E7E7E7] rounded-md shadow-md"
               >
                 <p className="text-[#696969] text-sm w-[85%]">{val.desc}</p>
                 <div className="flex gap-1 items-center mt-3">
@@ -77,7 +52,7 @@ const HomeTestimony = () => {
                 </div>
               </div>
             ))}
-          </Slider>
+          </div>
         </div>
       </div>
     </section>

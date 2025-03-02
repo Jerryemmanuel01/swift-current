@@ -1,4 +1,4 @@
-import HomeAboutBg from "../../assets/Images/service5.jpg";
+import HomeAboutBg from "../../assets/Images/service5.webp";
 import { FAQS } from "../../lib/utils";
 import Accordion from "./Accordion";
 

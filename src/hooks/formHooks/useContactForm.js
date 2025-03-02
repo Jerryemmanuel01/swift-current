@@ -17,22 +17,24 @@ const useContactForm = () => {
 
   useEffect(() => {
     if (isError) toast.error(message);
-    if (isSuccess) toast.success("Submitted Successfully");
+    if (isSuccess) {
+      toast.success(message);
+      formik.resetForm();
+    }
     dispatch(reset());
     return;
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, message]);
 
   const formik = useFormik({
     initialValues: {
-      fullname: "",
+      name: "",
       email: "",
-      title: "",
+      subject: "",
       message: "",
     },
     validationSchema: contactMessageSchema,
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: (values) => {
       dispatch(sendMessage(values));
-      resetForm();
     },
   });
   return { formik, isLoading };

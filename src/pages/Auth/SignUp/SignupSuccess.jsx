@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import HomeAboutBg from "../../../assets/Images/service5.jpg";
+import HomeAboutBg from "../../../assets/Images/service5.webp";
 import Copyright from "../../../components/auth/Copyright";
 const SignupSuccess = () => {
   return (

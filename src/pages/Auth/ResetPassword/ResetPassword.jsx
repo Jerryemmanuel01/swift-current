@@ -1,5 +1,5 @@
 import { ChevronLeft } from "lucide-react";
-import HomeAboutBg from "../../../assets/Images/service5.jpg";
+import HomeAboutBg from "../../../assets/Images/service5.webp";
 import { useNavigate } from "react-router-dom";
 import ForgetPasswordForm from "../../../components/auth/ForgetPasswordForm";
 import ResetPasswordForm from "../../../components/auth/ResetPasswordForm";

@@ -8,7 +8,7 @@ const ContactForm = () => {
         {/* Name field */}
         <div className="mt-6">
           <label
-            htmlFor="fullname"
+            htmlFor="name"
             className="text-sm font-medium tracking-wide lg:text-base text-light"
           >
             Full Name<span className="text-red-600">*</span>
@@ -16,21 +16,21 @@ const ContactForm = () => {
           <br />
           <input
             type="text"
-            name="fullname"
-            id="fullname"
+            name="name"
+            id="name"
             placeholder="Enter full name"
             className={`${
-              formik.touched.fullname && formik.errors.fullname
+              formik.touched.name && formik.errors.name
                 ? "border-[#EB4335]"
                 : "border-[#D0D5DD]"
             } py-2 border-b w-full text-sm h-8 lg:h-[58px] lg:text-base font-medium outline-none tracking-wide`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.fullname}
+            value={formik.values.name}
           />
-          {formik.touched.fullname && formik.errors.fullname ? (
+          {formik.touched.name && formik.errors.name ? (
             <div className="text-red-500 text-[10px] lg:text-xs font-semibold">
-              {formik.errors.fullname}
+              {formik.errors.name}
             </div>
           ) : null}
         </div>
@@ -68,7 +68,7 @@ const ContactForm = () => {
         {/* Title field */}
         <div className="mt-6">
           <label
-            htmlFor="title"
+            htmlFor="subject"
             className="text-sm font-medium tracking-wide lg:text-base text-light"
           >
             Message Title<span className="text-red-600">*</span>
@@ -76,21 +76,21 @@ const ContactForm = () => {
           <br />
           <input
             type="text"
-            name="title"
-            id="title"
+            name="subject"
+            id="subject"
             placeholder="Title message here..."
             className={`${
-              formik.touched.title && formik.errors.title
+              formik.touched.subject && formik.errors.subject
                 ? "border-[#EB4335]"
                 : "border-[#D0D5DD]"
             } py-2 border-b w-full text-sm h-8 lg:h-[58px] lg:text-base font-medium outline-none tracking-wide`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.title}
+            value={formik.values.subject}
           />
-          {formik.touched.title && formik.errors.title ? (
+          {formik.touched.subject && formik.errors.subject ? (
             <div className="text-red-500 text-[10px] font-semibold lg:text-xs">
-              {formik.errors.title}
+              {formik.errors.subject}
             </div>
           ) : null}
         </div>

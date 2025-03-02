@@ -1,4 +1,4 @@
-import servicesImg3 from "../../assets/Images/servicesImg2.jpg";
+import servicesImg3 from "../../assets/Images/servicesImg2.webp";
 
 const CreditCard = () => {
   return (

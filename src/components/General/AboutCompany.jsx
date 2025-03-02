@@ -1,4 +1,4 @@
-import aboutImg from "../../assets/Images/about-s4.jpg";
+import aboutImg from "../../assets/Images/about-s4.webp";
 const AboutCompany = () => {
   return (
     <section className="bg-[#f5f5f5]">

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import pagesHeroImg from "../../assets/Images/pagesHeroImg.jpg";
+import pagesHeroImg from "../../assets/Images/pagesHeroImg.webp";
 import { ChevronRight } from "lucide-react";
 const PagesHero = ({ page }) => {
   return (

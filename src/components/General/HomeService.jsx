@@ -1,4 +1,3 @@
-import { IoMdArrowRoundForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { homeServices } from "../../lib/utils";
 const HomeService = () => {
@@ -15,9 +14,18 @@ const HomeService = () => {
         {homeServices.map((val, i) => (
           <div className="" key={i}>
             <div className="relative">
-              <img src={val.img} alt="" className="w-full h-[230px] object-cover "/>
+              <img
+                src={val.img}
+                alt="service img"
+                className="w-full h-[230px] object-cover "
+                loading="lazy"
+                style={{
+                  containIntrinsicSize: "1200px 600px",
+                  contain: "size layout",
+                }}
+              />
               <div
-                to={val?.link }
+                to={val?.link}
                 className={`w-full h-full flex items-center justify-center top-0 left-0  absolute bg-primary/20 transition-all duration-300 opacity-0 hover:opacity-100`}
               >
                 {/* <div className="w-10 h-10 flex items-center justify-center bg-yellow rounded-md">
@@ -26,7 +34,10 @@ const HomeService = () => {
               </div>
             </div>
             <div className=" mt-4">
-              <Link to={val?.link} className="text-[#3679b8] hover:text-primary text-base md:text-lg lg:text-xl transition-all font-semibold">
+              <Link
+                to={val?.link}
+                className="text-[#3679b8] hover:text-primary text-base md:text-lg lg:text-xl transition-all font-semibold"
+              >
                 {val.title}
               </Link>
               <div className="w-8 h-1 bg-yellow rounded-lg" />

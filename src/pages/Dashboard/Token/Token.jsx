@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router-dom";
-import TokenImg from "../../../assets/Images/swift-token.png";
+import TokenImg from "../../../assets/Images/swift-token.webp";
 import TokenForm from "../../../components/Dashboard/TokenForm";
 import { Check, Copy } from "lucide-react";
 import { useState } from "react";

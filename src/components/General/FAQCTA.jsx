@@ -1,5 +1,5 @@
 import { MoveRight } from "lucide-react";
-import FaqImg from "../../assets/Images/service4.jpg";
+import FaqImg from "../../assets/Images/service4.webp";
 import { Link } from "react-router-dom";
 
 const FAQCTA = () => {
@@ -25,6 +25,7 @@ const FAQCTA = () => {
             <img
               src={FaqImg}
               alt="image"
+              loading="lazy"
               className="w-full h-full object-cover rounded-lg shadow-custom"
             />
           </div>

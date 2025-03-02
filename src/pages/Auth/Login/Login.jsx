@@ -1,6 +1,6 @@
 import { ChevronLeft } from "lucide-react";
 import Loginform from "../../../components/auth/Loginform";
-import HomeAboutBg from "../../../assets/Images/service5.jpg";
+import HomeAboutBg from "../../../assets/Images/service5.webp";
 import { useNavigate } from "react-router-dom";
 import Copyright from "../../../components/auth/Copyright";
 

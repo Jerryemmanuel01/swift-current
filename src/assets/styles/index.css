@@ -13,6 +13,10 @@ body {
   margin: 0 -5px;
   height: 275px;
 }
+.custom-bg {
+contain-intrinsic-size: 1200px 93vh; /* Expected size */
+  contain: size layout;
+}
 
 .contact-info:hover {
   .info-icon {

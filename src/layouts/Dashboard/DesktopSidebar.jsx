@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { sidebarLinks } from "../../lib/links";
 import { ChevronDown, ChevronRight, LogOut } from "lucide-react";
 import { motion } from "framer-motion";
-import HomeAboutBg from "../../assets/Images/service6.jpg";
+import HomeAboutBg from "../../assets/Images/service6.webp";
 import { useSelector } from "react-redux";
 import useLogout from "../../hooks/dashboardHooks/useLogout";
 

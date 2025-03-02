@@ -1,30 +1,24 @@
-import Slider from "react-slick";
 import { Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { sliderOption } from "../../lib/utils";
 
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+
 const Hero = () => {
-  const settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 1500,
-    autoplaySpeed: 6000,
-    fade: true,
-    waitForAnimate: false,
-    pauseOnHover: false,
-    cssEase: "linear",
-  };
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true },
+    [Autoplay({ delay: 6000 })] // Auto-slide every 3 seconds
+  );
 
   return (
-    <div className="slider-container overflow-x-hidden">
-      <Slider {...settings}>
-        {sliderOption.map((val, i) => (
-          <div className="" key={i}>
+    <section className="relative">
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className=" flex">
+          {sliderOption.map((val, i) => (
             <div
-              className=" bg-center bg-no-repeat bg-cover"
+              key={i}
+              className="flex-[0_0_100%] bg-center bg-no-repeat bg-cover custom-bg"
               style={{ backgroundImage: `url(${val.bgImg})` }}
             >
               <div className="bg-black/50 w-full h-[93vh] md:h-">
@@ -61,10 +55,10 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </Slider>
-    </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
