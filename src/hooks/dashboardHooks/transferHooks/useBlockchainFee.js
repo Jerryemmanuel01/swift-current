@@ -70,8 +70,6 @@ const useBlockchainFee = (fee, userTransaction) => {
         firstTransactionId: userTransaction._id,
       };
       const userData = { amount, metadata };
-      console.log(userData);
-
       dispatch(blockchainFee(userData));
     },
   });

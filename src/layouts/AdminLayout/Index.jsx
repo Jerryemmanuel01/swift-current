@@ -14,7 +14,6 @@ const AdminLayout = () => {
     }
   }, []);
 
-  console.log(path);
   return (
     <div>
       <Outlet />

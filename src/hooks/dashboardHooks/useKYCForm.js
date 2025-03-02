@@ -38,8 +38,6 @@ const useKYCForm = () => {
     },
     validationSchema: KYCSchema,
     onSubmit: async (values) => {
-      console.log(values);
-
       dispatch(verifyKYC(values));
     },
   });

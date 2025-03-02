@@ -18,9 +18,6 @@ const verify_KYC = async (userData) => {
 
   userData = { ...rest, identityCardPhoto: photoUrl };
 
-  console.log(userData);
-  
-
   const response = await axiosClient.patch(`/user/kyc`, userData);
 
   return response.data;

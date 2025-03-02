@@ -54,8 +54,6 @@ import {
   Terms,
   Privacy,
 } from "./routes";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import DashbordLayout from "./layouts/Dashboard";
 import AdminLayout from "./layouts/AdminLayout/Index";
 import ErrorPage from "./components/General/ErrorPage";

@@ -33,10 +33,7 @@ const GetTransactions = () => {
     handleCopy,
     handleFilter,
     filter,
-  } = useGetAllTransactions();
-
-  console.log(userTransaction);
-  
+  } = useGetAllTransactions();  
   
   return (
     <section className="w-full px-6 -mt-6 py-6">

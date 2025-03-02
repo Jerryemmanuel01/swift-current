@@ -95,10 +95,7 @@ const useInternationalTransferForm = () => {
       if (amount > user.userInfo.accountBalance) {
         toast.error("Insufficient Balance")
         return
-      }
-
-      console.log(userData);
-      
+      }      
 
       dispatch(internationalTransfer(userData));
     },

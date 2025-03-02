@@ -1,8 +1,8 @@
-import React from "react";
 
 const DashboardFetchError = ({
   setRetry,
   title = "Error fetching your details",
+  logoutBtn
 }) => {
   return (
     <div className="w-full h-screen text-center flex items-center justify-center flex-col gap-3 ">
@@ -14,6 +14,9 @@ const DashboardFetchError = ({
         className="bg-primary py-2 px-4 rounded-md text-sm text-white"
       >
         Retry
+      </button>
+      <button className="mt-2 font-merriweather border-b font-semibold text-secondary" onClick={()=>logoutBtn()}>
+        Back Home
       </button>
     </div>
   );

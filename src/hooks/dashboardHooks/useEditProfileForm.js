@@ -53,7 +53,6 @@ const useEditProfileForm = () => {
           ([key, value]) => value !== formik.initialValues[key]
         )
       );
-      console.log(changedValues);
       if (Object.keys(changedValues).length === 0) {
         toast.error("No changes made on profile");
         return;
