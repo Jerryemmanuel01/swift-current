@@ -5,11 +5,12 @@ import Logo from "../../assets/Images/swiftcurrent-whiteLogo.png";
 import Logo1 from "../../assets/Images/white-name-logo.png";
 import useLogout from "../../hooks/dashboardHooks/useLogout";
 import { AlignJustify, ExternalLink, X } from "lucide-react";
-import { useSelector } from "react-redux";
+import Cookies from "js-cookie";
+
 const Header = () => {
   const [toggleNav, setToggleNav] = useState(false);
   const location = useLocation();
-  const { user } = useSelector((state) => state.userInfo);
+  const token = Cookies.get("SC_access_token");
 
   const { logoutBtn } = useLogout();
   return (
@@ -75,7 +76,7 @@ const Header = () => {
                   </li>
                 ))}
               </ul>
-              {user ? (
+              {token ? (
                 <div className="flex gap-4 flex-col md:flex-row items-center text-sm md:text-base">
                   <Link
                     to="/dashboard"

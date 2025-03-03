@@ -271,6 +271,14 @@ function App() {
               path: "settings",
               element: <Settings />,
             },
+            {
+              path: "manage-profile",
+              element: <ManageProfile />,
+            },
+            {
+              path: "manage-pin",
+              element: <ManagePin />,
+            },
           ],
         },
         {
