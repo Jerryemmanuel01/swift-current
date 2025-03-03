@@ -7,6 +7,7 @@ import { store } from "./store";
 import Loader from "./components/General/Loader.jsx";
 import { Toaster } from "react-hot-toast";
 import ErrorBoundary from "./components/General/ErrorBoundary.js";
+import { HelmetProvider } from "react-helmet-async";
 
 createRoot(document.getElementById("root")).render(
   <Suspense fallback={<Loader />}>
@@ -22,7 +23,9 @@ createRoot(document.getElementById("root")).render(
           </div>
         }
       >
-        <App />
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
       </ErrorBoundary>
     </Provider>
   </Suspense>
