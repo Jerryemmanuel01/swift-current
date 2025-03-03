@@ -7,12 +7,12 @@ const ProtectDashboard = ({ element }) => {
   const token = Cookies.get("SC_access_token");
   const role = user?.userInfo.role;
 
-  if (!token) {
-    return <Navigate to="/auth/login" />;
-  }
-  if (role && role !== "User") {
-    return <Navigate to="/admin" />;
-  }
+  // if (!token) {
+  //   return <Navigate to="/auth/login" />;
+  // }
+  // if (role && role !== "User") {
+  //   return <Navigate to="/admin" />;
+  // }
   return element;
 };
 
