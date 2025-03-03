@@ -45,6 +45,7 @@ const Header = () => {
                 </div>
               </Link>
               <button
+                aria-label="Menu nav"
                 name="action"
                 className="md:hidden outline-none text-white"
                 onClick={() => setToggleNav((prev) => !prev)}
