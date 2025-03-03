@@ -1,6 +1,6 @@
 import HomeAboutBg from "../../assets/Images/service5.webp";
 import PhoneContactBg from "../../assets/Images/phoneContact-bg.webp";
-import PhoneBg from "../../assets/Images/phoneContact.png";
+import PhoneBg from "../../assets/Images/phoneContact.webp";
 import { homeAbouts } from "../../lib/utils";
 import { Link } from "react-router-dom";
 

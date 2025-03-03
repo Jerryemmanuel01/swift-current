@@ -1,10 +1,10 @@
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import SponsorImg1 from "../../assets/Images/sponsorImg1.png";
-import SponsorImg2 from "../../assets/Images/sponsorImg2.png";
-import SponsorImg3 from "../../assets/Images/sponsorImg3.png";
-import SponsorImg4 from "../../assets/Images/sponsorImg4.png";
-import SponsorImg5 from "../../assets/Images/sponsorImg5.png";
+import SponsorImg1 from "../../assets/Images/sponsorImg1.webp";
+import SponsorImg2 from "../../assets/Images/sponsorImg2.webp";
+import SponsorImg3 from "../../assets/Images/sponsorImg3.webp";
+import SponsorImg4 from "../../assets/Images/sponsorImg4.webp";
+import SponsorImg5 from "../../assets/Images/sponsorImg5.webp";
 const Sponsors = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true },
