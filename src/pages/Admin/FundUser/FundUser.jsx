@@ -10,6 +10,7 @@ const FundUser = () =>
     <section className="w-full px-6 -mt-6 py-6 md:max-w-[670px] lg:max-w-[900px] mx-auto">
       <div className="flex items-center gap-3 mt-2">
         <button
+          name="action"
           onClick={() => navigate(-1)}
           className="outline-hidden flex items-center gap-1.5 text-sm md:text-base"
         >

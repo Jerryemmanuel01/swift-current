@@ -28,6 +28,7 @@ const TransactionDetails = () => {
       <div className="sm:w-[450px] lg:w-[500px] mx-auto">
         <div className="flex items-center gap-3 mt-2">
           <button
+            name="action"
             onClick={() => navigate(-1)}
             className="outline-hidden flex items-center gap-1.5 text-sm md:text-base"
           >
@@ -45,7 +46,13 @@ const TransactionDetails = () => {
                   {transaction?.type === "Transfer" ? "To" : "from"}{" "}
                   {transaction?.name.toUpperCase()}
                 </p>
-                <h2 className={`mt-1 font-semibold text-base md:text-lg font-poppins ${transaction.category === "Debit"? "text-red-600":"text-dark"}`}>
+                <h2
+                  className={`mt-1 font-semibold text-base md:text-lg font-poppins ${
+                    transaction.category === "Debit"
+                      ? "text-red-600"
+                      : "text-dark"
+                  }`}
+                >
                   {transaction?.type === "Crypto Swift Fee" ? "ETH " : "$"}
                   {transaction?.category === "Debit"
                     ? "-" + transaction?.amount.toLocaleString()
@@ -194,6 +201,7 @@ const TransactionDetails = () => {
                     {transaction?.metadata?.walletAddress?.substring(0, 15) +
                       "..."}
                     <button
+                      name="action"
                       onClick={() =>
                         handleCopy(transaction?.metadata?.walletAddress)
                       }
@@ -216,6 +224,7 @@ const TransactionDetails = () => {
                     {transaction?.metadata?.transactionId?.substring(0, 17) +
                       "..."}
                     <button
+                      name="action"
                       onClick={() =>
                         handleCopy(transaction?.metadata?.transactionId, "hash")
                       }
@@ -261,12 +270,14 @@ const TransactionDetails = () => {
 
             <div className="mt-4 flex items-center justify-between gap-2 text-sm">
               <button
+                name="action"
                 className="py-2 px-4 bg-red-600 text-white rounded-lg hover:bg-red-700 duration-300"
                 onClick={() => handleAction("Failed")}
               >
                 Decline
               </button>
               <button
+                name="action"
                 className="py-2 px-4 bg-green-600 text-white rounded-lg hover:bg-green-700 duration-300"
                 onClick={() => handleAction("Approved")}
               >
@@ -280,6 +291,7 @@ const TransactionDetails = () => {
               This transaction has been proccessed
             </p>
             <button
+              name="action"
               className="outline-none py-1 mt-2 px-4 shadow-custom1 rounded-lg text-primary flex items-center gap-2"
               onClick={() => navigate(-1)}
             >
@@ -314,6 +326,7 @@ const TransactionDetails = () => {
                 />
               </div>
               <button
+                name="submit"
                 className={`py-2 px-4 mt-3 ${
                   isLoading ? "bg-[#D0D5DD]" : "bg-primary"
                 } text-white rounded-lg hover:bg-secondary duration-300 text-sm`}

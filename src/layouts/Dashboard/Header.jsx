@@ -34,7 +34,7 @@ const Header = ({ isOpen, setIsOpen, setClicked }) => {
         </span>
         <div className="w-full md:hidden ">
           <div className="w-8 ">
-            <button className="outline-none" onClick={toggleDrawer}>
+            <button name="action" className="outline-none" onClick={toggleDrawer}>
               {isOpen ? <X /> : <AlignJustify />}
             </button>
           </div>

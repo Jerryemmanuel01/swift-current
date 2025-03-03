@@ -40,6 +40,7 @@ const GetTransactions = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 mt-2">
           <button
+            name="action"
             onClick={() => navigate(-1)}
             className="outline-hidden flex items-center gap-1.5 text-sm md:text-base"
           >
@@ -376,6 +377,7 @@ const GetTransactions = () => {
                             handleCopy(userTransaction?.metadata?.walletAddress)
                           }
                           type="button"
+                          name="action"
                           className="flex items-center justify-center"
                         >
                           {copied ? (
@@ -403,6 +405,7 @@ const GetTransactions = () => {
                             )
                           }
                           type="button"
+                          name="action"
                           className="flex items-center justify-center"
                         >
                           {copiedHash ? (

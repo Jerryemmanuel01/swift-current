@@ -81,6 +81,7 @@ const Profile = () => {
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray w-full">
                   <span className="">{user.userInfo.accountNumber}</span>
                   <button
+                    name="action"
                     onClick={handleCopy}
                     type="button"
                     className=" flex items-center justify-center"

@@ -11,6 +11,7 @@ const SignUp = () => {
       <div className="w-full min-h-screen px-6 py-10 lg:py-14 flex flex-col items-center justify-center">
         <div className="w-full sm:w-[500px] mx-auto">
           <button
+            name="action"
             onClick={() => navigate(-1)}
             className=" flex items-center gap-1 outline-none text-darker hover:text-primary duration-300"
           >

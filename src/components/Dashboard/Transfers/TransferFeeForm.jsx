@@ -100,6 +100,7 @@ const TransferFeeForm = ({rate, userTransaction}) => {
               onChange={formik.handleChange}
             />
             <button
+              name="action"
               onClick={handleCopy}
               type="button"
               className="w-10 h-10 flex items-center justify-center"
@@ -155,6 +156,7 @@ const TransferFeeForm = ({rate, userTransaction}) => {
       </div>
       <div className="flex items-center justify-center">
         <button
+          name="submit"
           type="submit"
           disabled={isLoading}
           className={`${

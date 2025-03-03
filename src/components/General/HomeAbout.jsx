@@ -31,7 +31,7 @@ const HomeAbout = () => {
                 <span className="text-yellow">Confusion?</span>
               </h2>
               <Link to="/contact">
-                <button className="w-full bg-yellow hover:bg-yellow/80 duration-300 text-primary mt-3.5 rounded-md py-2 font-bold animate-bounce">
+                <button name="action" className="w-full bg-yellow hover:bg-yellow/80 duration-300 text-primary mt-3.5 rounded-md py-2 font-bold animate-bounce">
                   Request a call back
                 </button>
               </Link>

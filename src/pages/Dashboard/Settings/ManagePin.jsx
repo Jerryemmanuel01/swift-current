@@ -10,6 +10,7 @@ const ManagePin = () => {
   return (
     <div className="mt-8 px-6">
       <button
+        name="action"
         onClick={() => navigate(-1)}
         className="outline-hidden flex items-center gap-1.5 text-sm md:text-base"
       >
@@ -23,6 +24,7 @@ const ManagePin = () => {
       >
         <span className="">Manage pin & password</span>
         <button
+          name="action"
           className="outline-none"
           onClick={() => setTogglePin((prev) => !prev)}
         >

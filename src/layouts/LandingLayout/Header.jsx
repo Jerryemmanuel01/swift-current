@@ -45,6 +45,7 @@ const Header = () => {
                 </div>
               </Link>
               <button
+                name="action"
                 className="md:hidden outline-none text-white"
                 onClick={() => setToggleNav((prev) => !prev)}
               >
@@ -85,6 +86,7 @@ const Header = () => {
                     Dashboard <ExternalLink className="w-3" />
                   </Link>
                   <button
+                    name="action"
                     onClick={logoutBtn}
                     className="bg-primary text-center md:bg-white w-full md:w-auto text-white md:text-primary py-2.5 px-6 rounded-lg font-semibold hover:scale-[1.03] duration-300"
                   >

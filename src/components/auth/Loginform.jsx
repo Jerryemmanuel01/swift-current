@@ -55,6 +55,7 @@ const Loginform = () => {
             value={formik.values.password}
           />
           <button
+            name="toggle"
             className="outline-none"
             onClick={() => setTogglePassword(!togglePassword)}
             type="button"
@@ -84,6 +85,7 @@ const Loginform = () => {
 
       <div className="flex items-center justify-center">
         <button
+          name="submit"
           type="submit"
           disabled={isLoading}
           className={`${

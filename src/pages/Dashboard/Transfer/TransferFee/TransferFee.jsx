@@ -26,6 +26,7 @@ const TransferFee = () => {
   return (
     <section className="mt-8 px-6 w-full md:max-w-[670px] lg:max-w-[770px] xl:max-w-[900px] mx-auto">
       <button
+        name="action"
         onClick={() => navigate(-1)}
         className="outline-hidden flex items-center gap-1.5 text-sm"
       >
@@ -72,6 +73,7 @@ const TransferFee = () => {
             <h3 className="w-full">Procced to Payment</h3>
             <h4 className="w-full flex items-center gap-2">
               <button
+                name="action"
                 onClick={() => setShowModal(true)}
                 className="bg-primary rounded-2xl px-6 py-1.5 text-white font-bold"
               >

@@ -124,6 +124,7 @@ const TransactionReceiptDetails = ({transaction,copied, copiedHash, handleCopy, 
           <p className=" font-medium font-inter flex items-center gap-1">
             {transaction?.metadata?.walletAddress?.substring(0, 15) + "..."}
             <button
+              name="action"
               onClick={() => handleCopy(transaction?.metadata?.walletAddress)}
               type="button"
               className="flex items-center justify-center"
@@ -143,6 +144,7 @@ const TransactionReceiptDetails = ({transaction,copied, copiedHash, handleCopy, 
           <p className=" font-medium font-inter flex items-center gap-1">
             {transaction?.metadata?.transactionId?.substring(0, 17) + "..."}
             <button
+              name="action"
               onClick={() =>
                 handleCopy(transaction?.metadata?.transactionId, "hash")
               }

@@ -3,6 +3,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 const WhatsappContact = () => {
   return (
     <a
+      aria-label="Chat with us on Whatsapp"
       target="_blank"
       rel="noopener noreferrer"
       href="https://wa.me/+2349064471553?text=Greetings, I need assistance."

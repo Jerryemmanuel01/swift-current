@@ -101,6 +101,7 @@ const TokenForm = () => {
               onChange={formik.handleChange}
             />
             <button
+              name="toggle"
               onClick={handleCopy}
               type="button"
               className="w-10 h-10 flex items-center justify-center"
@@ -156,6 +157,7 @@ const TokenForm = () => {
       </div>
       <div className="flex items-center justify-center">
         <button
+          name="submit"
           type="submit"
           disabled={isLoading}
           className={`${

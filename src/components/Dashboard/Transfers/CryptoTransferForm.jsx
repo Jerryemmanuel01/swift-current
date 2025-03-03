@@ -80,6 +80,7 @@ const CryptoTransferForm = () => {
             value={formik.values.amount}
           />
           <button
+            name="action"
             onClick={swapBtn}
             type="button"
             className="flex items-center gap-2 px-4 h-10 outline-none bg-borderColor"
@@ -168,6 +169,7 @@ const CryptoTransferForm = () => {
       </div>
       <div className="flex items-center justify-center">
         <button
+          name="submit"
           type="submit"
           disabled={isLoading}
           className={`${

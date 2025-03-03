@@ -165,6 +165,7 @@ const FundsManagementForm = () => {
         </div>
         <div className="flex items-center justify-center">
           <button
+            name="submit"
             type="submit"
             disabled={isFundsLoading}
             className={`${

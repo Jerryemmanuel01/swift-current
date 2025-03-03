@@ -18,6 +18,7 @@ const ResendEmail = ({ user }) => {
             security matters to us, Thanks.
           </p>
           <button
+            name="resend"
             onClick={resendEmailbtn}
             className="underline text-blue-800 hover:text-blue-900 mt-0.5"
           >

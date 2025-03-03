@@ -9,6 +9,7 @@ import useDashboardInfo from "../../hooks/dashboardHooks/useDashboardInfo";
 import Loader from "../../components/General/Loader";
 import DashboardFetchError from "../../components/Dashboard/DashboardFetchError";
 import useLogout from "../../hooks/dashboardHooks/useLogout";
+import { Helmet } from "react-helmet-async";
 
 const DashbordLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,12 +19,22 @@ const DashbordLayout = () => {
 
   const { user, isLoading, isError, setRetry } = useDashboardInfo();
   if (isLoading) return <Loader title="Getting User Information" />;
-  if (isError) return <DashboardFetchError setRetry={setRetry} logoutBtn={logoutBtn} />;
+  if (isError)
+    return <DashboardFetchError setRetry={setRetry} logoutBtn={logoutBtn} />;
 
   return (
     <>
       {user && (
         <>
+          <Helmet>
+            <title>
+              Dashboard - {user?.userInfo.lastName} {user?.userInfo.firstName}
+            </title>
+            <meta
+              name="Description"
+              content="Swift Current is a secure banking application that offers seamless financial services, including transfer, deposits, Loan and more."
+            />
+          </Helmet>
           <Header
             isOpen={isOpen}
             setIsOpen={setIsOpen}

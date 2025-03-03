@@ -31,6 +31,7 @@ const ApproveKYC = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 mt-2">
           <button
+            name="action"
             onClick={() => navigate(-1)}
             className="outline-hidden flex items-center gap-1.5 text-sm md:text-base"
           >
@@ -200,12 +201,14 @@ const ApproveKYC = () => {
                     </div>
                     <div className="mt-4 flex items-center justify-between gap-2 text-sm">
                       <button
+                        name="action"
                         className="py-2 px-4 bg-red-600 text-white rounded-lg hover:bg-red-700 duration-300"
                         onClick={() => handleAction("Failed")}
                       >
                         Decline
                       </button>
                       <button
+                        name="action"
                         className="py-2 px-4 bg-green-600 text-white rounded-lg hover:bg-green-700 duration-300"
                         onClick={() => handleAction("Complete")}
                       >

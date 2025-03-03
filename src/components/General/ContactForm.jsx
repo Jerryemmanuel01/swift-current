@@ -125,6 +125,7 @@ const ContactForm = () => {
         </div>
         <div className="flex flex-col items-center mt-6">
           <button
+            name="submit"
             disabled={isLoading}
             type="submit"
             className={`${

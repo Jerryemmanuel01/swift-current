@@ -12,6 +12,7 @@ const Modal = ({ isOpen, onClose, title, children }) => {
             {title}
           </h2>
           <button
+            name="action"
             onClick={onClose}
             className="text-3xl  outline-none"
           >

@@ -104,6 +104,7 @@ const FundingForm = () => {
             <button
               onClick={handleCopy}
               type="button"
+              name="toggle"
               className="w-10 h-10 flex items-center justify-center"
             >
               {copied ? (
@@ -157,6 +158,7 @@ const FundingForm = () => {
       </div>
       <div className="flex items-center justify-center">
         <button
+          name="submit"
           type="submit"
           disabled={isLoading}
           className={`${

@@ -47,6 +47,7 @@ const TransactionReceipt = () => {
     <section className="px-6 w-full ">
       <div className="sm:w-[450px] lg:w-[500px] mx-auto">
         <button
+          name="navigate"
           onClick={() => navigate(-1)}
           className=" flex items-center gap-1 outline-none text-darker hover:text-primary duration-300"
         >

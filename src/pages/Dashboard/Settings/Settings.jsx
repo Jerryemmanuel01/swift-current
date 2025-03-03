@@ -54,6 +54,7 @@ const Settings = () => {
         </Link>
       </div>
       <button
+        name="action"
         onClick={logoutBtn}
         className="flex gap-3 items-center text-sm md:text-base outline-none mt-10 hover:text-primary duration-300 mb-20"
       >

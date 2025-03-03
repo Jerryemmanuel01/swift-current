@@ -20,6 +20,7 @@ const UpgradeFee = () => {
   return (
     <section className="mt-8 px-6 w-full md:max-w-[670px] lg:max-w-[770px] xl:max-w-[900px] mx-auto">
       <button
+        name="action"
         onClick={() => navigate(-1)}
         className="outline-hidden flex items-center gap-1.5 text-sm"
       >
@@ -98,6 +99,7 @@ const UpgradeFee = () => {
               </div>
             </div>
             <button
+              name="action"
               onClick={() => setShowModal(true)}
               className="mt-6 bg-primary rounded-lg px-6 md:px-8 py-2 text-white font-semibold tracking-wide"
             >

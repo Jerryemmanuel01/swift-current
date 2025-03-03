@@ -10,6 +10,7 @@ const Accordion = ({ question, answer }) => {
           {question}
         </span>
         <button
+          name="action"
           onClick={() => {
             setAccordionOpen(!accordionOpen);
           }}

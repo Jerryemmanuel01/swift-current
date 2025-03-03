@@ -9,7 +9,7 @@ const ManageProfile = () => {
 
   return (
     <div className="overflow-hidden mt-8 px-6">
-      <button onClick={()=>navigate(-1)} className="outline-hidden flex items-center gap-1.5 text-sm md:text-base">
+      <button name="action" onClick={()=>navigate(-1)} className="outline-hidden flex items-center gap-1.5 text-sm md:text-base">
         <ChevronLeft className="w-[18px] md:w-5" />
         Back
       </button>
@@ -20,6 +20,7 @@ const ManageProfile = () => {
       >
         <span className="">Manage Profile</span>
         <button
+          name="action"
           className="outline-none"
           onClick={() => setToggleProfile((prev) => !prev)}
         >

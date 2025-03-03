@@ -10,12 +10,13 @@ const DashboardFetchError = ({
         {title}
       </p>
       <button
+        name="toggle"
         onClick={() => setRetry((prevState) => !prevState)}
         className="bg-primary py-2 px-4 rounded-md text-sm text-white"
       >
         Retry
       </button>
-      <button className="mt-2 font-merriweather border-b font-semibold text-secondary" onClick={()=>logoutBtn()}>
+      <button name="button" className="mt-2 font-merriweather border-b font-semibold text-secondary" onClick={()=>logoutBtn()}>
         Back Home
       </button>
     </div>

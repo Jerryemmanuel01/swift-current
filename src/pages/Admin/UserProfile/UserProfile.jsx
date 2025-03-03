@@ -26,6 +26,7 @@ const UserProfile = () => {
     <section className="w-full px-6 -mt-6 py-7">
       <div className="">
         <button
+          name="action"
           onClick={() => navigate(-1)}
           className="outline-hidden flex items-center gap-1.5 text-sm md:text-base"
         >
@@ -63,6 +64,7 @@ const UserProfile = () => {
             {user?.kycStatus === "Complete" && (
               <div className="flex items-center gap-2 mt-4 font-inter font-semibold">
                 <button
+                  name="action"
                   onClick={() => setShowModal(true)}
                   className="px-3 py-2 tracking-wide text-[12px] md:text-[13px] rounded-lg hover:shadow-custom1 hover:scale-[1.01] duration-300 shadow-custom0 border border-borderColor text-primary"
                 >
@@ -124,6 +126,7 @@ const UserProfile = () => {
                 <div className="flex gap-1.5 items-center text-[13px] text-textGray w-full">
                   <span className="">{user?.accountNumber}</span>
                   <button
+                    name="name"
                     onClick={handleCopy}
                     type="button"
                     className=" flex items-center justify-center"

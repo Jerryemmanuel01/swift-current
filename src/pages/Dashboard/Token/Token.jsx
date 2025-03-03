@@ -79,6 +79,7 @@ const Token = () => {
           <div className="flex items-center gap-2 text-darker mt-3 text-sm">
             <h2>Token: {token}</h2>
             <button
+              name="action"
               onClick={() => handleCopy(token)}
               type="button"
               className="flex items-center justify-center"

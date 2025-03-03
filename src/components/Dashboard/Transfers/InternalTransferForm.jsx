@@ -155,6 +155,7 @@ const InternalTransferForm = () => {
       </div>
       <div className="flex items-center justify-center">
         <button
+          name="submit"
           type="submit"
           disabled={isLoading}
           className={`${
