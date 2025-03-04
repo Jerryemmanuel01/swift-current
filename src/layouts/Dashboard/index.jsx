@@ -19,8 +19,7 @@ const DashbordLayout = () => {
 
   const { user, isLoading, isError, setRetry } = useDashboardInfo();
   if (isLoading) return <Loader title="Getting User Information" />;
-  if (isError)
-    return <DashboardFetchError setRetry={setRetry} logoutBtn={logoutBtn} />;
+  if (isError) return <DashboardFetchError setRetry={setRetry} />;
 
   return (
     <>
