@@ -71,7 +71,12 @@ const useSignUpForm = () => {
         profileImage,
         userName,
       };
-      dispatch(signUp(userData));
+      const changedValues = Object.fromEntries(
+        Object.entries(userData).filter(
+          ([key, value]) => value !== formik.initialValues[key]
+        )
+      );      
+      dispatch(signUp(changedValues));
     },
   });
   return {

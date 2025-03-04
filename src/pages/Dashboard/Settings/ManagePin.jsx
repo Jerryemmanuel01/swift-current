@@ -1,14 +1,16 @@
 import { ChevronDown, ChevronLeft, ChevronUp } from "lucide-react";
 import EditPinForm from "../../../components/Dashboard/EditPinForm";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 const ManagePin = () => {
   const [togglePin, setTogglePin] = useState(true);
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
+  const { user } = useOutletContext();
+  const userInfo = user?.userInfo;
+
   return (
-    <div className="mt-8 px-6">
+    <div className={`px-6 ${userInfo?.role !== "User" ? "-mt-6 py-6" : ""} `}>
       <button
         name="action"
         onClick={() => navigate(-1)}

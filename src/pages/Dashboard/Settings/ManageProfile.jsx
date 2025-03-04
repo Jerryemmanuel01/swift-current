@@ -1,15 +1,25 @@
 import { ChevronDown, ChevronLeft, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import EditProfileForm from "../../../components/Dashboard/EditProfileForm";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 const ManageProfile = () => {
   const [toggleProfile, setToggleProfile] = useState(true);
   const navigate = useNavigate();
+  const { user } = useOutletContext();
+  const userInfo = user?.userInfo;
 
   return (
-    <div className="overflow-hidden mt-8 px-6">
-      <button name="action" onClick={()=>navigate(-1)} className="outline-hidden flex items-center gap-1.5 text-sm md:text-base">
+    <div
+      className={`overflow-hidden px-6 ${
+        userInfo?.role !== "User" ? "-mt-6 py-6" : ""
+      } `}
+    >
+      <button
+        name="action"
+        onClick={() => navigate(-1)}
+        className="outline-hidden flex items-center gap-1.5 text-sm md:text-base"
+      >
         <ChevronLeft className="w-[18px] md:w-5" />
         Back
       </button>

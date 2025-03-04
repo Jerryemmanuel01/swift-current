@@ -37,6 +37,12 @@ const updateRole = async (data) => {
   return response.data;
 };
 
+const updateStatus = async (data) => {
+  const response = await axiosClient.patch(`/user/suspend-user`, data);
+
+  return response.data;
+};
+
 const creditUser = async (data) => {
   const response = await axiosClient.post(
     `/user/transaction/credit-account`,
@@ -61,6 +67,7 @@ const adminUserService = {
   approveTransactions,
   approveKYC,
   updateRole,
+  updateStatus,
   creditUser,
   debitUser,
 };

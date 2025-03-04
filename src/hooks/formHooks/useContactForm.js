@@ -18,7 +18,7 @@ const useContactForm = () => {
   useEffect(() => {
     if (isError) toast.error(message);
     if (isSuccess) {
-      toast.success(message);
+      toast.success("Message sent to support team");
       formik.resetForm();
     }
     dispatch(reset());

@@ -5,13 +5,14 @@ import {
   reset,
   getUsers,
   updateRole,
+  updateStatus,
 } from "../../services/features/adminUser/adminUserSlice";
 import { useNavigate, useParams } from "react-router-dom";
 
 const useUserProfile = () => {
   const {
     users,
-    isLoading,
+    isStatusLoading,
     isError,
     message,
     isSuccess,
@@ -23,6 +24,7 @@ const useUserProfile = () => {
   const [showModal, setShowModal] = useState(false);
   const [showKycPhoto, setShowKycPhoto] = useState(false);
   const [action, setAction] = useState("");
+  const [status, setStatus] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -62,8 +64,12 @@ const useUserProfile = () => {
     return;
   };
 
-  const handleChage = (e) => {
+  const handleChange = (e) => {
     setAction(e.target.value);
+  };
+
+  const handleStaus = (e) => {
+    setStatus(e.target.value);
   };
 
   const userData = {
@@ -80,6 +86,15 @@ const useUserProfile = () => {
     }
   }, [action]);
 
+  useEffect(() => {
+    if (status == user?.status || !status) {
+      return;
+    }
+    if (status && user?.email) {
+      dispatch(updateStatus({ action: status, email: user?.email }));
+    }
+  }, [status]);
+
   return {
     copied,
     showModal,
@@ -87,10 +102,12 @@ const useUserProfile = () => {
     user,
     navigate,
     handleCopy,
-    handleChage,
+    handleChange,
     isRoleLoading,
     showKycPhoto,
     setShowKycPhoto,
+    handleStaus,
+    isStatusLoading,
   };
 };
 

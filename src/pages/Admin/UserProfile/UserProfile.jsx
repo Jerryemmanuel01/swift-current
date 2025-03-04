@@ -13,14 +13,16 @@ const UserProfile = () => {
     showModal,
     user,
     handleCopy,
-    handleChage,
+    handleChange,
     isRoleLoading,
     showKycPhoto,
     setShowKycPhoto,
+    handleStaus,
+    isStatusLoading
   } = useUserProfile();
   const dateTime = user?.createdAt;
   const date = moment(dateTime).format("YYYY-MM-DD");
-  const time = moment(dateTime).format("HH:mm:ss");
+  const time = moment(dateTime).format("HH:mm:ss");  
 
   return (
     <section className="w-full px-6 -mt-6 py-7">
@@ -75,28 +77,53 @@ const UserProfile = () => {
           </div>
 
           {user.role !== "Owner" && (
-            <div className="text-xs font-inter flex flex-col items-center">
-              <p>Manage Role</p>
-              {isRoleLoading ? (
-                <PiSpinner className="animate-spin mt-2" />
-              ) : (
-                <div className="mt-2 rounded-md bg-[#e4e4e4] relative">
-                  <select
-                    name="role"
-                    id="role"
-                    className="py-2 px-4 pr-8 rounded-md outline-none bg-inherit appearance-none"
-                    onChange={handleChage}
-                  >
-                    <option value={user?.role}>{user?.role}</option>
-                    {user?.role === "User" ? (
-                      <option value="Admin">Admin</option>
-                    ) : (
-                      <option value="User">User</option>
-                    )}
-                  </select>
-                  <ChevronDown className="absolute top-1 right-2 w-4 pointer-events-none" />
-                </div>
-              )}
+            <div className="flex flex-col justify-between">
+              <div className="text-xs font-inter flex flex-col items-center">
+                <p>Manage Role</p>
+                {isRoleLoading ? (
+                  <PiSpinner className="animate-spin mt-2" />
+                ) : (
+                  <div className="mt-2 rounded-md bg-[#e4e4e4] relative">
+                    <select
+                      name="role"
+                      id="role"
+                      className="py-2 px-4 pr-8 rounded-md outline-none bg-inherit appearance-none"
+                      onChange={handleChange}
+                    >
+                      <option value={user?.role}>{user?.role}</option>
+                      {user?.role === "User" ? (
+                        <option value="Admin">Admin</option>
+                      ) : (
+                        <option value="User">User</option>
+                      )}
+                    </select>
+                    <ChevronDown className="absolute top-1 right-2 w-4 pointer-events-none" />
+                  </div>
+                )}
+              </div>
+              <div className="text-xs font-inter flex flex-col items-center">
+                <p>Manage Status</p>
+                {isStatusLoading ? (
+                  <PiSpinner className="animate-spin mt-2" />
+                ) : (
+                  <div className="mt-2 rounded-md bg-[#e4e4e4] relative">
+                    <select
+                      name="role"
+                      id="role"
+                      className="py-2 px-4 pr-8 rounded-md outline-none bg-inherit appearance-none"
+                      onChange={handleStaus}
+                    >
+                      <option value={user?.status}>{user?.status}</option>
+                      {user?.status === "Active" ? (
+                        <option value="Suspend">Suspend</option>
+                      ) : (
+                        <option value="Active">Active</option>
+                      )}
+                    </select>
+                    <ChevronDown className="absolute top-1 right-2 w-4 pointer-events-none" />
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </div>

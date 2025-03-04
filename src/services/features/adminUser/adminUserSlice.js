@@ -20,6 +20,7 @@ const initialState = {
   isFundsLoading: false,
   isFundsError: false,
   isFundsSuccess: false,
+  isStatusLoading: false,
   users: users ? JSON.parse(users) : null,
   pendingTransaction: pendingTransaction
     ? JSON.parse(pendingTransaction)
@@ -68,6 +69,13 @@ export const updateRole = createAsyncThunkWithHandler(
     return await adminUserService.updateRole(data);
   }
 );
+
+export const updateStatus = createAsyncThunkWithHandler(
+  "admin/updateStatus",
+  async (data, _) => {
+    return await adminUserService.updateStatus(data);
+  }
+);
 export const creditUser = createAsyncThunkWithHandler(
   "admin/creditUser",
   async (data, _) => {
@@ -99,6 +107,7 @@ const adminUserSlice = createSlice({
       state.isFundsLoading = false;
       state.isFundsError = false;
       state.isFundsSuccess = false;
+      state.isStatusLoading = false;
     },
     resetUsers: (state) => {
       state.isLoading = false;
@@ -215,6 +224,22 @@ const adminUserSlice = createSlice({
       })
       .addCase(updateRole.rejected, (state, action) => {
         state.isRoleLoading = false;
+        state.isRoleError = true;
+        state.message = action.payload.message;
+        state.isRoleSuccess = false;
+      })
+
+      .addCase(updateStatus.pending, (state) => {
+        state.isStatusLoading = true;
+      })
+      .addCase(updateStatus.fulfilled, (state, action) => {
+        state.isStatusLoading = false;
+        state.isRoleError = false;
+        state.isRoleSuccess = true;
+        state.message = action.payload.result.message;
+      })
+      .addCase(updateStatus.rejected, (state, action) => {
+        state.isStatusLoading = false;
         state.isRoleError = true;
         state.message = action.payload.message;
         state.isRoleSuccess = false;
