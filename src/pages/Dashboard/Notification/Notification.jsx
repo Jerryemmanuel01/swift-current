@@ -20,7 +20,6 @@ const Notification = () => {
     isNotificationLoading,
     notification,
   } = useNotification();
-  console.log(notifications);
 
   return (
     <section className={` ${userInfo?.role !== "User" ? "-mt-6 py-6" : ""} `}>
