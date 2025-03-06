@@ -12,7 +12,7 @@ const Header = ({ isOpen, setIsOpen, setClicked }) => {
   const { notifications } = useSelector((state) => state.notification);
   const { user } = useSelector((state) => state.userInfo);
   const userInfo = user?.userInfo;
-  const unread = notifications.filter((val)=>val.isRead === false)  
+  const unread = notifications?.filter((val)=>val.isRead === false)  
 
   return (
     <section className="w-full flex items-center justify-between py-6 px-6 h-[80px] fixed top-0 left-0 z-50 bg-white shadow-md">
@@ -43,7 +43,7 @@ const Header = ({ isOpen, setIsOpen, setClicked }) => {
             <IoMdNotifications className="text-xl md:text-2xl" />
           </Link>
           <span className="bg-red-600 min-w-3.5 min-h-3.5 md:w-4 md:h-4 rounded-full absolute flex items-center justify-center text-[9.5px] font-bold font-poppins text-white -top-1 -right-1">
-            {unread.length}
+            {unread?.length}
           </span>
         </span>
         <div className="w-full md:hidden ">
