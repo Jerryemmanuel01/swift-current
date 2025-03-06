@@ -47,7 +47,7 @@ const useNotification = () => {
   }, [isNotificationError]);
 
   const handleRowClick = (id) => {
-    dispatch(resetNotification());
+    // dispatch(resetNotification());
     dispatch(getNotification(id));
     setShowModal(true);
   };
@@ -65,6 +65,7 @@ const useNotification = () => {
     handleRowClick,
     isNotificationLoading,
     notification,
+    resetNotification,
   };
 };
 
