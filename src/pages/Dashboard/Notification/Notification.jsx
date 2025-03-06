@@ -20,6 +20,7 @@ const Notification = () => {
     isNotificationLoading,
     notification,
   } = useNotification();
+  console.log(notifications);
 
   return (
     <section className={` ${userInfo?.role !== "User" ? "-mt-6 py-6" : ""} `}>
@@ -37,12 +38,14 @@ const Notification = () => {
       <div className="mt-4">
         {notifications.length ? (
           notifications?.map((notification) => {
-            const dateTime = notification.createdAt;
+            const dateTime = notification?.createdAt;
             const date = moment(dateTime).format("MMM Do, HH:mm:ss");
 
             return (
               <div
-                className={` ${notification?.isRead? "bg-[#f6f8f9]":""} border-b border-borderColor px-6 py-3 flex items-center gap-2 w-full cursor-pointer`}
+                className={` ${
+                  notification?.isRead ? "bg-[#f6f8f9]" : ""
+                } border-b border-borderColor px-6 py-3 flex items-center gap-2 w-full cursor-pointer`}
                 onClick={() => handleRowClick(notification?._id)}
               >
                 <div className="rounded-full shadow-custom bg-primary/90 w-[45px] h-[40px] p-1 flex items-center justify-center">
@@ -130,6 +133,180 @@ const Notification = () => {
                           or contact support if the issue persists.
                         </span>
                       )}
+                    {notification?.title === "Swift Current Fund" &&
+                      notification?.status === "Approved" && (
+                        <span>
+                          Your account has been {notification?.category}ed with
+                          ${notification?.metadata?.amount.toLocaleString()}.
+                          Thank you for banking with us!
+                        </span>
+                      )}
+                    {notification?.title === "Swift Current Debt" &&
+                      notification?.status === "Approved" && (
+                        <span>
+                          <span>
+                            Your account has been {notification?.category}ed
+                            with $
+                            {notification?.metadata?.amount.toLocaleString()}.
+                            Thank you for banking with us!
+                          </span>
+                        </span>
+                      )}
+                    {notification?.title === "International Transfer" &&
+                      notification?.status === "Pending" && (
+                        <span>
+                          Your international transaction is currently pending.
+                          Please allow some time for processing.
+                        </span>
+                      )}
+                    {notification?.title === "International Transfer" &&
+                      notification?.status === "Approved" && (
+                        <span>
+                          Your international transaction has been processed
+                          successfully.
+                        </span>
+                      )}
+                    {notification?.title === "International Transfer" &&
+                      notification?.status === "Failed" && (
+                        <span>
+                          Your international transaction could not be completed.
+                          Please try again or contact support.
+                        </span>
+                      )}
+                    {notification?.title === "Local Transfer" &&
+                      notification?.status === "Pending" && (
+                        <span>
+                          Your local transfer is currently pending. Please allow
+                          some time for processing.
+                        </span>
+                      )}
+                    {notification?.title === "Local Transfer" &&
+                      notification?.status === "Approved" && (
+                        <span>
+                          Your local transfer has been processed successfully.
+                        </span>
+                      )}
+                    {notification?.title === "Local Transfer" &&
+                      notification?.status === "Failed" && (
+                        <span>
+                          Your local transfer could not be completed. Please try
+                          again or contact support.
+                        </span>
+                      )}
+                    {notification?.title === "Crypto Transfer" &&
+                      notification?.status === "Pending" && (
+                        <span>
+                          Your crypto transfer of $
+                          {notification?.metadata?.amount.toLocaleString()} is
+                          currently pending. Please allow some time for
+                          processing.
+                        </span>
+                      )}
+                    {notification?.title === "Crypto Transfer" &&
+                      notification?.status === "Approved" && (
+                        <span>
+                          Your crypto transfer of $
+                          {notification?.metadata?.amount.toLocaleString()} has
+                          been processed successfully.
+                        </span>
+                      )}
+                    {notification?.title === "Crypto Transfer" &&
+                      notification?.status === "Failed" && (
+                        <span>
+                          Your crypto transfer of $
+                          {notification?.metadata?.amount.toLocaleString()}{" "}
+                          could not be completed. Please try again or contact
+                          support.
+                        </span>
+                      )}
+                    {notification?.title === "Loan Request" &&
+                      notification?.status === "Pending" && (
+                        <span>
+                          Your loan application for $
+                          {notification?.metadata?.amount.toLocaleString()} has
+                          been received and is currently under review. We’ll
+                          update you soon.
+                        </span>
+                      )}
+                    {notification?.title === "Loan" &&
+                      notification?.status === "Approved" && (
+                        <span>
+                          Great news! Your loan application for $
+                          {notification?.metadata?.amount.toLocaleString()} has
+                          been approved. Check your account for details.
+                        </span>
+                      )}
+                    {notification?.title === "Loan" &&
+                      notification?.status === "Failed" && (
+                        <span>
+                          Unfortunately, your loan application for $
+                          {notification?.metadata?.amount.toLocaleString()} was
+                          not approved. Please contact support for assistance.
+                        </span>
+                      )}
+                    {notification?.title === "Swift Fee" &&
+                      notification?.status === "Pending" && (
+                        <span>
+                          Your Swift fee transaction is being processed. Please
+                          wait while we complete the transaction.
+                        </span>
+                      )}
+                    {notification?.title === "Swift Fee" &&
+                      notification?.status === "Approved" && (
+                        <span>
+                          Your Swift fee transaction has been successfully
+                          processed. Thank you!
+                        </span>
+                      )}
+                    {notification?.title === "Swift Fee" &&
+                      notification?.status === "Failed" && (
+                        <span>
+                          Your Swift fee transaction failed. Please try again or
+                          contact support for assistance.
+                        </span>
+                      )}
+                    {notification?.title === "Crypto Swift Fee" &&
+                      notification?.status === "Pending" && (
+                        <span>
+                          Your ethereum gas fee transaction is being processed.
+                          Please wait while we complete the transaction.
+                        </span>
+                      )}
+                    {notification?.title === "Crypto Swift Fee" &&
+                      notification?.status === "Approved" && (
+                        <span>
+                          Your ethereum gas fee transaction has been
+                          successfully processed. Thank you!
+                        </span>
+                      )}
+                    {notification?.title === "Crypto Swift Fee" &&
+                      notification?.status === "Failed" && (
+                        <span>
+                          Your ethereum gas fee transaction failed. Please try
+                          again or contact support for assistance.
+                        </span>
+                      )}
+                    {notification?.title === "Account Upgrade" &&
+                      notification?.status === "Pending" && (
+                        <span>
+                          Your account upgrade request is being processed. We'll
+                          notify you once it's approved.
+                        </span>
+                      )}
+                    {notification?.title === "Account Upgrade" &&
+                      notification?.status === "Approved" && (
+                        <span>
+                          Congratulations! Your account upgrade has been
+                          approved. Enjoy your new benefits.
+                        </span>
+                      )}
+                    {notification?.title === "Account Upgrade" &&
+                      notification?.status === "Failed" && (
+                        <span>
+                          Your account upgrade request was not approved. Please
+                          contact support for more details.
+                        </span>
+                      )}
                   </p>
                 </div>
               </div>
@@ -155,7 +332,7 @@ const Notification = () => {
           <div className="flex flex-col justify-center items-center  text-xs ">
             <div className="w-full flex flex-col justify-center rounded-xl items-center  text-xs px-4">
               <p className=" font-medium font-inter">
-                {notification?.type}{" "}
+                {notification?.title}{" "}
                 {/* {notification?.type === "Transfer" ? "To" : "from"}{" "}
                 {notification?.name} */}
               </p>
@@ -168,7 +345,10 @@ const Notification = () => {
               >
                 {notification?.type === "Crypto Swift Fee" ? "ETH " : "$"}
                 {notification?.category === "Debit"
-                  ? "-" + notification?.metadata?.amount.toLocaleString()
+                  ? "-" +
+                    notification?.metadata?.amount
+                      .toLocaleString()
+                      .toLocaleString()
                   : notification?.metadata?.amount.toLocaleString()}
               </h2>
               <h4
