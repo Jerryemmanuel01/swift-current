@@ -68,6 +68,7 @@ const logout = async () => {
     localStorage.removeItem("SC_pending_transaction");
     localStorage.removeItem("SC_user_trasactions");
     localStorage.removeItem("SC_all_transaction");
+    localStorage.removeItem("SC_user_notifications");
   }
 
   return { message: "Logout successful" };

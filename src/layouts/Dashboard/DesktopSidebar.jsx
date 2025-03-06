@@ -62,7 +62,7 @@ const DesktopSidebar = ({ clicked, setClicked, logoutBtn }) => {
             </div>
           </div>
           <div className="mb-6">
-            <h2 className="font-merriweather text-center font-semibold text-lg text-primary">
+            <h2 className="font-merriweather capitalize text-center font-semibold text-lg text-primary">
               {user.userInfo?.userName}
             </h2>
             {isRole === "User" ? (

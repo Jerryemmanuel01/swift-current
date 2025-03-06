@@ -39,7 +39,7 @@ const TransactionHistoryTable = ({ transactions }) => {
             </tr>
           </thead>
           <tbody>
-            {transactions.length
+            {transactions?.length
               ? products?.map((val, i) => {
                   const dateTime = val.createdAt;
                   const date = moment(dateTime).format("YYYY-MM-DD");
@@ -110,7 +110,7 @@ const TransactionHistoryTable = ({ transactions }) => {
               : ""}
           </tbody>
         </table>
-        {transactions.length !== 0 ? (
+        {transactions?.length !== 0 ? (
           <TablePagination
             component="div"
             count={transactions.length}
@@ -123,11 +123,7 @@ const TransactionHistoryTable = ({ transactions }) => {
         ) : (
           <p className="text-center py-4">No Transaction Available</p>
         )}
-        {!transactions.length && (
-          <div className="text-center w-full py-4 text-sm font-inter font-medium">
-            No Transaction available
-          </div>
-        )}
+
       </div>
     </section>
   );

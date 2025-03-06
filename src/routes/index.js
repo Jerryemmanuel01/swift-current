@@ -42,6 +42,7 @@ export const Settings = lazy(()=>import("../pages/Dashboard/Settings/Settings"))
 export const ManageProfile = lazy(()=>import("../pages/Dashboard/Settings/ManageProfile"))
 export const ManagePin = lazy(()=>import("../pages/Dashboard/Settings/ManagePin"))
 export const Receipt = lazy(()=>import("../components/Dashboard/TransactionReceipt"))
+export const Notification = lazy(()=>import("../pages/Dashboard/Notification/Notification"))
 
 // Admin routes
 export const ProtectAdmin = lazy(()=>import("../pages/Admin/ProtectAdmin"))

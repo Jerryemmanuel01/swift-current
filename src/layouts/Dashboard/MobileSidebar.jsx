@@ -79,7 +79,7 @@ const MobileSidebar = ({
             </div>
           </div>
           <div className="mb-6">
-            <h2 className="font-merriweather text-center font-semibold text-primary">
+            <h2 className="font-merriweather capitalize text-center font-semibold text-primary">
               {user.userInfo?.userName}
             </h2>
             {isRole === "User" ? (
@@ -191,7 +191,7 @@ const MobileSidebar = ({
 
           <button
             name="action"
-            onClick={()=>logoutBtn()}
+            onClick={() => logoutBtn()}
             className={`flex gap-3 items-center text-sm md:text-base px-6 outline-none hover:text-primary duration-300 mb-20 ${
               isRole === "User" ? "mt-10" : "mt-4"
             }`}

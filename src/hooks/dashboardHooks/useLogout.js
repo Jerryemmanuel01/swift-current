@@ -6,6 +6,7 @@ import { resetUser } from "../../services/features/userInfo/userInfoSlice";
 import { resetUsers } from "../../services/features/adminUser/adminUserSlice";
 import { useNavigate } from "react-router-dom";
 import { resetUserTransactions } from "../../services/features/user/userSlice";
+import { resetNotifications } from "../../services/features/notification/notificationSlice";
 
 const useLogout = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const useLogout = () => {
       dispatch(resetUser());
       dispatch(resetUsers());
       dispatch(resetUserTransactions());
+      dispatch(resetNotifications())
       dispatch(reset())
       navigate("/auth/login", { replace: true });
     }

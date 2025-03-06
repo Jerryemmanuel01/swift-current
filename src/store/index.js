@@ -7,6 +7,7 @@ import fundingSlice from "../services/features/funding/fundingSlice";
 import kycSlice from "../services/features/KYC/KYCSlice";
 import transferSlice from "../services/features/transfer/transferSlice";
 import adminSlice from "../services/features/adminUser/adminUserSlice";
+import notification from "../services/features/notification/notificationSlice";
 export const store = configureStore({
   reducer: {
     auth: authSlice,
@@ -17,6 +18,7 @@ export const store = configureStore({
     kyc: kycSlice,
     transfer: transferSlice,
     admin: adminSlice,
+    notification: notification,
   },
 
   devTools: true,

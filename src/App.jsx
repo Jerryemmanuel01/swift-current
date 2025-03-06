@@ -53,6 +53,7 @@ import {
   ProtectTransfer,
   Terms,
   Privacy,
+  Notification,
 } from "./routes";
 import DashbordLayout from "./layouts/Dashboard";
 import AdminLayout from "./layouts/AdminLayout/Index";
@@ -219,6 +220,10 @@ function App() {
               path: "manage-pin",
               element: <ManagePin />,
             },
+            {
+              path: "notification",
+              element: <Notification />,
+            },
           ],
         },
 
@@ -278,6 +283,10 @@ function App() {
             {
               path: "manage-pin",
               element: <ManagePin />,
+            },
+            {
+              path: "notification",
+              element: <Notification />,
             },
           ],
         },

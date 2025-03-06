@@ -10,6 +10,10 @@ import {
   getTransactions,
   reset as userReset,
 } from "../../services/features/user/userSlice";
+import {
+  getAllNotifications,
+  reset as notificationReset,
+} from "../../services/features/notification/notificationSlice";
 
 const useDashboardInfo = () => {
   const [retry, setRetry] = useState(false);
@@ -29,6 +33,13 @@ const useDashboardInfo = () => {
   useEffect(() => {
     dispatch(fetchUserInfo());
     dispatch(getTransactions());
+    dispatch(getAllNotifications());
+
+    const interval = setInterval(() => {
+      dispatch(getAllNotifications());
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, [retry]);
 
   useEffect(() => {
@@ -36,6 +47,7 @@ const useDashboardInfo = () => {
       // toast.success(`Welcome ${user.userInfo?.firstName}`);
       dispatch(reset());
       dispatch(userReset());
+      dispatch(notificationReset());
     }
   }, []);
 
