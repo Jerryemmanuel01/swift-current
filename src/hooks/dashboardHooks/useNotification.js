@@ -51,9 +51,9 @@ const useNotification = () => {
     dispatch(getNotification(id));
     setShowModal(true);
   };
-  useEffect(() => {
-    if (!notification) setShowModal(false);
-  }, [notification]);
+  //   useEffect(() => {
+  //     if (!notification) setShowModal(false);
+  //   }, [notification]);
 
   return {
     userInfo,
